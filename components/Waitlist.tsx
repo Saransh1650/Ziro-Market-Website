@@ -71,6 +71,7 @@ export default function Waitlist() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesContainerRef = useRef<HTMLDivElement>(null);
   const btnRef = useMagneticButton<HTMLButtonElement>();
+  const [os, setOs] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [messageColor, setMessageColor] = useState('var(--green)');
@@ -282,6 +283,12 @@ export default function Waitlist() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!os) {
+      setMessageColor('var(--red)');
+      setMessage('// Please select your device platform.');
+      return;
+    }
+
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setMessageColor('var(--red)');
       setMessage('// Please enter a valid email address.');
@@ -296,7 +303,7 @@ export default function Waitlist() {
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'landing_indian_v1' }),
+        body: JSON.stringify({ email, os, source: 'landing_indian_v1' }),
       });
 
       if (res.ok) {
@@ -307,8 +314,9 @@ export default function Waitlist() {
     } catch {
       // Fallback: save locally
       const saved = JSON.parse(localStorage.getItem('smt_waitlist') || '[]');
-      if (!saved.includes(email)) {
-        saved.push(email);
+      const entry = { email, os, timestamp: new Date().toISOString() };
+      if (!saved.find((s: any) => s.email === email)) {
+        saved.push(entry);
         localStorage.setItem('smt_waitlist', JSON.stringify(saved));
       }
       showSuccess();
@@ -349,9 +357,7 @@ export default function Waitlist() {
           </div>
 
           <h2 className="wl-title">
-            Be First to <em>Master</em>
-            <br />
-            the Indian Market.
+            Trade Insights
           </h2>
           <p className="wl-subtitle">
             Join thousands of traders and investors getting early access to India&apos;s most powerful
@@ -375,6 +381,16 @@ export default function Waitlist() {
 
           {/* Form */}
           <form className="wl-form" onSubmit={handleSubmit} noValidate>
+            <select
+              className="wl-select"
+              value={os}
+              onChange={(e) => setOs(e.target.value)}
+              required
+            >
+              <option value="">Select your device</option>
+              <option value="ios">iOS (iPhone/iPad)</option>
+              <option value="android">Android</option>
+            </select>
             <input
               type="email"
               className="wl-input"

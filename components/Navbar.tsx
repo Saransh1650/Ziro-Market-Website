@@ -21,17 +21,15 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="container nav-inner">
-        <Link href="#" className="nav-logo" aria-label="Smart Money Tracker">
+        <Link href="#" className="nav-logo" aria-label="Trade Insights">
           <div className="logo-icon">▲</div>
           <span className="logo-text">
-            SMART MONEY <span>TRACKER</span>
+            TRADE INSIGHTS
           </span>
         </Link>
         <div className="nav-links">
-          <a href="#features" className="nav-link">Product</a>
-          <a href="#signals" className="nav-link">Signals</a>
+          <a href="#features" className="nav-link">Features</a>
           <a href="#community" className="nav-link">Community</a>
-          <a href="#how-it-works" className="nav-link">How It Works</a>
         </div>
         <div className="nav-right">
           <a href="#waitlist" className="btn btn-primary btn-sm">

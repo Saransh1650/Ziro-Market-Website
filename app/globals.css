@@ -587,7 +587,21 @@ p  { color: var(--text-2); line-height: 1.7; }
 .wl-title { font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 18px; }
 .wl-title em { font-style: normal; background: linear-gradient(135deg, var(--accent-2), var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .wl-subtitle { font-size: 1.05rem; color: var(--text-2); max-width: 480px; margin: 0 auto 44px; }
-.wl-form { display: flex; max-width: 480px; margin: 0 auto; gap: 8px; }
+.wl-form { display: flex; flex-direction: column; max-width: 480px; margin: 0 auto; gap: 10px; }
+.wl-select {
+  width: 100%; padding: 14px 18px;
+  background: var(--bg-3); border: 1px solid var(--border-2);
+  border-radius: var(--r); color: var(--text-1); font-size: 0.95rem; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239aa0a6' d='M1.41 0L6 4.59L10.59 0L12 1.41l-6 6l-6-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 40px;
+}
+.wl-select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+.wl-select option { background: var(--bg-2); color: var(--text-1); }
 .wl-input {
   flex: 1; padding: 14px 18px;
   background: var(--bg-3); border: 1px solid var(--border-2);
@@ -597,7 +611,7 @@ p  { color: var(--text-2); line-height: 1.7; }
 .wl-input::placeholder { color: var(--text-4); }
 .wl-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
 .wl-btn {
-  padding: 14px 28px; background: var(--accent); color: #fff;
+  width: 100%; padding: 14px 28px; background: var(--accent); color: #fff;
   border: none; border-radius: var(--r); font-size: 0.95rem; font-weight: 700;
   cursor: pointer; transition: all 0.22s;
   box-shadow: 0 4px 16px rgba(59,111,212,0.4);

@@ -1,29 +1,25 @@
 'use client';
 
 import { useEffect, useRef, useState, useMemo } from 'react';
-import { useMagneticButton } from '@/hooks/useMagneticButton';
-import { STOCKS, SECTORS, formatChange } from '@/lib/data';
+import { SECTORS } from '@/lib/data';
 
 export default function Hero() {
-  const primaryBtnRef = useMagneticButton<HTMLAnchorElement>();
-  const ghostBtnRef = useMagneticButton<HTMLAnchorElement>();
   const phoneWrapRef = useRef<HTMLDivElement>(null);
   const phoneFrameRef = useRef<HTMLDivElement>(null);
-  const [time, setTime] = useState('09:15:32');
+  const [time, setTime] = useState('09:15');
   const [mounted, setMounted] = useState(false);
 
-  // Generate sector data once on mount to avoid hydration mismatch
+  // Generate sector data - clean and minimal
   const sectorData = useMemo(() => {
-    return SECTORS.slice(0, 10).map((sector, i) => {
-      // Use deterministic mock values for landing page to avoid hydration mismatch
+    return SECTORS.slice(0, 6).map((sector, i) => {
       const seed = (i * 0.13) % 1;
       const val = (seed - 0.5) * 4;
       const color =
-        val > 1.5
+        val > 1
           ? '#22c55e'
           : val > 0
           ? '#10b981'
-          : val > -1.5
+          : val > -1
           ? '#ef4444'
           : '#dc2626';
       return { ...sector, val, color };
@@ -31,36 +27,33 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    setMounted(true); // eslint-disable-line react-hooks/set-state-in-effect
+    setMounted(true);
   }, []);
 
   useEffect(() => {
-    // Update phone time
     const updateTime = () => {
       const now = new Date();
       setTime(
         now.toLocaleTimeString('en-IN', {
           hour: '2-digit',
           minute: '2-digit',
-          second: '2-digit',
         })
       );
     };
     updateTime();
     const interval = setInterval(updateTime, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    // Idle gentle float animation for phone wrap
+    // Gentle float animation
     let floatT = 0;
     const phoneWrap = phoneWrapRef.current;
 
     function floatPhone() {
-      floatT += 0.015;
+      floatT += 0.012;
       if (phoneWrap) {
-        phoneWrap.style.transform = `translateY(${Math.sin(floatT) * 8}px)`;
+        phoneWrap.style.transform = `translateY(${Math.sin(floatT) * 12}px)`;
       }
       requestAnimationFrame(floatPhone);
     }
@@ -69,7 +62,7 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    // Phone frame 3D tilt on mouse move
+    // 3D tilt on mouse move
     const phoneFrame = phoneFrameRef.current;
     if (!phoneFrame) return;
 
@@ -83,7 +76,7 @@ export default function Hero() {
       const dx = (e.clientX - cx) / window.innerWidth;
       const dy = (e.clientY - cy) / window.innerHeight;
 
-      phoneFrame.style.transform = `perspective(1000px) rotateY(${dx * 8}deg) rotateX(${-dy * 6}deg) translateY(-6px)`;
+      phoneFrame.style.transform = `perspective(1200px) rotateY(${dx * 12}deg) rotateX(${-dy * 10}deg)`;
     };
 
     const handleMouseLeave = () => {
@@ -99,128 +92,176 @@ export default function Hero() {
     };
   }, []);
 
-  // Generate top movers with animation
-  const topMovers = STOCKS.slice(0, 5).map((stock) => {
-    const change = ((stock.price - stock.base) / stock.base) * 100;
-    return { ...stock, change };
-  });
-
-  // Animated stock rows
-  useEffect(() => {
-    if (!mounted) return;
-    
-    const rows = document.querySelectorAll('.pm-row');
-    rows.forEach((row, i) => {
-      setTimeout(() => {
-        row.classList.add('animate-in');
-      }, i * 150);
-    });
-  }, [mounted]);
-
   return (
-    <section className="hero" id="hero">
-      <div className="hero-bg-grid"></div>
+    <section className="hero" id="hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '80px', paddingBottom: '60px' }}>
       <div className="container hero-content">
-        <div className="hero-layout">
-          {/* Left */}
+        <div className="hero-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+          {/* Left Side */}
           <div className="hero-left">
-            <div className="hero-eyebrow" data-reveal="up">
-              <div className="badge badge-live">Mobile Intelligence</div>
-            </div>
-            <h1 className="hero-title" data-reveal="up" data-delay="100" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)' }}>
-              Understand What&apos;s
+            <h1 style={{ 
+              fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
+              fontWeight: 900, 
+              lineHeight: 1.05, 
+              letterSpacing: '-0.04em',
+              marginBottom: '28px',
+              color: 'var(--text-1)'
+            }}>
+              Understand the
               <br />
-              Moving the
-              <br />
-              <span style={{ color: 'var(--accent-2)' }}>Indian Market</span>
+              Market Faster
             </h1>
-            <p className="hero-sub" data-reveal="up" data-delay="200" style={{ fontSize: '1.05rem', maxWidth: '540px' }}>
-              A mobile intelligence platform that reveals market signals, sector momentum, and stock conversations.
+            <p style={{ 
+              fontSize: '1.3rem', 
+              lineHeight: 1.6, 
+              color: 'var(--text-2)', 
+              maxWidth: '500px', 
+              marginBottom: '52px' 
+            }}>
+              Real-time insights on Indian stocks, sectors, and market trends — all in one beautiful mobile app.
             </p>
-            <div className="hero-cta" data-reveal="up" data-delay="300">
+            <div>
               <a
                 href="#waitlist"
                 className="btn btn-primary btn-lg"
-                ref={primaryBtnRef}
+                style={{ fontSize: '1.15rem', padding: '20px 48px', display: 'inline-flex' }}
               >
                 Join Early Access
               </a>
-              <a
-                href="#features"
-                className="btn btn-ghost btn-lg"
-                ref={ghostBtnRef}
-              >
-                Explore Signals
-              </a>
             </div>
-            <div className="store-badges" data-reveal="up" data-delay="400">
-              <div className="store-badge">
-                <span className="sb-icon">📱</span>
-                <div className="sb-text">
-                  <small>Available on</small>
-                  <strong>App Store</strong>
-                </div>
-              </div>
-              <div className="store-badge">
-                <span className="sb-icon">🤖</span>
-                <div className="sb-text">
-                  <small>Available on</small>
-                  <strong>Google Play</strong>
-                </div>
-              </div>
-            </div>
-            <p className="hero-note" data-reveal="up" data-delay="500">
-              100% free early access. Secure your spot on the waitlist.
-            </p>
           </div>
 
-          {/* Right: Phone Mockup */}
+          {/* Right Side - Large Phone Mockup */}
           <div
-            className="phone-wrap"
-            data-reveal="scale"
-            data-delay="200"
             ref={phoneWrapRef}
+            style={{ 
+              position: 'relative', 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center',
+              transform: 'scale(1.4)'
+            }}
           >
-            <div className="phone-glow"></div>
-            
-            {/* Floating App Notifications */}
-            <div className="floating-notifs">
-              <div className="f-notif fn-1" style={{ top: '10%', left: '-80px', animationDelay: '0s' }}>
-                <div className="fn-icon">📈</div>
-                <div className="fn-content">
-                  <strong>NIFTY 50</strong>
-                  <span>Crossing 22,850</span>
-                </div>
-              </div>
-              <div className="f-notif fn-2" style={{ top: '60%', right: '-90px', animationDelay: '1s' }}>
-                <div className="fn-icon">⚡</div>
-                <div className="fn-content">
-                  <strong>Volume Spike</strong>
-                  <span>TATA MOTORS 8x</span>
-                </div>
-              </div>
-              <div className="f-notif fn-3" style={{ bottom: '20%', left: '-100px', animationDelay: '2s' }}>
-                <div className="fn-icon">🔔</div>
-                <div className="fn-content">
-                  <strong>Alert Hit</strong>
-                  <span>SBIN Above ₹790</span>
-                </div>
-              </div>
-            </div>
+            {/* Glow effect */}
+            <div style={{
+              position: 'absolute',
+              width: '320px',
+              height: '520px',
+              borderRadius: '40%',
+              background: 'radial-gradient(ellipse, rgba(58,110,165,0.25) 0%, transparent 70%)',
+              filter: 'blur(60px)',
+              pointerEvents: 'none'
+            }}></div>
 
-            <div className="phone-frame" ref={phoneFrameRef}>
-              <div className="phone-screen" style={{ padding: 0, overflow: 'hidden' }}>
-                <img 
-                  src="/screenshots/dashboard.png" 
-                  alt="Trade Insights App Dashboard" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-                
-                {/* Floating Alert Overlay */}
-                <div className="phone-overlay-alert">
-                  <div className="poa-tag">VOLUME SURGE</div>
-                  <div className="poa-title">ADANIENT +4.2%</div>
-                  <div className="poa-sub">5.2x relative volume detected</div>
+            {/* Phone Frame */}
+            <div 
+              ref={phoneFrameRef}
+              style={{
+                width: '300px',
+                minHeight: '600px',
+                background: 'var(--bg-2)',
+                border: '2px solid var(--border-2)',
+                borderRadius: '48px',
+                overflow: 'hidden',
+                position: 'relative',
+                boxShadow: '0 40px 100px rgba(0,0,0,0.8), 0 0 0 0.5px rgba(255,255,255,0.06) inset',
+                transition: 'transform 0.3s ease'
+              }}
+            >
+              {/* Notch */}
+              <div style={{
+                height: '40px',
+                background: 'var(--bg-1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderBottom: '1px solid var(--border)'
+              }}>
+                <div style={{
+                  width: '120px',
+                  height: '6px',
+                  background: 'var(--bg-3)',
+                  borderRadius: '99px'
+                }}></div>
+              </div>
+
+              {/* Screen Content */}
+              <div style={{ padding: '24px 20px' }}>
+                {/* Time */}
+                <div style={{ 
+                  textAlign: 'center', 
+                  fontSize: '0.7rem', 
+                  fontFamily: 'var(--mono)', 
+                  color: 'var(--text-4)',
+                  marginBottom: '32px'
+                }}>
+                  {time}
+                </div>
+
+                {/* Title */}
+                <h2 style={{ 
+                  fontSize: '1.8rem', 
+                  fontWeight: 900, 
+                  color: 'var(--text-1)',
+                  marginBottom: '10px',
+                  letterSpacing: '-0.02em'
+                }}>
+                  Market Overview
+                </h2>
+                <p style={{ 
+                  fontSize: '0.75rem', 
+                  color: 'var(--text-3)',
+                  marginBottom: '32px'
+                }}>
+                  Live sector performance
+                </p>
+
+                {/* Heatmap Grid */}
+                <div style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(2, 1fr)', 
+                  gap: '12px'
+                }}>
+                  {mounted && sectorData.map((sector) => (
+                    <div
+                      key={sector.name}
+                      style={{
+                        background: sector.color,
+                        borderRadius: '16px',
+                        padding: '24px 20px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '6px',
+                        minHeight: '95px',
+                        justifyContent: 'center',
+                        transition: 'transform 0.2s ease',
+                        cursor: 'pointer'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                      }}
+                    >
+                      <div style={{ 
+                        fontSize: '0.7rem', 
+                        fontWeight: 700, 
+                        color: 'rgba(255,255,255,0.95)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.03em'
+                      }}>
+                        {sector.name}
+                      </div>
+                      <div style={{ 
+                        fontSize: '1.3rem', 
+                        fontWeight: 900, 
+                        color: '#fff',
+                        fontFamily: 'var(--mono)'
+                      }}>
+                        {sector.val > 0 ? '+' : ''}{sector.val.toFixed(1)}%
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

@@ -1,31 +1,25 @@
 import ScrollProgress from '@/components/ScrollProgress';
 import CursorGlow from '@/components/CursorGlow';
 import Navbar from '@/components/Navbar';
-import TickerStrip from '@/components/TickerStrip';
 import Hero from '@/components/Hero';
-import MarketSignals from '@/components/MarketSignals';
-import SectorHeatmap from '@/components/SectorHeatmap';
-import WatchlistIntelligence from '@/components/WatchlistIntelligence';
+import AppExperience from '@/components/AppExperience';
+import ChartExperience from '@/components/ChartExperience';
 import StockChatRooms from '@/components/StockChatRooms';
-import HowItWorks from '@/components/HowItWorks';
-import FutureSection from '@/components/FutureSection';
 import Waitlist from '@/components/Waitlist';
 import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main>
-      <TickerStrip />
+    <>
+      <ScrollProgress />
+      <CursorGlow />
       <Navbar />
       <Hero />
-      <MarketSignals />
-      <SectorHeatmap />
-      <WatchlistIntelligence />
+      <AppExperience />
+      <ChartExperience />
       <StockChatRooms />
-      <HowItWorks />
-      <FutureSection />
       <Waitlist />
       <Footer />
-    </main>
+    </>
   );
 }
