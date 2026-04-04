@@ -1,11 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export default function ChartExperience() {
   const [ref, isVisible] = useScrollReveal<HTMLDivElement>({ threshold: 0.2 });
   const [expanded, setExpanded] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const chartData = useMemo(() => {
+    return Array.from({ length: 30 }).map((_, i) => ({
+      height: 40 + Math.sin(i * 0.5) * 30 + Math.abs(Math.cos(i * 0.8)) * 20,
+      isUp: Math.sin(i * 0.5) > 0
+    }));
+  }, []);
 
   return (
     <section 
@@ -54,16 +66,17 @@ export default function ChartExperience() {
         }}>
           <div 
             style={{
-              width: expanded ? '900px' : '340px',
-              minHeight: expanded ? '600px' : '680px',
+              width: expanded ? 'min(900px, 92vw)' : '340px',
+              minHeight: expanded ? '500px' : '680px',
               background: 'var(--bg-2)',
               border: '2px solid var(--border-2)',
-              borderRadius: expanded ? '32px' : '48px',
+              borderRadius: expanded ? '24px' : '48px',
               overflow: 'hidden',
               boxShadow: '0 40px 120px rgba(0,0,0,0.8)',
               transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
               cursor: 'pointer',
-              position: 'relative'
+              position: 'relative',
+              margin: '0 auto'
             }}
             onClick={() => setExpanded(!expanded)}
           >
@@ -121,34 +134,33 @@ export default function ChartExperience() {
                 marginBottom: '24px',
                 transition: 'all 0.6s ease'
               }}>
-                {Array.from({ length: expanded ? 30 : 20 }).map((_, i) => {
-                  const height = 40 + Math.sin(i * 0.5) * 30 + Math.random() * 20;
-                  const isUp = Math.sin(i * 0.5) > 0;
-                  return (
-                    <div
-                      key={i}
-                      style={{
-                        flex: 1,
-                        height: `${height}%`,
-                        background: isUp ? 'var(--green)' : 'var(--red)',
-                        borderRadius: '4px',
-                        opacity: 0.85,
-                        transition: 'all 0.6s ease',
-                        minWidth: expanded ? '16px' : '10px'
-                      }}
-                    ></div>
-                  );
-                })}
+                {mounted && (expanded ? chartData : chartData.slice(0, 20)).map((d, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      flex: 1,
+                      height: `${Math.round(d.height)}%`,
+                      background: d.isUp ? 'var(--green)' : 'var(--red)',
+                      borderRadius: '4px',
+                      opacity: 0.85,
+                      transition: 'all 0.6s ease',
+                      minWidth: expanded ? '16px' : '10px'
+                    }}
+                  ></div>
+                ))}
               </div>
 
               {/* Expanded Details */}
               {expanded && (
-                <div style={{ 
-                  display: 'grid', 
-                  gridTemplateColumns: 'repeat(4, 1fr)', 
-                  gap: '16px',
-                  animation: 'fadeIn 0.6s ease 0.3s both'
-                }}>
+                <div 
+                  className="exp-stats-grid"
+                  style={{ 
+                    display: 'grid', 
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', 
+                    gap: '12px',
+                    animation: 'fadeIn 0.6s ease 0.3s both'
+                  }}
+                >
                   {[
                     { label: 'Open', value: '₹2,890' },
                     { label: 'High', value: '₹2,967' },

@@ -40,11 +40,8 @@ export default function AppExperience() {
         {experiences.map((exp, index) => (
           <div
             key={exp.id}
+            className="responsive-grid"
             style={{
-              display: 'grid',
-              gridTemplateColumns: exp.side === 'left' ? '1.2fr 1fr' : '1fr 1.2fr',
-              gap: '120px',
-              alignItems: 'center',
               marginBottom: index < experiences.length - 1 ? '200px' : '0',
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(60px)',
@@ -52,9 +49,9 @@ export default function AppExperience() {
             }}
           >
             {/* Text Side */}
-            <div style={{ order: exp.side === 'left' ? 2 : 1 }}>
+            <div style={{ order: exp.side === 'left' ? 2 : 1 }} className="app-exp-text">
               <h2 style={{
-                fontSize: 'clamp(2.5rem, 4vw, 4rem)',
+                fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
                 fontWeight: 900,
                 lineHeight: 1.1,
                 letterSpacing: '-0.04em',
@@ -64,7 +61,7 @@ export default function AppExperience() {
                 {exp.title}
               </h2>
               <p style={{
-                fontSize: '1.3rem',
+                fontSize: '1.2rem',
                 lineHeight: 1.7,
                 color: 'var(--text-2)',
                 maxWidth: '480px'

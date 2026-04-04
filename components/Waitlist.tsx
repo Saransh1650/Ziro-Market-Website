@@ -345,13 +345,15 @@ export default function Waitlist() {
       <div className="wl-particles" ref={particlesContainerRef}></div>
 
       {/* Floating ticker chips */}
-      {floatingStocks.map((stock, i) => (
-        <FloatingStock key={i} stock={stock} />
-      ))}
+      <div className="wl-tickers-container">
+        {floatingStocks.map((stock, i) => (
+          <FloatingStock key={i} stock={stock} />
+        ))}
+      </div>
 
       {/* Main card */}
       <div className="container wl-card-wrap">
-        <div className="wl-card" data-reveal="scale">
+        <div className="wl-card" data-reveal="scale" style={{ padding: 'clamp(40px, 8vw, 72px) clamp(24px, 6vw, 64px)' }}>
           <div className="section-tag" style={{ justifyContent: 'center', marginBottom: '22px' }}>
             <div className="badge badge-live">Limited Early Access</div>
           </div>

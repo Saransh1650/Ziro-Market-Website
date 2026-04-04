@@ -29,7 +29,7 @@ export default function Navbar() {
         </Link>
         <div className="nav-links">
           <a href="#features" className="nav-link">Features</a>
-          <a href="#community" className="nav-link">Community</a>
+          <a href="#waitlist" className="nav-link">Get Started</a>
         </div>
         <div className="nav-right">
           <a href="#waitlist" className="btn btn-primary btn-sm">

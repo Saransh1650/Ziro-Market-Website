@@ -24,12 +24,13 @@ export default function StockChatRooms() {
     >
       <div className="container" style={{ maxWidth: '1100px' }}>
         {/* Text on left, Chat on right */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1fr 1.2fr', 
-          gap: '100px', 
-          alignItems: 'center' 
-        }}>
+        <div 
+          className="responsive-grid"
+          style={{ 
+            alignItems: 'center',
+            gap: '60px'
+          }}
+        >
           {/* Left - Text */}
           <div style={{
             opacity: isVisible ? 1 : 0,

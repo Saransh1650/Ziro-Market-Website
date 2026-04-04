@@ -132,13 +132,13 @@ export default function Hero() {
 
           {/* Right Side - Large Phone Mockup */}
           <div
+            className="phone-wrap"
             ref={phoneWrapRef}
             style={{ 
               position: 'relative', 
               display: 'flex', 
               justifyContent: 'center', 
-              alignItems: 'center',
-              transform: 'scale(1.4)'
+              alignItems: 'center'
             }}
           >
             {/* Glow effect */}
