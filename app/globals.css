@@ -533,7 +533,8 @@ p  { color: var(--text-2); line-height: 1.7; }
 /* ─── WAITLIST SECTION — THE GRAND FINALE ─── */
 .waitlist-section {
   position: relative; overflow: hidden;
-  padding: 160px 0 120px; background: var(--bg);
+  padding: 160px 0 120px; 
+  background: linear-gradient(180deg, #0a0e12 0%, var(--bg) 30%);
   min-height: 100vh; display: flex; align-items: center;
 }
 
