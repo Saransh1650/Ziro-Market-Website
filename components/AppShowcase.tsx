@@ -19,8 +19,26 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Crosshair,
+  BrainCircuit,
+  Activity,
+  Waves,
+  Briefcase,
+  ShieldCheck,
+  LucideIcon 
+} from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { DEFAULT_BENTO_ITEMS, BentoItem } from '@/lib/bentoData';
+
+const ICONS: Record<string, LucideIcon> = {
+  Crosshair,
+  BrainCircuit,
+  Activity,
+  Waves,
+  Briefcase,
+  ShieldCheck
+};
 
 const STORAGE_KEY = 'ti_bento_v3';
 
@@ -116,7 +134,18 @@ function SortableCard({ item, isOverlay = false, isPinned = false }: { item: Ben
             padding: item.featured ? '40px' : '0',
           }}>
             {item.icon && !item.featured && (
-              <div style={{ fontSize: 24, marginBottom: 12 }}>{item.icon}</div>
+              <div style={{ marginBottom: 16 }}>
+                {(() => {
+                  const Icon = ICONS[item.icon];
+                  return Icon ? (
+                    <Icon 
+                      size={24} 
+                      strokeWidth={1.8} 
+                      style={{ color: '#38bdf8' }} 
+                    />
+                  ) : null;
+                })()}
+              </div>
             )}
             <h3 style={{
               fontSize: item.featured ? '2.8rem' : '1.05rem',
