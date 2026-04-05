@@ -280,7 +280,7 @@ export default function AppShowcase() {
     <section
       ref={ref}
       style={{
-        background: '#080a0f',
+        background: '#0a0e12',
         padding: '140px 0 120px',
         position: 'relative',
       }}
@@ -312,21 +312,6 @@ export default function AppShowcase() {
           transition: 'opacity 0.8s ease, transform 0.8s ease',
         }}>
           <div>
-            <div style={{
-              display: 'inline-block',
-              padding: '5px 13px',
-              background: 'rgba(56,189,248,0.1)',
-              border: '1px solid rgba(56,189,248,0.2)',
-              borderRadius: 99,
-              color: '#38bdf8',
-              fontSize: '0.68rem',
-              fontWeight: 800,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              marginBottom: 20,
-            }}>
-              App Showcase
-            </div>
             <h2 style={{
               fontSize: 'clamp(1.8rem, 4vw, 3.2rem)',
               fontWeight: 900,
@@ -335,10 +320,10 @@ export default function AppShowcase() {
               lineHeight: 1.1,
               marginBottom: 14,
             }}>
-              Every Screen,<br />Yours to Arrange
+              The Market,<br />Explained.
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.9rem', maxWidth: 400 }}>
-              Drag any tile to reorder. Your layout is saved automatically.
+              Explore the intelligence tools powering Ziro Market.
             </p>
           </div>
 
