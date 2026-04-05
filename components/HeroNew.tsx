@@ -79,12 +79,11 @@ export default function HeroNew() {
 
   return (
     <section style={{
-      minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       background: '#0a0e12',
-      padding: '40px 20px 80px',
+      padding: '40px 20px 20px',
       position: 'relative',
       overflow: 'hidden',
       fontFamily: 'var(--font-inter), sans-serif'
@@ -267,7 +266,7 @@ export default function HeroNew() {
         background: '#0a0e12',
         width: '100%',
         maxWidth: 'clamp(1200px, 85vw, 1600px)',
-        padding: 'clamp(80px, 10vh, 160px) 20px clamp(60px, 8vh, 120px)',
+        padding: 'clamp(80px, 10vh, 160px) 20px 40px',
         zIndex: 1
       }}>
         {/* Subtle Fade Transition from Browser Header */}

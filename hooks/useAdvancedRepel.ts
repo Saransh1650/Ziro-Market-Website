@@ -52,16 +52,34 @@ export function useAdvancedRepel<T extends HTMLElement>(
     updateHome();
     window.addEventListener('resize', updateHome);
 
+    // Visibility and Layout observers
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      isRunning.current = entry.isIntersecting;
+      if (entry.isIntersecting) {
+        updateHome();
+        requestAnimationFrame(animate);
+      }
+    }, { threshold: 0.1 });
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateHome();
+    });
+
+    intersectionObserver.observe(element);
+    resizeObserver.observe(document.body);
+
     const handleMouseMove = (e: MouseEvent) => {
-      mouse.current = { x: e.pageX, y: e.pageY };
+      // Use client coordinates for more resilient viewport calculations
+      const mouseX = e.clientX + window.scrollX;
+      const mouseY = e.clientY + window.scrollY;
+      mouse.current = { x: mouseX, y: mouseY };
       
       if (!isRunning.current) {
         const dx = mouse.current.x - home.current.x;
         const dy = mouse.current.y - home.current.y;
         const distSq = dx * dx + dy * dy;
         
-        // Slightly larger wake-up radius for responsiveness
-        if (distSq < radius * radius * 9) { 
+        if (distSq < radius * radius * 4) { 
           isRunning.current = true;
           requestAnimationFrame(animate);
         }
@@ -105,24 +123,26 @@ export function useAdvancedRepel<T extends HTMLElement>(
       const distToTarget = Math.abs(target.current.x - position.current.x) + Math.abs(target.current.y - position.current.y);
       const speed = Math.abs(velocity.current.x) + Math.abs(velocity.current.y);
 
-      // Settle at home when mouse is far and element is quiet
       if (distToTarget < 0.05 && speed < 0.05 && dist >= radius) {
-        isRunning.current = false;
-        position.current = { x: 0, y: 0 };
-        velocity.current = { x: 0, y: 0 };
-        element.style.transform = '';
+        // Stop but keep it alive if potentially moving still
+        if (dist >= radius * 1.5) {
+          // Keep loop running if it's visible, let settles happen
+        }
+        requestAnimationFrame(animate);
       } else {
         requestAnimationFrame(animate);
       }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    isRunning.current = true;
+    // Initial run for settling
     requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', updateHome);
+      intersectionObserver.disconnect();
+      resizeObserver.disconnect();
       isRunning.current = false;
     };
   }, [radius, strength, tension, friction]);

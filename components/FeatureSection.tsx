@@ -3,11 +3,10 @@
 export default function FeatureSection() {
   return (
     <section style={{
-      minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
       background: '#0a0e12',
-      padding: '120px 20px',
+      padding: '40px 20px 120px',
       position: 'relative'
     }}>
       <div className="container" style={{ maxWidth: '1200px' }}>
