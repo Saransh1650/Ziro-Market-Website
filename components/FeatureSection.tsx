@@ -96,7 +96,7 @@ export default function FeatureSection() {
           >
             <img 
               src="/screenshots/chat-preview.png" 
-              alt="Trade Insights Chat Room"
+              alt="Ziro Market Chat Room"
               style={{
                 width: '100%',
                 height: '100%',

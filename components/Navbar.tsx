@@ -21,10 +21,10 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="container nav-inner">
-        <Link href="#" className="nav-logo" aria-label="Trade Insights">
+        <Link href="#" className="nav-logo" aria-label="Ziro Market">
           <div className="logo-icon">▲</div>
           <span className="logo-text">
-            TRADE INSIGHTS
+            ZIRO MARKET
           </span>
         </Link>
         <div className="nav-links">

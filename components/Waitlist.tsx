@@ -313,11 +313,11 @@ export default function Waitlist() {
       }
     } catch {
       // Fallback: save locally
-      const saved = JSON.parse(localStorage.getItem('smt_waitlist') || '[]');
+      const saved = JSON.parse(localStorage.getItem('ziro_waitlist') || '[]');
       const entry = { email, os, timestamp: new Date().toISOString() };
       if (!saved.find((s: any) => s.email === email)) {
         saved.push(entry);
-        localStorage.setItem('smt_waitlist', JSON.stringify(saved));
+        localStorage.setItem('ziro_waitlist', JSON.stringify(saved));
       }
       showSuccess();
     }
@@ -359,7 +359,7 @@ export default function Waitlist() {
           </div>
 
           <h2 className="wl-title">
-            Trade Insights
+            Ziro Market
           </h2>
           <p className="wl-subtitle">
             Join thousands of traders and investors getting early access to India&apos;s most powerful

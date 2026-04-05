@@ -132,7 +132,7 @@ export default function WhyUs() {
       <div className="container">
         <div className="section-head" data-reveal="up">
           <div className="section-tag">
-            <div className="badge">Why Smart Money Tracker</div>
+            <div className="badge">Why Ziro Market</div>
           </div>
           <h2>Built for the serious Indian investor.</h2>
           <div className="divider"></div>

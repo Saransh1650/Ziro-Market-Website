@@ -18,10 +18,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Trade Insights — India's High-Density Market Intelligence App",
+  title: "Ziro Market — India's High-Density Market Intelligence App",
   description: "Track NIFTY 50, SENSEX, sector heatmaps, top movers, volume surges and institutional signals in one powerful mobile app. Join the waitlist.",
   openGraph: {
-    title: "Trade Insights — India's Market Intelligence App",
+    title: "Ziro Market — India's Market Intelligence App",
     description: "Real-time NIFTY & SENSEX signals for the serious Indian investor.",
     type: "website",
     locale: 'en_IN',
