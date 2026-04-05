@@ -48,27 +48,23 @@ export default function FeatureSection() {
             width: '100%',
             maxWidth: '380px',
             height: '800px',
-            background: '#fff',
-            borderRadius: '8px',
+            background: 'var(--bg-2)',
+            borderRadius: '40px',
             marginLeft: 'auto',
             boxShadow: '0 40px 100px rgba(0,0,0,0.5)',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            border: '8px solid #1a1e22'
           }}>
-            {/* This will be replaced with actual app screenshot */}
-            <div style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              color: '#999',
-              fontSize: '0.9rem',
-              textAlign: 'center'
-            }}>
-              App Screenshot
-              <br />
-              380 x 800
-            </div>
+            <img 
+              src="/screenshots/chat-preview.png" 
+              alt="Trade Insights Chat Room"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+            />
           </div>
         </div>
       </div>

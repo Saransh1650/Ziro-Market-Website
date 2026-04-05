@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // --- SVGs for Chrome UI ---
 const TabShape = ({ active }: { active: boolean }) => (
@@ -50,6 +50,19 @@ const Icons = {
 
 export default function HeroNew() {
   const [email, setEmail] = useState('');
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Calculate scroll progress (0 at top, 1 at 400px scroll)
+      const scrollY = window.scrollY;
+      const progress = Math.min(scrollY / 400, 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,8 +91,8 @@ export default function HeroNew() {
     }}>
       {/* Chrome Style Browser Header */}
       <div style={{
-        width: '100%',
-        maxWidth: '1200px',
+        width: '95%',
+        maxWidth: 'clamp(1200px, 85vw, 1600px)',
         background: '#202124',
         borderRadius: '12px 12px 0 0',
         paddingTop: '8px',
@@ -248,13 +261,13 @@ export default function HeroNew() {
       </div>
 
       {/* Hero Content Area with Top Fading Effect */}
-      <div className="container" style={{ 
+      <div className="container-huge" style={{ 
         position: 'relative',
         textAlign: 'center',
         background: '#0a0e12',
         width: '100%',
-        maxWidth: '1200px',
-        padding: '120px 20px 80px',
+        maxWidth: 'clamp(1200px, 85vw, 1600px)',
+        padding: 'clamp(80px, 10vh, 160px) 20px clamp(60px, 8vh, 120px)',
         zIndex: 1
       }}>
         {/* Subtle Fade Transition from Browser Header */}
@@ -271,12 +284,14 @@ export default function HeroNew() {
 
         {/* Main Headline */}
         <h1 style={{
-          fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
+          fontSize: 'clamp(2.5rem, 6vw, 6rem)', // Reduced max from 7.5rem and factor from 8vw
           fontWeight: 800,
           lineHeight: 1.1,
           color: '#fff',
-          marginBottom: '32px',
-          letterSpacing: '-0.04em'
+          marginBottom: 'clamp(24px, 4vh, 48px)',
+          letterSpacing: '-0.04em',
+          margin: '0 auto clamp(24px, 3vh, 40px)',
+          maxWidth: 'clamp(800px, 70vw, 1200px)' // Added maxWidth to headline for better line breaks
         }}>
           Tired Of Juggling
           <br />
@@ -287,11 +302,10 @@ export default function HeroNew() {
 
         {/* Subtitle */}
         <p style={{
-          fontSize: '1.25rem',
+          fontSize: 'clamp(1rem, 1.2vw, 1.25rem)', // Reduced from 1.5rem
           color: 'rgba(255,255,255,0.6)',
-          marginBottom: '56px',
-          maxWidth: '550px',
-          margin: '0 auto 56px',
+          maxWidth: 'clamp(480px, 40vw, 600px)', // Tightened from 800px
+          margin: '0 auto clamp(40px, 6vh, 80px)',
           lineHeight: 1.6
         }}>
           Keeping up with the market doesn't have to be such a chore
@@ -301,12 +315,13 @@ export default function HeroNew() {
         <form onSubmit={handleSubmit} style={{
           display: 'flex',
           gap: '12px',
-          maxWidth: '520px',
-          margin: '0 auto 100px',
+          width: '100%',
+          maxWidth: 'clamp(520px, 40vw, 680px)',
+          margin: '0 auto clamp(100px, 12vh, 160px)', 
           alignItems: 'center',
-          padding: '4px',
+          padding: '6px', // Increased from 4px
           background: 'rgba(255, 255, 255, 0.05)',
-          borderRadius: '8px',
+          borderRadius: '12px', // Increased from 8px
           border: '1px solid rgba(255, 255, 255, 0.1)'
         }}>
           <input
@@ -316,11 +331,11 @@ export default function HeroNew() {
             onChange={(e) => setEmail(e.target.value)}
             style={{
               flex: 1,
-              padding: '16px 24px',
+              padding: 'clamp(12px, 1.5vh, 20px) 24px',
               background: 'transparent',
               border: 'none',
-              borderRadius: '6px',
-              fontSize: '1rem',
+              borderRadius: '8px',
+              fontSize: 'clamp(1rem, 1.2vw, 1.2rem)',
               outline: 'none',
               color: '#fff'
             }}
@@ -328,12 +343,12 @@ export default function HeroNew() {
           <button
             type="submit"
             style={{
-              padding: '16px 36px',
+              padding: 'clamp(12px, 1.5vh, 20px) clamp(24px, 3vw, 48px)',
               background: '#fff',
               color: '#000',
               border: 'none',
-              borderRadius: '6px',
-              fontSize: '1rem',
+              borderRadius: '8px',
+              fontSize: 'clamp(1rem, 1.2vw, 1.1rem)',
               fontWeight: 700,
               cursor: 'pointer',
               whiteSpace: 'nowrap',
@@ -352,30 +367,39 @@ export default function HeroNew() {
           </button>
         </form>
 
-        {/* Browser Content Placeholder (actual app mockup) */}
+        {/* App Screen Recording Video Container */}
         <div style={{
           width: '100%',
-          maxWidth: '1000px',
+          maxWidth: 'clamp(420px, 30vw, 540px)',
           margin: '0 auto',
-          position: 'relative'
+          position: 'relative',
+          borderRadius: 'clamp(32px, 4vw, 64px)',
+          overflow: 'hidden',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.03)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          transform: `scale(${1 - scrollProgress * 0.15}) translateY(calc(clamp(40px, 6vh, 80px) - ${scrollProgress * 220}px))`, 
+          transition: 'transform 0.1s linear, border-radius 0.1s linear',
+          zIndex: 5
         }}>
-          {/* Fading bottom container */}
+          <video 
+            src="/screen_recordings/untitled.webm"
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block'
+            }}
+          />
+          {/* Subtle overlay to enhance premium feel */}
           <div style={{
-            width: '100%',
-            height: '400px',
-            background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%)',
-            borderRadius: '12px',
-            border: '1px solid rgba(255,255,255,0.1)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden'
-          }}>
-             <div style={{ opacity: 0.2, textAlign: 'center' }}>
-                <p style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '10px' }}>TRADE INSIGHTS</p>
-                <p>High-Density Market Intelligence App</p>
-             </div>
-          </div>
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%)',
+            pointerEvents: 'none'
+          }} />
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@ import CursorGlow from '@/components/CursorGlow';
 import Navbar from '@/components/Navbar';
 import HeroNew from '@/components/HeroNew';
 import FeatureSection from '@/components/FeatureSection';
-import GridSection from '@/components/GridSection';
+import AppShowcase from '@/components/AppShowcase';
 import Waitlist from '@/components/Waitlist';
 import Footer from '@/components/Footer';
 
@@ -15,7 +15,7 @@ export default function Home() {
       <Navbar />
       <HeroNew />
       <FeatureSection />
-      <GridSection />
+      <AppShowcase />
       <Waitlist />
       <Footer />
     </>

@@ -100,27 +100,63 @@ function PhoneMockup({ type }: { type: string }) {
       e.currentTarget.style.transform = 'translateY(0)';
     }}
     >
-      {/* Notch */}
-      <div style={{
-        height: '44px',
-        background: 'var(--bg-1)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
-        <div style={{
-          width: '130px',
-          height: '6px',
-          background: 'var(--bg-3)',
-          borderRadius: '99px'
-        }}></div>
-      </div>
-
       {/* Content based on type */}
-      <div style={{ padding: '28px 24px' }}>
-        {type === 'heatmap' && <HeatmapContent />}
-        {type === 'watchlist' && <WatchlistContent />}
-        {type === 'chat' && <ChatContent />}
+      <div style={{ 
+        padding: type === 'chat' ? '0' : '28px 24px',
+        height: '100%',
+        width: '100%'
+      }}>
+        {type === 'heatmap' && (
+          <>
+            {/* Notch */}
+            <div style={{
+              height: '44px',
+              background: 'var(--bg-1)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <div style={{
+                width: '130px',
+                height: '6px',
+                background: 'var(--bg-3)',
+                borderRadius: '99px'
+              }}></div>
+            </div>
+            <HeatmapContent />
+          </>
+        )}
+        {type === 'watchlist' && (
+          <>
+            {/* Notch */}
+            <div style={{
+              height: '44px',
+              background: 'var(--bg-1)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <div style={{
+                width: '130px',
+                height: '6px',
+                background: 'var(--bg-3)',
+                borderRadius: '99px'
+              }}></div>
+            </div>
+            <WatchlistContent />
+          </>
+        )}
+        {type === 'chat' && (
+          <img 
+            src="/screenshots/chat-preview.png" 
+            alt="Stock Chat Room"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover'
+            }}
+          />
+        )}
       </div>
     </div>
   );
@@ -227,57 +263,5 @@ function WatchlistContent() {
 }
 
 function ChatContent() {
-  const messages = [
-    { user: 'Rahul', text: 'Big volume spike in RELIANCE', time: '2m ago' },
-    { user: 'Priya', text: 'Breakout alert! 🚀', time: '5m ago' },
-    { user: 'Amit', text: 'Adding to my position', time: '8m ago' },
-  ];
-
-  return (
-    <>
-      <div style={{ 
-        background: 'var(--bg-3)', 
-        padding: '20px', 
-        borderRadius: '16px', 
-        marginBottom: '20px',
-        border: '1px solid var(--border-2)'
-      }}>
-        <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-3)', marginBottom: '6px' }}>
-          Discussing
-        </div>
-        <div style={{ fontSize: '1.5rem', fontWeight: 900, fontFamily: 'var(--mono)', color: 'var(--text-1)' }}>
-          RELIANCE
-        </div>
-        <div style={{ fontSize: '0.85rem', color: 'var(--green)', marginTop: '8px' }}>
-          👥 2,847 traders online
-        </div>
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            style={{
-              background: 'var(--bg-3)',
-              border: '1px solid var(--border)',
-              borderRadius: '12px',
-              padding: '16px'
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-              <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-1)' }}>
-                {msg.user}
-              </div>
-              <div style={{ fontSize: '0.7rem', color: 'var(--text-4)' }}>
-                {msg.time}
-              </div>
-            </div>
-            <div style={{ fontSize: '0.85rem', color: 'var(--text-2)' }}>
-              {msg.text}
-            </div>
-          </div>
-        ))}
-      </div>
-    </>
-  );
+  return null; // No longer used, replaced by image
 }

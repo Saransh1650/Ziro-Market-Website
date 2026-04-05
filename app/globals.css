@@ -61,6 +61,14 @@ button, input { font-family: inherit; }
 /* ─── LAYOUT ─── */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
 .container-wide { max-width: 1340px; margin: 0 auto; padding: 0 28px; }
+.container-huge { max-width: 1600px; margin: 0 auto; padding: 0 28px; }
+
+@media (min-width: 2000px) {
+  :root {
+    --r-xl: 32px;
+    --r-2xl: 48px;
+  }
+}
 
 /* ─── RESPONSIVE UTILS ─── */
 .responsive-grid {
