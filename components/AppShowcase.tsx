@@ -43,8 +43,8 @@ const ICONS: Record<string, LucideIcon> = {
 const STORAGE_KEY = 'ti_bento_v3';
 
 // ─── Sortable Item ────────────────────────────────────────────────────────────
-function SortableCard({ item, isOverlay = false, isPinned = false }: { item: BentoItem; isOverlay?: boolean; isPinned?: boolean }) {
-  const sortable = useSortable({ id: item.id, disabled: isPinned });
+function SortableCard({ item, isOverlay = false, isPinned = false, isMobile = false }: { item: BentoItem; isOverlay?: boolean; isPinned?: boolean; isMobile?: boolean }) {
+  const sortable = useSortable({ id: item.id, disabled: isPinned || isMobile });
   const {
     attributes,
     listeners,
@@ -64,7 +64,7 @@ function SortableCard({ item, isOverlay = false, isPinned = false }: { item: Ben
     position: 'relative',
     userSelect: 'none',
     zIndex: (isOverlay || isPinned) ? 999 : undefined,
-    cursor: isPinned ? 'default' : (isDragging ? 'grabbing' : 'grab'),
+    cursor: (isPinned || isMobile) ? 'default' : (isDragging ? 'grabbing' : 'grab'),
   };
 
   return (
@@ -84,18 +84,18 @@ function SortableCard({ item, isOverlay = false, isPinned = false }: { item: Ben
       <div style={{
         height: '100%',
         width: '100%',
-        borderRadius: 24,
+        borderRadius: isMobile ? 16 : 24,
         overflow: 'hidden',
         background: item.featured
           ? 'linear-gradient(145deg, rgba(56,189,248,0.1) 0%, rgba(12,15,20,1) 100%)'
           : item.type === 'text' 
             ? 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)' 
             : '#0c0f14',
-        cursor: isDragging ? 'grabbing' : 'grab',
+        cursor: (isMobile || isDragging) ? 'default' : 'grab',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        padding: item.type === 'text' ? (item.featured ? '40px' : '32px') : 0,
+        padding: item.type === 'text' ? (isMobile ? '24px' : (item.featured ? '40px' : '32px')) : 0,
         backdropFilter: (item.type === 'text' || item.featured) ? 'blur(20px)' : 'none',
         boxShadow: isOverlay
           ? '0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(56,189,248,0.4), inset 0 0 20px rgba(56,189,248,0.1)'
@@ -109,11 +109,12 @@ function SortableCard({ item, isOverlay = false, isPinned = false }: { item: Ben
           : item.featured
             ? '1px solid rgba(56, 189, 248, 0.4)'
             : '1px solid rgba(255,255,255,0.07)',
+        minHeight: isMobile ? '200px' : 'auto',
       }}
       className={`bento-card-inner ${item.featured ? 'nucleus-card' : ''}`}
       >
-      {/* Drag handle dots - only if not pinned */}
-      {!isPinned && (
+      {/* Drag handle dots - only if not pinned and not mobile */}
+      {!isPinned && !isMobile && (
         <div style={{
           position: 'absolute',
           top: 12,
@@ -131,7 +132,7 @@ function SortableCard({ item, isOverlay = false, isPinned = false }: { item: Ben
         {item.type === 'text' ? (
           <div style={{
             textAlign: item.featured ? 'center' : 'left',
-            padding: item.featured ? '40px' : '0',
+            padding: item.featured ? (isMobile ? '20px' : '40px') : '0',
           }}>
             {item.icon && !item.featured && (
               <div style={{ marginBottom: 16 }}>
@@ -148,11 +149,11 @@ function SortableCard({ item, isOverlay = false, isPinned = false }: { item: Ben
               </div>
             )}
             <h3 style={{
-              fontSize: item.featured ? '2.8rem' : '1.05rem',
+              fontSize: item.featured ? (isMobile ? '1.6rem' : '2.8rem') : (isMobile ? '0.95rem' : '1.05rem'),
               fontWeight: 900,
               color: '#fff',
               margin: 0,
-              marginBottom: item.featured ? 16 : 10,
+              marginBottom: item.featured ? (isMobile ? 12 : 16) : 10,
               letterSpacing: item.featured ? '-0.06em' : '-0.02em',
               lineHeight: 1.1,
               background: item.featured ? 'linear-gradient(to bottom, #fff 40%, rgba(255,255,255,0.4) 100%)' : 'none',
@@ -162,11 +163,11 @@ function SortableCard({ item, isOverlay = false, isPinned = false }: { item: Ben
               {item.title}
             </h3>
             <p style={{
-              fontSize: item.featured ? '1rem' : '0.82rem',
+              fontSize: item.featured ? (isMobile ? '0.85rem' : '1rem') : (isMobile ? '0.78rem' : '0.82rem'),
               color: 'rgba(255,255,255,0.45)',
               lineHeight: 1.6,
               margin: 0,
-              maxWidth: item.featured ? '280px' : 'none',
+              maxWidth: item.featured ? (isMobile ? '100%' : '280px') : 'none',
               marginLeft: item.featured ? 'auto' : '0',
               marginRight: item.featured ? 'auto' : '0',
             }}>
@@ -226,6 +227,21 @@ export default function AppShowcase() {
   const [items, setItems] = useState<BentoItem[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [hasMounted, setHasMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  // Responsive detection
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 600);
+      setIsTablet(width > 600 && width <= 900);
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     setHasMounted(true);
@@ -252,9 +268,10 @@ export default function AppShowcase() {
     }
   }, []);
 
+  // Disable drag on mobile
   const sensors = useSensors(
     useSensor(PointerSensor, {
-      activationConstraint: { distance: 6 }, // small threshold so clicks still work
+      activationConstraint: { distance: isMobile ? 999999 : 6 }, // disable on mobile
     })
   );
 
@@ -276,15 +293,54 @@ export default function AppShowcase() {
 
   const activeItem = items.find((it) => it.id === activeId);
 
+  // Localized Scaling Engine
+  // We force the desktop layout (4 cols) and scale it down to fit the phone width
+  const gridColumns = 4;
+  const gridAutoRows = '240px';
+  const gridGap = 16;
+  const contentWidth = 1340; // Desktop width baseline
+  
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const handleScale = () => {
+      const width = window.innerWidth;
+      // Precision scaling: fit 1340px grid into viewport with 32px safety margin
+      const newScale = Math.min(1, (width - 32) / contentWidth);
+      setScale(newScale);
+    };
+    handleScale();
+    window.addEventListener('resize', handleScale);
+    return () => window.removeEventListener('resize', handleScale);
+  }, []);
+
   return (
     <section
       ref={ref}
+      className="app-showcase-section"
       style={{
         background: '#0a0e12',
-        padding: '140px 0 120px',
+        padding: isMobile ? '60px 0 40px' : '140px 0 120px',
         position: 'relative',
+        overflow: 'hidden',
+        width: '100%',
       }}
     >
+      <div 
+        className="scale-container"
+        style={{
+          width: contentWidth,
+          transform: `scale(${scale})`,
+          transformOrigin: 'top center',
+          margin: '0 auto',
+          position: 'relative',
+          left: '50%',
+          marginLeft: -(contentWidth/2),
+          // Height compensation: scale affects visuals but not layout flow.
+          // This reduces the vertical footprint of the section on mobile.
+          marginBottom: scale < 1 ? `calc((${scale} - 1) * 800px)` : 0
+        }}
+      >
       {/* Ambient glow */}
       <div style={{
         position: 'absolute',
@@ -298,13 +354,21 @@ export default function AppShowcase() {
         pointerEvents: 'none',
       }} />
 
-      <div className="container-wide" style={{ position: 'relative', zIndex: 2 }}>
+      <div 
+        className="container-wide" 
+        style={{ 
+          position: 'relative', 
+          zIndex: 2,
+          maxWidth: isMobile ? '100%' : '1340px',
+          padding: isMobile ? '0' : '0 28px',
+        }}
+      >
         {/* Header */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'flex-end',
-          marginBottom: 64,
+          marginBottom: isMobile ? 40 : 64,
           flexWrap: 'wrap',
           gap: 20,
           opacity: isVisible ? 1 : 0,
@@ -313,7 +377,7 @@ export default function AppShowcase() {
         }}>
           <div>
             <h2 style={{
-              fontSize: 'clamp(1.8rem, 4vw, 3.2rem)',
+              fontSize: '3.2rem',
               fontWeight: 900,
               letterSpacing: '-0.05em',
               color: '#fff',
@@ -322,7 +386,11 @@ export default function AppShowcase() {
             }}>
               The Market,<br />Explained.
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.9rem', maxWidth: 400 }}>
+            <p style={{ 
+              color: 'rgba(255,255,255,0.38)', 
+              fontSize: isMobile ? '0.85rem' : '0.9rem', 
+              maxWidth: 400 
+            }}>
               Explore the intelligence tools powering Ziro Market.
             </p>
           </div>
@@ -334,12 +402,12 @@ export default function AppShowcase() {
               localStorage.removeItem(STORAGE_KEY);
             }}
             style={{
-              padding: '10px 20px',
+              padding: isMobile ? '8px 16px' : '10px 20px',
               background: 'rgba(255,255,255,0.04)',
               border: '1px solid rgba(255,255,255,0.09)',
               borderRadius: 10,
               color: 'rgba(255,255,255,0.6)',
-              fontSize: '0.8rem',
+              fontSize: isMobile ? '0.75rem' : '0.8rem',
               fontWeight: 600,
               cursor: 'pointer',
               transition: 'all 0.2s',
@@ -363,7 +431,7 @@ export default function AppShowcase() {
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'none' : 'translateY(24px)',
             transition: 'opacity 0.9s ease 0.15s, transform 0.9s ease 0.15s',
-            minHeight: '600px'
+            minHeight: isMobile ? 'auto' : '600px',
           }}
         >
           {hasMounted && (
@@ -378,10 +446,10 @@ export default function AppShowcase() {
                 <div
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(4, 1fr)',
-                    gridAutoRows: '240px',
+                    gridTemplateColumns: `repeat(${gridColumns}, 1fr)`,
+                    gridAutoRows: gridAutoRows,
                     gridAutoFlow: 'dense',
-                    gap: 16,
+                    gap: gridGap,
                   }}
                   className="bento-grid"
                 >
@@ -389,11 +457,12 @@ export default function AppShowcase() {
                     key="sc-6" 
                     item={DEFAULT_BENTO_ITEMS.find(it => it.id === 'sc-6')!} 
                     isPinned
+                    isMobile={isMobile}
                   />
 
                   <AnimatePresence>
                     {items.map((item) => (
-                      <SortableCard key={item.id} item={item} />
+                      <SortableCard key={item.id} item={item} isMobile={isMobile} />
                     ))}
                   </AnimatePresence>
                 </div>
@@ -409,36 +478,9 @@ export default function AppShowcase() {
           )}
         </div>
       </div>
+    </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @media (max-width: 1200px) {
-          .bento-grid { 
-            grid-template-columns: repeat(3, 1fr) !important; 
-            grid-auto-rows: 200px !important;
-          }
-        }
-        @media (max-width: 900px) {
-          .bento-grid { 
-            grid-template-columns: repeat(2, 1fr) !important; 
-          }
-        }
-        @media (max-width: 600px) {
-          .bento-grid {
-            grid-template-columns: 1fr !important;
-            grid-auto-rows: auto !important;
-          }
-          .bento-grid > [style*="grid-column: span 2"] {
-            grid-column: span 1 !important;
-          }
-          .bento-grid > [style*="grid-row: span 2"] {
-            grid-row: span 1 !important;
-          }
-          .bento-card-inner {
-            height: auto !important;
-            min-height: 200px;
-          }
-        }
-
         .bento-card-inner:hover .bento-img {
           transform: scale(1.05);
         }

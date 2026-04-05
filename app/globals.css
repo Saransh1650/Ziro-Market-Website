@@ -794,3 +794,66 @@ footer {
   .footer-layout { grid-template-columns: 1fr; }
   .footer-disclaimer { max-width: 100%; }
 }
+
+/* ─── RESPONSIVE FOR NEW COMPONENTS ─── */
+
+/* Always show browser header */
+.browser-header {
+  display: block !important;
+}
+
+/* Desktop: Row layout for form */
+@media (min-width: 769px) {
+  .hero-form {
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+}
+
+/* Mobile & Tablet Responsive Overrides */
+@media (max-width: 768px) {
+  /* Navbar */
+  .logo-text {
+    font-size: 0.85rem !important;
+  }
+  
+  .logo-icon {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  /* Browser header - make it responsive */
+  .browser-header {
+    width: 98% !important;
+    max-width: 100% !important;
+    border-radius: 8px 8px 0 0 !important;
+  }
+  
+  /* Hero Form - Stack vertically on mobile */
+  .hero-form {
+    max-width: 100% !important;
+    padding: 12px !important;
+  }
+  
+  .hero-form input {
+    padding: 16px 20px !important;
+    font-size: 1rem !important;
+  }
+  
+  .hero-form button {
+    padding: 16px 24px !important;
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px !important;
+  }
+  
+  /* Browser header - smaller on mobile */
+  .browser-header {
+    padding-top: 6px !important;
+  }
+}

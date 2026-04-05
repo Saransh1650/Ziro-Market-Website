@@ -20,13 +20,18 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Trade Insights — India's High-Density Market Intelligence App",
   description: "Track NIFTY 50, SENSEX, sector heatmaps, top movers, volume surges and institutional signals in one powerful mobile app. Join the waitlist.",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   openGraph: {
     title: "Trade Insights — India's Market Intelligence App",
     description: "Real-time NIFTY & SENSEX signals for the serious Indian investor.",
     type: "website",
     locale: 'en_IN',
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

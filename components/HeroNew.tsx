@@ -88,7 +88,7 @@ export default function HeroNew() {
       overflow: 'hidden',
       fontFamily: 'var(--font-inter), sans-serif'
     }}>
-      {/* Chrome Style Browser Header */}
+      {/* Chrome Style Browser Header - Responsive */}
       <div style={{
         width: '95%',
         maxWidth: 'clamp(1200px, 85vw, 1600px)',
@@ -97,7 +97,8 @@ export default function HeroNew() {
         paddingTop: '8px',
         boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
         zIndex: 10
-      }}>
+      }}
+      className="browser-header">
         {/* Tabs Bar */}
         <div style={{
           display: 'flex',
@@ -313,16 +314,18 @@ export default function HeroNew() {
         {/* Email Input + CTA */}
         <form onSubmit={handleSubmit} style={{
           display: 'flex',
+          flexDirection: 'column',
           gap: '12px',
           width: '100%',
           maxWidth: 'clamp(520px, 40vw, 680px)',
-          margin: '0 auto clamp(100px, 12vh, 160px)', 
-          alignItems: 'center',
-          padding: '6px', // Increased from 4px
+          margin: '0 auto clamp(60px, 8vh, 100px)', 
+          alignItems: 'stretch',
+          padding: '6px',
           background: 'rgba(255, 255, 255, 0.05)',
-          borderRadius: '12px', // Increased from 8px
+          borderRadius: '12px',
           border: '1px solid rgba(255, 255, 255, 0.1)'
-        }}>
+        }}
+        className="hero-form">
           <input
             type="email"
             placeholder="Enter your email"
@@ -401,6 +404,21 @@ export default function HeroNew() {
           }} />
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .browser-header {
+            font-size: 11px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          /* Hide extra tabs on very small screens */
+          .browser-header > div:first-child > div:nth-child(2) > div:nth-child(n+3) {
+            display: none !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
