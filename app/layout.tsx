@@ -4,6 +4,7 @@ import "./globals.css";
 import ScrollProgress from "@/components/ScrollProgress";
 import CursorGlow from "@/components/CursorGlow";
 import ScrollRevealObserver from "@/components/ScrollRevealObserver";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -46,6 +47,7 @@ export default function RootLayout({
         <ScrollProgress />
         <CursorGlow />
         {children}
+        <Analytics />
       </body>
     </html>
   );
