@@ -386,7 +386,7 @@ export default function HeroNew() {
 
           {/* App Screen Recording Video Container */}
           <div style={{
-            width: isMobile ?  '50%': '100%',
+            width: isMobile ?  '75%': '100%',
             maxWidth: 'clamp(260px, 85vw, 540px)',
             margin: '0 auto',
             position: 'relative',
