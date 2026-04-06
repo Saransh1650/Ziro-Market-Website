@@ -77,7 +77,6 @@ export default function Waitlist() {
   const [messageColor, setMessageColor] = useState('var(--green)');
   const [btnText, setBtnText] = useState('Get Early Access →');
   const [btnDisabled, setBtnDisabled] = useState(false);
-  const [counter, setCounter] = useState(1247);
 
   useEffect(() => {
     // Animated canvas background
@@ -285,7 +284,7 @@ export default function Waitlist() {
 
     if (!os) {
       setMessageColor('var(--red)');
-      setMessage('// Please select your device platform.');
+      setMessage('// Please select your device platform (iOS or Android).');
       return;
     }
 
@@ -327,7 +326,6 @@ export default function Waitlist() {
     setMessageColor('var(--green)');
     setMessage(`✓ You're on the list, ${email.split('@')[0]}. We'll reach out shortly!`);
     setBtnText("✓ You're In!");
-    setCounter((prev) => prev + 1);
     setEmail('');
 
     setTimeout(() => {
@@ -366,33 +364,24 @@ export default function Waitlist() {
             market intelligence mobile app.
           </p>
 
-          {/* Social proof */}
-          <div className="wl-count">
-            <div className="wl-avatars">
-              <div className="wl-avatar">🧑</div>
-              <div className="wl-avatar">👩</div>
-              <div className="wl-avatar">🧑‍💻</div>
-              <div className="wl-avatar">👨‍💼</div>
-              <div className="wl-avatar">👩‍💼</div>
-            </div>
-            <div className="wl-count-text">
-              <span className="wl-count-num">{counter.toLocaleString('en-IN')}</span> investors
-              already waiting
-            </div>
-          </div>
-
           {/* Form */}
           <form className="wl-form" onSubmit={handleSubmit} noValidate>
-            <select
-              className="wl-select"
-              value={os}
-              onChange={(e) => setOs(e.target.value)}
-              required
-            >
-              <option value="">Select your device</option>
-              <option value="ios">iOS (iPhone/iPad)</option>
-              <option value="android">Android</option>
-            </select>
+            <div className="wl-toggle-group">
+              <button 
+                type="button" 
+                className={`wl-toggle-btn ${os === 'ios' ? 'active' : ''}`}
+                onClick={() => setOs('ios')}
+              >
+                <span></span> iOS
+              </button>
+              <button 
+                type="button" 
+                className={`wl-toggle-btn ${os === 'android' ? 'active' : ''}`}
+                onClick={() => setOs('android')}
+              >
+                <span>👾</span> Android
+              </button>
+            </div>
             <input
               type="email"
               className="wl-input"
@@ -409,24 +398,6 @@ export default function Waitlist() {
           <p className="wl-privacy">🔒 No spam. No credit card. 100% free during early access.</p>
           <div className="wl-msg" style={{ color: messageColor }}>
             {message}
-          </div>
-
-          {/* Progress */}
-          <div className="wl-progress" style={{ marginTop: '36px' }}>
-            <div className="wl-progress-label">
-              <span style={{ fontSize: '.72rem', color: 'var(--text-3)' }}>
-                Early access spots claimed
-              </span>
-              <span style={{ fontSize: '.72rem', color: 'var(--text-2)', fontWeight: 600 }}>
-                {counter.toLocaleString('en-IN')} / 2,000
-              </span>
-            </div>
-            <div className="wl-progress-track">
-              <div
-                className="wl-progress-fill"
-                style={{ width: `${(counter / 2000) * 100}%` }}
-              ></div>
-            </div>
           </div>
         </div>
       </div>

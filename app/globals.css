@@ -639,6 +639,19 @@ p  { color: var(--text-2); line-height: 1.7; }
 }
 .wl-select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
 .wl-select option { background: var(--bg-2); color: var(--text-1); }
+.wl-toggle-group {
+  display: flex; gap: 10px; width: 100%; margin-bottom: 4px;
+}
+.wl-toggle-btn {
+  flex: 1; padding: 14px 18px; background: var(--bg-3); border: 1px solid var(--border-2);
+  border-radius: var(--r); color: var(--text-3); font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.wl-toggle-btn:hover { border-color: var(--text-4); color: var(--text-2); }
+.wl-toggle-btn.active {
+  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
 .wl-input {
   flex: 1; padding: 14px 18px;
   background: var(--bg-3); border: 1px solid var(--border-2);
@@ -655,28 +668,8 @@ p  { color: var(--text-2); line-height: 1.7; }
 }
 .wl-btn:hover { background: var(--accent-2); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(59,111,212,0.5); }
 .wl-privacy { font-size: 0.72rem; color: var(--text-4); margin-top: 16px; }
-.wl-count { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 32px; }
-.wl-avatars { display: flex; margin-right: 4px; }
-.wl-avatar {
-  width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--bg-2);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; margin-left: -8px; background: var(--bg-4);
-}
-.wl-avatar:first-child { margin-left: 0; }
-.wl-count-text { font-size: 0.82rem; color: var(--text-2); }
-.wl-count-num { font-weight: 700; color: var(--text-1); }
 .wl-msg { margin-top: 14px; font-size: 0.82rem; min-height: 20px; font-family: var(--mono); }
 
-/* Progress bar below waitlist */
-.wl-progress { margin-top: 40px; }
-.wl-progress-label { display: flex; justify-content: space-between; font-size: 0.72rem; margin-bottom: 8px; }
-.wl-progress-track { height: 6px; background: var(--bg-4); border-radius: 99px; overflow: hidden; }
-.wl-progress-fill {
-  height: 100%; border-radius: 99px;
-  background: linear-gradient(90deg, var(--accent), var(--green));
-  animation: progress-pulse 3s ease-in-out infinite;
-  width: 68%;
-}
 @keyframes progress-pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
 
 @media (max-width: 768px) {
