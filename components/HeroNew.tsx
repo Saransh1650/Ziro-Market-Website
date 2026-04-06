@@ -390,7 +390,7 @@ export default function HeroNew() {
             maxWidth: 'clamp(260px, 85vw, 540px)',
             margin: '0 auto',
             position: 'relative',
-            borderRadius: isMobile ? '25px' : '75px',
+            borderRadius: isMobile ? '40px' : '75px',
             overflow: 'hidden',
             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.03)',
             border: '1px solid rgba(255, 255, 255, 0.1)',
