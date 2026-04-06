@@ -82,7 +82,7 @@ export default function HeroNew() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      background: '#0a0e12',
+      background: 'var(--bg)',
       padding: '40px 20px 20px',
       position: 'relative',
       overflow: 'hidden',

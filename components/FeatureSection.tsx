@@ -33,10 +33,12 @@ export default function FeatureSection() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#0a0e12',
+        background: 'var(--bg)',
         padding: sectionPadding,
         position: 'relative',
-        minHeight: (isMobile || isTablet) ? 'auto' : '100vh'
+        minHeight: (isMobile || isTablet) ? 'auto' : '100vh',
+        borderTop: '1px solid var(--border)',
+        borderBottom: '1px solid var(--border)'
       }}
     >
       <div style={{ maxWidth: '1200px', width: '100%', padding: '0 20px' }}>
@@ -55,27 +57,29 @@ export default function FeatureSection() {
             flexDirection: 'column',
             alignItems: (isMobile || isTablet) ? 'center' : 'flex-start'
           }}>
+            <div className="badge badge-stable" style={{ marginBottom: '24px' }}>Community Intelligence</div>
             <h2 style={{
-              fontSize: 'clamp(1.8rem, 5vw, 3.5rem)',
-              fontWeight: 700,
-              lineHeight: 1.2,
-              color: '#fff',
-              marginBottom: '24px',
-              letterSpacing: '-0.02em'
+              fontSize: 'clamp(2.2rem, 6vw, 3.8rem)',
+              fontWeight: 900,
+              lineHeight: 1.1,
+              color: 'var(--text-1)',
+              marginBottom: '28px',
+              letterSpacing: '-0.05em'
             }}>
-              No More Irrelevant
+              Trade With
               <br />
-              Discussions, Talk With Like
+              Institutional Clarity,
               <br />
-              Minded People
+              Together.
             </h2>
             <p style={{
-              fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)',
-              color: 'rgba(255,255,255,0.6)',
+              fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
+              color: 'var(--text-3)',
               lineHeight: 1.6,
-              maxWidth: '480px'
+              maxWidth: '520px',
+              margin: '0'
             }}>
-              Keeping up with the market doesn't have to be such a chore
+              Keeping up with the market shouldn&apos;t feel like a chore. Ziro brings the conversation and the capital flows into one unified terminal.
             </p>
           </div>
 
@@ -85,13 +89,13 @@ export default function FeatureSection() {
               width: '100%',
               maxWidth: phoneWidth,
               height: phoneHeight,
-              background: 'var(--bg-2)',
+              background: 'var(--bg-1)',
               borderRadius: phoneBorderRadius,
               margin: phoneMargin,
-              boxShadow: '0 40px 100px rgba(0,0,0,0.5)',
+              boxShadow: '0 60px 120px rgba(0,0,0,0.8), 0 0 0 1px var(--border)',
               position: 'relative',
               overflow: 'hidden',
-              border: `${phoneBorder} solid #1a1e22`
+              border: `${phoneBorder} solid var(--bg-2)`
             }}
           >
             <img 

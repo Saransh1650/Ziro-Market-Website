@@ -7,12 +7,12 @@
 
 /* ─── TOKENS ─── */
 :root {
-  --bg:          #0f1113;
-  --bg-1:        #14161a;
-  --bg-2:        #1a1c20;
-  --bg-3:        #1f2126;
-  --bg-4:        #25272d;
-  --bg-5:        #2b2d33;
+  --bg:          #0b0c0e;
+  --bg-1:        #121418;
+  --bg-2:        #181a1e;
+  --bg-3:        #1e2024;
+  --bg-4:        #24262a;
+  --bg-5:        #2a2c30;
 
   --border:      rgba(255,255,255,0.05);
   --border-2:    rgba(255,255,255,0.08);
@@ -27,6 +27,11 @@
   --accent-2:    #4b7fb8;
   --accent-glow: rgba(58,110,165,0.15);
   --accent-dim:  rgba(58,110,165,0.08);
+
+  --brand:       #3a6ea5;
+  --brand-light: #5a8fcb;
+  --brand-glow:  rgba(58, 110, 165, 0.15);
+  --brand-dim:   rgba(58, 110, 165, 0.08);
 
   --green:       #1f9d55;
   --green-dim:   rgba(31,157,85,0.10);
@@ -619,10 +624,10 @@ p  { color: var(--text-2); line-height: 1.7; }
 .wl-card::after {
   content: '';
   position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent 10%, rgba(34,197,94,0.3) 50%, transparent 90%);
+  background: linear-gradient(90deg, transparent 10%, var(--brand-glow) 50%, transparent 90%);
 }
 .wl-title { font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 18px; }
-.wl-title em { font-style: normal; background: linear-gradient(135deg, var(--accent-2), var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.wl-title em { font-style: normal; background: linear-gradient(135deg, var(--brand), var(--brand-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .wl-subtitle { font-size: 1.05rem; color: var(--text-2); max-width: 480px; margin: 0 auto 44px; }
 .wl-form { display: flex; flex-direction: column; max-width: 480px; margin: 0 auto; gap: 10px; }
 .wl-select {
@@ -649,8 +654,8 @@ p  { color: var(--text-2); line-height: 1.7; }
 }
 .wl-toggle-btn:hover { border-color: var(--text-4); color: var(--text-2); }
 .wl-toggle-btn.active {
-  background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-dim);
+  background: var(--brand-dim); border-color: var(--brand); color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-glow);
 }
 .wl-input {
   flex: 1; padding: 14px 18px;
@@ -661,12 +666,12 @@ p  { color: var(--text-2); line-height: 1.7; }
 .wl-input::placeholder { color: var(--text-4); }
 .wl-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
 .wl-btn {
-  width: 100%; padding: 14px 28px; background: var(--accent); color: #fff;
+  width: 100%; padding: 14px 28px; background: var(--brand); color: var(--bg);
   border: none; border-radius: var(--r); font-size: 0.95rem; font-weight: 700;
   cursor: pointer; transition: all 0.22s;
-  box-shadow: 0 4px 16px rgba(59,111,212,0.4);
+  box-shadow: 0 4px 16px var(--brand-glow);
 }
-.wl-btn:hover { background: var(--accent-2); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(59,111,212,0.5); }
+.wl-btn:hover { background: var(--brand-light); transform: translateY(-1px); box-shadow: 0 8px 24px var(--brand-glow); }
 .wl-privacy { font-size: 0.72rem; color: var(--text-4); margin-top: 16px; }
 .wl-msg { margin-top: 14px; font-size: 0.82rem; min-height: 20px; font-family: var(--mono); }
 
@@ -705,18 +710,8 @@ footer {
 /* ─── SCROLL PROGRESS BAR ─── */
 .scroll-progress {
   position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
-  background: linear-gradient(90deg, var(--accent), var(--green));
+  background: linear-gradient(90deg, var(--brand), var(--brand-light));
   transition: width 0.1s linear;
-}
-
-/* ─── CURSOR GLOW (desktop) ─── */
-.cursor-glow {
-  position: fixed; width: 300px; height: 300px; border-radius: 50%;
-  pointer-events: none; z-index: 9998;
-  background: radial-gradient(circle, rgba(59,111,212,0.06), transparent 70%);
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s linear;
-  mix-blend-mode: screen;
 }
 
 /* ─── APP STORE BADGES ─── */

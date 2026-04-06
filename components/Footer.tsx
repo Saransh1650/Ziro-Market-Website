@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)', padding: '100px 0 60px' }}>
       <div className="container">
-        <div className="footer-layout" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', gap: '80px', marginBottom: '80px' }}>
+        <div className="footer-layout" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '80px', marginBottom: '80px' }}>
           <div className="footer-brand">
             <div className="nav-logo" style={{ marginBottom: '24px' }}>
               <div className="logo-icon">▲</div>
@@ -24,22 +24,6 @@ export default function Footer() {
               <a href="#" className="social-link" style={{ fontSize: '1.2rem', color: 'var(--text-4)', transition: 'color 0.3s ease' }}>📸</a>
               <a href="#" className="social-link" style={{ fontSize: '1.2rem', color: 'var(--text-4)', transition: 'color 0.3s ease' }}>in</a>
             </div>
-          </div>
-
-          <div className="footer-col" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <h4 style={{ fontSize: '0.9rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-1)', marginBottom: '8px' }}>Product</h4>
-            <a href="#signals" className="footer-link">Market Signals</a>
-            <a href="#heatmap" className="footer-link">Sector Heatmaps</a>
-            <a href="#watchlist" className="footer-link">Watchlist Intelligence</a>
-            <a href="#how-it-works" className="footer-link">Our Pipeline</a>
-          </div>
-
-          <div className="footer-col" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <h4 style={{ fontSize: '0.9rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-1)', marginBottom: '8px' }}>Ecosystem</h4>
-            <a href="#community" className="footer-link">Chat Rooms</a>
-            <a href="#" className="footer-link">Market Blog</a>
-            <a href="#" className="footer-link">API Access</a>
-            <a href="#waitlist" className="footer-link">Early Access</a>
           </div>
 
           <div className="footer-col" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
