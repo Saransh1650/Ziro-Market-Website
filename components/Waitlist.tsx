@@ -271,7 +271,7 @@ export default function Waitlist() {
           </div>
 
           <h2 className="wl-title" style={{ fontSize: 'clamp(2.4rem, 6vw, 4rem)', letterSpacing: '-0.06em', marginBottom: '20px' }}>
-            The Ziro Terminal
+            Ziro Market
           </h2>
           <p className="wl-subtitle" style={{ color: 'var(--text-3)', fontSize: '1.1rem', marginBottom: '48px' }}>
             Elevate your perspective. Join the refined intelligence network for the modern market investor.
