@@ -813,7 +813,7 @@ footer {
   
   /* Browser header - make it responsive */
   .browser-header {
-    width: 98% !important;
+    width: 100% !important;
     max-width: 100% !important;
     border-radius: 8px 8px 0 0 !important;
   }

@@ -309,6 +309,10 @@ export default function AppShowcase() {
 
   const screenshots = DEFAULT_BENTO_ITEMS.filter(it => it.type === 'image');
 
+  const showcaseDesc = (hasMounted && isMobile) 
+    ? "A professional-grade terminal curated for your mobile discovery."
+    : "Drag cards to rearrange your custom market command center.";
+
   return (
     <section 
       ref={ref} 
@@ -317,7 +321,7 @@ export default function AppShowcase() {
       style={{ 
         background: 'var(--bg)', 
         overflow: 'hidden',
-        padding: isMobile ? '80px 0 60px' : '160px 0 140px',
+        padding: (hasMounted && isMobile) ? '80px 0 60px' : '160px 0 140px',
         minHeight: '400px' // Ensure observer has a target during hydration
       }}
     >
@@ -328,12 +332,12 @@ export default function AppShowcase() {
       }}>
         {/* Header */}
         <div style={{
-          textAlign: isMobile ? 'left' : 'center',
-          marginBottom: isMobile ? 48 : 80,
+          textAlign: (hasMounted && isMobile) ? 'left' : 'center',
+          marginBottom: (hasMounted && isMobile) ? 48 : 80,
         }}>
           <div className="badge badge-stable" style={{ marginBottom: 20 }}>Intelligence Center</div>
           <h2 style={{
-             fontSize: isMobile ? '2.4rem' : '4.2rem',
+             fontSize: (hasMounted && isMobile) ? '2.4rem' : '4.2rem',
              lineHeight: 1.05,
              marginBottom: 24,
              letterSpacing: '-0.06em'
@@ -341,10 +345,8 @@ export default function AppShowcase() {
             The Market, <br />
             <span className="text-gradient">Explained.</span>
           </h2>
-          <p style={{ maxWidth: 500, margin: isMobile ? '0' : '0 auto' }}>
-            {isMobile 
-              ? "A professional-grade terminal curated for your mobile discovery." 
-              : "Drag cards to rearrange your custom market command center."}
+          <p style={{ maxWidth: 500, margin: (hasMounted && isMobile) ? '0' : '0 auto' }}>
+            {showcaseDesc}
           </p>
         </div>
 
