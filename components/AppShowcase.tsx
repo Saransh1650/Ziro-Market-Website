@@ -42,9 +42,9 @@ const ICONS: Record<string, LucideIcon> = {
 
 const STORAGE_KEY = 'ti_bento_v3';
 
-// ─── Sortable Item ────────────────────────────────────────────────────────────
-function SortableCard({ item, isOverlay = false, isPinned = false, isMobile = false }: { item: BentoItem; isOverlay?: boolean; isPinned?: boolean; isMobile?: boolean }) {
-  const sortable = useSortable({ id: item.id, disabled: isPinned || isMobile });
+// ─── Sortable Item (Desktop) ──────────────────────────────────────────────────
+function SortableCard({ item, isOverlay = false, isPinned = false }: { item: BentoItem; isOverlay?: boolean; isPinned?: boolean }) {
+  const sortable = useSortable({ id: item.id, disabled: isPinned });
   const {
     attributes,
     listeners,
@@ -64,7 +64,7 @@ function SortableCard({ item, isOverlay = false, isPinned = false, isMobile = fa
     position: 'relative',
     userSelect: 'none',
     zIndex: (isOverlay || isPinned) ? 999 : undefined,
-    cursor: (isPinned || isMobile) ? 'default' : (isDragging ? 'grabbing' : 'grab'),
+    cursor: isPinned ? 'default' : (isDragging ? 'grabbing' : 'grab'),
   };
 
   return (
@@ -84,90 +84,89 @@ function SortableCard({ item, isOverlay = false, isPinned = false, isMobile = fa
       <div style={{
         height: '100%',
         width: '100%',
-        borderRadius: isMobile ? 16 : 24,
+        borderRadius: 32,
         overflow: 'hidden',
         background: item.featured
-          ? 'linear-gradient(145deg, rgba(56,189,248,0.1) 0%, rgba(12,15,20,1) 100%)'
+          ? 'linear-gradient(165deg, rgba(212,188,142,0.1) 0%, var(--bg-1) 100%)'
           : item.type === 'text' 
-            ? 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)' 
-            : '#0c0f14',
-        cursor: (isMobile || isDragging) ? 'default' : 'grab',
+            ? 'linear-gradient(165deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)' 
+            : 'var(--bg-1)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        padding: item.type === 'text' ? (isMobile ? '24px' : (item.featured ? '40px' : '32px')) : 0,
-        backdropFilter: (item.type === 'text' || item.featured) ? 'blur(20px)' : 'none',
+        padding: item.type === 'text' ? (item.featured ? '40px' : '32px') : 0,
+        backdropFilter: 'blur(24px)',
         boxShadow: isOverlay
-          ? '0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(56,189,248,0.4), inset 0 0 20px rgba(56,189,248,0.1)'
+          ? '0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px var(--brand), inset 0 0 20px var(--brand-glow)'
           : item.featured
-            ? '0 20px 80px rgba(0,0,0,0.6), inset 0 0 40px rgba(56,189,248,0.05)'
-            : '0 8px 32px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.05)',
+            ? '0 30px 90px rgba(0,0,0,0.7), inset 0 0 40px var(--brand-glow)'
+            : '0 12px 40px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05)',
         position: 'relative',
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        transition: 'all 0.4s var(--ease-out)',
         border: isOverlay
-          ? '2px solid #38bdf8'
+          ? '2px solid var(--brand)'
           : item.featured
-            ? '1px solid rgba(56, 189, 248, 0.4)'
-            : '1px solid rgba(255,255,255,0.07)',
-        minHeight: isMobile ? '200px' : 'auto',
+            ? '1px solid rgba(212, 188, 142, 0.4)'
+            : '1px solid var(--border)',
       }}
       className={`bento-card-inner ${item.featured ? 'nucleus-card' : ''}`}
       >
-      {/* Drag handle dots - only if not pinned and not mobile */}
-      {!isPinned && !isMobile && (
-        <div style={{
-          position: 'absolute',
-          top: 12,
-          right: 14,
-          color: 'rgba(255,255,255,0.18)',
-          fontSize: 13,
-          letterSpacing: 1,
-          lineHeight: 1,
-          pointerEvents: 'none',
-        }}>
-          ⠿
-        </div>
-      )}
+        {!isPinned && (
+          <div style={{
+            position: 'absolute',
+            top: 14,
+            right: 16,
+            color: 'var(--text-4)',
+            fontSize: 14,
+            letterSpacing: 1,
+            lineHeight: 1,
+            pointerEvents: 'none',
+            opacity: 0.5
+          }}>
+            ⠿
+          </div>
+        )}
 
         {item.type === 'text' ? (
           <div style={{
             textAlign: item.featured ? 'center' : 'left',
-            padding: item.featured ? (isMobile ? '20px' : '40px') : '0',
+            padding: item.featured ? '40px' : '0',
           }}>
             {item.icon && !item.featured && (
-              <div style={{ marginBottom: 16 }}>
+              <div style={{ marginBottom: 18 }}>
                 {(() => {
                   const Icon = ICONS[item.icon];
                   return Icon ? (
                     <Icon 
-                      size={24} 
-                      strokeWidth={1.8} 
-                      style={{ color: '#38bdf8' }} 
+                      size={28} 
+                      strokeWidth={1.5} 
+                      style={{ color: 'var(--brand)' }} 
                     />
                   ) : null;
                 })()}
               </div>
             )}
             <h3 style={{
-              fontSize: item.featured ? (isMobile ? '1.6rem' : '2.8rem') : (isMobile ? '0.95rem' : '1.05rem'),
+              fontSize: item.featured ? '3.2rem' : '1.15rem',
               fontWeight: 900,
-              color: '#fff',
+              color: 'var(--text-1)',
               margin: 0,
-              marginBottom: item.featured ? (isMobile ? 12 : 16) : 10,
-              letterSpacing: item.featured ? '-0.06em' : '-0.02em',
+              marginBottom: item.featured ? 16 : 12,
+              letterSpacing: item.featured ? '-0.06em' : '-0.03em',
               lineHeight: 1.1,
-              background: item.featured ? 'linear-gradient(to bottom, #fff 40%, rgba(255,255,255,0.4) 100%)' : 'none',
+              background: item.featured ? 'linear-gradient(to bottom, #fff 50%, rgba(255,255,255,0.4) 100%)' : 'none',
+              backgroundClip: item.featured ? 'text' : 'none',
               WebkitBackgroundClip: item.featured ? 'text' : 'none',
               WebkitTextFillColor: item.featured ? 'transparent' : 'inherit',
             }}>
               {item.title}
             </h3>
             <p style={{
-              fontSize: item.featured ? (isMobile ? '0.85rem' : '1rem') : (isMobile ? '0.78rem' : '0.82rem'),
-              color: 'rgba(255,255,255,0.45)',
+              fontSize: item.featured ? '1.05rem' : '0.88rem',
+              color: 'var(--text-3)',
               lineHeight: 1.6,
               margin: 0,
-              maxWidth: item.featured ? (isMobile ? '100%' : '280px') : 'none',
+              maxWidth: item.featured ? '320px' : 'none',
               marginLeft: item.featured ? 'auto' : '0',
               marginRight: item.featured ? 'auto' : '0',
             }}>
@@ -175,49 +174,81 @@ function SortableCard({ item, isOverlay = false, isPinned = false, isMobile = fa
             </p>
           </div>
         ) : (
-        <div style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: 0,
-          pointerEvents: 'none',
-        }}>
-          <img
-            src={item.src}
-            alt={item.label ?? item.id}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-              transition: 'transform 0.5s ease',
-            }}
-            className="bento-img"
-            draggable={false}
-          />
-          {/* Bottom label */}
-          <div style={{
-            position: 'absolute',
-            bottom: 14,
-            left: 14,
-            padding: '4px 10px',
-            background: 'rgba(0,0,0,0.55)',
-            backdropFilter: 'blur(8px)',
-            borderRadius: 8,
-            color: '#fff',
-            fontSize: '0.62rem',
-            fontWeight: 700,
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase',
-          }}>
-            {item.label}
+          <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+            <img
+              src={item.src}
+              alt={item.id}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              className="bento-img"
+              draggable={false}
+            />
+            <div style={{
+              position: 'absolute',
+              bottom: 18,
+              left: 18,
+              padding: '6px 12px',
+              background: 'rgba(0,0,0,0.6)',
+              backdropFilter: 'blur(12px)',
+              borderRadius: 10,
+              color: '#fff',
+              fontSize: '0.68rem',
+              fontWeight: 800,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              border: '1px solid rgba(255,255,255,0.1)'
+            }}>
+              {item.label}
+            </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
     </motion.div>
+  );
+}
+
+// ─── Mobile Feature Card ──────────────────────────────────────────────────────
+function MobileFeatureCard({ item }: { item: BentoItem }) {
+  return (
+    <div style={{
+      borderRadius: 24,
+      background: item.featured 
+        ? 'linear-gradient(165deg, rgba(212,188,142,0.1) 0%, var(--bg-1) 100%)' 
+        : 'var(--bg-1)',
+      padding: '24px',
+      border: item.featured ? '1px solid rgba(212,188,142,0.3)' : '1px solid var(--border)',
+      boxShadow: item.featured ? '0 20px 60px rgba(0,0,0,0.4), inset 0 0 20px var(--brand-glow)' : 'none',
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+    }}>
+      {item.icon && !item.featured && (
+        <div style={{ marginBottom: 12 }}>
+          {(() => {
+            const Icon = ICONS[item.icon];
+            return Icon ? <Icon size={24} strokeWidth={2} style={{ color: 'var(--brand)' }} /> : null;
+          })()}
+        </div>
+      )}
+      <h3 style={{
+        fontSize: item.featured ? '1.8rem' : '1.1rem',
+        fontWeight: 900,
+        color: 'var(--text-1)',
+        marginBottom: 8,
+        lineHeight: 1.1,
+        letterSpacing: '-0.03em'
+      }}>
+        {item.title}
+      </h3>
+      <p style={{
+        fontSize: '0.9rem',
+        color: 'var(--text-3)',
+        lineHeight: 1.5,
+        margin: 0
+      }}>
+        {item.desc}
+      </p>
+    </div>
   );
 }
 
@@ -226,64 +257,39 @@ export default function AppShowcase() {
   const [ref, isVisible] = useScrollReveal<HTMLDivElement>({ threshold: 0.1 });
   const [items, setItems] = useState<BentoItem[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [hasMounted, setHasMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
-
-  // Responsive detection
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setIsMobile(width <= 600);
-      setIsTablet(width > 600 && width <= 900);
-    };
-    
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     setHasMounted(true);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       const otherItems = DEFAULT_BENTO_ITEMS.filter(it => it.id !== 'sc-6');
-      
       if (saved) {
         const ids = JSON.parse(saved) as string[];
-        const sorted = ids
-          .map((id) => otherItems.find((it) => it.id === id))
-          .filter((it): it is BentoItem => !!it);
-        
-        if (sorted.length === otherItems.length) {
-          setItems(sorted);
-        } else {
-          setItems(otherItems);
-        }
+        const sorted = ids.map(id => otherItems.find(it => it.id === id)).filter(Boolean) as BentoItem[];
+        setItems(sorted.length === otherItems.length ? sorted : otherItems);
       } else {
         setItems(otherItems);
       }
     } catch {
       setItems(DEFAULT_BENTO_ITEMS.filter(it => it.id !== 'sc-6'));
     }
+
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Disable drag on mobile
-  const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: { distance: isMobile ? 999999 : 6 }, // disable on mobile
-    })
-  );
+  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 8 } }));
 
-  const handleDragStart = (event: DragStartEvent) => {
-    setActiveId(event.active.id as string);
-  };
-
+  const handleDragStart = (event: DragStartEvent) => setActiveId(event.active.id as string);
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     setActiveId(null);
     if (!over || active.id === over.id) return;
-
     const oldIndex = items.findIndex((it) => it.id === active.id);
     const newIndex = items.findIndex((it) => it.id === over.id);
     const newItems = arrayMove(items, oldIndex, newIndex);
@@ -293,148 +299,113 @@ export default function AppShowcase() {
 
   const activeItem = items.find((it) => it.id === activeId);
 
-  // Localized Scaling Engine
-  // We force the desktop layout (4 cols) and scale it down to fit the phone width
-  const gridColumns = 4;
-  const gridAutoRows = '240px';
-  const gridGap = 16;
-  const contentWidth = 1340; // Desktop width baseline
-  
-  const [scale, setScale] = useState(1);
+  // Mobile data splits
+  const mobileFeatures = [
+    DEFAULT_BENTO_ITEMS.find(it => it.id === 'sc-6')!, // Featured
+    DEFAULT_BENTO_ITEMS.find(it => it.id === 'f-1')!,
+    DEFAULT_BENTO_ITEMS.find(it => it.id === 'f-2')!,
+    DEFAULT_BENTO_ITEMS.find(it => it.id === 'f-4')!,
+  ].filter(Boolean);
 
-  useEffect(() => {
-    const handleScale = () => {
-      const width = window.innerWidth;
-      // Precision scaling: fit 1340px grid into viewport with 32px safety margin
-      const newScale = Math.min(1, (width - 32) / contentWidth);
-      setScale(newScale);
-    };
-    handleScale();
-    window.addEventListener('resize', handleScale);
-    return () => window.removeEventListener('resize', handleScale);
-  }, []);
+  const screenshots = DEFAULT_BENTO_ITEMS.filter(it => it.type === 'image');
 
   return (
-    <section
-      ref={ref}
-      className="app-showcase-section"
-      style={{
-        background: '#0a0e12',
-        padding: isMobile ? '60px 0 40px' : '140px 0 120px',
-        position: 'relative',
+    <section 
+      ref={ref} 
+      className="section" 
+      id="showcase"
+      style={{ 
+        background: 'var(--bg)', 
         overflow: 'hidden',
-        width: '100%',
+        padding: isMobile ? '80px 0 60px' : '160px 0 140px',
+        minHeight: '400px' // Ensure observer has a target during hydration
       }}
     >
-      <div 
-        className="scale-container"
-        style={{
-          width: contentWidth,
-          transform: `scale(${scale})`,
-          transformOrigin: 'top center',
-          margin: '0 auto',
-          position: 'relative',
-          left: '50%',
-          marginLeft: -(contentWidth/2),
-          // Height compensation: scale affects visuals but not layout flow.
-          // This reduces the vertical footprint of the section on mobile.
-          marginBottom: scale < 1 ? `calc((${scale} - 1) * 800px)` : 0
-        }}
-      >
-      {/* Ambient glow */}
-      <div style={{
-        position: 'absolute',
-        top: '40%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 900,
-        height: 900,
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
-
-      <div 
-        className="container-wide" 
-        style={{ 
-          position: 'relative', 
-          zIndex: 2,
-          maxWidth: isMobile ? '100%' : '1340px',
-          padding: isMobile ? '0' : '0 28px',
-        }}
-      >
+      <div className="container" style={{
+        opacity: (isVisible || !hasMounted) ? 1 : 0,
+        transform: isVisible ? 'none' : 'translateY(24px)',
+        transition: 'all 1s var(--ease-out) 0.1s',
+      }}>
         {/* Header */}
         <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-end',
-          marginBottom: isMobile ? 40 : 64,
-          flexWrap: 'wrap',
-          gap: 20,
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'none' : 'translateY(16px)',
-          transition: 'opacity 0.8s ease, transform 0.8s ease',
+          textAlign: isMobile ? 'left' : 'center',
+          marginBottom: isMobile ? 48 : 80,
         }}>
-          <div>
-            <h2 style={{
-              fontSize: '3.2rem',
-              fontWeight: 900,
-              letterSpacing: '-0.05em',
-              color: '#fff',
-              lineHeight: 1.1,
-              marginBottom: 14,
-            }}>
-              The Market,<br />Explained.
-            </h2>
-            <p style={{ 
-              color: 'rgba(255,255,255,0.38)', 
-              fontSize: isMobile ? '0.85rem' : '0.9rem', 
-              maxWidth: 400 
-            }}>
-              Explore the intelligence tools powering Ziro Market.
-            </p>
-          </div>
-
-          <button
-            onClick={() => {
-              const otherItems = DEFAULT_BENTO_ITEMS.filter(it => it.id !== 'sc-6');
-              setItems(otherItems);
-              localStorage.removeItem(STORAGE_KEY);
-            }}
-            style={{
-              padding: isMobile ? '8px 16px' : '10px 20px',
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.09)',
-              borderRadius: 10,
-              color: 'rgba(255,255,255,0.6)',
-              fontSize: isMobile ? '0.75rem' : '0.8rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-              e.currentTarget.style.color = '#fff';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
-              e.currentTarget.style.color = 'rgba(255,255,255,0.6)';
-            }}
-          >
-            Reset Layout
-          </button>
+          <div className="badge badge-stable" style={{ marginBottom: 20 }}>Intelligence Center</div>
+          <h2 style={{
+             fontSize: isMobile ? '2.4rem' : '4.2rem',
+             lineHeight: 1.05,
+             marginBottom: 24,
+             letterSpacing: '-0.06em'
+          }}>
+            The Market, <br />
+            <span className="text-gradient">Explained.</span>
+          </h2>
+          <p style={{ maxWidth: 500, margin: isMobile ? '0' : '0 auto' }}>
+            {isMobile 
+              ? "A professional-grade terminal curated for your mobile discovery." 
+              : "Drag cards to rearrange your custom market command center."}
+          </p>
         </div>
 
-        {/* Bento Grid */}
-        <div
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'none' : 'translateY(24px)',
-            transition: 'opacity 0.9s ease 0.15s, transform 0.9s ease 0.15s',
-            minHeight: isMobile ? 'auto' : '600px',
-          }}
-        >
-          {hasMounted && (
+        {!hasMounted ? (
+          <div style={{ height: '400px' }} /> // Loading placeholder
+        ) : isMobile ? (
+          /* Mobile Native View */
+          <div>
+            {/* Features 2x2 */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: 16,
+              marginBottom: 48
+            }}>
+              <div style={{ gridColumn: 'span 2' }}>
+                <MobileFeatureCard item={mobileFeatures[0]} />
+              </div>
+              {mobileFeatures.slice(1).map((item, idx) => (
+                <div key={idx}>
+                  <MobileFeatureCard item={item} />
+                </div>
+              ))}
+            </div>
+
+            {/* Screenshots Vertical / Stacked sections */}
+            <div style={{ marginTop: 64 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+                <div style={{ width: 12, height: 12, borderRadius: '50%', background: 'var(--brand)' }} />
+                <h4 style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-2)' }}>Terminal Interface</h4>
+              </div>
+              
+              <div style={{
+                display: 'flex',
+                overflowX: 'auto',
+                gap: 20,
+                paddingBottom: 24,
+                paddingLeft: '4px',
+                WebkitOverflowScrolling: 'touch',
+                scrollbarWidth: 'none',
+              }} className="no-scrollbar">
+                {screenshots.map((ss, idx) => (
+                  <div key={idx} style={{ 
+                    flex: '0 0 280px', 
+                    borderRadius: 24, 
+                    overflow: 'hidden', 
+                    boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+                    border: '1px solid var(--border)'
+                  }}>
+                    <img src={ss.src} alt={ss.label} style={{ width: '100%', display: 'block' }} />
+                  </div>
+                ))}
+              </div>
+              <div style={{ textAlign: 'center', marginTop: 12 }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-4)', fontWeight: 600 }}>Swipe to explore interfaces →</span>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* Desktop Bento View */
+          <div>
             <DndContext
               id="bento-grid"
               sensors={sensors}
@@ -442,52 +413,63 @@ export default function AppShowcase() {
               onDragStart={handleDragStart}
               onDragEnd={handleDragEnd}
             >
-              <SortableContext items={items.map((it) => it.id)} strategy={rectSortingStrategy}>
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: `repeat(${gridColumns}, 1fr)`,
-                    gridAutoRows: gridAutoRows,
-                    gridAutoFlow: 'dense',
-                    gap: gridGap,
-                  }}
-                  className="bento-grid"
-                >
+              <SortableContext items={items.map(it => it.id)} strategy={rectSortingStrategy}>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(4, 1fr)',
+                  gridAutoRows: '260px',
+                  gridAutoFlow: 'dense',
+                  gap: 24,
+                }}>
                   <SortableCard 
                     key="sc-6" 
                     item={DEFAULT_BENTO_ITEMS.find(it => it.id === 'sc-6')!} 
                     isPinned
-                    isMobile={isMobile}
                   />
-
                   <AnimatePresence>
                     {items.map((item) => (
-                      <SortableCard key={item.id} item={item} isMobile={isMobile} />
+                      <SortableCard key={item.id} item={item} />
                     ))}
                   </AnimatePresence>
                 </div>
               </SortableContext>
-
-              {/* Floating drag overlay — the "card you're holding" */}
               <DragOverlay adjustScale={false}>
-                {activeItem ? (
-                  <SortableCard item={activeItem} isOverlay />
-                ) : null}
+                {activeItem ? <SortableCard item={activeItem} isOverlay /> : null}
               </DragOverlay>
             </DndContext>
-          )}
-        </div>
+            
+            <div style={{ textAlign: 'center', marginTop: 48 }}>
+              <button
+                onClick={() => {
+                  const otherItems = DEFAULT_BENTO_ITEMS.filter(it => it.id !== 'sc-6');
+                  setItems(otherItems);
+                  localStorage.removeItem(STORAGE_KEY);
+                }}
+                className="btn btn-ghost"
+              >
+                Reset Default Terminal Layout
+              </button>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        .bento-card-inner:hover .bento-img {
-          transform: scale(1.05);
+        #showcase .text-gradient {
+          background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
-
+        .bento-card-inner:hover .bento-img {
+          transform: scale(1.08);
+        }
         .nucleus-card:hover {
-          border-color: rgba(56, 189, 248, 0.8) !important;
-          box-shadow: 0 30px 100px rgba(56,189,248,0.15), inset 0 0 60px rgba(56,189,248,0.1) !important;
+          border-color: rgba(212, 188, 142, 0.6) !important;
+          box-shadow: 0 40px 120px rgba(0,0,0,0.8), inset 0 0 60px var(--brand-glow) !important;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
         }
       `}} />
     </section>
