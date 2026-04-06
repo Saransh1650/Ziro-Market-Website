@@ -311,63 +311,43 @@ export default function HeroNew() {
           Keeping up with the market doesn't have to be such a chore
         </p>
 
-        {/* Email Input + CTA */}
-        <form onSubmit={handleSubmit} style={{
+        {/* Single Join Now CTA */}
+        <div style={{
           display: 'flex',
-          flexDirection: 'column',
-          gap: '12px',
+          justifyContent: 'center',
           width: '100%',
-          maxWidth: 'clamp(520px, 40vw, 680px)',
-          margin: '0 auto clamp(60px, 8vh, 100px)', 
-          alignItems: 'stretch',
-          padding: '6px',
-          background: 'rgba(255, 255, 255, 0.05)',
-          borderRadius: '12px',
-          border: '1px solid rgba(255, 255, 255, 0.1)'
-        }}
-        className="hero-form">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{
-              flex: 1,
-              padding: 'clamp(12px, 1.5vh, 20px) 24px',
-              background: 'transparent',
-              border: 'none',
-              borderRadius: '8px',
-              fontSize: 'clamp(1rem, 1.2vw, 1.2rem)',
-              outline: 'none',
-              color: '#fff'
-            }}
-          />
+          margin: '0 auto clamp(60px, 8vh, 100px)',
+          zIndex: 10
+        }}>
           <button
-            type="submit"
+            onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
             style={{
-              padding: 'clamp(12px, 1.5vh, 20px) clamp(24px, 3vw, 48px)',
+              padding: 'clamp(14px, 1.8vh, 22px) clamp(32px, 4vw, 64px)',
               background: '#fff',
               color: '#000',
               border: 'none',
-              borderRadius: '8px',
-              fontSize: 'clamp(1rem, 1.2vw, 1.1rem)',
-              fontWeight: 700,
+              borderRadius: '12px',
+              fontSize: 'clamp(1.1rem, 1.4vw, 1.3rem)',
+              fontWeight: 800,
               cursor: 'pointer',
               whiteSpace: 'nowrap',
-              transition: 'transform 0.2s ease, background 0.2s ease'
+              boxShadow: '0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1)',
+              transition: 'transform 0.22s var(--ease-out), background 0.22s ease, box-shadow 0.22s ease'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.background = '#f0f0f0';
+              e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+              e.currentTarget.style.background = '#f8f8f8';
+              e.currentTarget.style.boxShadow = '0 30px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.2)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.transform = 'translateY(0) scale(1)';
               e.currentTarget.style.background = '#fff';
+              e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1)';
             }}
           >
-            Get Early Access
+            Join the Network Now →
           </button>
-        </form>
+        </div>
 
         {/* App Screen Recording Video Container */}
         <div style={{
