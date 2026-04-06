@@ -605,7 +605,7 @@ p  { color: var(--text-2); line-height: 1.7; }
 .wl-ticker-float.red .wl-ticker-change { color: var(--red); }
 @keyframes ticker-float {
   0%,100%{ transform: translateY(0); opacity: 0.75; }
-  50%    { transform: translateY(-20px); opacity: 1; }
+  50%    { transform: translateY(-12px); opacity: 1; }
 }
 
 /* Central waitlist card */
@@ -671,7 +671,7 @@ p  { color: var(--text-2); line-height: 1.7; }
   cursor: pointer; transition: all 0.22s;
   box-shadow: 0 4px 16px var(--brand-glow);
 }
-.wl-btn:hover { background: var(--brand-light); transform: translateY(-1px); box-shadow: 0 8px 24px var(--brand-glow); }
+.wl-btn:hover { background: var(--brand-light); box-shadow: 0 8px 24px var(--brand-glow); }
 .wl-privacy { font-size: 0.72rem; color: var(--text-4); margin-top: 16px; }
 .wl-msg { margin-top: 14px; font-size: 0.82rem; min-height: 20px; font-family: var(--mono); }
 

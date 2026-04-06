@@ -18,12 +18,27 @@ const floatingStocks = [
   { text: 'BHARTIARTL', price: '₹1,145', change: '▼0.4%', className: 'red', top: '12%', left: '25%', delay: '2.2s' },
   { text: 'AXISBANK', price: '₹1,056', change: '▲1.4%', className: 'green', top: '85%', right: '40%', delay: '3.1s' },
   { text: 'ITC', price: '₹412', change: '▲0.5%', className: 'green', top: '42%', right: '30%', delay: '0.3s' },
+  { text: 'MARUTI', price: '₹11,456', change: '▲0.9%', className: 'green', top: '48%', left: '42%', delay: '1.2s' },
+  { text: 'SUNPHARMA', price: '₹1,532', change: '▲2.1%', className: 'green', top: '22%', left: '35%', delay: '4.8s' },
+  { text: 'LT', price: '₹3,642', change: '▼0.7%', className: 'red', top: '72%', right: '35%', delay: '2.5s' },
+  { text: 'KOTAKBANK', price: '₹1,742', change: '▲0.4%', className: 'green', top: '38%', right: '25%', delay: '0.5s' },
+  { text: 'ONGC', price: '₹274', change: '▲4.2%', className: 'green', top: '18%', right: '55%', delay: '5.2s' },
+  { text: 'TATAMOTORS', price: '₹954', change: '▲1.5%', className: 'green', top: '94%', left: '32%', delay: '1.8s' },
+  { text: 'WIPRO', price: '₹482', change: '▼1.1%', className: 'red', top: '5%', left: '55%', delay: '3.9s' },
+  { text: 'TITAN', price: '₹3,742', change: '▲0.2%', className: 'green', top: '62%', left: '55%', delay: '2.1s' },
+  { text: 'COALINDIA', price: '₹442', change: '▲3.8%', className: 'green', top: '88%', right: '5%', delay: '0.9s' },
+  { text: 'JSWSTEEL', price: '₹842', change: '▼0.3%', className: 'red', top: '32%', left: '6%', delay: '4.2s' },
+  { text: 'HINDALCO', price: '₹594', change: '▲2.7%', className: 'green', top: '15%', right: '42%', delay: '1.4s' },
+  { text: 'NESTLEIND', price: '₹2,542', change: '▲0.6%', className: 'green', top: '2%', right: '35%', delay: '2.7s' },
+  { text: 'POWERGRID', price: '₹284', change: '▲1.1%', className: 'green', top: '52%', left: '12%', delay: '5.5s' },
+  { text: 'ULTRACEMCO', price: '₹9,842', change: '▼0.4%', className: 'red', top: '78%', left: '48%', delay: '0.2s' },
+  { text: 'GRASIM', price: '₹2,242', change: '▲0.8%', className: 'green', top: '12%', left: '48%', delay: '3.4s' },
 ];
 
 const rand = (min: number, max: number) => Math.random() * (max - min) + min;
 
 function FloatingStock({ stock }: { stock: typeof floatingStocks[0] }) {
-  const repelRef = useAdvancedRepel<HTMLDivElement>({ radius: 250, strength: 0.8 });
+  const repelRef = useAdvancedRepel<HTMLDivElement>({ radius: 320, strength: 0.4 });
 
   return (
     <div
@@ -54,7 +69,6 @@ function FloatingStock({ stock }: { stock: typeof floatingStocks[0] }) {
 export default function Waitlist() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesContainerRef = useRef<HTMLDivElement>(null);
-  const btnRef = useMagneticButton<HTMLButtonElement>();
   const [os, setOs] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -259,7 +273,7 @@ export default function Waitlist() {
       <div className="container wl-card-wrap">
         <div className="wl-card glass-surface" data-reveal="scale" style={{ 
           padding: 'clamp(40px, 8vw, 80px) clamp(24px, 6vw, 64px)',
-          background: 'rgba(15, 17, 21, 0.4)',
+          background: 'rgba(11, 12, 14, 0.85)',
           border: '1px solid var(--border)',
           borderRadius: 'var(--r-2xl)',
           boxShadow: '0 40px 100px rgba(0,0,0,0.6)'
@@ -278,12 +292,20 @@ export default function Waitlist() {
           </p>
 
           <form className="wl-form" onSubmit={handleSubmit} noValidate style={{ maxWidth: '520px', margin: '0 auto' }}>
-            <div className="wl-toggle-group" style={{ background: 'var(--bg-2)', padding: '6px', borderRadius: 'var(--r-lg)', marginBottom: '16px' }}>
+            <div className="wl-toggle-group" style={{ 
+              background: 'var(--bg-2)', 
+              padding: '6px', 
+              borderRadius: '20px', 
+              marginBottom: '16px',
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '4px'
+            }}>
               <button 
                 type="button" 
                 className={`wl-toggle-btn ${os === 'ios' ? 'active' : ''}`}
                 onClick={() => setOs('ios')}
-                style={{ borderRadius: 'var(--r-md)', fontSize: '0.9rem', fontWeight: 600 }}
+                style={{ borderRadius: '14px', fontSize: '0.9rem', fontWeight: 600, padding: '10px 0' }}
               >
                  iOS
               </button>
@@ -291,7 +313,7 @@ export default function Waitlist() {
                 type="button" 
                 className={`wl-toggle-btn ${os === 'android' ? 'active' : ''}`}
                 onClick={() => setOs('android')}
-                style={{ borderRadius: 'var(--r-md)', fontSize: '0.9rem', fontWeight: 600 }}
+                style={{ borderRadius: '14px', fontSize: '0.9rem', fontWeight: 600, padding: '10px 0' }}
               >
                 Android
               </button>
@@ -305,7 +327,14 @@ export default function Waitlist() {
               onChange={(e) => setEmail(e.target.value)}
               style={{ background: 'var(--bg-1)', border: '1px solid var(--border-2)', color: 'var(--text-1)', padding: '18px 24px', borderRadius: 'var(--r-lg)', marginBottom: '16px' }}
             />
-            <button type="submit" className="wl-btn btn-primary shimmer" ref={btnRef} disabled={btnDisabled} style={{ width: '100%', padding: '18px', fontSize: '1.1rem', fontWeight: 700, borderRadius: 'var(--r-lg)' }}>
+            <button type="submit" className="wl-btn btn-primary" disabled={btnDisabled} style={{ 
+              width: '100%', 
+              padding: '18px', 
+              fontSize: '1.1rem', 
+              fontWeight: 800, 
+              borderRadius: 'var(--r-lg)', 
+              transition: 'transform 0.2s var(--ease-out), background 0.2s ease, box-shadow 0.2s ease' 
+            }}>
               {btnText}
             </button>
           </form>
