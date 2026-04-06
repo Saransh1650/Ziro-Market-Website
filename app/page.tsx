@@ -1,5 +1,4 @@
 import ScrollProgress from '@/components/ScrollProgress';
-import CursorGlow from '@/components/CursorGlow';
 import Navbar from '@/components/Navbar';
 import HeroNew from '@/components/HeroNew';
 import FeatureSection from '@/components/FeatureSection';
@@ -11,7 +10,6 @@ export default function Home() {
   return (
     <>
       <ScrollProgress />
-      <CursorGlow />
       <Navbar />
       <HeroNew />
       <FeatureSection />

@@ -97,9 +97,9 @@ function SortableCard({ item, isOverlay = false, isPinned = false }: { item: Ben
         padding: item.type === 'text' ? (item.featured ? '40px' : '32px') : 0,
         backdropFilter: 'blur(24px)',
         boxShadow: isOverlay
-          ? '0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px var(--brand), inset 0 0 20px var(--brand-glow)'
+          ? '0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px var(--brand)'
           : item.featured
-            ? '0 30px 90px rgba(0,0,0,0.7), inset 0 0 40px var(--brand-glow)'
+            ? '0 30px 90px rgba(0,0,0,0.7)'
             : '0 12px 40px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05)',
         position: 'relative',
         transition: 'all 0.4s var(--ease-out)',
@@ -216,7 +216,7 @@ function MobileFeatureCard({ item }: { item: BentoItem }) {
         : 'var(--bg-1)',
       padding: '24px',
       border: item.featured ? '1px solid rgba(212,188,142,0.3)' : '1px solid var(--border)',
-      boxShadow: item.featured ? '0 20px 60px rgba(0,0,0,0.4), inset 0 0 20px var(--brand-glow)' : 'none',
+      boxShadow: item.featured ? '0 20px 60px rgba(0,0,0,0.4)' : 'none',
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
@@ -466,7 +466,7 @@ export default function AppShowcase() {
         }
         .nucleus-card:hover {
           border-color: rgba(212, 188, 142, 0.6) !important;
-          box-shadow: 0 40px 120px rgba(0,0,0,0.8), inset 0 0 60px var(--brand-glow) !important;
+          box-shadow: 0 40px 120px rgba(0,0,0,0.8) !important;
         }
         .no-scrollbar::-webkit-scrollbar {
           display: none;

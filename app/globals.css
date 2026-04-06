@@ -7,12 +7,12 @@
 
 /* ─── TOKENS ─── */
 :root {
-  --bg:          #0f1113;
-  --bg-1:        #14161a;
-  --bg-2:        #1a1c20;
-  --bg-3:        #1f2126;
-  --bg-4:        #25272d;
-  --bg-5:        #2b2d33;
+  --bg:          #0b0c0e;
+  --bg-1:        #121418;
+  --bg-2:        #181a1e;
+  --bg-3:        #1e2024;
+  --bg-4:        #24262a;
+  --bg-5:        #2a2c30;
 
   --border:      rgba(255,255,255,0.05);
   --border-2:    rgba(255,255,255,0.08);
@@ -27,6 +27,11 @@
   --accent-2:    #4b7fb8;
   --accent-glow: rgba(58,110,165,0.15);
   --accent-dim:  rgba(58,110,165,0.08);
+
+  --brand:       #d4bc8e;
+  --brand-light: #e4d1b1;
+  --brand-glow:  rgba(212, 188, 142, 0.15);
+  --brand-dim:   rgba(212, 188, 142, 0.08);
 
   --green:       #1f9d55;
   --green-dim:   rgba(31,157,85,0.10);
@@ -707,16 +712,6 @@ footer {
   position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
   background: linear-gradient(90deg, var(--brand), var(--brand-light));
   transition: width 0.1s linear;
-}
-
-/* ─── CURSOR GLOW (desktop) ─── */
-.cursor-glow {
-  position: fixed; width: 300px; height: 300px; border-radius: 50%;
-  pointer-events: none; z-index: 9998;
-  background: radial-gradient(circle, var(--brand-dim), transparent 70%);
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s linear;
-  mix-blend-mode: screen;
 }
 
 /* ─── APP STORE BADGES ─── */
