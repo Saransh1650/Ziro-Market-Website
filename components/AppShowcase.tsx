@@ -87,7 +87,7 @@ function SortableCard({ item, isOverlay = false, isPinned = false }: { item: Ben
         borderRadius: 32,
         overflow: 'hidden',
         background: item.featured
-          ? 'linear-gradient(165deg, rgba(212,188,142,0.1) 0%, var(--bg-1) 100%)'
+          ? 'linear-gradient(165deg, rgba(58, 110, 165, 0.1) 0%, var(--bg-1) 100%)'
           : item.type === 'text' 
             ? 'linear-gradient(165deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)' 
             : 'var(--bg-1)',
@@ -106,7 +106,7 @@ function SortableCard({ item, isOverlay = false, isPinned = false }: { item: Ben
         border: isOverlay
           ? '2px solid var(--brand)'
           : item.featured
-            ? '1px solid rgba(212, 188, 142, 0.4)'
+            ? '1px solid rgba(58, 110, 165, 0.4)'
             : '1px solid var(--border)',
       }}
       className={`bento-card-inner ${item.featured ? 'nucleus-card' : ''}`}
@@ -212,10 +212,10 @@ function MobileFeatureCard({ item }: { item: BentoItem }) {
     <div style={{
       borderRadius: 24,
       background: item.featured 
-        ? 'linear-gradient(165deg, rgba(212,188,142,0.1) 0%, var(--bg-1) 100%)' 
+        ? 'linear-gradient(165deg, rgba(58, 110, 165, 0.1) 0%, var(--bg-1) 100%)' 
         : 'var(--bg-1)',
       padding: '24px',
-      border: item.featured ? '1px solid rgba(212,188,142,0.3)' : '1px solid var(--border)',
+      border: item.featured ? '1px solid rgba(58, 110, 165, 0.3)' : '1px solid var(--border)',
       boxShadow: item.featured ? '0 20px 60px rgba(0,0,0,0.4)' : 'none',
       height: '100%',
       display: 'flex',
@@ -465,7 +465,7 @@ export default function AppShowcase() {
           transform: scale(1.08);
         }
         .nucleus-card:hover {
-          border-color: rgba(212, 188, 142, 0.6) !important;
+          border-color: rgba(58, 110, 165, 0.6) !important;
           box-shadow: 0 40px 120px rgba(0,0,0,0.8) !important;
         }
         .no-scrollbar::-webkit-scrollbar {

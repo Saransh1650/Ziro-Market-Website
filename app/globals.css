@@ -28,10 +28,10 @@
   --accent-glow: rgba(58,110,165,0.15);
   --accent-dim:  rgba(58,110,165,0.08);
 
-  --brand:       #d4bc8e;
-  --brand-light: #e4d1b1;
-  --brand-glow:  rgba(212, 188, 142, 0.15);
-  --brand-dim:   rgba(212, 188, 142, 0.08);
+  --brand:       #3a6ea5;
+  --brand-light: #5a8fcb;
+  --brand-glow:  rgba(58, 110, 165, 0.15);
+  --brand-dim:   rgba(58, 110, 165, 0.08);
 
   --green:       #1f9d55;
   --green-dim:   rgba(31,157,85,0.10);

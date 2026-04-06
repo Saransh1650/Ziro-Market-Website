@@ -104,7 +104,7 @@ export default function Waitlist() {
       vy: rand(-0.0003, -0.0008),
       size: rand(1, 2),
       opacity: rand(0.2, 0.5),
-      color: Math.random() > 0.6 ? '#10b981' : Math.random() > 0.5 ? '#d4bc8e' : '#f59e0b',
+      color: Math.random() > 0.6 ? '#10b981' : Math.random() > 0.5 ? '#3a6ea5' : '#4b7fb8',
     }));
 
     function drawGrid(ctx: CanvasRenderingContext2D, w: number, h: number) {
@@ -159,9 +159,9 @@ export default function Waitlist() {
     function drawLine(ctx: CanvasRenderingContext2D, w: number, h: number) {
       const points = linePoints.map((p) => ({ x: p.x * w, y: p.y * h * 0.4 }));
       ctx.save();
-      ctx.shadowColor = '#d4bc8e';
+      ctx.shadowColor = '#3a6ea5';
       ctx.shadowBlur = 15;
-      ctx.strokeStyle = 'rgba(212,188,142,0.2)';
+      ctx.strokeStyle = 'rgba(58, 110, 165, 0.2)';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       points.forEach((p, i) => (i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y)));
@@ -170,7 +170,7 @@ export default function Waitlist() {
 
       ctx.save();
       const grad = ctx.createLinearGradient(0, 0, 0, h * 0.5);
-      grad.addColorStop(0, 'rgba(212,188,142,0.08)');
+      grad.addColorStop(0, 'rgba(58, 110, 165, 0.08)');
       grad.addColorStop(1, 'transparent');
       ctx.fillStyle = grad;
       ctx.beginPath();
