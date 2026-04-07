@@ -396,39 +396,122 @@ export default function HeroNew() {
             </button>
           </div>
 
-          {/* App Screen Recording Video Container */}
+          {/* Premium Phone Mockup Container */}
           <div style={{
-            width: isMobile ?  '75%': '100%',
-            maxWidth: 'clamp(260px, 85vw, 540px)',
-            margin: '0 auto',
             position: 'relative',
-            borderRadius: isMobile ? '40px' : '75px',
-            overflow: 'hidden',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            width: isMobile ? '85%' : '100%',
+            maxWidth: isMobile ? '300px' : '480px',
+            margin: '0 auto',
             transform: (hasMounted && isMobile) ? 'none' : `scale(${1 - scrollProgress * 0.15}) translateY(calc(clamp(40px, 6vh, 80px) - ${scrollProgress * 220}px))`, 
-            transition: 'transform 0.1s linear, border-radius 0.1s linear',
+            transition: 'transform 0.1s linear',
             zIndex: 5
           }}>
-            <video 
-              src="/screen_recordings/untitled.webm"
-              autoPlay 
-              muted 
-              loop 
-              playsInline
-              style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block'
-              }}
-            />
-            {/* Subtle overlay to enhance premium feel */}
+            {/* Pulsating Glow Effect behind phone */}
             <div style={{
               position: 'absolute',
-              inset: 0,
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%)',
-              pointerEvents: 'none'
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '120%',
+              height: '80%',
+              background: 'radial-gradient(circle, rgba(66, 133, 244, 0.15) 0%, transparent 70%)',
+              filter: 'blur(40px)',
+              pointerEvents: 'none',
+              zIndex: -1
             }} />
+
+            {/* iPhone Mockup Frame */}
+            <div style={{
+              position: 'relative',
+              background: '#0a0a0a', // Space Black / Matte finish
+              borderRadius: isMobile ? '44px' : '64px',
+              padding: '10px',
+              boxShadow: '0 50px 100px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.05)',
+              border: '2px solid #2a2a2a', // Metallic bezel edge
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'visible'
+            }}>
+              {/* Dynamic Island */}
+              <div style={{
+                position: 'absolute',
+                top: '24px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '100px',
+                height: '30px',
+                background: '#000',
+                borderRadius: '15px',
+                zIndex: 10,
+                border: '1px solid rgba(255,255,255,0.05)'
+              }} />
+
+              {/* Volume Buttons (Left side) */}
+              <div style={{
+                position: 'absolute',
+                left: '-3px',
+                top: '100px',
+                width: '3px',
+                height: '40px',
+                background: '#1a1a1a',
+                borderRadius: '2px 0 0 2px'
+              }} />
+              <div style={{
+                position: 'absolute',
+                left: '-3px',
+                top: '150px',
+                width: '3px',
+                height: '40px',
+                background: '#1a1a1a',
+                borderRadius: '2px 0 0 2px'
+              }} />
+
+              {/* Power Button (Right side) */}
+              <div style={{
+                position: 'absolute',
+                right: '-3px',
+                top: '120px',
+                width: '3px',
+                height: '60px',
+                background: '#1a1a1a',
+                borderRadius: '0 2px 2px 0'
+              }} />
+
+              {/* Inner Screen Area */}
+              <div style={{
+                position: 'relative',
+                width: '100%',
+                borderRadius: isMobile ? '35px' : '54px',
+                overflow: 'hidden',
+                background: 'transparent', // Crucial for video transparency
+                boxShadow: 'inset 0 0 10px rgba(0,0,0,0.5)',
+                zIndex: 1
+              }}>
+                <video 
+                  src="/screen_recordings/untitled.webm"
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    mixBlendMode: 'normal',
+                    backgroundColor: 'transparent'
+                  }}
+                />
+                
+                {/* Screen Reflection Overlay */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(115deg, rgba(255,255,255,0.03) 0%, transparent 40%, rgba(255,255,255,0.01) 60%, transparent 100%)',
+                  pointerEvents: 'none',
+                  zIndex: 2
+                }} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
