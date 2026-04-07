@@ -19,6 +19,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ziromarket.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: "Ziro Market — India's High-Density Market Intelligence App",
   description: "Track NIFTY 50, SENSEX, sector heatmaps, top movers, volume surges and institutional signals in one powerful mobile app. Join the waitlist.",
   icons: {

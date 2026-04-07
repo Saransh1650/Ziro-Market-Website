@@ -25,6 +25,18 @@ const TabShape = ({ active }: { active: boolean }) => (
   </svg>
 );
 
+const RedditIcon = () => (
+  <svg 
+    width="16" 
+    height="16" 
+    viewBox="0 0 24 24" 
+    fill="#FF4500"
+    style={{ display: 'block' }}
+  >
+    <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.05l-2.097-.473-.467 2.207c.303.116.59.25.857.397.35-.39.859-.635 1.428-.635.944 0 1.709.765 1.709 1.71 0 .944-.765 1.709-1.71 1.709-.943 0-1.709-.765-1.709-1.709 0-.285.071-.552.196-.788a4.34 4.34 0 0 0-1.877-.55l.504-2.383 2.404.542zM12 18.25c-2.36 0-4.385-1.222-5.462-3.053a.363.363 0 1 1 .62-.37c.928 1.564 2.664 2.613 4.842 2.613 2.179 0 3.914-1.049 4.843-2.613a.363.363 0 1 1 .619.37c-1.076 1.832-3.103 3.053-5.462 3.053zm3.172-5.201a1.218 1.218 0 1 1 0-2.435 1.218 1.218 0 0 1 0 2.435zm-6.344 0a1.218 1.218 0 1 1 0-2.435 1.218 1.218 0 0 1 0 2.435z" />
+  </svg>
+);
+
 const Icons = {
   Back: () => (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
@@ -83,7 +95,7 @@ export default function HeroNew() {
     { title: 'NIFTY50 Index', active: true, icon: '📈' },
     { title: 'How -2% turned into 5% this...', active: false, icon: '𝕏' },
     { title: 'SAP BSE SENSEX/(^BSESN)', active: false, icon: '📊' },
-    { title: 'Indian Stocks advance after U...', active: false, icon: '📰' },
+    { title: 'Indian Stocks advance after U...', active: false, icon: <RedditIcon /> },
     { title: 'What happened to Reliance?', active: false, icon: '💡' },
   ];
 
