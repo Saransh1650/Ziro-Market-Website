@@ -54,8 +54,8 @@ function FloatingStock({ stock }: { stock: typeof floatingStocks[0] }) {
         ref={repelRef}
         className={`wl-ticker-float ${stock.className}`}
         style={{
-          boxShadow: `0 8px 30px rgba(0,0,0,0.4), inset 0 0 15px ${stock.isIndex ? 'var(--brand-glow)' : 'transparent'}`,
-          border: `1px solid ${stock.isIndex ? 'var(--brand-dim)' : 'var(--border)'}`,
+          boxShadow: `0 8px 30px rgba(0,0,0,0.4)`,
+          border: `1px solid ${stock.isIndex ? 'var(--brand)' : 'var(--border)'}`,
           color: stock.color,
         }}
       >
@@ -279,7 +279,7 @@ export default function Waitlist() {
           boxShadow: '0 40px 100px rgba(0,0,0,0.6)'
         }}>
           <div className="section-tag" style={{ justifyContent: 'center', marginBottom: '24px' }}>
-            <div className="badge badge-stable" style={{ background: 'var(--brand-dim)', color: 'var(--brand)', border: '1px solid var(--brand-glow)' }}>
+                      <div className="badge badge-stable" style={{ background: 'var(--brand-dim)', color: 'var(--brand)', border: '1px solid var(--brand)' }}>
               Reserved Access
             </div>
           </div>

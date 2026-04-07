@@ -7,38 +7,35 @@
 
 /* ─── TOKENS ─── */
 :root {
-  --bg:          #0b0c0e;
-  --bg-1:        #121418;
-  --bg-2:        #181a1e;
-  --bg-3:        #1e2024;
-  --bg-4:        #24262a;
-  --bg-5:        #2a2c30;
+  --bg:          #0d1117;
+  --bg-1:        #161b22;
+  --bg-2:        #1f242b;
+  --bg-3:        #272c33;
+  --bg-4:        #2d333b;
+  --bg-5:        #343b44;
 
-  --border:      rgba(255,255,255,0.05);
-  --border-2:    rgba(255,255,255,0.08);
-  --border-3:    rgba(255,255,255,0.12);
+  --border:      #30363d;
+  --border-2:    #3c444d;
+  --border-3:    #48515c;
 
-  --text-1:      #f2f2f2;
-  --text-2:      #9aa0a6;
-  --text-3:      #6b7280;
-  --text-4:      #4b5563;
+  --text-1:      #f0f3f6;
+  --text-2:      #a5abb3;
+  --text-3:      #6e7681;
+  --text-4:      #484f58;
 
-  --accent:      #3a6ea5;
-  --accent-2:    #4b7fb8;
-  --accent-glow: rgba(58,110,165,0.15);
-  --accent-dim:  rgba(58,110,165,0.08);
+  --accent:      #1d9bf0;
+  --accent-2:    #4dabf7;
+  --accent-dim:  rgba(29, 155, 240, 0.08);
 
-  --brand:       #3a6ea5;
-  --brand-light: #5a8fcb;
-  --brand-glow:  rgba(58, 110, 165, 0.15);
-  --brand-dim:   rgba(58, 110, 165, 0.08);
+  --brand:       #1d9bf0;
+  --brand-light: #4dabf7;
+  --brand-dim:   rgba(29, 155, 240, 0.08);
 
-  --green:       #1f9d55;
-  --green-dim:   rgba(31,157,85,0.10);
-  --green-glow:  rgba(31,157,85,0.20);
-  --red:         #d64545;
-  --red-dim:     rgba(214,69,69,0.10);
-  --amber:       #f59e0b;
+  --green:       #2ecc71;
+  --green-dim:   rgba(46, 204, 113, 0.10);
+  --red:         #ff4d4f;
+  --red-dim:     rgba(255, 77, 79, 0.10);
+  --amber:       #c5a059;
 
   --mono:        'JetBrains Mono', monospace;
   --sans:        'Inter', -apple-system, sans-serif;
@@ -302,8 +299,8 @@ p  { color: var(--text-2); line-height: 1.7; }
 
 /* Waitlist Index Chips */
 .wl-ticker-float-wrap.is-index .wl-ticker-float {
-  padding: 12px 18px; border-width: 1.5px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px var(--accent-glow);
+  border-radius: var(--r-2xl); border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 .wl-ticker-float-wrap.is-index .wl-ticker-symbol { font-size: 0.85rem; }
 .wl-ticker-float-wrap.is-index .wl-ticker-price { font-size: 0.72rem; }
@@ -585,7 +582,7 @@ p  { color: var(--text-2); line-height: 1.7; }
   border: 1px solid var(--border-2); 
   background: rgba(20,22,26,0.75);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.03) inset;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   display: flex; flex-direction: column; gap: 2px; align-items: flex-start;
   transition: none; /* Let JS handle the repel transform */
 }
@@ -610,12 +607,13 @@ p  { color: var(--text-2); line-height: 1.7; }
 }
 
 /* Central waitlist card */
-.wl-card-wrap { position: relative; z-index: 10; }
+.wl-card-wrap { position: relative; z-index: 10; margin-top: -120px; }
 .wl-card {
   background: rgba(20,20,24,0.82);
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border-2); border-radius: var(--r-2xl);
   padding: 72px 64px; text-align: center; position: relative; overflow: hidden;
+  box-shadow: 0 0 0 1px var(--border);
 }
 .wl-card::before {
   content: '';
@@ -624,8 +622,8 @@ p  { color: var(--text-2); line-height: 1.7; }
 }
 .wl-card::after {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent 10%, var(--brand-glow) 50%, transparent 90%);
+  position: absolute; bottom: 0; left: 0; right: 0; margin: 0 auto 100px;
+  background: var(--border);
 }
 .wl-title { font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 18px; }
 .wl-title em { font-style: normal; background: linear-gradient(135deg, var(--brand), var(--brand-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -656,7 +654,6 @@ p  { color: var(--text-2); line-height: 1.7; }
 .wl-toggle-btn:hover { border-color: var(--text-4); color: var(--text-2); }
 .wl-toggle-btn.active {
   background: var(--brand-dim); border-color: var(--brand); color: var(--brand);
-  box-shadow: 0 0 0 3px var(--brand-glow);
 }
 .wl-input {
   flex: 1; padding: 14px 18px;
@@ -667,12 +664,12 @@ p  { color: var(--text-2); line-height: 1.7; }
 .wl-input::placeholder { color: var(--text-4); }
 .wl-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
 .wl-btn {
-  width: 100%; padding: 14px 28px; background: var(--brand); color: var(--bg);
-  border: none; border-radius: var(--r); font-size: 0.95rem; font-weight: 700;
-  cursor: pointer; transition: all 0.22s;
-  box-shadow: 0 4px 16px var(--brand-glow);
+  background: var(--brand); color: #fff; font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  width: 100%; padding: 14px 28px; border: none; border-radius: var(--r); font-size: 0.95rem; cursor: pointer;
 }
-.wl-btn:hover { background: var(--brand-light); box-shadow: 0 8px 24px var(--brand-glow); }
+.wl-btn:hover { background: var(--brand-light); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 .wl-privacy { font-size: 0.72rem; color: var(--text-4); margin-top: 16px; }
 .wl-msg { margin-top: 14px; font-size: 0.82rem; min-height: 20px; font-family: var(--mono); }
 
