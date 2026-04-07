@@ -22,7 +22,9 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="container nav-inner">
         <Link href="#" className="nav-logo" aria-label="Ziro Market">
-          <div className="logo-icon">▲</div>
+          <div className="logo-icon">
+            <img src="/app_icon/ziro.png" alt="Ziro" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          </div>
           <span className="logo-text">
             ZIRO MARKET
           </span>

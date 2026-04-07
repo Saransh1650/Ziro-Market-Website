@@ -11,7 +11,9 @@ export default function Footer() {
         <div className="footer-layout" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '80px', marginBottom: '80px' }}>
           <div className="footer-brand">
             <div className="nav-logo" style={{ marginBottom: '24px' }}>
-              <div className="logo-icon">▲</div>
+              <div className="logo-icon">
+                <img src="/app_icon/ziro.png" alt="Ziro" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              </div>
               <span className="logo-text" style={{ fontSize: '1.1rem', fontWeight: 900 }}>
                 ZIRO MARKET
               </span>
