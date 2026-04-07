@@ -57,7 +57,6 @@ export default function FeatureSection() {
             flexDirection: 'column',
             alignItems: (isMobile || isTablet) ? 'center' : 'flex-start'
           }}>
-            <div className="badge badge-stable" style={{ marginBottom: '24px' }}>Community Intelligence</div>
             <h2 style={{
               fontSize: 'clamp(2.2rem, 6vw, 3.8rem)',
               fontWeight: 900,
@@ -68,7 +67,7 @@ export default function FeatureSection() {
             }}>
               Trade With
               <br />
-              Institutional Clarity,
+              Like Minded People,
               <br />
               Together.
             </h2>
@@ -79,7 +78,7 @@ export default function FeatureSection() {
               maxWidth: '520px',
               margin: '0'
             }}>
-              Keeping up with the market shouldn&apos;t feel like a chore. Ziro brings the conversation and the capital flows into one unified terminal.
+              Ziro brings the conversation and the market insights into one unified app. No more switching between apps to stay updated.
             </p>
           </div>
 

@@ -335,7 +335,6 @@ export default function AppShowcase() {
           textAlign: (hasMounted && isMobile) ? 'left' : 'center',
           marginBottom: (hasMounted && isMobile) ? 48 : 80,
         }}>
-          <div className="badge badge-stable" style={{ marginBottom: 20 }}>Intelligence Center</div>
           <h2 style={{
              fontSize: (hasMounted && isMobile) ? '2.4rem' : '4.2rem',
              lineHeight: 1.05,
@@ -439,19 +438,6 @@ export default function AppShowcase() {
                 {activeItem ? <SortableCard item={activeItem} isOverlay /> : null}
               </DragOverlay>
             </DndContext>
-            
-            <div style={{ textAlign: 'center', marginTop: 48 }}>
-              <button
-                onClick={() => {
-                  const otherItems = DEFAULT_BENTO_ITEMS.filter(it => it.id !== 'sc-6');
-                  setItems(otherItems);
-                  localStorage.removeItem(STORAGE_KEY);
-                }}
-                className="btn btn-ghost"
-              >
-                Reset Default Terminal Layout
-              </button>
-            </div>
           </div>
         )}
       </div>
@@ -464,7 +450,7 @@ export default function AppShowcase() {
           -webkit-text-fill-color: transparent;
         }
         .bento-card-inner:hover .bento-img {
-          transform: scale(1.08);
+          transform: none;
         }
         .nucleus-card:hover {
           border-color: rgba(58, 110, 165, 0.6) !important;

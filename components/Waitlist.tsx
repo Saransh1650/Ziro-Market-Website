@@ -305,16 +305,18 @@ export default function Waitlist() {
                 type="button" 
                 className={`wl-toggle-btn ${os === 'ios' ? 'active' : ''}`}
                 onClick={() => setOs('ios')}
-                style={{ borderRadius: '14px', fontSize: '0.9rem', fontWeight: 600, padding: '10px 0' }}
+                style={{ borderRadius: '14px', fontSize: '0.9rem', fontWeight: 600, padding: '10px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
               >
-                 iOS
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.96 0-1.76-.36-2.4-.36-.64 0-1.4.36-2.4.36-3.23 0-5.75-2.6-5.75-6.12 0-3.52 2.52-6.12 5.75-6.12.96 0 1.76.36 2.4.36.64 0 1.4-.36 2.4-.36 1.83 0 3.23.96 4.03 2.16-3.66 1.14-3.05 6.13.62 7.37-.62 1.48-2.12 3.09-4.65 3.09zM12 2c0 2.22 1.8 3.84 3.75 3.84V5.75c0-2.22-1.8-3.84-3.75-3.84z"/></svg>
+                iOS
               </button>
               <button 
                 type="button" 
                 className={`wl-toggle-btn ${os === 'android' ? 'active' : ''}`}
                 onClick={() => setOs('android')}
-                style={{ borderRadius: '14px', fontSize: '0.9rem', fontWeight: 600, padding: '10px 0' }}
+                style={{ borderRadius: '14px', fontSize: '0.9rem', fontWeight: 600, padding: '10px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
               >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414C17.523 15.1105 17.336 14.9235 17.1051 14.9235C16.8742 14.9235 16.6873 15.1105 16.6873 15.3414C16.6873 15.5723 16.8742 15.7593 17.1051 15.7593C17.336 15.7593 17.523 15.5723 17.523 15.3414ZM7.31267 15.3414C7.31267 15.1105 7.12571 14.9235 6.89482 14.9235C6.66392 14.9235 6.47696 15.1105 6.47696 15.3414C6.47696 15.5723 6.66392 15.7593 6.89482 15.7593C7.12571 15.7593 7.31267 15.5723 7.31267 15.3414ZM17.6534 11.7584L19.4678 8.61114C19.5546 8.46083 19.5029 8.26786 19.3526 8.18113C19.2023 8.0944 19.0093 8.14603 18.9226 8.29633L17.0754 11.4988C15.6565 10.8524 13.914 10.4906 12 10.4906C10.086 10.4906 8.34346 10.8524 6.92455 11.4988L5.07739 8.29633C4.99066 8.14603 4.79769 8.0944 4.64739 8.18113C4.49708 8.26786 4.44545 8.46083 4.53218 8.61114L6.34658 11.7584C3.8966 13.0645 2.2222 15.5898 2.02325 18.5721H21.9767C21.7778 15.5898 20.1034 13.0645 17.6534 11.7584Z"/></svg>
                 Android
               </button>
             </div>
@@ -338,7 +340,6 @@ export default function Waitlist() {
               {btnText}
             </button>
           </form>
-          <p className="wl-privacy" style={{ marginTop: '24px', color: 'var(--text-4)' }}>🔐 Exclusive entry. No spam. Institutional privacy.</p>
           <div className="wl-msg" style={{ color: messageColor, marginTop: '16px', fontWeight: 600 }}>
             {message}
           </div>
