@@ -99,7 +99,7 @@ export default function HeroNew() {
   };
 
   const tabs = [
-    { title: 'Ziro Market Terminal', active: true, icon: '📈' },
+    { title: 'Today\'s Market Terminal', active: true, icon: '📈' },
     { title: 'Best Stock Search - Google...', active: false, icon: <GoogleIcon /> },
     { title: 'reddit: the front page of t...', active: false, icon: <RedditIcon /> },
     { title: 'How -2% turned into 5% this...', active: false, icon: '𝕏' },
