@@ -441,19 +441,7 @@ export default function HeroNew() {
               flexDirection: 'column',
               overflow: 'visible'
             }}>
-              {/* Dynamic Island */}
-              <div style={{
-                position: 'absolute',
-                top: '24px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '100px',
-                height: '30px',
-                background: '#000',
-                borderRadius: '15px',
-                zIndex: 10,
-                border: '1px solid rgba(255,255,255,0.05)'
-              }} />
+
 
               {/* Volume Buttons (Left side) */}
               <div style={{
