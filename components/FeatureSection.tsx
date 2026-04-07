@@ -102,8 +102,9 @@ export default function FeatureSection() {
               alt="Ziro Market Chat Room"
               style={{
                 width: '100%',
-                height: '100%',
-                objectFit: 'cover'
+                height: '105%',
+                objectFit: 'cover',
+                objectPosition: 'center 38%'
               }}
             />
           </div>
