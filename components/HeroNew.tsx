@@ -249,7 +249,7 @@ export default function HeroNew() {
             display: 'flex',
             alignItems: 'center',
             height: (hasMounted && isMobile) ? '38px' : '44px',
-            padding: (hasMounted && isMobile) ? '0 0 0 8px' : '0 8px',
+            padding: (hasMounted && isMobile) ? '0 8px' : '0 8px',
             gap: '8px',
             background: '#2d2f34'
           }}>
