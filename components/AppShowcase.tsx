@@ -309,9 +309,7 @@ export default function AppShowcase() {
 
   const screenshots = DEFAULT_BENTO_ITEMS.filter(it => it.type === 'image');
 
-  const showcaseDesc = (hasMounted && isMobile) 
-    ? "A professional-grade terminal curated for your mobile discovery."
-    : "Drag cards to rearrange your custom market command center.";
+  const showcaseDesc = "";
 
   return (
     <section 

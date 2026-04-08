@@ -24,7 +24,17 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   title: "Ziro Market — India's High-Density Market Intelligence App",
-  description: "Track NIFTY 50, SENSEX, sector heatmaps, top movers, volume surges and institutional signals in one powerful mobile app. Join the waitlist.",
+  description: "Track NIFTY 50, SENSEX, sector heatmaps, top movers, volume surges and signals in one powerful mobile app. Join the waitlist for the refined trading terminal.",
+  keywords: ["Indian Stock Market", "NIFTY 50", "SENSEX", "NSE", "BSE", "Sector Heatmap", "Trading Signals", "Market Intelligence", "Ziro Market", "Institutional Signals", "Option Chain", "Volume Surges"],
+  authors: [{ name: "Ziro Market Team" }],
+  creator: "Ziro Market",
+  publisher: "Ziro Market",
+  applicationName: "Ziro Market",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -36,10 +46,32 @@ export const metadata: Metadata = {
     apple: '/favicon/apple-touch-icon.png',
   },
   openGraph: {
-    title: "Ziro Market — India's Market Intelligence App",
-    description: "Real-time NIFTY & SENSEX signals for the serious Indian investor.",
+    title: "Ziro Market — India's High-Density Market App",
+    description: "Real-time NIFTY & SENSEX signals for the serious Indian investor. Unified market at your fingertips.",
+    url: "https://ziromarket.com",
+    siteName: "Ziro Market",
+    images: [
+      {
+        url: "/app_icon/ziro.png",
+        width: 1024,
+        height: 1024,
+        alt: "Ziro Market Terminal",
+      },
+    ],
     type: "website",
     locale: 'en_IN',
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ziro Market — India's Stock Market App",
+    description: "Track NIFTY, SENSEX, and sector heatmaps in one powerful app. Decisions backed by data.",
+    images: ["/app_icon/ziro.png"],
+    creator: "@ziromarket",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Ziro Market",
   },
 };
 
@@ -47,6 +79,7 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
+  themeColor: "#0b0c0e",
 };
 
 export default function RootLayout({
