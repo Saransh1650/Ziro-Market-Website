@@ -29,10 +29,7 @@ export default function Navbar() {
             ZIRO MARKET
           </span>
         </Link>
-        <div className="nav-links">
-          <a href="#features" className="nav-link">Features</a>
-          <a href="#waitlist" className="nav-link">Get Started</a>
-        </div>
+
         <div className="nav-right">
           <a href="#waitlist" className="btn btn-primary btn-sm">
             Join Waitlist →

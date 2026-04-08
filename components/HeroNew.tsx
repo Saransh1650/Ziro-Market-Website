@@ -175,7 +175,7 @@ export default function HeroNew() {
                     maxWidth: (hasMounted && isMobile) ? '160px' : '200px',
                     display: 'flex',
                     alignItems: 'center',
-                    padding: '0 16px',
+                    padding: tab.active ? '0 24px' : '0 16px',
                     fontSize: '12px',
                     color: tab.active ? '#fff' : 'rgba(255, 255, 255, 0.7)',
                     cursor: 'default',

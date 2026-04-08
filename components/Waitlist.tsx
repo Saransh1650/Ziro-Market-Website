@@ -288,7 +288,7 @@ export default function Waitlist() {
             Ziro Market
           </h2>
           <p className="wl-subtitle" style={{ color: 'var(--text-3)', fontSize: '1.1rem', marginBottom: '48px' }}>
-            Elevate your perspective. Join the refined intelligence network for the modern market investor.
+            Join a platform that helps you understand the stock market better.
           </p>
 
           <form className="wl-form" onSubmit={handleSubmit} noValidate style={{ maxWidth: '520px', margin: '0 auto' }}>
