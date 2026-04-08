@@ -27,11 +27,12 @@ export const metadata: Metadata = {
   description: "Track NIFTY 50, SENSEX, sector heatmaps, top movers, volume surges and institutional signals in one powerful mobile app. Join the waitlist.",
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon/favicon.ico', sizes: 'any' },
+      { url: '/favicon/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
     ],
-    shortcut: '/favicon/favicon.ico',
+    shortcut: '/favicon.ico',
     apple: '/favicon/apple-touch-icon.png',
   },
   openGraph: {
