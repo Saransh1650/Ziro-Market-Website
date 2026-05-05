@@ -41,8 +41,8 @@ export default function Footer() {
             <h4 style={{ fontSize: '0.9rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-1)', marginBottom: '8px' }}>Support</h4>
             <a href="mailto:hello@ziromarket.com" className="footer-link">Contact Support</a>
             <a href="#" className="footer-link">Documentation</a>
-            <a href="#" className="footer-link">Privacy Policy</a>
-            <a href="#" className="footer-link">Terms of Service</a>
+            <a href="/privacy" className="footer-link">Privacy Policy</a>
+            <a href="/terms" className="footer-link">Terms of Service</a>
           </div>
         </div>
 

@@ -35,6 +35,10 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
