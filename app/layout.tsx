@@ -72,6 +72,10 @@ export const metadata: Metadata = {
     images: ["/app_icon/ziro.png"],
     creator: "@ziromarket",
   },
+  other: {
+    instagram: "@ziro.market",
+    instagramUrl: "https://www.instagram.com/ziro.market",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
