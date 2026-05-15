@@ -1,3 +1,5 @@
+'use client';
+
 const painItems = [
   { app: 'NSE website',        note: 'loads in 5 seconds' },
   { app: 'Moneycontrol',       note: '16 ads. you counted.' },
@@ -8,8 +10,6 @@ const painItems = [
   { app: 'That Twitter list',  note: 'person stopped posting' },
 ];
 
-const opacities = [1, 0.8, 0.9, 0.7, 0.85, 0.65, 0.6];
-
 export default function PainSection() {
   return (
     <section
@@ -17,6 +17,7 @@ export default function PainSection() {
       style={{
         background: 'var(--bg)',
         padding: 'clamp(80px, 12vh, 140px) clamp(24px, 5vw, 120px)',
+        borderTop: '1px solid var(--border)',
       }}
     >
       <p
@@ -36,41 +37,44 @@ export default function PainSection() {
       <h2
         data-reveal="up"
         style={{
-          fontSize: 'clamp(28px, 4vw, 48px)',
+          fontSize: 'clamp(28px, 3.5vw, 48px)',
           fontWeight: 800,
           color: 'var(--text-1)',
           letterSpacing: '-0.04em',
-          marginBottom: '64px',
-          maxWidth: '600px',
+          marginBottom: '56px',
+          maxWidth: '560px',
           lineHeight: 1.1,
         }}
       >
         The apps most investors<br />have open right now.
       </h2>
 
-      <div style={{ maxWidth: '860px' }}>
+      <div style={{ maxWidth: '760px' }}>
         {painItems.map((item, idx) => (
           <div
             key={idx}
             data-reveal="up"
-            data-delay={String(idx * 80)}
+            data-delay={String(idx * 70)}
+            className="pain-row"
             style={{
               display: 'flex',
-              alignItems: 'baseline',
+              alignItems: 'center',
               justifyContent: 'space-between',
-              padding: '22px 0',
+              padding: '20px 0',
               borderBottom: '1px solid var(--border)',
-              opacity: opacities[idx],
-              gap: '24px',
+              gap: '16px',
+              cursor: 'default',
+              transition: 'background 0.2s',
             }}
           >
             <span
               style={{
-                fontSize: 'clamp(22px, 3.5vw, 40px)',
+                fontSize: 'clamp(20px, 3vw, 36px)',
                 fontWeight: 700,
                 color: 'var(--text-1)',
                 letterSpacing: '-0.03em',
                 lineHeight: 1,
+                opacity: 1 - idx * 0.07,
               }}
             >
               {item.app}
@@ -78,18 +82,29 @@ export default function PainSection() {
             <span
               style={{
                 fontFamily: 'var(--mono)',
-                fontSize: '13px',
+                fontSize: '12px',
                 color: 'var(--text-4)',
                 fontStyle: 'italic',
                 flexShrink: 0,
                 textAlign: 'right',
+                paddingLeft: '12px',
+                borderLeft: '1px solid var(--border)',
               }}
             >
-              — {item.note}
+              {item.note}
             </span>
           </div>
         ))}
       </div>
+
+      <style>{`
+        .pain-row:hover span:first-child {
+          color: var(--text-3) !important;
+        }
+        .pain-row:hover span:last-child {
+          color: var(--text-3) !important;
+        }
+      `}</style>
     </section>
   );
 }
