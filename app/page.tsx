@@ -6,6 +6,7 @@ import Marquee from '@/components/Marquee';
 import PainSection from '@/components/PainSection';
 import Pivot from '@/components/Pivot';
 import FeatureSplit from '@/components/FeatureSplit';
+import ScreenshotMosaic from '@/components/ScreenshotMosaic';
 import Waitlist from '@/components/Waitlist';
 import Footer from '@/components/Footer';
 const features = [
@@ -46,7 +47,6 @@ const features = [
     reverse: true,
   },
 ];
-function ScreenshotMosaic() { return <section style={{ background: '#0a0a0a', padding: '60px 0', borderTop: '1px solid #222', color: '#fff' }}>Mosaic placeholder</section>; }
 function StatsStrip() { return <section style={{ background: '#111', padding: '40px 48px', color: '#fff', borderTop: '1px solid #222' }}>Stats placeholder</section>; }
 
 export default function Home() {
