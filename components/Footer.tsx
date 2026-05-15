@@ -14,7 +14,7 @@ export default function Footer() {
               <span className="logo-text">ZIRO MARKET</span>
             </div>
             <p>
-              India&apos;s high-density market intelligence terminal. Real signals. Zero noise.
+              India&apos;s market, in one place.
             </p>
             <div className="social-links">
               {/* X */}

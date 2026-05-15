@@ -162,9 +162,9 @@ export default function Waitlist() {
             <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--text-4)', textTransform: 'uppercase' }}>Reserved Access</span>
           </div>
 
-          <h2 className="wl-title">Ziro Market</h2>
+          <h2 className="wl-title">Stop juggling.<br />Start seeing.</h2>
           <p className="wl-subtitle">
-            Join a waitlist of investors who want a smarter way to track the Indian market.
+            Be the first to know when Ziro launches.
           </p>
 
           <form className="wl-form" onSubmit={handleSubmit} noValidate>

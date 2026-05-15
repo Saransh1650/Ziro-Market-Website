@@ -36,7 +36,7 @@ export default function Navbar() {
               fontSize: '0.8rem',
             }}
           >
-            Join Waitlist
+            Join the waitlist →
           </a>
         </div>
       </div>
