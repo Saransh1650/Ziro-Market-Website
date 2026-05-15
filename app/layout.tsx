@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import ScrollProgress from "@/components/ScrollProgress";
-import CursorGlow from "@/components/CursorGlow";
-import ScrollRevealObserver from "@/components/ScrollRevealObserver";
 import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
@@ -98,9 +95,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body style={{ visibility: 'visible', opacity: 1, position: 'relative' }}>
-        <ScrollRevealObserver />
-        <ScrollProgress />
-        <CursorGlow />
         {children}
         <Analytics />
       </body>
