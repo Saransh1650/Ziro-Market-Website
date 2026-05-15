@@ -364,3 +364,15 @@ footer {
   .container { padding: 0 16px; }
   .footer-layout { gap: 32px; }
 }
+
+/* ─── FEATURE SPLIT ─── */
+@media (max-width: 768px) {
+  .feature-split-inner {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+  .feature-split-inner > div:last-child img {
+    max-width: 240px !important;
+    transform: rotate(0deg) !important;
+  }
+}
