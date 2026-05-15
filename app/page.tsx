@@ -10,6 +10,7 @@ import ScreenshotMosaic from '@/components/ScreenshotMosaic';
 import StatsStrip from '@/components/StatsStrip';
 import Waitlist from '@/components/Waitlist';
 import Footer from '@/components/Footer';
+
 const features = [
   {
     num: '01',
