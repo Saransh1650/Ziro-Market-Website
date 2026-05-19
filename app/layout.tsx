@@ -17,25 +17,16 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ziromarket.com"),
-  alternates: {
-    canonical: "/",
-  },
-  title: "Ziro Market — India's High-Density Market Intelligence App",
-  description: "Track NIFTY 50, SENSEX, sector heatmaps, top movers, volume surges and signals in one powerful mobile app. Join the waitlist for the refined trading terminal.",
-  keywords: ["Indian Stock Market", "NIFTY 50", "SENSEX", "NSE", "BSE", "Sector Heatmap", "Trading Signals", "Market Intelligence", "Ziro Market", "Institutional Signals", "Option Chain", "Volume Surges"],
+  alternates: { canonical: "/" },
+  title: "Ziro Market — Indian markets, without the noise.",
+  description: "Live heatmaps, portfolio analytics, sector intelligence and watchlists — built for India, in one app that loads in under a second.",
+  keywords: ["Indian Stock Market", "NIFTY 50", "SENSEX", "NSE", "BSE", "MCX", "Sector Heatmap", "Portfolio Tracker", "Ziro Market"],
   authors: [{ name: "Ziro Market Team" }],
   creator: "Ziro Market",
   publisher: "Ziro Market",
   applicationName: "Ziro Market",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  formatDetection: { email: false, address: false, telephone: false },
+  robots: { index: true, follow: true },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -47,44 +38,29 @@ export const metadata: Metadata = {
     apple: '/favicon/apple-touch-icon.png',
   },
   openGraph: {
-    title: "Ziro Market — India's High-Density Market App",
-    description: "Real-time NIFTY & SENSEX signals for the serious Indian investor. Unified market at your fingertips.",
+    title: "Ziro Market — Indian markets, without the noise.",
+    description: "Live heatmaps, portfolio analytics, watchlists — built for India.",
     url: "https://ziromarket.com",
     siteName: "Ziro Market",
-    images: [
-      {
-        url: "/app_icon/ziro.png",
-        width: 1024,
-        height: 1024,
-        alt: "Ziro Market Terminal",
-      },
-    ],
+    images: [{ url: "/app_icon/ziro.png", width: 1024, height: 1024, alt: "Ziro Market" }],
     type: "website",
     locale: 'en_IN',
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ziro Market — India's Stock Market App",
-    description: "Track NIFTY, SENSEX, and sector heatmaps in one powerful app. Decisions backed by data.",
+    title: "Ziro Market — Indian markets, without the noise.",
+    description: "Built for India. No autoplay ads, no buried buttons, no USD defaults.",
     images: ["/app_icon/ziro.png"],
     creator: "@ziromarket",
   },
-  other: {
-    instagram: "@ziro.market",
-    instagramUrl: "https://www.instagram.com/ziro.market",
-  },
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "Ziro Market",
-  },
+  appleWebApp: { capable: true, statusBarStyle: "default", title: "Ziro Market" },
 };
 
 export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#0b0c0e",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -94,7 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body style={{ visibility: 'visible', opacity: 1, position: 'relative' }}>
+      <body>
         {children}
         <Analytics />
       </body>
