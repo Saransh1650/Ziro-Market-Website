@@ -3,7 +3,12 @@ export default function Footer() {
   return (
     <footer style={{ background: 'var(--bg-1)', borderTop: '1px solid var(--border-1)', padding: '72px 0 36px' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 56 }}>
+        <div className="footer-grid">
+          <style>{`
+            .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; }
+            @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+            @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+          `}</style>
           <div>
             <div style={{ fontSize: '0.78rem', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               ZIRO MARKET
