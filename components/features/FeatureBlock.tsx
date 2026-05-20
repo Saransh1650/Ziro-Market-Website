@@ -34,18 +34,20 @@ export default function FeatureBlock({
       <style>{`
         .fb-grid {
           display: grid;
-          grid-template-columns: 1.1fr 1fr;
-          gap: 64px;
+          grid-template-columns: 1fr auto;
+          gap: 80px;
           align-items: center;
           margin-top: 28px;
         }
-        .fb-grid[data-reverse="true"] { grid-template-columns: 1fr 1.1fr; }
+        .fb-viz { display: flex; justify-content: center; width: 300px; }
+        .fb-grid[data-reverse="true"] { grid-template-columns: auto 1fr; }
         .fb-grid[data-reverse="true"] .fb-copy { order: 2; }
         .fb-grid[data-reverse="true"] .fb-viz  { order: 1; }
         @media (max-width: 900px) {
           .fb-grid, .fb-grid[data-reverse="true"] { grid-template-columns: 1fr; gap: 40px; }
           .fb-grid[data-reverse="true"] .fb-copy,
           .fb-grid[data-reverse="true"] .fb-viz { order: initial; }
+          .fb-viz { width: 100%; max-width: 300px; margin: 0 auto; }
         }
       `}</style>
     </section>
