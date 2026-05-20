@@ -66,7 +66,14 @@ export default function PainSection() {
               key={p.app}
               role="tab"
               aria-selected={i === idx}
+              tabIndex={i === idx ? 0 : -1}
               onClick={() => setIdx(i)}
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowRight') { e.preventDefault(); setIdx((idx + 1) % PAINS.length); }
+                else if (e.key === 'ArrowLeft') { e.preventDefault(); setIdx((idx - 1 + PAINS.length) % PAINS.length); }
+                else if (e.key === 'Home') { e.preventDefault(); setIdx(0); }
+                else if (e.key === 'End') { e.preventDefault(); setIdx(PAINS.length - 1); }
+              }}
               style={{
                 flex: 1, padding: '18px 16px', background: i === idx ? 'var(--bg-1)' : 'transparent',
                 borderRight: i < PAINS.length - 1 ? '1px solid var(--border-1)' : 'none',
@@ -76,8 +83,8 @@ export default function PainSection() {
                 cursor: 'pointer', textAlign: 'left',
               }}
             >
-              <span style={{ color: 'var(--text-4)' }}>0{i + 1} </span>{p.app}
-              <span style={{ float: 'right', color: p.ratingColor }}>{p.ratingLabel}</span>
+              <span style={{ color: 'var(--text-4)' }}>{String(i + 1).padStart(2, '0')} </span>{p.app}
+              <span style={{ marginLeft: 'auto', color: p.ratingColor, float: 'right' }}>{p.ratingLabel}</span>
             </button>
           ))}
         </div>
