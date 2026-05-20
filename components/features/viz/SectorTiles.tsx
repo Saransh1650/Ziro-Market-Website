@@ -15,7 +15,7 @@ export default function SectorTiles() {
           <div className={`mono ${c.chg >= 0 ? 'up' : 'down'}`} style={{ fontSize: '0.78rem', fontWeight: 700, marginTop: 4 }}>
             {c.chg >= 0 ? '▲' : '▼'} {Math.abs(c.chg).toFixed(2)}%
           </div>
-          <div className="caption" style={{ marginTop: 10, color: 'var(--text-4)' }}>{c.unit}</div>
+          <div className="caption" style={{ marginTop: 10 }}>{c.unit}</div>
           <MiniSpark up={c.chg >= 0} />
         </div>
       ))}

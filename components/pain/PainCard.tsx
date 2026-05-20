@@ -83,7 +83,7 @@ function NseMock() {
       <div style={{ marginTop: 12, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 6 }}>
         {Array.from({ length: 9 }).map((_, i) => <Skeleton key={i} h={18} />)}
       </div>
-      <div style={{ marginTop: 20, color: 'var(--text-4)', fontFamily: 'var(--mono)', fontSize: '0.65rem' }}>
+      <div aria-hidden style={{ marginTop: 20, color: 'var(--text-3)', fontFamily: 'var(--mono)', fontSize: '0.65rem' }}>
         ⌛ loading market-data… (5.2s)
       </div>
     </div>

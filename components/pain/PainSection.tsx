@@ -83,7 +83,7 @@ export default function PainSection() {
                 cursor: 'pointer', textAlign: 'left',
               }}
             >
-              <span style={{ color: 'var(--text-4)' }}>{String(i + 1).padStart(2, '0')} </span>{p.app}
+              <span aria-hidden style={{ color: 'var(--text-3)' }}>{String(i + 1).padStart(2, '0')} </span>{p.app}
               <span style={{ marginLeft: 'auto', color: p.ratingColor, float: 'right' }}>{p.ratingLabel}</span>
             </button>
           ))}

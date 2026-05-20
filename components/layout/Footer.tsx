@@ -48,7 +48,7 @@ export default function Footer() {
 function FooterCol({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
     <div>
-      <h4 className="caption" style={{ marginBottom: 16, color: 'var(--text-4)' }}>{title}</h4>
+      <h4 className="caption" style={{ marginBottom: 16 }}>{title}</h4>
       {links.map((l) => (
         <a key={l.href} href={l.href}
            style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-3)', padding: '5px 0' }}>

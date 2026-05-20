@@ -13,9 +13,10 @@ const SECTORS: { name: string; pct: number }[] = [
 ];
 
 function tint(pct: number): string {
+  // Alpha capped at 0.50 to ensure --text-1 text stays above 4.5:1 contrast on all tiles
   const abs = Math.min(Math.abs(pct), 4) / 4;
-  if (pct >= 0) return `rgba(34, 197, 94, ${0.15 + abs * 0.65})`;
-  return `rgba(239, 68, 68, ${0.15 + abs * 0.65})`;
+  if (pct >= 0) return `rgba(34, 197, 94, ${0.10 + abs * 0.40})`;
+  return `rgba(239, 68, 68, ${0.10 + abs * 0.40})`;
 }
 
 export default function HeatmapViz() {
@@ -27,7 +28,7 @@ export default function HeatmapViz() {
           display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
         }}>
           <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: 0.5, color: 'var(--text-1)' }}>{s.name}</div>
-          <div className={`mono ${s.pct >= 0 ? 'up' : 'down'}`} style={{ fontSize: '0.78rem', fontWeight: 700 }}>
+          <div className="mono" style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-1)' }}>
             {s.pct >= 0 ? '+' : ''}{s.pct.toFixed(2)}%
           </div>
         </div>
