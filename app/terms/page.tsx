@@ -1,7 +1,8 @@
+import type { Metadata } from 'next';
 import Nav from '@/components/layout/Nav';
 import Footer from '@/components/layout/Footer';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Terms of Use | Ziro Market",
   description: "Terms of Use for Ziro Market - Our service agreement",
 };

@@ -1,7 +1,8 @@
+import type { Metadata } from 'next';
 import Nav from '@/components/layout/Nav';
 import Footer from '@/components/layout/Footer';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy | Ziro Market",
   description: "Privacy Policy for Ziro Market - Learn how we protect your data",
 };
