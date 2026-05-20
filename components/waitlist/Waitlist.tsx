@@ -1,5 +1,5 @@
 'use client';
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { isLaunched } from '@/lib/launchMode';
 import LaunchCTA from './LaunchCTA';
 
@@ -23,28 +23,6 @@ function WaitlistForm() {
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<{ position?: number; error?: string } | null>(null);
 
-  async function onSubmit(e: FormEvent) {
-    e.preventDefault();
-    setResult(null);
-    if (!platform) return setResult({ error: 'Pick a platform' });
-    if (!EMAIL_RE.test(email)) return setResult({ error: 'Enter a valid email' });
-    setSubmitting(true);
-    try {
-      const res = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, platform }),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = (await res.json()) as { position?: number };
-      setResult({ position: json.position });
-    } catch {
-      setResult({ error: 'Could not reach server · retry' });
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
   return (
     <section id="waitlist" className="section crosshair" style={{ background: 'var(--bg-1)' }}>
       <div className="container" style={{ maxWidth: 600, textAlign: 'center' }}>
@@ -56,7 +34,30 @@ function WaitlistForm() {
           Get the app the moment it ships. No spam, ever.
         </p>
 
-        <form onSubmit={onSubmit} style={{ marginTop: 36, display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            setResult(null);
+            if (!platform) return setResult({ error: 'Pick a platform' });
+            if (!EMAIL_RE.test(email)) return setResult({ error: 'Enter a valid email' });
+            setSubmitting(true);
+            try {
+              const res = await fetch('/api/waitlist', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, platform }),
+              });
+              if (!res.ok) throw new Error(`HTTP ${res.status}`);
+              const json = (await res.json()) as { position?: number };
+              setResult({ position: json.position });
+            } catch {
+              setResult({ error: 'Could not reach server · retry' });
+            } finally {
+              setSubmitting(false);
+            }
+          }}
+          style={{ marginTop: 36, display: 'flex', flexDirection: 'column', gap: 12 }}
+        >
           <div role="radiogroup" aria-label="Platform" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6, background: 'var(--bg-2)', padding: 5, borderRadius: 12 }}>
             <PlatformButton current={platform} value="ios"     onSelect={setPlatform} label="iOS" />
             <PlatformButton current={platform} value="android" onSelect={setPlatform} label="Android" />
