@@ -1,96 +1,104 @@
-'use client';
-import { useState } from 'react';
-import PainCard, { type Pain } from './PainCard';
-
-const PAINS: Pain[] = [
+const TRUTHS = [
   {
-    app: 'NSE WEBSITE',
-    ratingLabel: 'SLOW',
-    ratingColor: 'var(--negative)',
-    headlineTop: 'Built in 2003.',
-    headlineHighlight: 'Still feels like it.',
-    stat: { value: '5+', unit: 'seconds to load' },
-    bullets: [
-      'Data buried under multiple page reloads',
-      'No live prices — everything is delayed',
-      'Circuit breaker info? Three clicks deep.',
-    ],
-    fauxFrame: 'nse',
+    num: '01',
+    line: 'Your broker shows prices. Not what drove them.',
   },
   {
-    app: 'MONEYCONTROL',
-    ratingLabel: 'NOISY',
-    ratingColor: 'var(--amber)',
-    headlineTop: 'The ads load',
-    headlineHighlight: 'faster than the data.',
-    stat: { value: '16', unit: 'ads per page' },
-    bullets: [
-      'Autoplay video in the corner, always',
-      'The analysis you need is behind a paywall',
-      'Four different loading spinners at once',
-    ],
-    fauxFrame: 'mc',
+    num: '02',
+    line: 'News breaks. You check four apps to know if it matters to you.',
   },
   {
-    app: 'GOOGLE FINANCE',
-    ratingLabel: 'WRONG MARKET',
-    ratingColor: 'var(--gold)',
-    headlineTop: 'Defaults to Wall Street.',
-    headlineHighlight: 'You trade Dalal Street.',
-    stat: { value: 'USD', unit: 'default currency' },
-    bullets: [
-      'NIFTY data is buried, US stocks up front',
-      'No NSE intraday — only daily snapshots',
-      'No sector heatmap, no India-specific data',
-    ],
-    fauxFrame: 'gfin',
+    num: '03',
+    line: "Staying informed has become a second job — one you didn't apply for.",
   },
 ];
 
 export default function PainSection() {
-  const [idx, setIdx] = useState(0);
   return (
-    <section id="pain" className="section crosshair">
+    <section id="pain" className="section section-dark pain-section">
       <div className="container">
-        <div className="section-num">№ 04 / PAIN</div>
-        <h2 style={{ marginTop: 18, maxWidth: 720 }}>
-          What you <span className="amber">put up with</span> today.
-        </h2>
-        <p style={{ marginTop: 14, maxWidth: 620 }}>
-          Three of the most-visited finance products in India. None of them built for the way you actually use them.
-        </p>
+        <span className="section-num" style={{ opacity: 0.5 }}>№ 04 / The Problem</span>
 
-        <div role="tablist" aria-label="Pain points" style={{ marginTop: 40, display: 'flex', gap: 0, borderTop: '1px solid var(--border-1)', borderBottom: '1px solid var(--border-1)' }}>
-          {PAINS.map((p, i) => (
-            <button
-              key={p.app}
-              role="tab"
-              aria-selected={i === idx}
-              tabIndex={i === idx ? 0 : -1}
-              onClick={() => setIdx(i)}
-              onKeyDown={(e) => {
-                if (e.key === 'ArrowRight') { e.preventDefault(); setIdx((idx + 1) % PAINS.length); }
-                else if (e.key === 'ArrowLeft') { e.preventDefault(); setIdx((idx - 1 + PAINS.length) % PAINS.length); }
-                else if (e.key === 'Home') { e.preventDefault(); setIdx(0); }
-                else if (e.key === 'End') { e.preventDefault(); setIdx(PAINS.length - 1); }
-              }}
-              style={{
-                flex: 1, padding: '18px 16px', background: i === idx ? 'var(--bg-1)' : 'transparent',
-                borderRight: i < PAINS.length - 1 ? '1px solid var(--border-1)' : 'none',
-                borderTop: 'none', borderBottom: 'none', borderLeft: 'none',
-                color: i === idx ? 'var(--text-1)' : 'var(--text-3)',
-                fontFamily: 'var(--mono)', fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase',
-                cursor: 'pointer', textAlign: 'left',
-              }}
-            >
-              <span aria-hidden style={{ color: 'var(--text-3)' }}>{String(i + 1).padStart(2, '0')} </span>{p.app}
-              <span style={{ marginLeft: 'auto', color: p.ratingColor, float: 'right' }}>{p.ratingLabel}</span>
-            </button>
-          ))}
+        {/* Editorial statement — this IS the pain */}
+        <div className="pain-statement">
+          <p className="pain-big">
+            You have five apps open.
+          </p>
+          <p className="pain-big pain-big--light">
+            None of them answer
+            <br />the same question.
+          </p>
         </div>
 
-        <PainCard pain={PAINS[idx]} />
+        {/* Divider */}
+        <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.08)', margin: '56px 0 0' }} />
+
+        {/* Three sharp truths */}
+        <div className="pain-truths">
+          {TRUTHS.map((t) => (
+            <div key={t.num} className="pain-truth-row">
+              <span className="pain-truth-num">{t.num}</span>
+              <p className="pain-truth-line">{t.line}</p>
+            </div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        .pain-section { padding: 120px 0 100px; }
+
+        .pain-statement { margin-top: 40px; }
+        .pain-big {
+          font-family: var(--sans);
+          font-weight: 800;
+          font-size: clamp(2.6rem, 6vw, 5.2rem);
+          letter-spacing: -0.03em;
+          line-height: 1.0;
+          color: #ffffff;
+          margin: 0 0 4px;
+        }
+        .pain-big--light {
+          font-weight: 200;
+          color: rgba(255,255,255,0.45);
+        }
+
+        .pain-truths {
+          display: flex;
+          flex-direction: column;
+        }
+        .pain-truth-row {
+          display: grid;
+          grid-template-columns: 60px 1fr;
+          align-items: baseline;
+          gap: 0 28px;
+          padding: 30px 0;
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .pain-truth-row:last-child { border-bottom: none; }
+        .pain-truth-num {
+          font-family: var(--mono);
+          font-size: 0.58rem;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          color: rgba(255,255,255,0.18);
+          padding-top: 2px;
+        }
+        .pain-truth-line {
+          font-family: var(--sans);
+          font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+          font-weight: 600;
+          letter-spacing: -0.015em;
+          line-height: 1.35;
+          color: rgba(255,255,255,0.72);
+          margin: 0;
+        }
+
+        @media (max-width: 600px) {
+          .pain-section { padding: 80px 0 72px; }
+          .pain-truth-row { grid-template-columns: 1fr; gap: 6px; padding: 24px 0; }
+          .pain-truth-num { padding-top: 0; }
+        }
+      `}</style>
     </section>
   );
 }

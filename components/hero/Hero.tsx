@@ -1,6 +1,6 @@
 import { isLaunched } from '@/lib/launchMode';
 import LiveIndices from './LiveIndices';
-import PhoneMockup from './PhoneMockup';
+import Image from 'next/image';
 
 function AppleIcon() {
   return (
@@ -27,7 +27,7 @@ export default function Hero() {
           {/* ── Left column ── */}
           <div className="hero-text-col">
             <div className="section-num">
-              <span className="live-dot" aria-hidden /> LIVE · NSE · BSE · MCX · {launched ? '50,000+ users' : '2,847 on waitlist'}
+              <span className="live-dot" aria-hidden /> LIVE · NSE · BSE · MCX
             </div>
 
             {/* Mobile app badge */}
@@ -55,45 +55,42 @@ export default function Hero() {
               <a href={launched ? '#download' : '#waitlist'} className="btn btn-amber btn-lg">
                 {launched ? 'Download →' : 'Join the waitlist →'}
               </a>
-              <a href="#features" className="btn btn-ghost">See the app →</a>
+              <a href="#features" className="btn btn-ghost btn-lg">See the app →</a>
             </div>
 
             {/* Platform badges */}
             <div style={{ display: 'flex', gap: 10, marginTop: 22 }}>
-              <div style={{
-                display: 'flex', alignItems: 'center', gap: 7,
-                background: '#111', border: '1px solid var(--border-2)',
-                padding: '8px 14px', borderRadius: 8, cursor: 'default',
-              }}>
-                <AppleIcon />
-                <div>
-                  <div style={{ fontSize: '0.42rem', color: 'var(--text-3)', letterSpacing: '0.06em' }}>AVAILABLE ON</div>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-1)', lineHeight: 1.1 }}>App Store</div>
+              {[
+                { icon: <AppleIcon />, sup: 'AVAILABLE ON', label: 'App Store' },
+                { icon: <PlayIcon />,  sup: 'GET IT ON',    label: 'Google Play' },
+              ].map(b => (
+                <div key={b.label} style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  background: 'var(--bg-2)', border: '1px solid var(--border-1)',
+                  padding: '8px 14px', borderRadius: 8, cursor: 'default',
+                  color: 'var(--text-1)',
+                }}>
+                  {b.icon}
+                  <div>
+                    <div style={{ fontSize: '0.42rem', color: 'var(--text-3)', letterSpacing: '0.06em', fontFamily: 'var(--mono)' }}>{b.sup}</div>
+                    <div style={{ fontSize: '0.72rem', fontWeight: 700, lineHeight: 1.1 }}>{b.label}</div>
+                  </div>
                 </div>
-              </div>
-              <div style={{
-                display: 'flex', alignItems: 'center', gap: 7,
-                background: '#111', border: '1px solid var(--border-2)',
-                padding: '8px 14px', borderRadius: 8, cursor: 'default',
-              }}>
-                <PlayIcon />
-                <div>
-                  <div style={{ fontSize: '0.42rem', color: 'var(--text-3)', letterSpacing: '0.06em' }}>GET IT ON</div>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-1)', lineHeight: 1.1 }}>Google Play</div>
-                </div>
-              </div>
+              ))}
             </div>
 
-            {/* Stat */}
-            <div style={{ marginTop: 36, paddingTop: 24, borderTop: '1px solid var(--border-1)' }}>
-              <div style={{ fontSize: '2.6rem', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1 }}>&lt; 1s</div>
-              <div className="caption" style={{ marginTop: 6 }}>Cold-start to live data</div>
-            </div>
           </div>
 
           {/* ── Right column: phone mockup ── */}
           <div className="hero-phone-col" aria-hidden>
-            <PhoneMockup />
+            <Image
+              src="/screenshots/3D_mockup.png"
+              alt="App screens"
+              width={720}
+              height={480}
+              priority
+              style={{ width: '100%', height: 'auto' }}
+            />
           </div>
         </div>
       </div>
@@ -103,26 +100,31 @@ export default function Hero() {
       <style>{`
         .hero-layout {
           display: grid;
-          grid-template-columns: 1fr 280px;
-          gap: 60px;
+          grid-template-columns: 2fr 3fr;
+          gap: 24px;
           align-items: center;
-          padding-bottom: 64px;
+          padding-bottom: 72px;
         }
         .hero-phone-col {
           display: flex;
-          justify-content: center;
+          justify-content: flex-end;
           align-items: center;
-          padding: 24px 0 48px;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
+          .hero-layout { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 820px) {
           .hero-layout {
             grid-template-columns: 1fr;
             gap: 40px;
+            padding-bottom: 52px;
           }
           .hero-phone-col {
-            order: -1;
-            padding: 0 0 8px;
+            justify-content: center;
           }
+        }
+        @media (max-width: 480px) {
+          .hero-layout { padding-bottom: 40px; }
         }
       `}</style>
     </section>
