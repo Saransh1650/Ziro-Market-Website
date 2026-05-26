@@ -20,7 +20,7 @@ export default function FeatureBlock({
       <div aria-hidden className="fb-bg-num">{num}</div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <span className="section-num">№ {num} / {tag}</span>
+        <span className="section-num">{num} / {tag}</span>
         <div className="fb-grid" data-reverse={reverse ? 'true' : 'false'}>
           <div className="fb-copy">
             <h2 style={{ marginTop: 20 }}>

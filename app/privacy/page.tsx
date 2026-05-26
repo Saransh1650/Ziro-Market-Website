@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
     <>
       <Nav />
       <main className="container" style={{ paddingTop: 80, paddingBottom: 120 }}>
-        <span className="section-num">№ 01 / PRIVACY</span>
+        <span className="section-num">01 / PRIVACY</span>
         <h1 className="display" style={{ marginTop: 18, fontSize: 'clamp(2.4rem, 5vw, 4.2rem)' }}>
           Privacy <span className="amber">Policy</span>.
         </h1>

@@ -20,7 +20,7 @@ export default function WhoItsFor() {
   return (
     <section className="section section-dark crosshair">
       <div className="container">
-        <span className="section-num">№ WHO IT&apos;S FOR</span>
+        <span className="section-num">WHO IT&apos;S FOR</span>
         <h2 style={{ marginTop: 18, maxWidth: 640 }}>
           Built for whoever you are
           <em style={{ color: 'var(--amber)' }}> right now.</em>

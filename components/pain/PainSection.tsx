@@ -17,7 +17,7 @@ export default function PainSection() {
   return (
     <section id="pain" className="section section-dark pain-section">
       <div className="container">
-        <span className="section-num" style={{ opacity: 0.5 }}>№ 04 / The Problem</span>
+        <span className="section-num" style={{ opacity: 0.5 }}>04 / The Problem</span>
 
         {/* Editorial statement — this IS the pain */}
         <div className="pain-statement">

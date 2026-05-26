@@ -21,7 +21,7 @@ export default function TermsOfUse() {
     <>
       <Nav />
       <main className="container" style={{ paddingTop: 80, paddingBottom: 120 }}>
-        <span className="section-num">№ 02 / TERMS</span>
+        <span className="section-num">02 / TERMS</span>
         <h1 className="display" style={{ marginTop: 18, fontSize: 'clamp(2.4rem, 5vw, 4.2rem)' }}>
           Terms of <span className="amber">Service</span>.
         </h1>

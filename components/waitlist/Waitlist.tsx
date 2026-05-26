@@ -18,7 +18,7 @@ export default function Waitlist() {
 }
 
 function WaitlistForm() {
-  const [platform, setPlatform] = useState<Platform | null>(null);
+  const [platform, setPlatform] = useState<Platform | null>('ios');
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<{ position?: number; error?: string } | null>(null);
@@ -26,7 +26,7 @@ function WaitlistForm() {
   return (
     <section id="waitlist" className="section crosshair section-dark">
       <div className="container" style={{ maxWidth: 560, textAlign: 'center' }}>
-        <span className="section-num">№ 08 / Early Access</span>
+        <span className="section-num">08 / Early Access</span>
         <h2 style={{ marginTop: 18 }}>
           Be first.<br /><em style={{ color: 'var(--amber)' }}>Be ready.</em>
         </h2>

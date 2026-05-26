@@ -1,6 +1,6 @@
 const STATS = [
   { value: '32',    label: 'Sectors\ntracked',     unit: '' },
-  { value: '1.8M',  label: 'Ticks\nper day',        unit: '' },
+  { value: '5,000+', label: 'Stocks\ntracked daily',   unit: '' },
   { value: '100%',  label: 'Indian\nmarkets',        unit: '' },
   { value: '0',     label: 'Ads.\nEver.',            unit: '' },
 ];

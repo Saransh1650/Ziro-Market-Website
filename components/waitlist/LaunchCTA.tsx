@@ -1,7 +1,7 @@
 export default function LaunchCTA() {
   return (
     <div id="download" style={{ textAlign: 'center' }}>
-      <span className="section-num">№ 14 / DOWNLOAD</span>
+      <span className="section-num">14 / DOWNLOAD</span>
       <h2 style={{ marginTop: 18 }}>
         Get <span className="amber">Ziro Market</span>.
       </h2>

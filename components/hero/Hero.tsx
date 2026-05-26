@@ -26,28 +26,13 @@ export default function Hero() {
         <div className="hero-layout">
           {/* ── Left column ── */}
           <div className="hero-text-col">
-            <div className="section-num">
-              <span className="live-dot" aria-hidden /> LIVE · NSE · BSE · MCX
-            </div>
-
-            {/* Mobile app badge */}
-            <div style={{ display: 'flex', gap: 8, marginTop: 16, alignItems: 'center' }}>
-              <span style={{
-                fontSize: '0.6rem', fontFamily: 'var(--mono)', fontWeight: 700,
-                letterSpacing: '0.1em', color: 'var(--amber)',
-                background: 'var(--amber-dim)', border: '1px solid rgba(245,158,11,0.2)',
-                padding: '3px 8px', borderRadius: 4,
-              }}>MOBILE APP</span>
-              <span style={{ fontSize: '0.6rem', color: 'var(--text-3)', fontFamily: 'var(--mono)' }}>iOS + Android</span>
-            </div>
-
             <h1 className="display" style={{ marginTop: 20 }}>
-              Indian markets,<br />
-              <em>without the</em> <span className="amber">noise.</span>
+              The Indian market,<br />
+              <em>finally</em> <span className="amber">simplified.</span>
             </h1>
 
             <p style={{ marginTop: 20, maxWidth: 460, color: 'var(--text-2)', lineHeight: 1.65 }}>
-              Heatmaps, live indices, portfolio analytics — built for India, in one app that loads in under a second. No autoplay ads. No USD defaults.
+              Track what's moving, understand why it's moving, and make sense of it all — without spending your day glued to finance apps.
             </p>
 
             {/* CTAs */}

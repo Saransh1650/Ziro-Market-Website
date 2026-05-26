@@ -24,7 +24,7 @@ export default function Pivot() {
       }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-        <span className="section-num" style={{ justifyContent: 'center', marginBottom: 40 }}>№ 05 / Manifesto</span>
+        <span className="section-num" style={{ justifyContent: 'center', marginBottom: 40 }}>05 / Manifesto</span>
 
         {/* "But" — the pivot word */}
         <p style={{

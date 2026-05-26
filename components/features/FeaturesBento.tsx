@@ -107,7 +107,7 @@ export default function FeaturesBento() {
       <div className="container">
         {/* Header */}
         <div style={{ marginBottom: 52 }}>
-          <span className="section-num">№ What's inside</span>
+          <span className="section-num">What's inside</span>
           <h2 style={{ marginTop: 16, maxWidth: 560 }}>
             Seven features. <em style={{ color: "var(--amber)" }}>One app.</em>
           </h2>
