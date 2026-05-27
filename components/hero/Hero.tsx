@@ -94,6 +94,7 @@ export default function Hero() {
           display: flex;
           justify-content: flex-end;
           align-items: center;
+          overflow: hidden;
         }
         @media (max-width: 1100px) {
           .hero-layout { grid-template-columns: 1fr 1fr; }
@@ -101,15 +102,17 @@ export default function Hero() {
         @media (max-width: 820px) {
           .hero-layout {
             grid-template-columns: 1fr;
-            gap: 40px;
-            padding-bottom: 52px;
+            gap: 32px;
+            padding-bottom: 56px;
           }
           .hero-phone-col {
             justify-content: center;
+            max-height: 360px;
           }
         }
         @media (max-width: 480px) {
-          .hero-layout { padding-bottom: 40px; }
+          .hero-layout { padding-bottom: 48px; gap: 24px; }
+          .hero-phone-col { max-height: 280px; }
         }
       `}</style>
     </section>

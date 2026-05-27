@@ -102,7 +102,8 @@ export default function FeaturesBento() {
   return (
     <section
       id="features"
-      style={{ padding: "100px 0 120px", background: "#ffffff" }}
+      className="features-section"
+      style={{ background: "#ffffff" }}
     >
       <div className="container">
         {/* Header */}
@@ -333,28 +334,44 @@ export default function FeaturesBento() {
         .bc-dark .bc-desc { color: rgba(255,255,255,0.48); }
         .bc-light .bc-desc { color: rgba(11,59,46,0.52); }
 
+        /* ── Section padding — responsive ─────── */
+        .features-section { padding: 100px 0 120px; }
+        @media (max-width: 1024px) { .features-section { padding: 80px 0 96px; } }
+        @media (max-width: 700px)  { .features-section { padding: 64px 0 80px; } }
+        @media (max-width: 480px)  { .features-section { padding: 52px 0 64px; } }
+
         /* ── Responsive ────────────────────────── */
         @media (max-width: 1024px) {
           .bento-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
           .bc-wide { grid-column: span 2; }
-          .bc-tall { min-height: 460px; }
+          .bc-tall { min-height: 440px; }
+          .bc-phone-wrap { height: 300px; }
+          .bc-phone-inner { width: 168px; }
         }
         @media (max-width: 700px) {
           .bento-grid { grid-template-columns: 1fr; gap: 8px; }
           .bc-wide {
             grid-column: span 1;
             grid-template-columns: 1fr;
-            padding: 28px 24px 0;
+            padding: 28px 24px 28px;
             gap: 0;
+            min-height: unset;
           }
           .bc-wide-phone {
-            width: 185px;
-            height: 280px;
+            width: 170px;
+            height: 260px;
             overflow: hidden;
             align-self: center;
             margin: 16px auto 0;
           }
-          .bc-tall { min-height: 420px; }
+          .bc-tall { min-height: 380px; }
+          .bc-phone-wrap { height: 240px; }
+          .bc-phone-inner { width: 155px; }
+        }
+        @media (max-width: 480px) {
+          .bc-tall { min-height: 340px; }
+          .bc-phone-wrap { height: 210px; }
+          .bc-phone-inner { width: 138px; }
         }
       `}</style>
     </section>
