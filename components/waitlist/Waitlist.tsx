@@ -21,7 +21,7 @@ function WaitlistForm() {
   const [platform, setPlatform] = useState<Platform | null>('ios');
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [result, setResult] = useState<{ success?: boolean; error?: string } | null>(null);
+  const [result, setResult] = useState<{ success?: boolean; message?: string; error?: string } | null>(null);
 
   return (
     <section id="waitlist" className="section crosshair section-dark">
@@ -47,9 +47,10 @@ function WaitlistForm() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, os: platform, source: 'landing_page' }),
               });
-              if (res.status === 429) return setResult({ error: 'Too many attempts · try later' });
-              if (!res.ok) throw new Error(`HTTP ${res.status}`);
-              setResult({ success: true });
+              const json = (await res.json()) as { success: boolean; message?: string };
+              if (res.status === 429) return setResult({ error: json.message ?? 'Too many attempts · try later' });
+              if (!res.ok) return setResult({ error: json.message ?? 'Something went wrong · retry' });
+              setResult({ success: true, message: json.message });
             } catch {
               setResult({ error: 'Could not reach server · retry' });
             } finally {
@@ -107,7 +108,7 @@ function WaitlistForm() {
 
         <div style={{ marginTop: 16, fontFamily: 'var(--mono)', fontSize: '0.78rem', minHeight: 22, color: 'var(--text-3)' }}>
           {result?.success && (
-            <span style={{ color: 'var(--positive)' }}>You&apos;re on the list. Check your inbox!</span>
+            <span style={{ color: 'var(--positive)' }}>{result.message}</span>
           )}
           {result?.error && <span style={{ color: 'var(--negative)' }}>{result.error}</span>}
         </div>
