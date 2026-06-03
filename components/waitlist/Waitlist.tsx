@@ -21,7 +21,7 @@ function WaitlistForm() {
   const [platform, setPlatform] = useState<Platform | null>('ios');
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [result, setResult] = useState<{ position?: number; error?: string } | null>(null);
+  const [result, setResult] = useState<{ success?: boolean; error?: string } | null>(null);
 
   return (
     <section id="waitlist" className="section crosshair section-dark">
@@ -45,11 +45,11 @@ function WaitlistForm() {
               const res = await fetch('/api/waitlist', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, platform }),
+                body: JSON.stringify({ email, os: platform, source: 'landing_page' }),
               });
+              if (res.status === 429) return setResult({ error: 'Too many attempts · try later' });
               if (!res.ok) throw new Error(`HTTP ${res.status}`);
-              const json = (await res.json()) as { position?: number };
-              setResult({ position: json.position });
+              setResult({ success: true });
             } catch {
               setResult({ error: 'Could not reach server · retry' });
             } finally {
@@ -90,14 +90,24 @@ function WaitlistForm() {
             }}
           />
 
-          <button className="btn btn-primary btn-lg" type="submit" disabled={submitting}>
+          <button className="btn btn-primary btn-lg" type="submit" disabled={submitting}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+          >
+            {submitting && (
+              <span style={{
+                width: 14, height: 14, border: '2px solid currentColor',
+                borderTopColor: 'transparent', borderRadius: '50%',
+                display: 'inline-block', animation: 'spin 0.7s linear infinite',
+                flexShrink: 0,
+              }} />
+            )}
             {submitting ? 'Joining…' : 'Join the waitlist →'}
           </button>
         </form>
 
         <div style={{ marginTop: 16, fontFamily: 'var(--mono)', fontSize: '0.78rem', minHeight: 22, color: 'var(--text-3)' }}>
-          {result?.position !== undefined && (
-            <span style={{ color: 'var(--positive)' }}>You&apos;re #{result.position.toLocaleString('en-IN')} in line. 🎉</span>
+          {result?.success && (
+            <span style={{ color: 'var(--positive)' }}>You&apos;re on the list. Check your inbox!</span>
           )}
           {result?.error && <span style={{ color: 'var(--negative)' }}>{result.error}</span>}
         </div>

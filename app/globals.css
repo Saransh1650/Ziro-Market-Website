@@ -387,6 +387,9 @@ p {
   background: var(--positive);
   animation: pulse 2.4s ease infinite;
 }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 @keyframes pulse {
   0%,
   100% {
