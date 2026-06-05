@@ -17,7 +17,8 @@ describe('getAllPosts', () => {
   it('returns posts sorted newest first', () => {
     const posts = getAllPosts(FIXTURES_DIR)
     expect(posts.length).toBe(2)
-    expect(posts[0].date >= posts[1].date).toBe(true)
+    expect(posts[0].slug).toBe('sample-post')   // 2026-06-05
+    expect(posts[1].slug).toBe('second-post')    // 2026-06-04
   })
 
   it('parses frontmatter fields correctly', () => {

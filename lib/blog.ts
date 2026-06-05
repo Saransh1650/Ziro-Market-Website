@@ -32,6 +32,9 @@ export function getAllPosts(dir = BLOG_DIR): PostMeta[] {
     .map((slug) => {
       const raw = fs.readFileSync(path.join(dir, `${slug}.mdx`), 'utf8')
       const { data } = matter(raw)
+      if (!data.title || !data.date) {
+        throw new Error(`${slug}.mdx is missing required frontmatter (title, date)`)
+      }
       return { ...(data as Omit<PostMeta, 'slug'>), slug }
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -42,5 +45,8 @@ export function getPost(slug: string, dir = BLOG_DIR): Post | null {
   if (!fs.existsSync(filePath)) return null
   const raw = fs.readFileSync(filePath, 'utf8')
   const { data, content } = matter(raw)
+  if (!data.title || !data.date) {
+    throw new Error(`${slug}.mdx is missing required frontmatter (title, date)`)
+  }
   return { ...(data as Omit<PostMeta, 'slug'>), slug, content }
 }
