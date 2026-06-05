@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { isLaunched } from '@/lib/launchMode';
 
 const LINKS = [
-  { href: '#features', label: 'App' },
-  { href: '#pain',     label: 'Why' },
-  { href: '#pivot',    label: 'Manifesto' },
+  { href: '/#features',  label: 'App' },
+  { href: '/#pain',      label: 'Why' },
+  { href: '/#pivot',     label: 'Manifesto' },
+  { href: '/blog',       label: 'Learn' },
 ];
 
 export default function Nav() {
