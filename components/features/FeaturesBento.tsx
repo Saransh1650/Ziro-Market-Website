@@ -353,25 +353,24 @@ export default function FeaturesBento() {
           .bc-wide {
             grid-column: span 1;
             grid-template-columns: 1fr;
-            padding: 28px 24px 28px;
+            padding: 28px 24px 0;
             gap: 0;
             min-height: unset;
           }
           .bc-wide-phone {
-            width: 170px;
-            height: 260px;
-            overflow: hidden;
+            width: 200px;
+            height: auto;
+            overflow: visible;
             align-self: center;
-            margin: 16px auto 0;
+            margin: 24px auto 0;
           }
-          .bc-tall { min-height: 380px; }
-          .bc-phone-wrap { height: 240px; }
-          .bc-phone-inner { width: 155px; }
+          .bc-tall { min-height: unset; padding-bottom: 0; }
+          .bc-phone-wrap { height: auto; overflow: visible; margin-top: 24px; }
+          .bc-phone-inner { width: 170px; }
         }
         @media (max-width: 480px) {
-          .bc-tall { min-height: 340px; }
-          .bc-phone-wrap { height: 210px; }
-          .bc-phone-inner { width: 138px; }
+          .bc-wide-phone { width: 175px; }
+          .bc-phone-inner { width: 150px; }
         }
       `}</style>
     </section>
