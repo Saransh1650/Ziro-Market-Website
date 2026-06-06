@@ -5,7 +5,7 @@ import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import CategoryChip from '@/components/blog/CategoryChip'
 import SummaryBox from '@/components/blog/SummaryBox'
-import { getPost, getPostSlugs } from '@/lib/blog'
+import { getPost, getPostSlugs, getAllPosts } from '@/lib/blog'
 
 export async function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }))
@@ -49,6 +49,11 @@ export default async function PostPage({
   const { slug } = await params
   const post = getPost(slug)
   if (!post) notFound()
+
+  const allPosts = getAllPosts()
+  const sameCategory = allPosts.filter((p) => p.slug !== slug && p.category === post.category)
+  const others = allPosts.filter((p) => p.slug !== slug && p.category !== post.category)
+  const alsoRead = [...sameCategory, ...others].slice(0, 3)
 
   const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -137,10 +142,74 @@ export default async function PostPage({
 
           <SummaryBox summary={post.eli5} />
 
-          <div className="post-body" style={{ padding: '8px 0 64px' }}>
+          <div className="post-body" style={{ padding: '8px 0 48px' }}>
             <MDXRemote source={post.content} />
           </div>
         </div>
+
+        {alsoRead.length > 0 && (
+          <div
+            style={{
+              borderTop: '1px solid var(--border-1)',
+              padding: '48px 32px 64px',
+              maxWidth: 720,
+              margin: '0 auto',
+            }}
+          >
+            <div
+              style={{
+                fontFamily: 'var(--mono)',
+                fontSize: '0.6rem',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: 'var(--text-3)',
+                fontWeight: 600,
+                marginBottom: 24,
+              }}
+            >
+              Also Read
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 1, border: '1px solid var(--border-1)', borderRadius: 10, overflow: 'hidden' }}>
+              {alsoRead.map((related) => (
+                <a
+                  key={related.slug}
+                  href={`/blog/${related.slug}`}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '16px 20px',
+                    background: 'var(--bg-0)',
+                    borderBottom: '1px solid var(--border-1)',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    gap: 16,
+                    transition: 'background 0.15s',
+                  }}
+                  className="also-read-link"
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+                    <CategoryChip category={related.category} />
+                    <span
+                      style={{
+                        fontSize: '0.9rem',
+                        fontWeight: 600,
+                        color: 'var(--text-1)',
+                        letterSpacing: '-0.01em',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {related.title}
+                    </span>
+                  </div>
+                  <span style={{ color: 'var(--text-3)', fontSize: '0.85rem', flexShrink: 0 }}>→</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />
@@ -151,6 +220,8 @@ export default async function PostPage({
         .post-body h3 { font-size: 1.1rem; font-weight: 700; color: #0b3b2e; margin: 32px 0 12px; letter-spacing: -0.01em; }
         .post-body strong { color: #0b3b2e; font-weight: 600; }
         .post-body a { color: #9b6810; text-decoration: underline; text-underline-offset: 3px; }
+        .also-read-link:hover { background: rgba(11,59,46,0.04) !important; }
+        .also-read-link:last-child { border-bottom: none !important; }
       `}</style>
     </>
   )

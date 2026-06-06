@@ -71,9 +71,13 @@ export default function BlogListing({ posts }: { posts: PostMeta[] }) {
           marginBottom: 64,
         }}
       >
-        {visible.map((post, i) => (
-          <PostCard key={post.slug} post={post} featured={i === 0} />
+        {visible.map((post) => (
+          <PostCard key={post.slug} post={post} />
         ))}
+        {visible.length % 3 !== 0 &&
+          Array.from({ length: 3 - (visible.length % 3) }).map((_, i) => (
+            <div key={`empty-${i}`} style={{ background: 'var(--bg-0)' }} />
+          ))}
       </div>
 
       <style>{`

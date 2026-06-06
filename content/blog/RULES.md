@@ -76,9 +76,22 @@ Para 2: One specific 2020-2025 Indian market example that proves the analogy wor
 
 Both paragraphs: no em-dashes, no banned phrases.
 
-## Fact-checking
+## Fact-checking and timestamps
 
-Before writing, verify any number or date you plan to use. If you are uncertain, use an approximate ("around Rs 70", "between 2021 and 2022") rather than a confident wrong figure. Never fabricate data.
+Every specific number in a blog post must be verified before publishing. This is non-negotiable.
+
+**Before writing any number:** Search the internet for the actual current or historical figure. Do not rely on memory or estimates.
+
+**After verifying:** Add "as of [Month Year]" immediately after any specific price, ratio, yield, or market data figure. Examples:
+- "HDFC Bank traded at around 3x book value (as of early 2022)"
+- "Coal India paid Rs 26.5 per share in dividends (FY2024)"
+- "Reliance's market cap was around Rs 19 lakh crore (as of early 2024)"
+
+Numbers that still need a timestamp: any share price, market cap figure, P/B ratio, dividend yield, EPS, ROE percentage, debt amount, or index level.
+
+Historical event dates (IPO date, rate cut date, regulatory change date) do not need "as of" — they are fixed facts. Only current or recent data points need timestamps.
+
+If you cannot verify a number via search, describe it directionally instead: "HDFC Bank traded at a significant premium to book" rather than citing a specific ratio you cannot confirm.
 
 ## Quality check (run after writing, before committing)
 
