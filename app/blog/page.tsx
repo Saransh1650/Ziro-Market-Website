@@ -5,12 +5,12 @@ import BlogListing from "@/components/blog/BlogListing";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Learn — Ziro Market",
+  title: "Learn | Ziro Market",
   description:
     "Indian stock market concepts, events, and terminology explained in plain English.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Learn — Ziro Market",
+    title: "Learn | Ziro Market",
     description: "Indian stock market explained in plain English.",
     url: "https://ziromarket.com/blog",
   },

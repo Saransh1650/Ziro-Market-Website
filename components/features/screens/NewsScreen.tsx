@@ -1,6 +1,6 @@
 const NEWS = [
   {
-    headline: 'RBI holds repo rate at 6.5% — third consecutive pause',
+    headline: 'RBI holds repo rate at 6.5%: third consecutive pause',
     time: '2m ago',
     tags: ['BANK', 'HDFCBANK', 'KOTAKBANK'],
     sentiment: 'neutral',
@@ -14,7 +14,7 @@ const NEWS = [
     move: '+2.4%',
   },
   {
-    headline: 'Crude at $82 — Asia buying ahead of OPEC+ decision',
+    headline: 'Crude at $82: Asia buying ahead of OPEC+ decision',
     time: '34m ago',
     tags: ['ENERGY', 'ONGC', 'RELIANCE'],
     sentiment: 'mixed',

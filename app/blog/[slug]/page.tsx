@@ -20,7 +20,7 @@ export async function generateMetadata({
   const post = getPost(slug)
   if (!post) return {}
   return {
-    title: `${post.title} — Ziro Market`,
+    title: `${post.title} | Ziro Market`,
     description: post.excerpt,
     keywords: [...post.tags, 'Indian stock market', 'NSE', 'BSE', 'Ziro Market'],
     alternates: { canonical: `/blog/${slug}` },

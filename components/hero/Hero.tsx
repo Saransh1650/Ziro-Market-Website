@@ -32,7 +32,7 @@ export default function Hero() {
             </h1>
 
             <p style={{ marginTop: 20, maxWidth: 460, color: 'var(--text-2)', lineHeight: 1.65 }}>
-              Track what's moving, understand why it's moving, and make sense of it all — without spending your day glued to finance apps.
+              Track what's moving, understand why it's moving, and make sense of it all, without spending your day glued to finance apps.
             </p>
 
             {/* CTAs */}

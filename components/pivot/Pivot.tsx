@@ -36,7 +36,7 @@ export default function Pivot() {
           marginBottom: 12,
           lineHeight: 1,
         }}>
-          But—
+          But...
         </p>
 
         {/* Main headline — maximum impact */}

@@ -120,7 +120,7 @@ export default function FeaturesBento() {
               lineHeight: 1.7,
             }}
           >
-            Everything you need to stay on top of Indian markets — without
+            Everything you need to stay on top of Indian markets, without
             switching apps.
           </p>
         </div>
@@ -139,7 +139,7 @@ export default function FeaturesBento() {
                 One look.
               </>
             }
-            desc="See all of the Indian market in a single, colour-coded heatmap. Spot momentum in seconds — not minutes."
+            desc="See all of the Indian market in a single, colour-coded heatmap. Spot momentum in seconds, not minutes."
             imgSrc="/screenshots/1.png"
           />
           <TallCard
@@ -152,7 +152,7 @@ export default function FeaturesBento() {
                 to movement.
               </>
             }
-            desc="Headlines linked to the stocks and sectors they actually affect — not just a feed."
+            desc="Headlines linked to the stocks and sectors they actually affect. Not just a feed."
             imgSrc="/screenshots/2.png"
           />
 
@@ -168,7 +168,7 @@ export default function FeaturesBento() {
                 attention.
               </>
             }
-            desc="Top movers, volume surges, 52-week breakouts. Large, Mid, Small Cap — live."
+            desc="Top movers, volume surges, 52-week breakouts. Large, Mid, Small Cap. Live."
             imgSrc="/screenshots/3.png"
           />
           <TallCard
@@ -195,7 +195,7 @@ export default function FeaturesBento() {
                 Tracked properly.
               </>
             }
-            desc="Import from broker screenshot. Live P&L, health score, tax harvest, MF overlap — all of it."
+            desc="Import from broker screenshot. Live P&L, health score, tax harvest, MF overlap. All of it."
             imgSrc="/screenshots/5.png"
           />
 
@@ -211,7 +211,7 @@ export default function FeaturesBento() {
                 the risk.
               </>
             }
-            desc="Real market prices, virtual money. Track positions and P&L just like a real account — without putting capital on the line."
+            desc="Real market prices, virtual money. Track positions and P&L just like a real account, without putting capital on the line."
             imgSrc="/screenshots/6.png"
           />
           <TallCard
@@ -221,7 +221,7 @@ export default function FeaturesBento() {
               <>
                 Gold, Silver,
                 <br />
-                Crude — live.
+                Crude. Live.
               </>
             }
             desc="MCX futures alongside your equities. Historical charts. See how commodity swings connect to your sectors."

@@ -19,7 +19,7 @@ export default function SummaryBox({ summary }: { summary: string }) {
         }}
       >
         <span style={{ fontSize: '0.82rem', color: 'var(--text-2)', fontWeight: 500 }}>
-          <strong style={{ color: 'var(--text-1)' }}>Explain like I'm 5</strong> — the simplest possible explanation, no finance knowledge needed
+          <strong style={{ color: 'var(--text-1)' }}>Explain like I'm 5</strong>: the simplest possible explanation, no finance knowledge needed
         </span>
         <label style={{ position: 'relative', width: 42, height: 24, cursor: 'pointer', flexShrink: 0 }}>
           <input

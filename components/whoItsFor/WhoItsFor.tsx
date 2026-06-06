@@ -2,7 +2,7 @@ const PERSONAS = [
   {
     num: '01',
     headline: 'Between meetings',
-    desc: 'The investor who checks in during a busy afternoon and wants a quick, honest read of the market. No digging, no noise — just what matters right now.',
+    desc: 'The investor who checks in during a busy afternoon and wants a quick, honest read of the market. No digging, no noise. Just what matters right now.',
   },
   {
     num: '02',
@@ -57,7 +57,7 @@ export default function WhoItsFor() {
             color: 'rgba(255,255,255,0.50)',
             lineHeight: 1.6, maxWidth: 680,
           }}>
-            &ldquo;If you&apos;re curious about markets and want to stay informed without it becoming a second job — Ziro Market was built with you in mind.&rdquo;
+            &ldquo;If you&apos;re curious about markets and want to stay informed without it becoming a second job, Ziro Market was built with you in mind.&rdquo;
           </p>
         </div>
       </div>

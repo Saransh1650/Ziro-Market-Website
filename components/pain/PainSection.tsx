@@ -9,7 +9,7 @@ const TRUTHS = [
   },
   {
     num: '03',
-    line: "Staying informed has become a second job — one you didn't apply for.",
+    line: "Staying informed has become a second job. One you didn't apply for.",
   },
 ];
 
