@@ -6,6 +6,13 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 
 - PE Ratio (2026-06-05) → what-is-pe-ratio.mdx
 - FII vs DII (2026-06-05) → fii-vs-dii.mdx
+- Market Cap (2026-06-06) → what-is-market-cap.mdx
+- P/B Ratio (2026-06-06) → what-is-pb-ratio.mdx
+- Dividend Yield (2026-06-06) → what-is-dividend-yield.mdx
+- Book Value (2026-06-06) → what-is-book-value.mdx
+- EPS TTM (2026-06-06) → what-is-eps-ttm.mdx
+- ROE (2026-06-06) → what-is-roe.mdx
+- Debt to Equity (2026-06-06) → what-is-debt-to-equity.mdx
 
 ## Queue
 
