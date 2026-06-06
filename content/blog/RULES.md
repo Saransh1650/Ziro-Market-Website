@@ -13,6 +13,17 @@ Write like a smart friend explaining the market over coffee. Not a textbook. Not
 - Length: 700-900 words for the main body (not counting frontmatter).
 - One blank line between paragraphs.
 
+## Bold statements for scanners
+
+Every paragraph should have 1 bold phrase — the key insight a fast reader should catch. Bold the single most important sentence or clause in each paragraph. A person scanning the post should be able to read only the bold parts and still understand the core idea.
+
+Rules for what to bold:
+- Bold a complete thought, not a random word. "**PE is a starting point, not a conclusion.**" not just "**PE ratio**".
+- Pick the insight or fact that would make someone stop scrolling. Usually the most surprising or actionable line.
+- Never bold more than one sentence per paragraph. If everything is bold, nothing is.
+- Never bold section headings (they're already prominent).
+- The bold text should make sense on its own without surrounding context.
+
 ## Titles must be specific
 
 Bad: "Understanding PE Ratio"
