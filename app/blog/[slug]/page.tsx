@@ -188,7 +188,7 @@ export default async function PostPage({
                   }}
                   className="also-read-link"
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, flex: 1, minWidth: 0 }}>
                     <CategoryChip category={related.category} />
                     <span
                       style={{
@@ -196,9 +196,7 @@ export default async function PostPage({
                         fontWeight: 600,
                         color: 'var(--text-1)',
                         letterSpacing: '-0.01em',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap',
+                        lineHeight: 1.4,
                       }}
                     >
                       {related.title}
