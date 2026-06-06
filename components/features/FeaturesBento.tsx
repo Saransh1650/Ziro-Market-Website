@@ -297,6 +297,7 @@ export default function FeaturesBento() {
           height: 340px;
           align-items: flex-start;
           margin-top: 20px;
+          padding-top: 32px;
         }
         .bc-phone-inner {
           width: 185px;
