@@ -11,7 +11,7 @@ const posts: PostMeta[] = [
     date: '2026-06-05',
     category: 'terminology',
     excerpt: 'PE explained.',
-    summary5yr: '',
+    eli5: '',
     tags: [],
   },
   {
@@ -20,7 +20,7 @@ const posts: PostMeta[] = [
     date: '2026-06-04',
     category: 'event',
     excerpt: 'Rate cut explained.',
-    summary5yr: '',
+    eli5: '',
     tags: [],
   },
   {
@@ -29,7 +29,7 @@ const posts: PostMeta[] = [
     date: '2026-06-03',
     category: 'concept',
     excerpt: 'Circuit breakers explained.',
-    summary5yr: '',
+    eli5: '',
     tags: [],
   },
 ]

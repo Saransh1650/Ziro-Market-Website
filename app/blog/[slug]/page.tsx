@@ -22,11 +22,21 @@ export async function generateMetadata({
   return {
     title: `${post.title} — Ziro Market`,
     description: post.excerpt,
+    keywords: [...post.tags, 'Indian stock market', 'NSE', 'BSE', 'Ziro Market'],
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       url: `https://ziromarket.com/blog/${slug}`,
+      type: 'article',
+      publishedTime: post.date,
+      tags: post.tags,
+      siteName: 'Ziro Market',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
     },
   }
 }
@@ -46,8 +56,25 @@ export default async function PostPage({
     day: 'numeric',
   })
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: { '@type': 'Organization', name: 'Ziro Market', url: 'https://ziromarket.com' },
+    publisher: { '@type': 'Organization', name: 'Ziro Market', url: 'https://ziromarket.com' },
+    url: `https://ziromarket.com/blog/${slug}`,
+    mainEntityOfPage: `https://ziromarket.com/blog/${slug}`,
+    keywords: post.tags.join(', '),
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Nav />
       <main>
         <div
@@ -108,7 +135,7 @@ export default async function PostPage({
             </p>
           </div>
 
-          <SummaryBox summary={post.summary5yr} />
+          <SummaryBox summary={post.eli5} />
 
           <div className="post-body" style={{ padding: '8px 0 64px' }}>
             <MDXRemote source={post.content} />

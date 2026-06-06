@@ -27,7 +27,7 @@ describe('getAllPosts', () => {
     expect(pe.title).toBe('What is PE Ratio')
     expect(pe.category).toBe('terminology')
     expect(pe.excerpt).toMatch(/most quoted/)
-    expect(pe.summary5yr).toMatch(/Zomato/)
+    expect(pe.eli5).toMatch(/lemonade/)
     expect(pe.tags).toContain('valuation')
   })
 })

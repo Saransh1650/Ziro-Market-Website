@@ -12,7 +12,7 @@ export interface PostMeta {
   date: string
   category: Category
   excerpt: string
-  summary5yr: string
+  eli5: string
   tags: string[]
 }
 

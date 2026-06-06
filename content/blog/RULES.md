@@ -16,7 +16,7 @@ Write like a smart friend explaining the market over coffee. Not a textbook. Not
 ## Titles must be specific
 
 Bad: "Understanding PE Ratio"
-Good: "What is PE Ratio — and why did Zomato's 800x PE not scare everyone away?"
+Good: "What is PE ratio, and why did Zomato's 800x PE not scare everyone away?"
 
 The title should name a real company, a real event, or pose a real question that a curious person would actually search for.
 
@@ -55,13 +55,15 @@ If you are not confident about a specific number, use a range or describe it dir
 
 Use NSE/BSE examples. Cite Indian companies. Use INR amounts. Reference SEBI, RBI, MPC where relevant. Avoid defaulting to US market examples.
 
-## 5-year summary rules (the summary5yr frontmatter field)
+## ELI5 rules (the eli5 frontmatter field — "Explain Like I'm 5")
 
 Two paragraphs, written in the frontmatter as a YAML literal block (| operator).
 
-Para 1: Plain English explanation. Zero jargon. Could be understood by someone who has never invested and doesn't know what BSE stands for. No em-dashes, no banned phrases.
+Para 1: Explain the concept as if talking to a literal 5-year-old. Use a simple physical analogy — lemonade stand, school canteen, pocket money, toys. Zero finance jargon. If a 7-year-old could not follow it, rewrite it.
 
-Para 2: One specific 2020-2025 Indian market example. Must include: real company or event name, real number (price, percentage, crore amount), real time period. If the example needs two sentences, that's fine.
+Para 2: One specific 2020-2025 Indian market example that proves the analogy works in real life. Real company name, real number, real year. Still written simply — no jargon allowed here either.
+
+Both paragraphs: no em-dashes, no banned phrases.
 
 ## Fact-checking
 
@@ -74,7 +76,7 @@ Read the post back and check:
 2. Is every example anchored to a real company, real number, real date?
 3. Any em-dashes? Replace them.
 4. Any banned phrase from the list above? Remove it.
-5. Does summary5yr have two paragraphs — plain English + specific 2020-2025 example?
+5. Does eli5 have two paragraphs — simple analogy + specific 2020-2025 real example?
 6. Is the title specific (names a company, event, or real question)?
 7. Is word count between 700-900?
 8. No conclusion section?

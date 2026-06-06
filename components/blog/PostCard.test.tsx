@@ -9,7 +9,7 @@ const mockPost: PostMeta = {
   date: '2026-06-05',
   category: 'terminology',
   excerpt: 'The most quoted number explained.',
-  summary5yr: 'Some summary',
+  eli5: 'Some summary',
   tags: ['valuation'],
 }
 

@@ -19,8 +19,7 @@ export default function SummaryBox({ summary }: { summary: string }) {
         }}
       >
         <span style={{ fontSize: '0.82rem', color: 'var(--text-2)', fontWeight: 500 }}>
-          <strong style={{ color: 'var(--text-1)' }}>5-year view</strong> — plain English
-          summary with a recent Indian market example
+          <strong style={{ color: 'var(--text-1)' }}>Explain like I'm 5</strong> — the simplest possible explanation, no finance knowledge needed
         </span>
         <label style={{ position: 'relative', width: 42, height: 24, cursor: 'pointer', flexShrink: 0 }}>
           <input
@@ -28,7 +27,7 @@ export default function SummaryBox({ summary }: { summary: string }) {
             checked={open}
             onChange={(e) => setOpen(e.target.checked)}
             style={{ opacity: 0, width: 0, height: 0 }}
-            aria-label="Toggle 5-year view"
+            aria-label="Toggle simple explanation"
           />
           <span
             style={{
@@ -77,7 +76,7 @@ export default function SummaryBox({ summary }: { summary: string }) {
               marginBottom: 10,
             }}
           >
-            5-year view
+            Explain like I'm 5
           </div>
           <p style={{ fontSize: '0.9rem', lineHeight: 1.65, color: 'var(--text-1)', margin: 0 }}>
             {summary}
