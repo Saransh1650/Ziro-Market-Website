@@ -22,7 +22,7 @@ export default function Footer() {
             { label: 'Why Ziro',    href: '#pain' },
             { label: 'App features', href: '#features' },
             { label: 'Manifesto',   href: '#pivot' },
-            { label: 'Early Access', href: '#waitlist' },
+            { label: 'Play Store',  href: 'https://play.google.com/store/apps/details?id=com.ziro.market' },
           ]} />
           <FooterCol title="Company" links={[
             { label: 'Contact', href: 'mailto:hello@ziromarket.com' },

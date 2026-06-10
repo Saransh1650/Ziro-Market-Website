@@ -1,6 +1,7 @@
-import { isLaunched } from '@/lib/launchMode';
 import LiveIndices from './LiveIndices';
 import Image from 'next/image';
+
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.ziro.market';
 
 function AppleIcon() {
   return (
@@ -19,7 +20,6 @@ function PlayIcon() {
 }
 
 export default function Hero() {
-  const launched = isLaunched();
   return (
     <section id="top" className="crosshair" style={{ paddingTop: 72, paddingBottom: 0, borderBottom: '1px solid var(--border-1)' }}>
       <div className="container">
@@ -37,31 +37,38 @@ export default function Hero() {
 
             {/* CTAs */}
             <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap', alignItems: 'center' }}>
-              <a href={launched ? '#download' : '#waitlist'} className="btn btn-amber btn-lg">
-                {launched ? 'Download →' : 'Join the waitlist →'}
+              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-amber btn-lg">
+                Download →
               </a>
               <a href="#features" className="btn btn-ghost btn-lg">See the app →</a>
             </div>
 
             {/* Platform badges */}
             <div style={{ display: 'flex', gap: 10, marginTop: 22 }}>
-              {[
-                { icon: <AppleIcon />, sup: 'AVAILABLE ON', label: 'App Store' },
-                { icon: <PlayIcon />,  sup: 'GET IT ON',    label: 'Google Play' },
-              ].map(b => (
-                <div key={b.label} style={{
-                  display: 'flex', alignItems: 'center', gap: 8,
-                  background: 'var(--bg-2)', border: '1px solid var(--border-1)',
-                  padding: '8px 14px', borderRadius: 8, cursor: 'default',
-                  color: 'var(--text-1)',
-                }}>
-                  {b.icon}
-                  <div>
-                    <div style={{ fontSize: '0.42rem', color: 'var(--text-3)', letterSpacing: '0.06em', fontFamily: 'var(--mono)' }}>{b.sup}</div>
-                    <div style={{ fontSize: '0.72rem', fontWeight: 700, lineHeight: 1.1 }}>{b.label}</div>
-                  </div>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                background: 'var(--bg-2)', border: '1px solid var(--border-1)',
+                padding: '8px 14px', borderRadius: 8, cursor: 'default',
+                color: 'var(--text-1)',
+              }}>
+                <AppleIcon />
+                <div>
+                  <div style={{ fontSize: '0.42rem', color: 'var(--text-3)', letterSpacing: '0.06em', fontFamily: 'var(--mono)' }}>AVAILABLE ON</div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 700, lineHeight: 1.1 }}>App Store</div>
                 </div>
-              ))}
+              </div>
+              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                background: 'var(--bg-2)', border: '1px solid var(--border-1)',
+                padding: '8px 14px', borderRadius: 8, cursor: 'pointer',
+                color: 'var(--text-1)', textDecoration: 'none',
+              }}>
+                <PlayIcon />
+                <div>
+                  <div style={{ fontSize: '0.42rem', color: 'var(--text-3)', letterSpacing: '0.06em', fontFamily: 'var(--mono)' }}>GET IT ON</div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 700, lineHeight: 1.1 }}>Google Play</div>
+                </div>
+              </a>
             </div>
 
           </div>

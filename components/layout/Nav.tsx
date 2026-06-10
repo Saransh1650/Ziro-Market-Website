@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { isLaunched } from '@/lib/launchMode';
+
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.ziro.market';
 
 const LINKS = [
   { href: '/#features',  label: 'App' },
@@ -12,7 +13,6 @@ const LINKS = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const launched = isLaunched();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -68,11 +68,13 @@ export default function Nav() {
             >{l.label}</a>
           ))}
           <a
-            href={launched ? '#download' : '#waitlist'}
+            href={PLAY_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn btn-primary btn-sm nav-cta-md"
-            aria-label={launched ? 'Download Ziro Market' : 'Get early access to Ziro Market'}
+            aria-label="Download Ziro Market on Google Play"
           >
-            {launched ? 'Download' : 'Early Access'}
+            Download
           </a>
           <button
             type="button"
@@ -123,12 +125,14 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href={launched ? '#download' : '#waitlist'}
+            href={PLAY_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
             className="btn btn-primary"
             style={{ marginTop: 24, alignSelf: 'flex-start' }}
           >
-            {launched ? 'Download →' : 'Get Early Access →'}
+            Download →
           </a>
         </div>
       )}

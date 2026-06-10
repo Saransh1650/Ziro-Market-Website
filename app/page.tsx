@@ -8,7 +8,6 @@ import FeaturesBento from '@/components/features/FeaturesBento';
 import StatsStrip from '@/components/stats/StatsStrip';
 import BuiltForIndia from '@/components/builtFor/BuiltForIndia';
 import WhoItsFor from '@/components/whoItsFor/WhoItsFor';
-import Waitlist from '@/components/waitlist/Waitlist';
 
 export default function Home() {
   return (
@@ -22,7 +21,6 @@ export default function Home() {
       <StatsStrip />
       <BuiltForIndia />
       <WhoItsFor />
-      <Waitlist />
       <Footer />
     </>
   );

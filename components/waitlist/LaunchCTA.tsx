@@ -10,7 +10,7 @@ export default function LaunchCTA() {
       </p>
       <div style={{ marginTop: 32, display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
         <a href="https://apps.apple.com/in/app/ziromarket" className="btn btn-primary btn-lg">App Store →</a>
-        <a href="https://play.google.com/store/apps/details?id=com.ziromarket" className="btn btn-ghost btn-lg">Play Store →</a>
+        <a href="https://play.google.com/store/apps/details?id=com.ziro.market" className="btn btn-ghost btn-lg">Play Store →</a>
       </div>
       <p className="caption" style={{ marginTop: 24 }}>Already have it? <a href="#" style={{ color: 'var(--text-1)', textDecoration: 'underline' }}>Sign in</a></p>
     </div>
