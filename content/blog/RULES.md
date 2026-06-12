@@ -100,7 +100,67 @@ Read the post back and check:
 2. Is every example anchored to a real company, real number, real date?
 3. Any em-dashes? Replace them.
 4. Any banned phrase from the list above? Remove it.
-5. Does eli5 have two paragraphs — simple analogy + specific 2020-2025 real example?
-6. Is the title specific (names a company, event, or real question)?
-7. Is word count between 700-900?
+5. Does eli5 have two paragraphs — simple analogy + specific real example?
+6. Is the title specific (names a company, event, or real question) and under 60 characters?
+7. Is word count between 700-900 for explainers, 900-1100 for news articles?
 8. No conclusion section?
+9. (News only) Are all 5 FAQ questions answered with verified facts?
+
+---
+
+## News Article Format
+
+Use this format for event-driven posts: earnings reports, IPOs, RBI/SEBI decisions, FPI flows, sector developments, company-specific news.
+
+### Additional frontmatter fields for news articles
+
+```yaml
+type: news
+primaryKeyword: "exact phrase people search for"
+secondaryKeywords: ["keyword 2", "keyword 3", "keyword 4", "keyword 5"]
+```
+
+### Section structure for news articles
+
+Write each section as prose. No bullet lists anywhere in the body. The headings below are H2s.
+
+**Intro (no heading):** 2-3 paragraphs. What happened, why it matters, what investors want to know. Hook the reader in the first sentence with the most interesting fact.
+
+**## What Happened:** The event in detail. Figures, dates, quotes from official sources, sequence of events. Keep it factual.
+
+**## Why This Matters for Investors:** Impact on the company, sector, or broader market. Connect the news to what it means for portfolios or the economy.
+
+**## Market Reaction:** Stock price movement, index movement, volume, FPI/DII activity, analyst comment if available. If market has not yet reacted at time of writing, say so and explain what to watch.
+
+**## What Investors Should Watch:** 3-5 paragraphs, one per key point. Each paragraph bolds the key insight. No subheadings within this section.
+
+**## Risks to Monitor:** Uncertainties, tail risks, factors that could change the outcome. Prose only.
+
+**[Ending thought, no heading]:** One final paragraph. Not a summary. A forward-looking observation or framing that gives the reader something to think about. No "In conclusion."
+
+**## Frequently Asked Questions:** 5 questions. Write them as H3s. Answer each in 2-4 sentences. Mirror these in the frontmatter faq[] array for SEO JSON-LD.
+
+### News article title rules
+
+- Under 60 characters including spaces.
+- Name the real event, real figure, real company.
+- Good: "RBI holds repo rate at 5.25%, cuts FY27 GDP forecast"
+- Bad: "What the RBI's latest decision means for you"
+
+### News article eli5
+
+Para 1: Plain-English summary of what happened. No jargon. One or two sentences a 10-year-old could follow.
+
+Para 2: Why it affects someone's daily life or savings. Concrete and specific.
+
+### News article excerpt
+
+One punchy sentence under 25 words. State the news and the impact. Do not repeat the title.
+
+### Word count for news articles
+
+900-1100 words for the body. More sections need more words, but do not pad.
+
+### No investment advice rule
+
+News articles must not recommend buying, selling, or holding any stock, fund, or asset. State facts, explain significance, describe risks. Never say "investors should buy" or "this is a good time to invest."

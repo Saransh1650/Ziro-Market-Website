@@ -5,6 +5,7 @@ import matter from 'gray-matter'
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
 
 export type Category = 'terminology' | 'event' | 'concept'
+export type PostType = 'explainer' | 'news'
 
 export interface FaqItem {
   q: string
@@ -16,9 +17,12 @@ export interface PostMeta {
   slug: string
   date: string
   category: Category
+  type?: PostType
   excerpt: string
   eli5: string
   tags: string[]
+  primaryKeyword?: string
+  secondaryKeywords?: string[]
   faq?: FaqItem[]
 }
 
