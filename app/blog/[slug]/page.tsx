@@ -5,6 +5,7 @@ import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import CategoryChip from '@/components/blog/CategoryChip'
 import SummaryBox from '@/components/blog/SummaryBox'
+import DownloadCTA from '@/components/blog/DownloadCTA'
 import { getPost, getPostSlugs, getAllPosts } from '@/lib/blog'
 
 export async function generateStaticParams() {
@@ -250,6 +251,8 @@ export default async function PostPage({
             </div>
           </div>
         )}
+
+        <DownloadCTA />
       </main>
 
       <Footer />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import BlogListing from "@/components/blog/BlogListing";
+import DownloadCTA from "@/components/blog/DownloadCTA";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -76,6 +77,8 @@ export default function BlogPage() {
             )}
           </div>
         </section>
+
+        <DownloadCTA />
       </main>
       <Footer />
     </>
