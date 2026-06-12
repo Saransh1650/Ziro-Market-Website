@@ -61,25 +61,67 @@ export default async function PostPage({
     day: 'numeric',
   })
 
-  const jsonLd = {
+  const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    dateModified: post.date,
+    image: {
+      '@type': 'ImageObject',
+      url: 'https://ziromarket.com/opengraph-image',
+      width: 1200,
+      height: 630,
+    },
     author: { '@type': 'Organization', name: 'Ziro Market', url: 'https://ziromarket.com' },
-    publisher: { '@type': 'Organization', name: 'Ziro Market', url: 'https://ziromarket.com' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Ziro Market',
+      url: 'https://ziromarket.com',
+      logo: { '@type': 'ImageObject', url: 'https://ziromarket.com/favicon/android-chrome-192x192.png' },
+    },
     url: `https://ziromarket.com/blog/${slug}`,
     mainEntityOfPage: `https://ziromarket.com/blog/${slug}`,
     keywords: post.tags.join(', '),
   }
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ziromarket.com' },
+      { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://ziromarket.com/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://ziromarket.com/blog/${slug}` },
+    ],
+  }
+
+  const faqJsonLd = post.faq && post.faq.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: post.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  } : null
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <Nav />
       <main>
         <div

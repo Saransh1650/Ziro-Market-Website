@@ -6,6 +6,11 @@ const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
 
 export type Category = 'terminology' | 'event' | 'concept'
 
+export interface FaqItem {
+  q: string
+  a: string
+}
+
 export interface PostMeta {
   title: string
   slug: string
@@ -14,6 +19,7 @@ export interface PostMeta {
   excerpt: string
   eli5: string
   tags: string[]
+  faq?: FaqItem[]
 }
 
 export interface Post extends PostMeta {
