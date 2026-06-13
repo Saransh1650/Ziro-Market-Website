@@ -18,7 +18,7 @@ function isAllowedHost(host: string): boolean {
   return false;
 }
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const host = (req.headers.get("host") ?? "").toLowerCase().split(",")[0].trim();
   if (!host || isAllowedHost(host)) return NextResponse.next();
 
