@@ -8,18 +8,28 @@ const CANONICAL_HOST = "ziromarket.com";
 // unknown domain pointed at this deployment — gets redirected to the main site.
 const ALLOWED_HOSTS = new Set([CANONICAL_HOST, `www.${CANONICAL_HOST}`]);
 
+// `host` is already normalized (lowercased, port + trailing dot stripped).
 function isAllowedHost(host: string): boolean {
   if (ALLOWED_HOSTS.has(host)) return true;
   // Local development
-  if (host === "localhost" || host.startsWith("localhost:")) return true;
-  if (host === "127.0.0.1" || host.startsWith("127.0.0.1:")) return true;
-  // Vercel preview / deployment URLs
+  if (host === "localhost" || host === "127.0.0.1") return true;
+  // Vercel preview / deployment URLs (suffix match is safe: attacker-owned
+  // "...fakevercel.app" does not end in the literal ".vercel.app").
   if (host.endsWith(".vercel.app")) return true;
   return false;
 }
 
+function normalizeHost(raw: string): string {
+  return raw
+    .toLowerCase()
+    .split(",")[0] // first value if Host header is comma-joined
+    .trim()
+    .replace(/\.$/, "") // strip FQDN trailing dot: "ziromarket.com." -> "ziromarket.com"
+    .split(":")[0]; // strip port
+}
+
 export function proxy(req: NextRequest) {
-  const host = (req.headers.get("host") ?? "").toLowerCase().split(",")[0].trim();
+  const host = normalizeHost(req.headers.get("host") ?? "");
   if (!host || isAllowedHost(host)) return NextResponse.next();
 
   // Non-canonical host: send to the homepage of the main site. We drop the
