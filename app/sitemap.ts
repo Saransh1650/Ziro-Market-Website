@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `https://ziromarket.com/blog/${post.slug}`,
     lastModified: new Date(post.date),
-    changeFrequency: 'monthly',
+    changeFrequency: 'daily',
     priority: 0.7,
   }))
 
@@ -25,5 +25,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...postEntries,
+    {
+      url: 'https://ziromarket.com/privacy',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: 'https://ziromarket.com/terms',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
   ]
 }

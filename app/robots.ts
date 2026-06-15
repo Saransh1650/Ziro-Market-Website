@@ -7,6 +7,9 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://ziromarket.com/sitemap.xml',
+    sitemap: [
+      'https://ziromarket.com/sitemap.xml',
+      'https://ziromarket.com/blog/sitemap.xml',
+    ],
   }
 }
