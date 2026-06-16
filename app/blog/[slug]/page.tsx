@@ -20,13 +20,16 @@ export async function generateMetadata({
   const { slug } = await params
   const post = getPost(slug)
   if (!post) return {}
+  // SEO <title> tag follows the "Target keywords | Benefit | Brand" format.
+  // Falls back to the readable headline if a post has no dedicated seoTitle.
+  const seoTitle = `${post.seoTitle ?? post.title} | Ziro Market`
   return {
-    title: `${post.title} | Ziro Market`,
+    title: seoTitle,
     description: post.excerpt,
     keywords: [...post.tags, 'Indian stock market', 'NSE', 'BSE', 'Ziro Market'],
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
-      title: post.title,
+      title: post.seoTitle ?? post.title,
       description: post.excerpt,
       url: `https://ziromarket.com/blog/${slug}`,
       type: 'article',
@@ -36,7 +39,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: post.seoTitle ?? post.title,
       description: post.excerpt,
     },
   }

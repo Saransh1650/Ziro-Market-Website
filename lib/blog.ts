@@ -14,6 +14,7 @@ export interface FaqItem {
 
 export interface PostMeta {
   title: string
+  seoTitle?: string
   slug: string
   date: string
   category: Category
