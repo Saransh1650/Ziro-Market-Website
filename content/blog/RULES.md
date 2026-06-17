@@ -31,6 +31,47 @@ Good: "What is PE ratio, and why did Zomato's 800x PE not scare everyone away?"
 
 The title should name a real company, a real event, or pose a real question that a curious person would actually search for.
 
+## SEO title (the seoTitle frontmatter field)
+
+Every post needs a `seoTitle` field in addition to the readable `title`. They are different on purpose. The `title` is the headline shown on the page (the H1) and stays human and readable. The `seoTitle` is what Google shows in search results (the browser `<title>` tag) and is keyword-optimised.
+
+Format:
+
+```yaml
+seoTitle: "Target keywords | Benefit or searcher's goal"
+```
+
+The brand is appended automatically by the site, so the full Google title becomes:
+
+`Target keywords | Benefit or searcher's goal | Ziro Market`
+
+Rules:
+
+- **Keyword first.** Front-load the exact phrase people search for (usually your primaryKeyword). This is what Google matches, and what survives if the title gets truncated. Examples: "India CPI May 2026", "SpaceX IPO 2026", "What Is PE Ratio".
+- **The benefit must give a real reason to click.** It answers "why should I read this?" — the why, the impact, the decision the reader faces, or the question they are actually asking. It is never a restated number or fact already in the keyword half.
+- **Length.** The full title including " | Ziro Market" (14 characters) must stay at or under 60 characters. That leaves about 46 characters for the keyword-plus-benefit part.
+- **Keep one pipe.** Always `keywords | benefit`. The brand pipe is added for you, so do not type "| Ziro Market" yourself.
+
+Bad benefit (just a data point, gives no reason to click):
+
+- "India CPI May 2026 | 3.93%"
+- "RBI Repo Rate June 2026 | Held at 5.25%"
+- "Susan Electricals IPO 2026 | 600% Subscribed"
+
+Good benefit (a real click reason — the why, the stakes, the decision):
+
+- "India CPI May 2026 | Why Inflation Eased"
+- "RBI Repo Rate June 2026 | What It Means"
+- "Susan Electricals IPO 2026 | Should You Apply?"
+
+Benefit patterns that work, matched to search intent:
+
+- The "why" for news and data: "Why It Crashed", "Why FPIs Are Selling"
+- The decision for IPOs and investing: "Should You Apply?", "Should You Worry?"
+- The payoff or impact for macro: "Impact on India", "What It Means for You"
+- The open question the reader is asking: "Is the Dollar Done?", "Will It Hit $6,000?"
+- The practical insight for explainers: "When It Actually Matters", "High vs Low Explained"
+
 ## Excerpts
 
 One punchy sentence. Maximum 20 words. This appears on the listing card. Write it last.
@@ -102,6 +143,7 @@ Read the post back and check:
 4. Any banned phrase from the list above? Remove it.
 5. Does eli5 have two paragraphs — simple analogy + specific real example?
 6. Is the title specific (names a company, event, or real question) and under 60 characters?
+6b. Is there a `seoTitle` in `keywords | benefit` format, keyword first, with a benefit that gives a real reason to click (not a restated number), and a full Google title (with " | Ziro Market") at or under 60 characters?
 7. Is word count between 700-900 for explainers, 900-1100 for news articles?
 8. No conclusion section?
 9. (News only) Are all 5 FAQ questions answered with verified facts?
