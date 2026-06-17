@@ -21,8 +21,10 @@ export async function generateMetadata({
   const post = getPost(slug)
   if (!post) return {}
   // SEO <title> tag follows the "Target keywords | Benefit | Brand" format.
+  // The "| Ziro Market" suffix is appended automatically by the root layout's
+  // title.template, so we only set the keywords|benefit half here.
   // Falls back to the readable headline if a post has no dedicated seoTitle.
-  const seoTitle = `${post.seoTitle ?? post.title} | Ziro Market`
+  const seoTitle = post.seoTitle ?? post.title
   return {
     title: seoTitle,
     description: post.excerpt,
@@ -74,7 +76,7 @@ export default async function PostPage({
     dateModified: post.date,
     image: {
       '@type': 'ImageObject',
-      url: 'https://ziromarket.com/opengraph-image',
+      url: `https://ziromarket.com/blog/${slug}/opengraph-image`,
       width: 1200,
       height: 630,
     },

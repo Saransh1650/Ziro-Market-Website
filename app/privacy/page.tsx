@@ -3,7 +3,7 @@ import Nav from '@/components/layout/Nav';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Ziro Market",
+  title: "Privacy Policy",
   description: "Privacy Policy for Ziro Market - Learn how we protect your data",
 };
 

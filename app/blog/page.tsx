@@ -6,7 +6,7 @@ import DownloadCTA from "@/components/blog/DownloadCTA";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Learn | Ziro Market",
+  title: "Learn",
   description:
     "Indian stock market concepts, events, and terminology explained in plain English.",
   alternates: { canonical: "/blog" },

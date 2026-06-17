@@ -3,7 +3,7 @@ import Nav from '@/components/layout/Nav';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: "Terms of Use | Ziro Market",
+  title: "Terms of Use",
   description: "Terms of Use for Ziro Market - Our service agreement",
 };
 

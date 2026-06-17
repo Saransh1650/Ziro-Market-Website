@@ -18,7 +18,13 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ziromarket.com"),
   alternates: { canonical: "/" },
-  title: "Ziro Market : The Indian market, simplified.",
+  // Every page's <title> ends with "| Ziro Market". The template appends the
+  // brand to any child page's string title; `default` is used for the homepage
+  // and already ends with the brand itself.
+  title: {
+    default: "The Indian market, simplified. | Ziro Market",
+    template: "%s | Ziro Market",
+  },
   description: "Track what's moving, understand why it's moving. Live heatmaps, portfolio analytics, sector intelligence and smart watchlists : built for India.",
   keywords: ["Indian Stock Market", "NIFTY 50", "SENSEX", "NSE", "BSE", "MCX", "Sector Heatmap", "Portfolio Tracker", "Ziro Market"],
   authors: [{ name: "Ziro Market Team" }],
