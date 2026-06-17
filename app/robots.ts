@@ -5,8 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
+      disallow: '/api/',
     },
+    host: 'https://ziromarket.com',
     sitemap: [
       'https://ziromarket.com/sitemap.xml',
       'https://ziromarket.com/blog/sitemap.xml',
