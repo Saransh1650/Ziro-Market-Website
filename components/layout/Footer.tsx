@@ -5,23 +5,23 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div>
-            {/* Logo */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+            {/* Logo (links to home — internal backlink on every page) */}
+            <a href="/" aria-label="Ziro Market home" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, textDecoration: 'none' }}>
               <img src="/app_icon/ziro.png" alt="Ziro" style={{ width: 22, height: 22, borderRadius: 4, display: 'block' }} />
               <span style={{
                 fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.06em',
                 textTransform: 'uppercase', color: '#ffffff', fontFamily: 'var(--sans)',
               }}>Ziro Market</span>
-            </div>
+            </a>
             <p style={{ color: 'rgba(255,255,255,0.40)', fontSize: '0.85rem', maxWidth: 300, lineHeight: 1.6 }}>
               The Indian market, simplified. Built in India for Indian markets.
             </p>
           </div>
 
           <FooterCol title="Product" links={[
-            { label: 'Why Ziro',    href: '#pain' },
-            { label: 'App features', href: '#features' },
-            { label: 'Manifesto',   href: '#pivot' },
+            { label: 'Why Ziro',    href: '/#pain' },
+            { label: 'App features', href: '/#features' },
+            { label: 'Manifesto',   href: '/#pivot' },
             { label: 'Play Store',  href: 'https://play.google.com/store/apps/details?id=com.ziro.market' },
           ]} />
           <FooterCol title="Company" links={[

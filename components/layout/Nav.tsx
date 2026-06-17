@@ -43,8 +43,8 @@ export default function Nav() {
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-        {/* Logo */}
-        <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        {/* Logo (links to home — internal backlink on every page) */}
+        <a href="/" aria-label="Ziro Market home" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img src="/app_icon/ziro.png" alt="Ziro" style={{ width: 24, height: 24, borderRadius: 4, display: 'block' }} />
           <span style={{
             fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.06em',

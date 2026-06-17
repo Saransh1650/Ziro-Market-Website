@@ -147,6 +147,10 @@ export default async function PostPage({
               padding: '28px 0 0',
             }}
           >
+            <a href="/" style={{ color: 'var(--text-3)' }}>
+              Home
+            </a>
+            <span style={{ margin: '0 6px' }}>/</span>
             <a href="/blog" style={{ color: 'var(--text-3)' }}>
               Learn
             </a>
