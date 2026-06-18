@@ -272,6 +272,7 @@ export default async function PostPage({
         .post-body h3 { font-size: 1.1rem; font-weight: 700; color: #0b3b2e; margin: 32px 0 12px; letter-spacing: -0.01em; }
         .post-body strong { color: #0b3b2e; font-weight: 600; }
         .post-body a { color: #9b6810; text-decoration: underline; text-underline-offset: 3px; }
+        .post-body img { max-width: 100%; height: auto; display: block; margin: 28px auto; border-radius: 12px; border: 1px solid rgba(11,59,46,0.12); }
         .also-read-link:hover { background: rgba(11,59,46,0.04) !important; }
         .also-read-link:last-child { border-bottom: none !important; }
       `}</style>

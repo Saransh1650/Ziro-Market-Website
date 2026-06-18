@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="420" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Turtlemint IPO</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Insurtech issue · opens Friday, 19 June 2026</text>
+  <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">PRICE BAND</text>
+  <text x="48" y="222" font-size="40" font-weight="800" fill="#0b3b2e">Rs 144-152</text>
+  <text x="360" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ISSUE SIZE</text>
+  <text x="360" y="222" font-size="40" font-weight="800" fill="#0b3b2e">Rs 883 cr</text>
+  <text x="680" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">GREY MKT</text>
+  <text x="680" y="222" font-size="40" font-weight="800" fill="#9b6810">muted</text>
+  <line x1="48" y1="262" x2="912" y2="262" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="306" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">MIN INVESTMENT</text>
+  <text x="48" y="340" font-size="24" font-weight="700" fill="#0b3b2e">Rs 14,896 (98 shares)</text>
+  <text x="48" y="386" font-size="16" fill="#0b3b2e" fill-opacity="0.6">Closes 23 Jun · allotment 24 Jun · lists 29 Jun on BSE &amp; NSE</text>
+</svg>
