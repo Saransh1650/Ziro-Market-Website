@@ -8,10 +8,44 @@ Write like a smart friend explaining the market over coffee. Not a textbook. Not
 
 ## Structure rules
 
-- No bullet point lists in the post body. Prose only. Section headings (## or ###) are fine.
+- No bullet point lists in the narrative prose. The only place a list belongs is inside a visual component (KeyTakeaways or a Callout, see Visual elements). Section headings (## or ###) are fine.
 - No conclusion section. End on a thought, not a summary of what you just said.
 - Length: 700-900 words for the main body (not counting frontmatter).
 - One blank line between paragraphs.
+
+## Visual elements (make posts scannable, not walls of text)
+
+A long, unbroken pile of text is hard to read and hurts engagement and SEO. Break posts up with the components below. Every post should carry at least one or two visual elements, but the mix must VARY from post to post. Never apply the same template to every article. All components render server-side to plain HTML or SVG, so they stay crawlable and SEO friendly.
+
+How to choose:
+
+- Use only elements the data actually supports. A bar chart needs real comparable numbers, a table needs real rows. Never invent data to fill a component.
+- Vary the mix organically. One post might get a stat row plus a table, another a bar chart plus a callout, another just a key-takeaways box. Decide per post based on what the story has.
+- Place a visual where it earns its spot, next to the numbers it illustrates, not in a fixed slot.
+
+Available components (write them directly in the MDX body, capitalised exactly, with a blank line before and after each block):
+
+1. Tables (GFM markdown) for real comparisons:
+
+   ```
+   | Company | Metric | Value |
+   | --- | --- | --- |
+   | Infosys | Margin | 20 to 22% |
+   ```
+
+2. `<KeyTakeaways>` — a highlighted summary box near the top. Wrap a short markdown list (3 to 4 points). Leave a blank line after the opening tag and before the closing tag so the list parses.
+
+3. `<Callout type="insight|risk|stat|note" title="...">` — a colored aside for a key point, risk, or stat. Blank line around the inner text.
+
+4. `<StatGrid>` with `<Stat value="24,085" label="Nifty 50" trend="up|down|flat" />` — a row of big-number cards for the headline figures.
+
+5. `<BarChart title="..." unit="$" data={[{ label: 'Amazon', value: 200 }]} caption="..." />` — a data-driven horizontal bar chart. Values must be real and comparable. Props that are arrays or objects use {curly braces}.
+
+6. `<Pullquote cite="...">A standout line worth emphasising.</Pullquote>`
+
+7. Images — original SVG infographics saved in /public/images and referenced with `![alt text](/images/file.svg)`. Build them from verified numbers. For evergreen pages, keep the image filename dateless and overwrite it on each update.
+
+The FAQ is automatic. Do NOT write a "## Frequently Asked Questions" section in the body. Put the 5 FAQs in the frontmatter `faq[]` array only. The site renders them as an interactive, expandable accordion (native, accessible, no JavaScript) and generates the FAQPage structured data. Any FAQ heading left in the body is stripped on render.
 
 ## Bold statements for scanners
 
@@ -173,7 +207,8 @@ Read the post back and check:
 6b. Is there a `seoTitle` in `keywords | benefit` format, keyword first, with a benefit that gives a real reason to click (not a restated number), and a full Google title (with " | Ziro Market") at or under 60 characters?
 7. Is word count between 700-900 for explainers, 900-1100 for news articles?
 8. No conclusion section?
-9. (News only) Are all 5 FAQ questions answered with verified facts?
+9. (News only) Are 5 FAQs in the frontmatter faq[] array (not the body), each answered with verified facts?
+10. Is there at least one data-backed visual element (table, chart, stat row, callout, or key-takeaways box), and does the mix differ from the last post rather than a fixed template?
 
 ---
 
@@ -207,7 +242,7 @@ Write each section as prose. No bullet lists anywhere in the body. The headings 
 
 **[Ending thought, no heading]:** One final paragraph. Not a summary. A forward-looking observation or framing that gives the reader something to think about. No "In conclusion."
 
-**## Frequently Asked Questions:** 5 questions. Write them as H3s. Answer each in 2-4 sentences. Mirror these in the frontmatter faq[] array for SEO JSON-LD.
+**Frequently Asked Questions:** Put 5 questions in the frontmatter `faq[]` array only. Do NOT write a FAQ section in the body. The site renders them as an interactive, expandable accordion and generates the FAQPage structured data automatically. Any `## Frequently Asked Questions` section left in the body is stripped on render.
 
 ### News article title rules
 
