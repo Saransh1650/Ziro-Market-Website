@@ -72,6 +72,33 @@ Benefit patterns that work, matched to search intent:
 - The open question the reader is asking: "Is the Dollar Done?", "Will It Hit $6,000?"
 - The practical insight for explainers: "When It Actually Matters", "High vs Low Explained"
 
+## Evergreen vs event posts (update, do not duplicate)
+
+Some topics recur forever and map to a single perennial search query ("nifty today", "gold price today"). For these, keep ONE canonical page at a stable, dateless URL and UPDATE it in place every time. Never create a new dated post for a recurring topic. This keeps the URL indexed, lets it accumulate ranking authority, and avoids the many near-duplicate thin pages that split ranking and look like low-quality content to Google.
+
+Evergreen topics and their canonical slugs (update the existing file, never make a new one):
+
+- Daily Indian market wrap (Nifty / Sensex close) -> `/blog/indian-stock-market-today`
+- Gold price today -> `/blog/gold-price-today` (fold dated gold posts into this over time)
+- Rupee vs dollar today -> `/blog/rupee-dollar-today`
+- Bitcoin / crypto price today -> `/blog/bitcoin-price-today`
+- Crude oil price today -> `/blog/crude-oil-price-today`
+
+Extend this registry whenever a new recurring topic appears.
+
+How to update an evergreen post:
+
+1. Edit the existing `.mdx` file. Do not change the slug. Do not create a new file.
+2. Set the `date` field to today so the page shows as freshly updated (it also re-sorts to the top of the listing).
+3. Rewrite the headline numbers, intro, What Happened, key figures, and the infographic to the latest verified data. Overwrite the same image file and keep its filename dateless (for example `/images/indian-market-today.svg`), so the URL never changes.
+4. Update the `title` and `seoTitle` to reflect the current state. The slug stays fixed even though the title changes.
+5. Keep `primaryKeyword` stable, since it is the perennial query the page targets.
+6. Re-verify every number before publishing, exactly as for any post.
+
+Event posts (create a new page): one-time, dated happenings such as earnings, a specific IPO, an RBI or Fed decision, an M&A deal, a single data release, or a milestone. These get their own descriptive slug and are not updated daily.
+
+Rule of thumb: if the same query will be searched again next week ("nifty today"), it is evergreen, so update the one page. If it happened once ("Turtlemint IPO", "RBI June 2026 decision"), it is an event, so make a new page.
+
 ## Excerpts
 
 One punchy sentence. Maximum 20 words. This appears on the listing card. Write it last.
