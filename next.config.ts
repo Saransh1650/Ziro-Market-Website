@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   // flows to the canonical evergreen page that replaced them.
   redirects: async () => ([
     { source: '/blog/gold-falls-fed-hawkish-june-2026', destination: '/blog/gold-price-today', permanent: true },
+    { source: '/blog/bitcoin-price-june-2026-crypto-india', destination: '/blog/bitcoin-price-today', permanent: true },
   ]),
 };
 

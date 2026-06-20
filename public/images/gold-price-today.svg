@@ -6,7 +6,7 @@
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">SPOT GOLD NOW</text>
-  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$4,106</text>
+  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$4,187</text>
   <text x="48" y="258" font-size="20" font-weight="700" fill="#c0392b">&#9660; off the record high</text>
   <text x="430" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">JAN 2026 RECORD</text>
   <text x="430" y="224" font-size="46" font-weight="800" fill="#0b3b2e">$5,602</text>
@@ -14,6 +14,6 @@
   <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">DRIVER</text>
   <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">Hawkish Fed, stronger dollar</text>
-  <text x="560" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">JPMORGAN TARGET</text>
-  <text x="560" y="372" font-size="24" font-weight="700" fill="#0b7a3e">$6,000 year-end</text>
+  <text x="560" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">2026 BANK TARGET</text>
+  <text x="560" y="372" font-size="24" font-weight="700" fill="#0b7a3e">$5,400-6,300</text>
 </svg>
