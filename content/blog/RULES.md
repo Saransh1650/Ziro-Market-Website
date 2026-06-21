@@ -113,12 +113,15 @@ Some topics recur forever and map to a single perennial search query ("nifty tod
 Evergreen topics and their canonical slugs (update the existing file, never make a new one):
 
 - Daily Indian market wrap (Nifty / Sensex close) -> `/blog/indian-stock-market-today`
-- Gold price today -> `/blog/gold-price-today` (fold dated gold posts into this over time)
+- Gold price today (international spot) -> `/blog/gold-price-today` (fold dated gold posts into this over time)
+- Gold rate today in India (24K / 22K per 10g) -> `/blog/gold-rate-today-india`
 - Rupee vs dollar today -> `/blog/rupee-dollar-today`
 - Bitcoin / crypto price today -> `/blog/bitcoin-price-today`
 - Crude oil price today -> `/blog/crude-oil-price-today`
 
 Extend this registry whenever a new recurring topic appears.
+
+Gold SEO cluster: the gold pages are built to rank for distinct queries and to interlink with each other, which strengthens the whole cluster. `gold-price-today` (international) and `gold-rate-today-india` are evergreen price pages (update in place, never duplicate). `how-to-invest-in-gold-india` and `gold-vs-silver-2026` are evergreen explainers. Whenever you write or update any gold page, add contextual body links to the others (links inside frontmatter FAQ answers do not render, so put them in the body).
 
 How to update an evergreen post:
 
