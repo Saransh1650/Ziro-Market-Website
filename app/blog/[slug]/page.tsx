@@ -304,14 +304,13 @@ export default async function PostPage({
         .faq-accordion { margin: 8px 0 16px; }
         .faq-accordion .faq-title { font-size: 1.35rem; font-weight: 700; color: #0b3b2e; margin: 24px 0 16px; letter-spacing: -0.015em; }
         .faq-item { border: 1px solid rgba(11,59,46,0.12); border-radius: 10px; margin-bottom: 10px; background: #fff; overflow: hidden; }
-        .faq-item summary { cursor: pointer; list-style: none; padding: 16px 46px 16px 18px; font-weight: 600; color: #0b3b2e; position: relative; font-size: 0.95rem; line-height: 1.45; transition: background 0.15s; }
-        .faq-item summary::-webkit-details-marker { display: none; }
-        .faq-item summary:hover { background: rgba(11,59,46,0.03); }
-        .faq-item summary::after { content: '+'; position: absolute; right: 18px; top: 14px; font-size: 1.25rem; line-height: 1; color: #9b6810; font-weight: 400; transition: transform 0.2s; }
-        .faq-item[open] summary::after { content: '\\2212'; }
-        .faq-item[open] summary { background: rgba(11,59,46,0.03); }
-        .faq-item .faq-answer { padding: 0 18px 16px; }
-        .faq-item .faq-answer p { font-size: 0.92rem; line-height: 1.7; color: rgba(11,59,46,0.72); margin: 0; }
+        .faq-item .faq-summary { cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; font-weight: 600; color: #0b3b2e; font-size: 0.95rem; line-height: 1.45; transition: background 0.15s; width: 100%; text-align: left; border: none; background: none; }
+        .faq-item .faq-summary:hover { background: rgba(11,59,46,0.03); }
+        .faq-item[data-open] .faq-summary { background: rgba(11,59,46,0.03); }
+        .faq-item .faq-question { flex: 1; }
+        .faq-item .faq-icon { flex-shrink: 0; font-size: 1.25rem; line-height: 1; color: #9b6810; font-weight: 400; display: flex; align-items: center; }
+        .faq-item .faq-answer-inner { padding: 16px 18px 16px; }
+        .faq-item .faq-answer-inner p { font-size: 0.92rem; line-height: 1.7; color: rgba(11,59,46,0.72); margin: 0; }
         .also-read-link:hover { background: rgba(11,59,46,0.04) !important; }
         .also-read-link:last-child { border-bottom: none !important; }
       `}</style>
