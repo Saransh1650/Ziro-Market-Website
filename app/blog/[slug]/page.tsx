@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer'
 import CategoryChip from '@/components/blog/CategoryChip'
 import SummaryBox from '@/components/blog/SummaryBox'
 import DownloadCTA from '@/components/blog/DownloadCTA'
+import AppDownloadPopup from '@/components/blog/AppDownloadPopup'
 import FaqAccordion from '@/components/blog/FaqAccordion'
 import { mdxComponents } from '@/components/blog/MdxComponents'
 import { getPost, getPostSlugs, getAllPosts } from '@/lib/blog'
@@ -282,6 +283,14 @@ export default async function PostPage({
       </main>
 
       <Footer />
+
+      <AppDownloadPopup
+        title="Get the Ziro Market app"
+        body="Track gold, silver, and the markets live on your phone. Free on Android and iPhone."
+        cta="Download the free app"
+        dismiss="Not now"
+        storageKey="ziro_blog_app_popup"
+      />
 
       <style>{`
         .post-body p { font-size: 0.97rem; line-height: 1.75; color: rgba(11,59,46,0.68); margin-bottom: 20px; }

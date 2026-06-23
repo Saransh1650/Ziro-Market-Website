@@ -4,14 +4,20 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import type { FaqItem } from '@/lib/blog'
 
-export default function FaqAccordion({ items }: { items: FaqItem[] }) {
+export default function FaqAccordion({
+  items,
+  title = 'Frequently Asked Questions',
+}: {
+  items: FaqItem[]
+  title?: string
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   if (!items || items.length === 0) return null
 
   return (
-    <section className="faq-accordion" aria-label="Frequently asked questions">
-      <h2 className="faq-title">Frequently Asked Questions</h2>
+    <section className="faq-accordion" aria-label={title}>
+      <h2 className="faq-title">{title}</h2>
       {items.map((item, i) => {
         const isOpen = openIndex === i
         return (

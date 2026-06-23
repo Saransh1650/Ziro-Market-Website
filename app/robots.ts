@@ -11,6 +11,7 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: [
       'https://ziromarket.com/sitemap.xml',
       'https://ziromarket.com/blog/sitemap.xml',
+      'https://ziromarket.com/regional/sitemap.xml',
     ],
   }
 }

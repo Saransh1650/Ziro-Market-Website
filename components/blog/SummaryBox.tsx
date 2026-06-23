@@ -1,7 +1,15 @@
 'use client'
 import { useState } from 'react'
 
-export default function SummaryBox({ summary }: { summary: string }) {
+export default function SummaryBox({
+  summary,
+  label = "Explain like I'm 5",
+  description = 'the simplest possible explanation, no finance knowledge needed',
+}: {
+  summary: string
+  label?: string
+  description?: string
+}) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -19,7 +27,7 @@ export default function SummaryBox({ summary }: { summary: string }) {
         }}
       >
         <span style={{ fontSize: '0.82rem', color: 'var(--text-2)', fontWeight: 500 }}>
-          <strong style={{ color: 'var(--text-1)' }}>Explain like I'm 5</strong>: the simplest possible explanation, no finance knowledge needed
+          <strong style={{ color: 'var(--text-1)' }}>{label}</strong>: {description}
         </span>
         <label style={{ position: 'relative', width: 42, height: 24, cursor: 'pointer', flexShrink: 0 }}>
           <input
@@ -76,7 +84,7 @@ export default function SummaryBox({ summary }: { summary: string }) {
               marginBottom: 10,
             }}
           >
-            Explain like I'm 5
+            {label}
           </div>
           <p style={{ fontSize: '0.9rem', lineHeight: 1.65, color: 'var(--text-1)', margin: 0 }}>
             {summary}
