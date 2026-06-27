@@ -88,6 +88,47 @@ function buildBatchBody(urls, boundary) {
   return parts.join('\r\n') + `\r\n--${boundary}--`;
 }
 
+// Parse the multipart/mixed response body. Returns an array of
+// { url, status, message } — one per URL in the batch.
+function parseBatchResponse(responseBody, urls) {
+  // Extract boundary from the first line (--batch_XXX)
+  const boundaryMatch = responseBody.match(/^--(\S+)/m);
+  if (!boundaryMatch) return urls.map((url) => ({ url, status: 0, message: 'no boundary' }));
+
+  const boundary = boundaryMatch[1];
+  const parts = responseBody.split(`--${boundary}`).slice(1); // drop preamble
+
+  const results = [];
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i];
+    if (part.trim() === '--') break; // closing delimiter
+
+    // Find the HTTP status line inside the part (e.g. "HTTP/1.1 200 OK")
+    const statusMatch = part.match(/HTTP\/1\.1 (\d{3}) ([^\r\n]*)/);
+    const status = statusMatch ? parseInt(statusMatch[1], 10) : 0;
+    const statusText = statusMatch ? statusMatch[2] : 'unknown';
+
+    // Try to extract error message from JSON body if present
+    let message = statusText;
+    const jsonMatch = part.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      try {
+        const parsed = JSON.parse(jsonMatch[0]);
+        if (parsed.error?.message) message = parsed.error.message;
+        else if (parsed.urlNotificationMetadata?.latestUpdate?.notifyTime) {
+          message = `notified at ${parsed.urlNotificationMetadata.latestUpdate.notifyTime}`;
+        }
+      } catch {
+        // ignore parse errors
+      }
+    }
+
+    results.push({ url: urls[i] ?? `item${i + 1}`, status, message });
+  }
+
+  return results;
+}
+
 async function submitBatch(urls, token) {
   const boundary = `batch_${Date.now()}`;
   const res = await fetch(BATCH_ENDPOINT, {
@@ -100,7 +141,9 @@ async function submitBatch(urls, token) {
   });
 
   const text = await res.text();
-  return { status: res.status, ok: res.ok, body: text };
+  const envelopeOk = res.ok;
+  const items = envelopeOk ? parseBatchResponse(text, urls) : [];
+  return { envelopeOk, envelopeStatus: res.status, items, rawBody: text };
 }
 
 // ── Search Console Sitemap API ─────────────────────────────────────────────
@@ -111,7 +154,8 @@ async function submitSitemap(token) {
     method: 'PUT',
     headers: { Authorization: `Bearer ${token}` },
   });
-  return { status: res.status, ok: res.ok };
+  const body = await res.text();
+  return { status: res.status, ok: res.ok, body };
 }
 
 // ── Collect URLs ───────────────────────────────────────────────────────────
@@ -165,16 +209,27 @@ console.log('Auth OK.');
 
 const sitemapResult = await submitSitemap(webmastersToken);
 if (sitemapResult.ok) {
-  console.log(`Sitemap submitted: ${sitemapResult.status} OK`);
+  console.log(`Sitemap ping: 200 OK`);
 } else {
-  console.warn(`Sitemap submission failed: ${sitemapResult.status}`);
+  let hint = '';
+  if (sitemapResult.status === 403) {
+    hint =
+      '\n  → Add the service account email as an Owner in Search Console' +
+      '\n    (Settings → Users and permissions → Add user → Owner role)';
+  }
+  try {
+    const err = JSON.parse(sitemapResult.body);
+    console.warn(`Sitemap ping: ${sitemapResult.status} ${err?.error?.message ?? ''}${hint}`);
+  } catch {
+    console.warn(`Sitemap ping: ${sitemapResult.status}${hint}`);
+  }
 }
 
 // ── Submit URL batches ─────────────────────────────────────────────────────
 
 const BATCH_SIZE = 100;
-let totalOk = 0;
-let totalFailed = 0;
+const counts = { ok: 0, rateLimit: 0, forbidden: 0, other: 0 };
+const failures = [];
 const batchCount = Math.ceil(allUrls.length / BATCH_SIZE);
 
 for (let i = 0; i < allUrls.length; i += BATCH_SIZE) {
@@ -183,17 +238,67 @@ for (let i = 0; i < allUrls.length; i += BATCH_SIZE) {
 
   const result = await submitBatch(batch, indexingToken);
 
-  if (result.ok) {
-    totalOk += batch.length;
-    console.log(`Batch ${batchNum}/${batchCount}: ${batch.length} URLs → ${result.status}`);
-  } else {
-    totalFailed += batch.length;
-    console.error(`Batch ${batchNum}/${batchCount}: FAILED (${result.status})`);
-    console.error(result.body.slice(0, 500));
+  if (!result.envelopeOk) {
+    // Entire batch rejected — treat all as failed
+    console.error(`Batch ${batchNum}/${batchCount}: envelope error ${result.envelopeStatus}`);
+    console.error(result.rawBody.slice(0, 600));
+    counts.other += batch.length;
+    continue;
   }
+
+  let batchOk = 0;
+  let batchFail = 0;
+
+  for (const item of result.items) {
+    if (item.status === 200) {
+      counts.ok++;
+      batchOk++;
+    } else if (item.status === 429) {
+      counts.rateLimit++;
+      batchFail++;
+      failures.push({ url: item.url, status: item.status, message: item.message });
+    } else if (item.status === 403) {
+      counts.forbidden++;
+      batchFail++;
+      failures.push({ url: item.url, status: item.status, message: item.message });
+    } else {
+      counts.other++;
+      batchFail++;
+      failures.push({ url: item.url, status: item.status, message: item.message });
+    }
+  }
+
+  console.log(
+    `Batch ${batchNum}/${batchCount}: ${batchOk} queued` +
+      (batchFail ? `, ${batchFail} failed` : ''),
+  );
 }
 
 // ── Summary ────────────────────────────────────────────────────────────────
 
-console.log(`\nDone: ${totalOk} submitted, ${totalFailed} failed`);
+console.log('\n── Results ───────────────────────────────────────');
+console.log(`  Queued for indexing : ${counts.ok}`);
+if (counts.rateLimit) console.log(`  Rate limited (429)  : ${counts.rateLimit}`);
+if (counts.forbidden) console.log(`  Forbidden (403)     : ${counts.forbidden}`);
+if (counts.other)     console.log(`  Other errors        : ${counts.other}`);
+
+if (failures.length) {
+  console.log('\n── Failed URLs ───────────────────────────────────');
+  for (const f of failures) {
+    console.log(`  [${f.status}] ${f.url}`);
+    if (f.message && f.message !== 'OK') console.log(`       ${f.message}`);
+  }
+
+  if (counts.rateLimit) {
+    console.log('\n  Rate limit hit: Google allows 200 URL notifications/day by default.');
+    console.log('  Request higher quota at: https://developers.google.com/search/apis/indexing-api/v3/quota-pricing');
+  }
+  if (counts.forbidden) {
+    console.log('\n  403 errors: service account email must be added as Owner in Search Console.');
+  }
+}
+
+console.log('──────────────────────────────────────────────────');
+
+const totalFailed = counts.rateLimit + counts.forbidden + counts.other;
 if (totalFailed > 0) process.exit(1);
