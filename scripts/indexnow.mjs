@@ -14,6 +14,7 @@ const BASE_URL = `https://${HOST}`;
 const KEY = '337f42e4c86d3f8e5bfdecba0e0b0ad3';
 const KEY_LOCATION = `${BASE_URL}/${KEY}.txt`;
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
+const REGIONAL_DIR = path.join(process.cwd(), 'content', 'regional');
 
 const staticUrls = [
   `${BASE_URL}`,
@@ -27,7 +28,19 @@ const postUrls = fs
   .filter((f) => f.endsWith('.mdx'))
   .map((f) => `${BASE_URL}/blog/${f.replace(/\.mdx$/, '')}`);
 
-const urlList = [...staticUrls, ...postUrls];
+const regionalUrls = fs.existsSync(REGIONAL_DIR)
+  ? fs
+      .readdirSync(REGIONAL_DIR, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .flatMap((d) =>
+        fs
+          .readdirSync(path.join(REGIONAL_DIR, d.name))
+          .filter((f) => f.endsWith('.mdx'))
+          .map((f) => `${BASE_URL}/regional/${d.name}/${f.replace(/\.mdx$/, '')}`),
+      )
+  : [];
+
+const urlList = [...staticUrls, ...postUrls, ...regionalUrls];
 
 const body = {
   host: HOST,
