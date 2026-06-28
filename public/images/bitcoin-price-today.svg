@@ -2,21 +2,18 @@
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Crypto market today</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">24 June 2026 · steadying near $62k</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">28 June 2026 · testing $60k</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BITCOIN</text>
-  <text x="48" y="222" font-size="40" font-weight="800" fill="#0b3b2e">~$62,600</text>
-  <text x="48" y="252" font-size="18" font-weight="700" fill="#0b7a3e">&#9650; off 2-week low</text>
-  <text x="360" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ETHEREUM</text>
-  <text x="360" y="222" font-size="40" font-weight="800" fill="#0b3b2e">~$1,648</text>
-  <text x="360" y="252" font-size="18" font-weight="700" fill="#c0392b">&#9660; ~7% on week</text>
-  <text x="680" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ALL-TIME HIGH</text>
-  <text x="680" y="222" font-size="40" font-weight="800" fill="#0b3b2e">$126,200</text>
-  <text x="680" y="252" font-size="18" font-weight="700" fill="#0b3b2e">Oct 2025</text>
+  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$60,200</text>
+  <text x="48" y="258" font-size="20" font-weight="700" fill="#c0392b">&#9660; testing support</text>
+  <text x="430" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">KEY SUPPORT</text>
+  <text x="430" y="224" font-size="46" font-weight="800" fill="#0b3b2e">$60,000</text>
+  <text x="430" y="258" font-size="20" font-weight="700" fill="#0b3b2e">the line to hold</text>
   <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">VS A YEAR AGO</text>
-  <text x="48" y="372" font-size="24" font-weight="700" fill="#c0392b">about $43,500 lower</text>
-  <text x="430" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">PRESSURE</text>
-  <text x="430" y="372" font-size="24" font-weight="700" fill="#0b3b2e">Strong dollar, hawkish Fed</text>
+  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ALL-TIME HIGH</text>
+  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">$126,200 (Oct 2025)</text>
+  <text x="560" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">PRESSURE</text>
+  <text x="560" y="372" font-size="24" font-weight="700" fill="#0b3b2e">Strong dollar, Fed</text>
 </svg>
