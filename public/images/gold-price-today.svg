@@ -2,11 +2,11 @@
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Gold price today</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Spot gold, 28 June 2026</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Spot gold, 29 June 2026</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">SPOT GOLD NOW</text>
-  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$4,040</text>
+  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$4,050</text>
   <text x="48" y="258" font-size="20" font-weight="700" fill="#c0392b">&#9660; off the record high</text>
   <text x="430" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">JAN 2026 RECORD</text>
   <text x="430" y="224" font-size="46" font-weight="800" fill="#0b3b2e">$5,602</text>

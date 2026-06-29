@@ -118,6 +118,7 @@ Evergreen topics and their canonical slugs (update the existing file, never make
 - Rupee vs dollar today -> `/blog/rupee-dollar-today`
 - Bitcoin / crypto price today -> `/blog/bitcoin-price-today`
 - Crude oil price today -> `/blog/crude-oil-price-today`
+- Petrol and diesel price today (metro pump rates) -> `/blog/petrol-diesel-price-today`
 
 Extend this registry whenever a new recurring topic appears.
 
