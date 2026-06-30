@@ -2,18 +2,18 @@
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Crude oil price today</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Per barrel, 29 June 2026</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Per barrel, 30 June 2026</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">WTI CRUDE</text>
-  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$69</text>
-  <text x="48" y="258" font-size="20" font-weight="700" fill="#c0392b">&#9660; lowest since Feb</text>
+  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$70</text>
+  <text x="48" y="258" font-size="20" font-weight="700" fill="#0b3b2e">off a 4-month low</text>
   <text x="360" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BRENT CRUDE</text>
-  <text x="360" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$72</text>
-  <text x="360" y="258" font-size="20" font-weight="700" fill="#c0392b">&#9660; ~10% on the week</text>
+  <text x="360" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$73</text>
+  <text x="360" y="258" font-size="20" font-weight="700" fill="#0b3b2e">steadying</text>
   <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">2026 WAR PEAK</text>
   <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">above $110 (-40%)</text>
   <text x="400" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">TRIGGER</text>
-  <text x="400" y="372" font-size="24" font-weight="700" fill="#0b7a3e">Iran ceasefire, Hormuz open</text>
+  <text x="400" y="372" font-size="24" font-weight="700" fill="#0b7a3e">US-Iran halt attacks</text>
 </svg>
