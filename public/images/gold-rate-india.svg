@@ -2,18 +2,18 @@
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Gold rate today in India</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Per 10 grams, 1 July 2026</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Per 10 grams, 2 July 2026</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">24 KARAT (10g)</text>
-  <text x="48" y="224" font-size="44" font-weight="800" fill="#0b3b2e">Rs 1,43,228</text>
+  <text x="48" y="224" font-size="44" font-weight="800" fill="#0b3b2e">Rs 1,40,770</text>
   <text x="48" y="256" font-size="18" font-weight="700" fill="#0b3b2e">99.9% pure</text>
   <text x="500" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">22 KARAT (10g)</text>
-  <text x="500" y="224" font-size="44" font-weight="800" fill="#0b3b2e">Rs 1,31,292</text>
+  <text x="500" y="224" font-size="44" font-weight="800" fill="#0b3b2e">Rs 1,29,040</text>
   <text x="500" y="256" font-size="18" font-weight="700" fill="#0b3b2e">91.6% pure, jewellery</text>
   <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">24K PER GRAM</text>
-  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">Rs 14,323</text>
+  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">Rs 14,077</text>
   <text x="400" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ON JEWELLERY</text>
   <text x="400" y="372" font-size="24" font-weight="700" fill="#9b6810">+3% GST + making charges</text>
 </svg>

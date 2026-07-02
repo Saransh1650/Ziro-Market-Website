@@ -115,6 +115,7 @@ Evergreen topics and their canonical slugs (update the existing file, never make
 - Daily Indian market wrap (Nifty / Sensex close) -> `/blog/indian-stock-market-today`
 - Gold price today (international spot) -> `/blog/gold-price-today` (fold dated gold posts into this over time)
 - Gold rate today in India (24K / 22K per 10g) -> `/blog/gold-rate-today-india`
+- Silver rate today in India (per kg / gram) -> `/blog/silver-rate-today-india`
 - Rupee vs dollar today -> `/blog/rupee-dollar-today`
 - Bitcoin / crypto price today -> `/blog/bitcoin-price-today`
 - Crude oil price today -> `/blog/crude-oil-price-today`
