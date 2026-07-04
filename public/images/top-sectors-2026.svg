@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="420" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Top sectors for H2 2026</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Analysts' bets &amp; growth leaders</text>
+  <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="172" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">H2 2026 TOP BETS</text>
+  <text x="48" y="212" font-size="30" font-weight="800" fill="#0b3b2e">Banks · Defence · Pharma</text>
+  <line x1="48" y1="252" x2="912" y2="252" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="292" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">FASTEST GROWING (CAGR)</text>
+  <text x="48" y="332" font-size="22" font-weight="700" fill="#0b7a3e">EV 20-28% · Renewables 18-25%</text>
+  <text x="48" y="366" font-size="22" font-weight="700" fill="#0b7a3e">Defence 15-22% · IT 15-20% · Pharma 12-18%</text>
+</svg>
