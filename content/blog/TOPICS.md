@@ -17,6 +17,15 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - New GST rates 2026 / GST 2.0 slabs (2026-07-06) → new-gst-rates-2026.mdx
 - 8th Pay Commission 2026 (2026-07-06) → 8th-pay-commission-2026.mdx
 - TCS Q1 FY27 results preview (2026-07-06) → tcs-q1-fy27-results-preview-2026.mdx
+- Capital gains tax 2026 STCG/LTCG (2026-07-07) → capital-gains-tax-stocks-mutual-funds-2026.mdx
+- SGB vs Gold ETF vs digital gold (2026-07-07) → sgb-vs-gold-etf-vs-digital-gold-2026.mdx
+- How to start investing in stocks India (2026-07-07) → how-to-start-investing-in-stocks-india.mdx
+- Crypto tax India 2026 (2026-07-07) → crypto-tax-india-2026.mdx
+- How to read a balance sheet (2026-07-07) → how-to-read-a-balance-sheet.mdx
+
+## Evergreen SEO strategy note
+
+Traffic was dead because early posts chased hyper-competitive news / "price today" queries (gold price, nifty today, IPO news) that a low-authority site cannot rank against Moneycontrol/ET/Groww/NSE. Pivot: build EVERGREEN, high-intent, beatable-SERP clusters that compound instead of decaying. Batch above = Bet A (evergreen tax/how-to/comparison, pure-SEO framing). Still to do: Bet B (smart-money cluster: FII/DII, bulk deals, sector rotation — the app's unique edge) and Bet C (programmatic per-stock/per-sector pages from app data — the millions-of-pages lever). See conversation for full plan.
 
 ## Queue
 
