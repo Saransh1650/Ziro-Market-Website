@@ -13,6 +13,10 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - EPS TTM (2026-06-06) → what-is-eps-ttm.mdx
 - ROE (2026-06-06) → what-is-roe.mdx
 - Debt to Equity (2026-06-06) → what-is-debt-to-equity.mdx
+- 200-day moving average (2026-07-06) → what-is-200-day-moving-average.mdx
+- New GST rates 2026 / GST 2.0 slabs (2026-07-06) → new-gst-rates-2026.mdx
+- 8th Pay Commission 2026 (2026-07-06) → 8th-pay-commission-2026.mdx
+- TCS Q1 FY27 results preview (2026-07-06) → tcs-q1-fy27-results-preview-2026.mdx
 
 ## Queue
 

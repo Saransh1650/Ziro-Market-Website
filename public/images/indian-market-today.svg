@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Indian markets this week</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Last close: Friday, 3 July 2026</text>
+  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Indian markets today</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Close: Monday, 6 July 2026</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">NIFTY 50</text>
-  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">24,268</text>
-  <text x="48" y="258" font-size="20" font-weight="700" fill="#0b7a3e">&#9650; held above 24k</text>
+  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">24,430</text>
+  <text x="48" y="258" font-size="20" font-weight="700" fill="#0b7a3e">&#9650; reclaimed 200-DMA</text>
   <text x="360" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">SENSEX</text>
-  <text x="360" y="224" font-size="46" font-weight="800" fill="#0b3b2e">77,764</text>
-  <text x="360" y="258" font-size="20" font-weight="700" fill="#0b7a3e">&#9650; week of gains</text>
+  <text x="360" y="224" font-size="46" font-weight="800" fill="#0b3b2e">78,285</text>
+  <text x="360" y="258" font-size="20" font-weight="700" fill="#0b7a3e">&#9650; 4th day up</text>
   <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">LED BY</text>
-  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b7a3e">IT rebound (HCL &#9650; 6%)</text>
+  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b7a3e">Realty &amp; auto stocks</text>
   <text x="480" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BACKDROP</text>
-  <text x="480" y="372" font-size="24" font-weight="700" fill="#0b3b2e">Ceasefire holds, cheap oil</text>
+  <text x="480" y="372" font-size="24" font-weight="700" fill="#0b3b2e">Firm global cues, cheap oil</text>
 </svg>
