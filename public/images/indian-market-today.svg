@@ -6,14 +6,14 @@
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">NIFTY 50</text>
-  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~24,220</text>
-  <text x="48" y="258" font-size="20" font-weight="700" fill="#c0392b">&#9660; near day's low</text>
+  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">23,882</text>
+  <text x="48" y="258" font-size="20" font-weight="700" fill="#c0392b">&#9660; 2.12% (517 pts)</text>
   <text x="360" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">SENSEX</text>
-  <text x="360" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~77,590</text>
-  <text x="360" y="258" font-size="20" font-weight="700" fill="#c0392b">&#9660; fell ~600 pts</text>
+  <text x="360" y="224" font-size="46" font-weight="800" fill="#0b3b2e">76,503</text>
+  <text x="360" y="258" font-size="20" font-weight="700" fill="#c0392b">&#9660; 1,677 pts</text>
   <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">LED DOWN BY</text>
-  <text x="48" y="372" font-size="24" font-weight="700" fill="#c0392b">Oil &amp; gas, FMCG</text>
-  <text x="480" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BACKDROP</text>
+  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">INDIA VIX</text>
+  <text x="48" y="372" font-size="24" font-weight="700" fill="#c0392b">&#9650; 26% fear spike</text>
+  <text x="480" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">TRIGGER</text>
   <text x="480" y="372" font-size="24" font-weight="700" fill="#0b3b2e">US-Iran strikes, oil up</text>
 </svg>

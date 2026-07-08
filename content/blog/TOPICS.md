@@ -24,6 +24,7 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - How to read a balance sheet (2026-07-07) → how-to-read-a-balance-sheet.mdx
 - US strikes Iran / Hormuz crisis (2026-07-08) → us-strikes-iran-oil-sanctions-july-2026.mdx
 - How crude oil affects Indian economy (2026-07-08) → how-crude-oil-affects-indian-economy.mdx
+- Stock market crash today: global + India (2026-07-08) → stock-market-crash-today-july-2026.mdx (+ Hindi at regional/hi/)
 
 ## Evergreen SEO strategy note
 
