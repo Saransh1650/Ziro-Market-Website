@@ -22,6 +22,8 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - How to start investing in stocks India (2026-07-07) → how-to-start-investing-in-stocks-india.mdx
 - Crypto tax India 2026 (2026-07-07) → crypto-tax-india-2026.mdx
 - How to read a balance sheet (2026-07-07) → how-to-read-a-balance-sheet.mdx
+- US strikes Iran / Hormuz crisis (2026-07-08) → us-strikes-iran-oil-sanctions-july-2026.mdx
+- How crude oil affects Indian economy (2026-07-08) → how-crude-oil-affects-indian-economy.mdx
 
 ## Evergreen SEO strategy note
 
