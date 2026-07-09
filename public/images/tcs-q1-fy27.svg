@@ -2,18 +2,18 @@
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">TCS Q1 FY27 results</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Due 9 July 2026, after market</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Quarter ended June 2026</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">RESULTS DATE</text>
-  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">July 9</text>
-  <text x="48" y="258" font-size="20" font-weight="700" fill="#0b3b2e">opens IT earnings</text>
-  <text x="430" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">MARGIN IN FOCUS</text>
-  <text x="430" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~24%</text>
-  <text x="430" y="258" font-size="20" font-weight="700" fill="#0b3b2e">wage hikes bite</text>
+  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">NET PROFIT</text>
+  <text x="48" y="224" font-size="42" font-weight="800" fill="#0b3b2e">Rs 13,349 cr</text>
+  <text x="48" y="258" font-size="20" font-weight="700" fill="#0b7a3e">&#9650; 5% YoY</text>
+  <text x="470" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">REVENUE</text>
+  <text x="470" y="224" font-size="42" font-weight="800" fill="#0b3b2e">Rs 72,275 cr</text>
+  <text x="470" y="258" font-size="20" font-weight="700" fill="#0b7a3e">&#9650; 14% YoY</text>
   <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">WATCHING</text>
-  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">AI deal pipeline</text>
-  <text x="560" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">NIFTY IT, H1CY26</text>
-  <text x="560" y="372" font-size="24" font-weight="700" fill="#c0392b">&#9660; 30.6% (23-yr low)</text>
+  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">MARGIN / DIVIDEND</text>
+  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">24.0% &#183; Rs 12/sh</text>
+  <text x="560" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ORDER BOOK</text>
+  <text x="560" y="372" font-size="24" font-weight="700" fill="#0b7a3e">$9.5 bn (AI: SKF)</text>
 </svg>

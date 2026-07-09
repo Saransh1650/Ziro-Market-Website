@@ -16,7 +16,7 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - 200-day moving average (2026-07-06) → what-is-200-day-moving-average.mdx
 - New GST rates 2026 / GST 2.0 slabs (2026-07-06) → new-gst-rates-2026.mdx
 - 8th Pay Commission 2026 (2026-07-06) → 8th-pay-commission-2026.mdx
-- TCS Q1 FY27 results preview (2026-07-06) → tcs-q1-fy27-results-preview-2026.mdx
+- TCS Q1 FY27 results (2026-07-06 preview, updated 2026-07-09 with actuals: PAT Rs 13,349cr, rev Rs 72,275cr, Rs 12 div, $9.5bn order book) → tcs-q1-fy27-results-preview-2026.mdx
 - Capital gains tax 2026 STCG/LTCG (2026-07-07) → capital-gains-tax-stocks-mutual-funds-2026.mdx
 - SGB vs Gold ETF vs digital gold (2026-07-07) → sgb-vs-gold-etf-vs-digital-gold-2026.mdx
 - How to start investing in stocks India (2026-07-07) → how-to-start-investing-in-stocks-india.mdx
