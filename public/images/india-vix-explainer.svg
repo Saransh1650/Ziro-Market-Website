@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="420" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">India VIX explained</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">The market's fear gauge</text>
+  <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">WHAT IT MEASURES</text>
+  <text x="48" y="222" font-size="32" font-weight="800" fill="#0b3b2e">Nifty swings, 30 days</text>
+  <text x="48" y="256" font-size="18" font-weight="700" fill="#0b3b2e">expected volatility</text>
+  <text x="560" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">8 JULY 2026</text>
+  <text x="560" y="222" font-size="42" font-weight="800" fill="#0b3b2e">14.68</text>
+  <text x="560" y="256" font-size="18" font-weight="700" fill="#c0392b">&#9650; 26% in a day</text>
+  <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">NORMAL RANGE</text>
+  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">12 to 15</text>
+  <text x="360" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ABOVE 20</text>
+  <text x="360" y="372" font-size="24" font-weight="700" fill="#c0392b">high fear</text>
+  <text x="640" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">2020 COVID PEAK</text>
+  <text x="640" y="372" font-size="24" font-weight="700" fill="#0b3b2e">above 80</text>
+</svg>

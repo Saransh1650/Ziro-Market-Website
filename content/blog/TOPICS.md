@@ -25,6 +25,8 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - US strikes Iran / Hormuz crisis (2026-07-08) → us-strikes-iran-oil-sanctions-july-2026.mdx
 - How crude oil affects Indian economy (2026-07-08) → how-crude-oil-affects-indian-economy.mdx
 - Stock market crash today: global + India (2026-07-08) → stock-market-crash-today-july-2026.mdx (+ Hindi at regional/hi/)
+- What is the India VIX (2026-07-09, evergreen + VIX-spike hook) → what-is-india-vix.mdx
+- What to do when the stock market crashes (2026-07-09, evergreen + crash hook) → what-to-do-when-stock-market-crashes.mdx
 
 ## Evergreen SEO strategy note
 
