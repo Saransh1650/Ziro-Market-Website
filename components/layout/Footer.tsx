@@ -22,6 +22,7 @@ export default function Footer() {
             { label: 'Why Ziro',    href: '/#pain' },
             { label: 'App features', href: '/#features' },
             { label: 'Manifesto',   href: '/#pivot' },
+            { label: 'App Store',   href: 'https://apps.apple.com/in/app/ziro-market-stock-trends/id6761326539' },
             { label: 'Play Store',  href: 'https://play.google.com/store/apps/details?id=com.ziro.market' },
           ]} />
           <FooterCol title="Company" links={[
