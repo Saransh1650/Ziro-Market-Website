@@ -27,6 +27,8 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Stock market crash today: global + India (2026-07-08) → stock-market-crash-today-july-2026.mdx (+ Hindi at regional/hi/)
 - What is the India VIX (2026-07-09, evergreen + VIX-spike hook) → what-is-india-vix.mdx
 - What to do when the stock market crashes (2026-07-09, evergreen + crash hook) → what-to-do-when-stock-market-crashes.mdx
+- Stock market week ahead: CPI, Wipro, oil (2026-07-12) → stock-market-week-ahead-13-july-2026.mdx
+- Demat accounts hit 231.5 million (2026-07-12, retail boom) → demat-accounts-231-million-june-2026.mdx
 
 ## Evergreen SEO strategy note
 
