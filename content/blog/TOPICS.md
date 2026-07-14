@@ -29,6 +29,7 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - What to do when the stock market crashes (2026-07-09, evergreen + crash hook) → what-to-do-when-stock-market-crashes.mdx
 - Stock market week ahead: CPI, Wipro, oil (2026-07-12) → stock-market-week-ahead-13-july-2026.mdx
 - Demat accounts hit 231.5 million (2026-07-12, retail boom) → demat-accounts-231-million-june-2026.mdx
+- India June CPI 4.38% (2026-07-14, breached RBI 4% target, food 5.32%) → india-june-cpi-inflation-2026.mdx
 
 ## Evergreen SEO strategy note
 
