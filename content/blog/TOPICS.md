@@ -30,6 +30,8 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Stock market week ahead: CPI, Wipro, oil (2026-07-12) → stock-market-week-ahead-13-july-2026.mdx
 - Demat accounts hit 231.5 million (2026-07-12, retail boom) → demat-accounts-231-million-june-2026.mdx
 - India June CPI 4.38% (2026-07-14, breached RBI 4% target, food 5.32%) → india-june-cpi-inflation-2026.mdx
+- What happens if Strait of Hormuz closes (2026-07-15, evergreen + Iran-closed hook) → what-happens-if-strait-of-hormuz-closes.mdx
+- Wipro Q1 FY27 results preview (2026-07-15, reports Jul 16) → wipro-q1-fy27-results-preview-2026.mdx
 
 ## Evergreen SEO strategy note
 
