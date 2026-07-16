@@ -32,6 +32,10 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - India June CPI 4.38% (2026-07-14, breached RBI 4% target, food 5.32%) → india-june-cpi-inflation-2026.mdx
 - What happens if Strait of Hormuz closes (2026-07-15, evergreen + Iran-closed hook) → what-happens-if-strait-of-hormuz-closes.mdx
 - Wipro Q1 FY27 results preview (2026-07-15, reports Jul 16) → wipro-q1-fy27-results-preview-2026.mdx
+- Wipro Q1 FY27 actuals (2026-07-16, updated same file: PAT ~Rs 3,380cr, rev -1.1% CC, margin 16.4%, Re 1 div, Q2 guide -1% to +1%) → wipro-q1-fy27-results-preview-2026.mdx
+- Infosys Q1 FY27 results preview (2026-07-16, reports Jul 23, FY27 guide 1-3% CC is the whole story) → infosys-q1-fy27-results-preview-2026.mdx
+- How circuit breakers work on NSE (2026-07-16, evergreen concept: 10/15/20% rule + 13 Mar 2020 halt) → how-circuit-breakers-work-nse.mdx
+- Evergreen refresh (2026-07-16, dates + numbers to today, post-Wipro): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
 
 ## Evergreen SEO strategy note
 
@@ -82,7 +86,6 @@ Traffic was dead because early posts chased hyper-competitive news / "price toda
 - RBI MPC rate hike cycle 2022-2023
 
 ### Concepts
-- How circuit breakers work on NSE
 - How IPOs are priced (book building process)
 - How Nifty 50 is calculated
 - Why NSE and BSE prices differ

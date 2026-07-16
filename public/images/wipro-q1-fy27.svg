@@ -2,18 +2,18 @@
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Wipro Q1 FY27 results</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Due 16 July 2026, after market</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Reported 16 July 2026, after market</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">REVENUE (QoQ, CC)</text>
-  <text x="48" y="224" font-size="42" font-weight="800" fill="#0b3b2e">-2% to 0%</text>
-  <text x="48" y="258" font-size="20" font-weight="700" fill="#c0392b">flat to lower</text>
-  <text x="470" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">MARGINS</text>
-  <text x="470" y="224" font-size="42" font-weight="800" fill="#0b3b2e">under pressure</text>
-  <text x="470" y="258" font-size="20" font-weight="700" fill="#c0392b">wages, AI spend</text>
+  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">NET PROFIT</text>
+  <text x="48" y="224" font-size="42" font-weight="800" fill="#0b3b2e">Rs 3,380 cr</text>
+  <text x="48" y="258" font-size="20" font-weight="700" fill="#0b7a3e">up 2-3% QoQ</text>
+  <text x="470" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">REVENUE (QoQ, CC)</text>
+  <text x="470" y="224" font-size="42" font-weight="800" fill="#0b3b2e">-1.1%</text>
+  <text x="470" y="258" font-size="20" font-weight="700" fill="#0b3b2e">margin 16.4%</text>
   <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">RECENT BUYBACK</text>
-  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">Rs 15,000 cr done</text>
-  <text x="470" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">IN FOCUS</text>
-  <text x="470" y="372" font-size="24" font-weight="700" fill="#0b3b2e">Guidance &amp; AI</text>
+  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">INTERIM DIVIDEND</text>
+  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">Re 1 per share</text>
+  <text x="470" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">Q2 GUIDANCE (CC)</text>
+  <text x="470" y="372" font-size="24" font-weight="700" fill="#0b3b2e">-1.0% to +1.0%</text>
 </svg>
