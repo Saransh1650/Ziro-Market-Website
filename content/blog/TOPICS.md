@@ -36,66 +36,71 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Infosys Q1 FY27 results preview (2026-07-16, reports Jul 23, FY27 guide 1-3% CC is the whole story) → infosys-q1-fy27-results-preview-2026.mdx
 - How circuit breakers work on NSE (2026-07-16, evergreen concept: 10/15/20% rule + 13 Mar 2020 halt) → how-circuit-breakers-work-nse.mdx
 - Evergreen refresh (2026-07-16, dates + numbers to today, post-Wipro): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
+- Evergreen refresh (2026-07-17, Wipro cash-session reaction, Nifty ~24,180, Brent ~$84): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
+- HCLTech Q1 FY27 results (2026-07-17: PAT ~Rs 4,350cr, rev +0.7% CC ~Rs 30,400cr, margin 18.2%, Rs 12 div, FY27 guide held 2-4% CC) → hcltech-q1-fy27-results-2026.mdx
+- RBI MPC August 2026 preview (2026-07-17: repo 5.25% after June cut, consensus HOLD, CPI 4.38%, oil+rupee argue caution) → rbi-mpc-august-2026-preview.mdx
 
 ## Evergreen SEO strategy note
 
-Traffic was dead because early posts chased hyper-competitive news / "price today" queries (gold price, nifty today, IPO news) that a low-authority site cannot rank against Moneycontrol/ET/Groww/NSE. Pivot: build EVERGREEN, high-intent, beatable-SERP clusters that compound instead of decaying. Batch above = Bet A (evergreen tax/how-to/comparison, pure-SEO framing). Still to do: Bet B (smart-money cluster: FII/DII, bulk deals, sector rotation — the app's unique edge) and Bet C (programmatic per-stock/per-sector pages from app data — the millions-of-pages lever). See conversation for full plan.
+Traffic was dead because early posts chased hyper-competitive news / "price today" queries (gold price, nifty today, IPO news) that a low-authority site cannot rank against Moneycontrol/ET/Groww/NSE. Pivot: build EVERGREEN, high-intent, beatable-SERP clusters that compound instead of decaying. Bet A (evergreen tax/how-to/comparison + core terminology) is now largely done. Current focus, in order: Bet B (smart-money cluster: FII/DII, bulk deals, sector rotation, F&O positioning — the app's unique edge, low competition) then Bet C (programmatic per-stock/per-sector pages from app data — the millions-of-pages lever). Dated news and price-today one-offs decay and do not rank, so cap them at the canonical evergreen pages only.
 
 ## Queue
 
-### Terminology
-- EPS (Earnings Per Share)
-- EBITDA
-- Market Cap
-- Book Value vs Market Value
-- Face Value
-- Dividend yield
-- Promoter holding
-- Pledged shares
-- Beta
-- 52-week high and low
-- P/B ratio (Price to Book)
-- Debt-to-equity ratio
-- Return on Equity (ROE)
-- Return on Capital Employed (ROCE)
-- Free cash flow
-- Working capital
-- Upper and lower circuit
-- Delivery percentage
-- Open Interest
-- Call vs Put options
-- Strike price
-- Implied volatility
-- PCR (Put-Call Ratio)
-- India VIX
-- Bulk deal vs block deal
+Ordered by SEO ROI. The cron agent picks from the TOP of Priority 1 first and works down. Each post must interlink 2-3 sibling posts in its cluster (cluster linking is what makes these rank). Every topic here is evergreen unless tagged (event). Reframe any "what is X" as a specific searchable question in the title per RULES.md.
 
-### Events
-- RBI June 2025 rate cut
-- India JP Morgan bond index inclusion (2024)
-- Union Budget 2024 capital gains tax change
-- Adani FPO cancellation January 2023
-- Nifty 50 all-time high 26277 September 2024
-- SEBI F&O rules tightening October 2024
-- LIC IPO May 2022
-- Paytm payment bank crisis January 2024
-- Zomato entering Nifty 50 (2024)
-- Yes Bank rescue March 2020
-- Reliance Rights Issue 2020
-- Budget 2023 new tax regime
-- RBI MPC rate hike cycle 2022-2023
+### Priority 1 — Smart-money cluster (Bet B: unique edge, low competition, high intent)
+These map to real searches AND showcase the app's data. Build the cluster densely and cross-link every post to `fii-vs-dii`, `how-circuit-breakers-work-nse`, and each other.
+- How to read FII and DII activity (daily/monthly flows, what a flip signals) — anchor of the cluster
+- Bulk deal vs block deal explained (who has to disclose, what it tells you)
+- Delivery percentage: what high vs low delivery signals about conviction
+- Promoter pledging: the red flag explained (merge old "Pledged shares" + "why promoters pledge")
+- Promoter holding: what a rising or falling promoter stake tells you
+- Sector rotation: how smart money moves between sectors (pairs with the app heatmap)
+- Open Interest and PCR: reading F&O positioning without the jargon (merge OI + PCR)
+- FII/DII monthly flow tracker — recurring evergreen data page, dateless slug, update in place
 
-### Concepts
-- How IPOs are priced (book building process)
-- How Nifty 50 is calculated
-- Why NSE and BSE prices differ
-- How SEBI regulates markets
-- What happens when a company goes bankrupt on NSE
-- How mutual fund NAV is calculated
-- Why SIP works mathematically (rupee cost averaging)
-- T+1 settlement — what changed and why
-- How stock splits work
-- How buybacks work and why companies do them
-- Short selling in India — what it is and why it's restricted
-- How margin trading works
-- Why promoters pledge shares and what it signals
+### Priority 2 — High-intent evergreen how-to / comparison (Bet A continued, beatable SERP)
+- How IPOs are priced (book building, cut-off price, GMP) — high volume, evergreen
+- Why SIP works mathematically (rupee cost averaging) — huge Indian search intent
+- How buybacks work and why companies do them (tender vs open market, tax angle)
+- How stock splits and bonus issues work (and why the price "drops")
+- T+1 and T+0 settlement: what changed and how instant settlement works
+- How mutual fund NAV is calculated (and why it is not "cheap vs expensive")
+- Old vs new tax regime for investors FY27 — which is better, worked example
+- How to read a cash flow statement (companion to the done balance-sheet guide)
+
+### Priority 3 — Terminology backlog ("what is X", compounding long-tail SEO)
+Dedup'd: Market Cap, Dividend Yield, P/B, D/E, ROE, EPS, India VIX are DONE — do not rewrite.
+- EBITDA (and why it flatters profit)
+- Face Value (and why it matters for dividends and splits)
+- Beta (how a stock moves vs the Nifty)
+- 52-week high and low (how traders actually use it)
+- ROCE (and ROCE vs ROE)
+- Free cash flow (the number that is hard to fake)
+- Working capital (and the cash conversion cycle)
+- Call vs Put options (the absolute basics)
+- Strike price and how option pricing works
+- Implied volatility (what the option market is pricing in)
+- Book value vs market value (comparison angle, not the done book-value explainer)
+
+### Priority 4 — Concept explainers (moderate SEO, builds topical authority)
+- How Nifty 50 is calculated (free-float market cap weighting)
+- Why NSE and BSE prices differ for the same stock
+- How SEBI regulates the market (and what it cannot do)
+- What happens to your shares when a company goes bankrupt / is delisted
+- Short selling in India: what it is and why it is restricted
+- How margin trading (MTF) works and its risks
+
+### Priority 5 — Programmatic templates (Bet C: the scale lever, needs a template build first)
+Not single posts — build a data-driven page template, then generate at scale from app data.
+- Per-stock page: "<Stock> share price, fundamentals and smart-money view" (PE, FII/DII, delivery %)
+- Per-sector page: "Best <sector> stocks in India" + live sector heatmap
+- Head-to-head: "<Stock A> vs <Stock B>" comparison template
+
+### Events (LOW SEO priority — decayed news, thin recurring search; write only with lasting intent)
+Most of these are old news with no recurring volume; skip unless there is an evergreen angle. The few worth an evergreen framing: LIC IPO (retail investor case study), Yes Bank rescue March 2020 (what happens when a bank fails), Adani FPO cancellation (how an FPO works).
+- LIC IPO May 2022 · Yes Bank rescue March 2020 · Adani FPO cancellation Jan 2023 · Union Budget 2024 capital gains change · Nifty 50 all-time high 26277 (Sep 2024) · SEBI F&O rules Oct 2024 · India JP Morgan bond index inclusion (2024) · Paytm payments bank crisis (Jan 2024) · Zomato entering Nifty 50 (2024) · Reliance Rights Issue 2020 · RBI rate hike cycle 2022-2023
+
+### Do NOT write (can't rank, decays, splits authority)
+- New dated "price today" posts for anything already covered by a canonical evergreen page (see RULES.md registry)
+- Generic breaking-news repeats (gold price news, nifty close news, one-off IPO news) that ET/Moneycontrol/Groww own
