@@ -39,6 +39,8 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Evergreen refresh (2026-07-17, Wipro cash-session reaction, Nifty ~24,180, Brent ~$84): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
 - HCLTech Q1 FY27 results (2026-07-17: PAT ~Rs 4,350cr, rev +0.7% CC ~Rs 30,400cr, margin 18.2%, Rs 12 div, FY27 guide held 2-4% CC) → hcltech-q1-fy27-results-2026.mdx
 - RBI MPC August 2026 preview (2026-07-17: repo 5.25% after June cut, consensus HOLD, CPI 4.38%, oil+rupee argue caution) → rbi-mpc-august-2026-preview.mdx
+- Evergreen refresh (2026-07-19, weekend wrap, Nifty ~24,190 +0.6% week, IT-led): indian-stock-market-today (EN + regional/hi), gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
+- IT Q1 FY27 scorecard (2026-07-19, data-rich: TCS/Wipro/HCLTech reported + Infosys est, comparison table + margin bar chart) → it-sector-q1-fy27-scorecard-2026.mdx (EN) + regional/hi/it-sector-q1-fy27-scorecard-2026.mdx (Hindi, native)
 
 ## Evergreen SEO strategy note
 

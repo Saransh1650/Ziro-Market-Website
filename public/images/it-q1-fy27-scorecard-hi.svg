@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" font-family="'Noto Sans Devanagari', Arial, Helvetica, sans-serif">
+  <rect width="960" height="460" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="458" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="60" font-size="30" font-weight="700" fill="#0b3b2e">Q1 FY27 आईटी स्कोरकार्ड</text>
+  <text x="48" y="90" font-size="16" fill="#0b3b2e" fill-opacity="0.55">शुद्ध मुनाफ़ा (करोड़ रु) &#183; जून 2026 तिमाही</text>
+  <text x="912" y="56" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="112" x2="912" y2="112" stroke="#0b3b2e" stroke-opacity="0.12"/>
+
+  <text x="48" y="150" font-size="18" font-weight="700" fill="#0b3b2e">टीसीएस</text>
+  <rect x="150" y="136" width="680" height="22" rx="5" fill="#0b3b2e"/>
+  <text x="842" y="153" font-size="16" font-weight="700" fill="#0b3b2e">13,349</text>
+  <text x="150" y="176" font-size="13" fill="#0b3b2e" fill-opacity="0.6">मार्जिन 24% &#183; डिविडेंड Rs 12 &#183; 9 जुलाई</text>
+
+  <text x="48" y="222" font-size="18" font-weight="700" fill="#0b3b2e">इंफ़ोसिस</text>
+  <rect x="150" y="208" width="352" height="22" rx="5" fill="#9b6810"/>
+  <text x="514" y="225" font-size="16" font-weight="700" fill="#9b6810">~6,900 अनुमान</text>
+  <text x="150" y="248" font-size="13" fill="#0b3b2e" fill-opacity="0.6">मार्जिन 20-22% &#183; 23 जुलाई को &#183; FY27 अनुमान पर नज़र</text>
+
+  <text x="48" y="294" font-size="18" font-weight="700" fill="#0b3b2e">एचसीएल टेक</text>
+  <rect x="150" y="280" width="222" height="22" rx="5" fill="#0b7a3e"/>
+  <text x="384" y="297" font-size="16" font-weight="700" fill="#0b7a3e">~4,350</text>
+  <text x="150" y="320" font-size="13" fill="#0b3b2e" fill-opacity="0.6">मार्जिन 18.2% &#183; डिविडेंड Rs 12 &#183; FY27 अनुमान बरक़रार</text>
+
+  <text x="48" y="366" font-size="18" font-weight="700" fill="#0b3b2e">विप्रो</text>
+  <rect x="150" y="352" width="172" height="22" rx="5" fill="#0b7a3e"/>
+  <text x="334" y="369" font-size="16" font-weight="700" fill="#0b7a3e">~3,380</text>
+  <text x="150" y="392" font-size="13" fill="#0b3b2e" fill-opacity="0.6">मार्जिन 16.4% &#183; डिविडेंड Re 1 &#183; अगली तिमाही सपाट</text>
+
+  <line x1="48" y1="418" x2="912" y2="418" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="444" font-size="15" font-weight="700" fill="#0b3b2e">नतीजा: किसी ने निराश नहीं किया, किसी ने अनुमान नहीं घटाया। इंफ़ोसिस 23 जुलाई को।</text>
+</svg>
