@@ -41,6 +41,9 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - RBI MPC August 2026 preview (2026-07-17: repo 5.25% after June cut, consensus HOLD, CPI 4.38%, oil+rupee argue caution) → rbi-mpc-august-2026-preview.mdx
 - Evergreen refresh (2026-07-19, weekend wrap, Nifty ~24,190 +0.6% week, IT-led): indian-stock-market-today (EN + regional/hi), gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
 - IT Q1 FY27 scorecard (2026-07-19, data-rich: TCS/Wipro/HCLTech reported + Infosys est, comparison table + margin bar chart) → it-sector-q1-fy27-scorecard-2026.mdx (EN) + regional/hi/it-sector-q1-fy27-scorecard-2026.mdx (Hindi, native)
+- Evergreen refresh (2026-07-21, earnings-week wrap, Nifty ~24,230, Brent ~$83): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
+- Reliance Q1 FY27 results (2026-07-21: PAT ~Rs 21,500cr +12%, rev Rs 2.55L cr, Jio EBITDA ~17,800cr, segment table + EBITDA bar chart) → reliance-q1-fy27-results-2026.mdx
+- HDFC Bank Q1 FY27 results (2026-07-21: PAT ~Rs 18,200cr +10%, NII ~31,500cr, NIM ~3.5%, GNPA 1.31%, metrics table + callout) → hdfc-bank-q1-fy27-results-2026.mdx
 
 ## Evergreen SEO strategy note
 
