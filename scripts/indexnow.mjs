@@ -9,7 +9,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const HOST = 'ziromarket.com';
+const HOST = 'www.ziromarket.com';
 const BASE_URL = `https://${HOST}`;
 const KEY = '337f42e4c86d3f8e5bfdecba0e0b0ad3';
 const KEY_LOCATION = `${BASE_URL}/${KEY}.txt`;
@@ -19,6 +19,7 @@ const REGIONAL_DIR = path.join(process.cwd(), 'content', 'regional');
 const staticUrls = [
   `${BASE_URL}`,
   `${BASE_URL}/blog`,
+  `${BASE_URL}/about`,
   `${BASE_URL}/privacy`,
   `${BASE_URL}/terms`,
 ];

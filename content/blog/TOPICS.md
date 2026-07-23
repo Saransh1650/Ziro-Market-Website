@@ -44,6 +44,12 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Evergreen refresh (2026-07-21, earnings-week wrap, Nifty ~24,230, Brent ~$83): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
 - Reliance Q1 FY27 results (2026-07-21: PAT ~Rs 21,500cr +12%, rev Rs 2.55L cr, Jio EBITDA ~17,800cr, segment table + EBITDA bar chart) → reliance-q1-fy27-results-2026.mdx
 - HDFC Bank Q1 FY27 results (2026-07-21: PAT ~Rs 18,200cr +10%, NII ~31,500cr, NIM ~3.5%, GNPA 1.31%, metrics table + callout) → hdfc-bank-q1-fy27-results-2026.mdx
+- Bulk deal vs block deal explained (2026-07-23, smart-money cluster: SEBI's Dec 2025 block deal rule change + SBI MF's Rs 632cr Urban Company bulk deal + HDFC Bank block deal, comparison table + callout) → bulk-deal-vs-block-deal.mdx
+- Delivery percentage: what high vs low delivery signals (2026-07-23, smart-money cluster: HDFC Bank's 62% results-day delivery surge, stat grid + pullquote) → delivery-percentage-stock-market.mdx
+- Promoter pledging: the red flag explained (2026-07-23, smart-money cluster, merges old "pledged shares" + "why promoters pledge": Zee Entertainment/Essel Group 2019-2020 pledge cascade, timeline table + callout) → promoter-pledging-red-flag.mdx
+- Promoter holding: rising or falling stake (2026-07-23, IndusInd Bank Hinduja capital commitment vs Vodafone Idea govt-conversion dilution, statgrid + callout) → promoter-holding-rising-falling.mdx
+- Sector rotation: how smart money moves between sectors (2026-07-23, real Feb 2025-Jan 2026 rotation: PSU banks/metals +44% vs IT -10%, bar chart + key takeaways) → sector-rotation-smart-money-india.mdx
+- Open Interest and PCR (2026-07-23, merged OI+PCR, angle: SEBI's 93%-of-traders-lose-money study and why PCR extremes get misread, table + callout) → open-interest-put-call-ratio.mdx
 
 ## Evergreen SEO strategy note
 
@@ -56,12 +62,6 @@ Ordered by SEO ROI. The cron agent picks from the TOP of Priority 1 first and wo
 ### Priority 1 — Smart-money cluster (Bet B: unique edge, low competition, high intent)
 These map to real searches AND showcase the app's data. Build the cluster densely and cross-link every post to `fii-vs-dii`, `how-circuit-breakers-work-nse`, and each other.
 - How to read FII and DII activity (daily/monthly flows, what a flip signals) — anchor of the cluster
-- Bulk deal vs block deal explained (who has to disclose, what it tells you)
-- Delivery percentage: what high vs low delivery signals about conviction
-- Promoter pledging: the red flag explained (merge old "Pledged shares" + "why promoters pledge")
-- Promoter holding: what a rising or falling promoter stake tells you
-- Sector rotation: how smart money moves between sectors (pairs with the app heatmap)
-- Open Interest and PCR: reading F&O positioning without the jargon (merge OI + PCR)
 - FII/DII monthly flow tracker — recurring evergreen data page, dateless slug, update in place
 
 ### Priority 2 — High-intent evergreen how-to / comparison (Bet A continued, beatable SERP)

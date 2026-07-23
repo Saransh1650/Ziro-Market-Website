@@ -2,6 +2,7 @@ import LiveIndices from './LiveIndices';
 import Image from 'next/image';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.ziro.market';
+const APP_STORE_URL = 'https://apps.apple.com/in/app/ziro-market-stock-trends/id6761326539';
 
 function AppleIcon() {
   return (
@@ -45,18 +46,18 @@ export default function Hero() {
 
             {/* Platform badges */}
             <div style={{ display: 'flex', gap: 10, marginTop: 22 }}>
-              <div style={{
+              <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" style={{
                 display: 'flex', alignItems: 'center', gap: 8,
                 background: 'var(--bg-2)', border: '1px solid var(--border-1)',
-                padding: '8px 14px', borderRadius: 8, cursor: 'default',
-                color: 'var(--text-1)',
+                padding: '8px 14px', borderRadius: 8, cursor: 'pointer',
+                color: 'var(--text-1)', textDecoration: 'none',
               }}>
                 <AppleIcon />
                 <div>
                   <div style={{ fontSize: '0.42rem', color: 'var(--text-3)', letterSpacing: '0.06em', fontFamily: 'var(--mono)' }}>AVAILABLE ON</div>
                   <div style={{ fontSize: '0.72rem', fontWeight: 700, lineHeight: 1.1 }}>App Store</div>
                 </div>
-              </div>
+              </a>
               <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" style={{
                 display: 'flex', alignItems: 'center', gap: 8,
                 background: 'var(--bg-2)', border: '1px solid var(--border-1)',

@@ -8,15 +8,21 @@ import FeaturesBento from '@/components/features/FeaturesBento';
 import StatsStrip from '@/components/stats/StatsStrip';
 import BuiltForIndia from '@/components/builtFor/BuiltForIndia';
 import WhoItsFor from '@/components/whoItsFor/WhoItsFor';
+import { SITE_URL } from '@/lib/site';
 
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Ziro Market',
-  url: 'https://ziromarket.com',
-  logo: 'https://ziromarket.com/favicon/android-chrome-192x192.png',
+  url: SITE_URL,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE_URL}/favicon/android-chrome-192x192.png`,
+    width: 192,
+    height: 192,
+  },
   sameAs: ['https://twitter.com/ziromarket'],
-  description: "Track what's moving in Indian markets, understand why it's moving. Live heatmaps, portfolio analytics, sector intelligence and smart watchlists built for India.",
+  description: "Track what's moving in Indian markets, understand why it's moving. Live FII/DII flows, heatmaps, portfolio analytics, sector intelligence and smart watchlists built for India.",
 }
 
 const softwareAppJsonLd = {
@@ -25,11 +31,11 @@ const softwareAppJsonLd = {
   name: 'Ziro Market',
   operatingSystem: 'iOS, Android',
   applicationCategory: 'FinanceApplication',
-  description: 'Indian stock market tracker with live heatmaps, portfolio analytics, sector intelligence, and smart watchlists.',
-  url: 'https://ziromarket.com',
+  description: 'Indian stock market tracker with live FII/DII flows, heatmaps, portfolio analytics, sector intelligence, and smart watchlists.',
+  url: SITE_URL,
   author: { '@type': 'Organization', name: 'Ziro Market' },
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
-  screenshot: 'https://ziromarket.com/screenshots/3D_mockup.png',
+  screenshot: `${SITE_URL}/screenshots/3D_mockup.png`,
 }
 
 export default function Home() {

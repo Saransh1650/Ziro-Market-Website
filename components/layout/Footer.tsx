@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
@@ -7,7 +9,7 @@ export default function Footer() {
           <div>
             {/* Logo (links to home — internal backlink on every page) */}
             <a href="/" aria-label="Ziro Market home" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, textDecoration: 'none' }}>
-              <img src="/app_icon/ziro.png" alt="Ziro" style={{ width: 22, height: 22, borderRadius: 4, display: 'block' }} />
+              <Image src="/app_icon/ziro.png" alt="Ziro" width={22} height={22} style={{ borderRadius: 4, display: 'block' }} />
               <span style={{
                 fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.06em',
                 textTransform: 'uppercase', color: '#ffffff', fontFamily: 'var(--sans)',
@@ -26,6 +28,7 @@ export default function Footer() {
             { label: 'Play Store',  href: 'https://play.google.com/store/apps/details?id=com.ziro.market' },
           ]} />
           <FooterCol title="Company" links={[
+            { label: 'About', href: '/about' },
             { label: 'Contact', href: 'mailto:hello@ziromarket.com' },
           ]} />
           <FooterCol title="Legal" links={[

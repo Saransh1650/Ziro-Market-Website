@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
- 
+import { SITE_URL } from '@/lib/site'
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,11 +8,10 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    host: 'https://ziromarket.com',
     sitemap: [
-      'https://ziromarket.com/sitemap.xml',
-      'https://ziromarket.com/blog/sitemap.xml',
-      'https://ziromarket.com/regional/sitemap.xml',
+      `${SITE_URL}/sitemap.xml`,
+      `${SITE_URL}/blog/sitemap.xml`,
+      `${SITE_URL}/regional/sitemap.xml`,
     ],
   }
 }

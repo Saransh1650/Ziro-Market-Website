@@ -7,6 +7,29 @@ const nextConfig: NextConfig = {
     { source: '/api/waitlist',       destination: `${BACKEND_URL}/api/waitlist` },
     { source: '/api/backend/:path*', destination: `${BACKEND_URL}/api/:path*` },
   ]),
+  headers: async () => ([
+    {
+      source: '/:path*',
+      headers: [
+        { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+        { key: 'X-Content-Type-Options', value: 'nosniff' },
+        { key: 'X-Frame-Options', value: 'DENY' },
+        // Scoped to just the clickjacking protection (frame-ancestors) rather
+        // than a full script/style/connect-src policy — the latter needs to be
+        // audited against every third-party origin actually in use (Vercel
+        // Analytics, next/font, the backend API) before it can ship safely.
+        { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" },
+        { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+      ],
+    },
+    {
+      // Defense-in-depth: robots.txt already disallows crawling /api/, this
+      // keeps compliant-but-JS-executing bots and link-preview scrapers out too.
+      source: '/api/:path*',
+      headers: [{ key: 'X-Robots-Tag', value: 'noindex' }],
+    },
+  ]),
   // 301 redirects for consolidated/retired blog URLs, so their SEO authority
   // flows to the canonical evergreen page that replaced them, and old indexed
   // URLs stop returning 404 (a 404 drops the page's rankings and breadcrumbs).
@@ -27,6 +50,9 @@ const nextConfig: NextConfig = {
     { source: '/blog/global-markets-week-ahead-june-22-2026', destination: '/blog/stock-market-july-2026-what-to-watch', permanent: true },
     { source: '/blog/turtlemint-ipo-june-2026', destination: '/blog/how-to-apply-for-ipo-india', permanent: true },
     { source: '/blog/susan-electricals-sme-ipo-june-2026', destination: '/blog/how-to-apply-for-ipo-india', permanent: true },
+    // Same-day pre-release forecast, superseded by the actuals post once MOSPI
+    // published the real May 2026 CPI print (both dated 2026-06-12).
+    { source: '/blog/india-may-cpi-inflation-2026', destination: '/blog/india-may-2026-cpi-inflation-3-93-percent', permanent: true },
   ]),
 };
 

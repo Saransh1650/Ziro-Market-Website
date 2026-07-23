@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.ziro.market';
 
@@ -45,7 +46,7 @@ export default function Nav() {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
         {/* Logo (links to home — internal backlink on every page) */}
         <a href="/" aria-label="Ziro Market home" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/app_icon/ziro.png" alt="Ziro" style={{ width: 24, height: 24, borderRadius: 4, display: 'block' }} />
+          <Image src="/app_icon/ziro.png" alt="Ziro" width={24} height={24} style={{ borderRadius: 4, display: 'block' }} />
           <span style={{
             fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.06em',
             textTransform: 'uppercase', color: '#0b3b2e', fontFamily: 'var(--sans)',

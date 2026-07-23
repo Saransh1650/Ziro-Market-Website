@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL } from "@/lib/site";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -16,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ziromarket.com"),
+  metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   // Every page's <title> ends with "| Ziro Market". The template appends the
   // brand to any child page's string title; `default` is used for the homepage
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ziro Market : The Indian market, simplified.",
     description: "Track what's moving, understand why it's moving. Built for India.",
-    url: "https://ziromarket.com",
+    url: SITE_URL,
     siteName: "Ziro Market",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Ziro Market : The Indian market, simplified." }],
     type: "website",

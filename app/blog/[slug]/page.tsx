@@ -11,6 +11,8 @@ import AppDownloadPopup from '@/components/blog/AppDownloadPopup'
 import FaqAccordion from '@/components/blog/FaqAccordion'
 import { mdxComponents } from '@/components/blog/MdxComponents'
 import { getPost, getPostSlugs, getAllPosts } from '@/lib/blog'
+import { getRegionalCounterparts, LANGUAGES } from '@/lib/regional'
+import { SITE_URL } from '@/lib/site'
 
 export async function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }))
@@ -29,15 +31,28 @@ export async function generateMetadata({
   // title.template, so we only set the keywords|benefit half here.
   // Falls back to the readable headline if a post has no dedicated seoTitle.
   const seoTitle = post.seoTitle ?? post.title
+
+  // Reciprocal hreflang: if a regional translation of this post exists, point
+  // to it so Google trusts the pair instead of discarding a one-directional
+  // annotation (the regional page already points back to this English slug).
+  const counterparts = getRegionalCounterparts(slug)
+  const languages: Record<string, string> | undefined =
+    counterparts.length > 0
+      ? Object.fromEntries([
+          ['en-IN', `${SITE_URL}/blog/${slug}`],
+          ...counterparts.map((c) => [LANGUAGES[c.lang].locale, `${SITE_URL}/regional/${c.lang}/${c.slug}`]),
+        ])
+      : undefined
+
   return {
     title: seoTitle,
     description: post.excerpt,
     keywords: [...post.tags, 'Indian stock market', 'NSE', 'BSE', 'Ziro Market'],
-    alternates: { canonical: `/blog/${slug}` },
+    alternates: { canonical: `/blog/${slug}`, languages },
     openGraph: {
       title: post.seoTitle ?? post.title,
       description: post.excerpt,
-      url: `https://ziromarket.com/blog/${slug}`,
+      url: `${SITE_URL}/blog/${slug}`,
       type: 'article',
       publishedTime: post.date,
       tags: post.tags,
@@ -84,23 +99,23 @@ export default async function PostPage({
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
-    datePublished: post.date,
+    datePublished: post.datePublished ?? post.date,
     dateModified: post.date,
     image: {
       '@type': 'ImageObject',
-      url: `https://ziromarket.com/blog/${slug}/opengraph-image`,
+      url: `${SITE_URL}/blog/${slug}/opengraph-image`,
       width: 1200,
       height: 630,
     },
-    author: { '@type': 'Organization', name: 'Ziro Market', url: 'https://ziromarket.com' },
+    author: { '@type': 'Organization', name: 'Ziro Market', url: SITE_URL },
     publisher: {
       '@type': 'Organization',
       name: 'Ziro Market',
-      url: 'https://ziromarket.com',
-      logo: { '@type': 'ImageObject', url: 'https://ziromarket.com/favicon/android-chrome-192x192.png' },
+      url: SITE_URL,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon/android-chrome-192x192.png` },
     },
-    url: `https://ziromarket.com/blog/${slug}`,
-    mainEntityOfPage: `https://ziromarket.com/blog/${slug}`,
+    url: `${SITE_URL}/blog/${slug}`,
+    mainEntityOfPage: `${SITE_URL}/blog/${slug}`,
     keywords: post.tags.join(', '),
   }
 
@@ -108,9 +123,9 @@ export default async function PostPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ziromarket.com' },
-      { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://ziromarket.com/blog' },
-      { '@type': 'ListItem', position: 3, name: post.title, item: `https://ziromarket.com/blog/${slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Learn', item: `${SITE_URL}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `${SITE_URL}/blog/${slug}` },
     ],
   }
 
@@ -306,8 +321,14 @@ export default async function PostPage({
         .key-takeaways li, .callout-body li { color: #0b3b2e; }
         .callout-body p { font-size: 0.92rem; line-height: 1.65; color: rgba(11,59,46,0.78); margin: 0; }
         .post-body blockquote { margin: 24px 0; padding: 4px 0 4px 18px; border-left: 3px solid #9b6810; color: #0b3b2e; font-style: italic; }
-        .post-body table { width: 100%; border-collapse: collapse; margin: 26px 0; font-size: 0.86rem; display: block; overflow-x: auto; }
-        .post-body th, .post-body td { border: 1px solid rgba(11,59,46,0.14); padding: 9px 12px; text-align: left; vertical-align: top; }
+        .table-wrap { position: relative; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 26px 0; }
+        .table-wrap::after {
+          content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 22px;
+          background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.92));
+          pointer-events: none;
+        }
+        .post-body table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+        .post-body th, .post-body td { border: 1px solid rgba(11,59,46,0.14); padding: 9px 12px; text-align: left; vertical-align: top; white-space: nowrap; }
         .post-body th { background: rgba(11,59,46,0.06); font-weight: 700; color: #0b3b2e; }
         .post-body tbody tr:nth-child(even) td { background: rgba(11,59,46,0.025); }
         .faq-accordion { margin: 8px 0 16px; }
@@ -317,9 +338,15 @@ export default async function PostPage({
         .faq-item .faq-summary:hover { background: rgba(11,59,46,0.03); }
         .faq-item[data-open] .faq-summary { background: rgba(11,59,46,0.03); }
         .faq-item .faq-question { flex: 1; }
-        .faq-item .faq-icon { flex-shrink: 0; font-size: 1.25rem; line-height: 1; color: #9b6810; font-weight: 400; display: flex; align-items: center; }
-        .faq-item .faq-answer-inner { padding: 16px 18px 16px; }
+        .faq-item .faq-icon { flex-shrink: 0; font-size: 1.25rem; line-height: 1; color: #9b6810; font-weight: 400; display: flex; align-items: center; transition: transform 0.2s ease; }
+        .faq-item[data-open] .faq-icon { transform: rotate(45deg); }
+        .faq-item .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+        .faq-item[data-open] .faq-answer { max-height: 600px; }
+        .faq-item .faq-answer-inner { padding: 0 18px 16px; }
         .faq-item .faq-answer-inner p { font-size: 0.92rem; line-height: 1.7; color: rgba(11,59,46,0.72); margin: 0; }
+        @media (prefers-reduced-motion: reduce) {
+          .faq-item .faq-answer, .faq-item .faq-icon { transition: none; }
+        }
         .also-read-link:hover { background: rgba(11,59,46,0.04) !important; }
         .also-read-link:last-child { border-bottom: none !important; }
       `}</style>

@@ -1,6 +1,5 @@
 import { getAllPosts } from '@/lib/blog'
-
-const BASE = 'https://ziromarket.com'
+import { SITE_URL as BASE } from '@/lib/site'
 
 export function GET() {
   const posts = getAllPosts()

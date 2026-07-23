@@ -17,6 +17,11 @@ export interface PostMeta {
   seoTitle?: string
   slug: string
   date: string
+  // Original publish date, set once. `date` doubles as "last updated" for
+  // evergreen pages (bumped on every refresh per RULES.md) so Article schema
+  // needs a separate, stable `datePublished` — falls back to `date` when a
+  // post predates this field.
+  datePublished?: string
   category: Category
   type?: PostType
   excerpt: string

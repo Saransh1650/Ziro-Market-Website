@@ -16,6 +16,7 @@ export interface RegionalPostMeta {
   slug: string
   lang: string
   date: string
+  datePublished?: string
   category: Category
   type?: PostType
   excerpt: string
@@ -139,5 +140,16 @@ export function getRegionalPostsForLang(lang: string): RegionalPostMeta[] {
 export function getAllRegionalParams(): { lang: string; slug: string }[] {
   return getLanguages().flatMap((lang) =>
     getRegionalSlugs(lang).map((slug) => ({ lang, slug })),
+  )
+}
+
+// Reverse lookup for hreflang reciprocity: given an English post's slug, find
+// every regional page whose `enSlug` points back to it, so the English page
+// can declare a matching `alternate` instead of only being pointed at.
+export function getRegionalCounterparts(enSlug: string): { lang: string; slug: string }[] {
+  return getLanguages().flatMap((lang) =>
+    getRegionalPostsForLang(lang)
+      .filter((post) => post.enSlug === enSlug)
+      .map((post) => ({ lang, slug: post.slug })),
   )
 }

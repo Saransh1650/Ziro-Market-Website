@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 
 /* ─── Card building blocks ─────────────────────────── */
 
@@ -45,11 +46,14 @@ function WideCard({
         <p className="bc-desc">{desc}</p>
       </div>
       <div className="bc-wide-phone">
-        <img
+        <Image
           src={imgSrc}
           alt={label}
+          width={1419}
+          height={2796}
           style={{
             width: "100%",
+            height: "auto",
             objectFit: "contain",
             objectPosition: "center",
             display: "block",
@@ -85,10 +89,17 @@ function TallCard({
       </div>
       <div className="bc-phone-wrap">
         <div className="bc-phone-inner">
-          <img
+          <Image
             src={imgSrc}
             alt={label}
-            style={{ width: "100%", objectFit: "contain", display: "block" }}
+            width={1419}
+            height={2796}
+            style={{
+              width: "100%",
+              height: "auto",
+              objectFit: "contain",
+              display: "block",
+            }}
           />
         </div>
       </div>

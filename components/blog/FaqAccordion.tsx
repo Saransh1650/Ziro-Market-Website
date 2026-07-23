@@ -1,9 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
 import type { FaqItem } from '@/lib/blog'
 
+// Answers are always in the DOM (never conditionally mounted) so crawlers that
+// don't execute JS or simulate clicks — GPTBot, ClaudeBot, PerplexityBot,
+// Googlebot's non-JS pass — see the real answer text, not just the question.
+// Open/close is a pure-CSS grid-rows transition driven by the `data-open`
+// attribute; no motion library needed for a collapse/expand this simple.
 export default function FaqAccordion({
   items,
   title = 'Frequently Asked Questions',
@@ -28,31 +32,13 @@ export default function FaqAccordion({
               aria-expanded={isOpen}
             >
               <span className="faq-question">{item.q}</span>
-              <motion.span
-                className="faq-icon"
-                animate={{ rotate: isOpen ? 45 : 0 }}
-                transition={{ duration: 0.2, ease: 'easeInOut' }}
-                aria-hidden
-              >
-                +
-              </motion.span>
+              <span className="faq-icon" aria-hidden>+</span>
             </button>
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  className="faq-answer"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25, ease: 'easeInOut' }}
-                  style={{ overflow: 'hidden' }}
-                >
-                  <div className="faq-answer-inner">
-                    <p>{item.a}</p>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div className="faq-answer">
+              <div className="faq-answer-inner">
+                <p>{item.a}</p>
+              </div>
+            </div>
           </div>
         )
       })}

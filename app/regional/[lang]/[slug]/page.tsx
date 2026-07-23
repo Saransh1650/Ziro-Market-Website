@@ -9,14 +9,14 @@ import FaqAccordion from '@/components/blog/FaqAccordion'
 import { mdxComponents } from '@/components/blog/MdxComponents'
 import AppDownloadPopup from '@/components/blog/AppDownloadPopup'
 import RegionalDownloadCTA from '@/components/regional/RegionalDownloadCTA'
+import SetHtmlLang from '@/components/regional/SetHtmlLang'
 import {
   LANGUAGES,
   getAllRegionalParams,
   getRegionalPost,
   getRegionalPostsForLang,
 } from '@/lib/regional'
-
-const BASE = 'https://ziromarket.com'
+import { SITE_URL as BASE } from '@/lib/site'
 
 export async function generateStaticParams() {
   return getAllRegionalParams()
@@ -93,7 +93,7 @@ export default async function RegionalPostPage({
     inLanguage: cfg.locale,
     headline: post.title,
     description: post.excerpt,
-    datePublished: post.date,
+    datePublished: post.datePublished ?? post.date,
     dateModified: post.date,
     image: {
       '@type': 'ImageObject',
@@ -113,6 +113,18 @@ export default async function RegionalPostPage({
     keywords: post.tags.join(', '),
   }
 
+  // No standalone "/regional/<lang>" index page exists to link a middle
+  // breadcrumb level to, so this stays Home -> post rather than invent a
+  // broken intermediate URL.
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE },
+      { '@type': 'ListItem', position: 2, name: post.title, item: url },
+    ],
+  }
+
   const faqJsonLd = hasFaq
     ? {
         '@context': 'https://schema.org',
@@ -129,9 +141,11 @@ export default async function RegionalPostPage({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       {faqJsonLd && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       )}
+      <SetHtmlLang lang={cfg.code} />
       <Nav />
       <main lang={cfg.code}>
         <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 32px' }}>
@@ -265,8 +279,14 @@ export default async function RegionalPostPage({
         .post-body li::marker { color: #9b6810; }
         .key-takeaways li, .callout-body li { color: #0b3b2e; }
         .callout-body p { font-size: 0.95rem; line-height: 1.75; color: rgba(11,59,46,0.8); margin: 0; }
-        .post-body table { width: 100%; border-collapse: collapse; margin: 26px 0; font-size: 0.9rem; display: block; overflow-x: auto; }
-        .post-body th, .post-body td { border: 1px solid rgba(11,59,46,0.14); padding: 9px 12px; text-align: left; vertical-align: top; }
+        .table-wrap { position: relative; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 26px 0; }
+        .table-wrap::after {
+          content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 22px;
+          background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.92));
+          pointer-events: none;
+        }
+        .post-body table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .post-body th, .post-body td { border: 1px solid rgba(11,59,46,0.14); padding: 9px 12px; text-align: left; vertical-align: top; white-space: nowrap; }
         .post-body th { background: rgba(11,59,46,0.06); font-weight: 700; color: #0b3b2e; }
         .post-body tbody tr:nth-child(even) td { background: rgba(11,59,46,0.025); }
         .faq-accordion .faq-title { font-size: 1.4rem; font-weight: 700; color: #0b3b2e; margin: 24px 0 16px; }
@@ -275,9 +295,15 @@ export default async function RegionalPostPage({
         .faq-item .faq-summary:hover { background: rgba(11,59,46,0.03); }
         .faq-item[data-open] .faq-summary { background: rgba(11,59,46,0.03); }
         .faq-item .faq-question { flex: 1; }
-        .faq-item .faq-icon { flex-shrink: 0; font-size: 1.25rem; line-height: 1; color: #9b6810; display: flex; align-items: center; }
-        .faq-item .faq-answer-inner { padding: 16px 18px; }
+        .faq-item .faq-icon { flex-shrink: 0; font-size: 1.25rem; line-height: 1; color: #9b6810; display: flex; align-items: center; transition: transform 0.2s ease; }
+        .faq-item[data-open] .faq-icon { transform: rotate(45deg); }
+        .faq-item .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+        .faq-item[data-open] .faq-answer { max-height: 600px; }
+        .faq-item .faq-answer-inner { padding: 0 18px 16px; }
         .faq-item .faq-answer-inner p { font-size: 0.95rem; line-height: 1.8; color: rgba(11,59,46,0.74); margin: 0; }
+        @media (prefers-reduced-motion: reduce) {
+          .faq-item .faq-answer, .faq-item .faq-icon { transition: none; }
+        }
         .also-read-link:hover { background: rgba(11,59,46,0.04) !important; }
         .also-read-link:last-child { border-bottom: none !important; }
       `}</style>

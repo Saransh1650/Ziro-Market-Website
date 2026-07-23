@@ -1,7 +1,25 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.ziro.market'
+const APP_STORE_URL = 'https://apps.apple.com/in/app/ziro-market-stock-trends/id6761326539'
+
+function AppleIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+    </svg>
+  )
+}
+
+function PlayIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M3.18 23.59c.28.15.57.22.87.22.37 0 .74-.11 1.07-.32l16.59-9.59c.64-.37 1.04-1.05 1.04-1.79 0-.74-.4-1.42-1.04-1.79L5.12.73C4.49.36 3.72.33 3.06.65 2.41.97 2 1.64 2 2.38v19.24c0 .75.41 1.41 1.06 1.73.04.02.08.03.12.24z" />
+    </svg>
+  )
+}
 
 // A gentle, non-intrusive app-download ad for regional-language pages, aimed at
 // readers who may be rural or not comfortable in English. It is NOT a modal that
@@ -90,7 +108,7 @@ export default function AppDownloadPopup({
           ×
         </button>
         <div className="regional-popup-row">
-          <img
+          <Image
             src="/app_icon/ziro.png"
             alt="Ziro Market"
             width={48}
@@ -107,13 +125,22 @@ export default function AppDownloadPopup({
             href={PLAY_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${cta} — Android`}
             className="regional-popup-cta"
           >
-            {cta}
+            <PlayIcon />
+            Android
           </a>
-          <button type="button" onClick={close} className="regional-popup-later">
-            {dismiss}
-          </button>
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${cta} — iOS`}
+            className="regional-popup-cta regional-popup-cta-ios"
+          >
+            <AppleIcon />
+            iOS
+          </a>
         </div>
       </div>
 
@@ -161,10 +188,13 @@ export default function AppDownloadPopup({
         .regional-popup-icon { border-radius: 12px; flex-shrink: 0; display: block; }
         .regional-popup-title { font-size: 1rem; font-weight: 700; color: #0b3b2e; line-height: 1.3; }
         .regional-popup-body { font-size: 0.86rem; color: rgba(11,59,46,0.66); line-height: 1.5; margin-top: 4px; }
-        .regional-popup-actions { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+        .regional-popup-actions { display: flex; align-items: center; gap: 10px; margin-top: 18px; }
         .regional-popup-cta {
           flex: 1;
-          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
           background: #0b3b2e;
           color: #fff;
           font-weight: 700;
@@ -172,19 +202,16 @@ export default function AppDownloadPopup({
           padding: 13px 16px;
           border-radius: 10px;
           text-decoration: none;
+          border: 1px solid #0b3b2e;
+          transition: background 0.15s, border-color 0.15s;
         }
-        .regional-popup-cta:hover { background: #0a4d39; }
-        .regional-popup-later {
+        .regional-popup-cta:hover { background: #0a4d39; border-color: #0a4d39; }
+        .regional-popup-cta-ios {
           background: transparent;
-          border: none;
-          color: rgba(11,59,46,0.55);
-          font-size: 0.9rem;
-          font-weight: 600;
-          cursor: pointer;
-          padding: 13px 6px;
-          white-space: nowrap;
+          border-color: rgba(11,59,46,0.22);
+          color: #0b3b2e;
         }
-        .regional-popup-later:hover { color: #0b3b2e; }
+        .regional-popup-cta-ios:hover { background: rgba(11,59,46,0.05); border-color: rgba(11,59,46,0.32); }
         @keyframes regional-popup-in {
           from { opacity: 0; transform: translateY(24px); }
           to { opacity: 1; transform: translateY(0); }

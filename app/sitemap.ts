@@ -1,8 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
 import { LANGUAGES, getLanguages, getRegionalPostsForLang } from '@/lib/regional'
-
-const BASE = 'https://ziromarket.com'
+import { SITE_URL as BASE } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts()
@@ -48,6 +47,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...postEntries,
     ...regionalEntries,
+    {
+      url: `${BASE}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
     {
       url: `${BASE}/privacy`,
       lastModified: new Date(),

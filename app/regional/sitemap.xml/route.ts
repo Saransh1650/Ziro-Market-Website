@@ -1,6 +1,5 @@
 import { getLanguages, getRegionalPostsForLang, LANGUAGES } from '@/lib/regional'
-
-const BASE = 'https://ziromarket.com'
+import { SITE_URL as BASE } from '@/lib/site'
 
 // Regional pages are kept out of the main /blog sitemap on purpose. They get
 // their own sitemap with an hreflang alternate pointing back to the English

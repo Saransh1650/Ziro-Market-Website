@@ -256,6 +256,15 @@ export function Pullquote({ children, cite }: { children?: ReactNode; cite?: str
   )
 }
 
+// Wraps every markdown table so it scrolls horizontally inside its own
+// container on narrow screens instead of the table itself overflowing the
+// page — a bare `overflow-x: auto` on a wide comparison table with no visual
+// cue reads as clipped data, not "scroll for more" (RULES.md tables are
+// exactly this: real multi-column comparisons that don't fit at 375px).
+function TableWrap({ children }: { children?: ReactNode }) {
+  return <div className="table-wrap">{children}</div>
+}
+
 export const mdxComponents = {
   Callout,
   KeyTakeaways,
@@ -263,4 +272,5 @@ export const mdxComponents = {
   Stat,
   BarChart,
   Pullquote,
+  table: TableWrap,
 }
