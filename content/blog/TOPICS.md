@@ -50,6 +50,10 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Promoter holding: rising or falling stake (2026-07-23, IndusInd Bank Hinduja capital commitment vs Vodafone Idea govt-conversion dilution, statgrid + callout) → promoter-holding-rising-falling.mdx
 - Sector rotation: how smart money moves between sectors (2026-07-23, real Feb 2025-Jan 2026 rotation: PSU banks/metals +44% vs IT -10%, bar chart + key takeaways) → sector-rotation-smart-money-india.mdx
 - Open Interest and PCR (2026-07-23, merged OI+PCR, angle: SEBI's 93%-of-traders-lose-money study and why PCR extremes get misread, table + callout) → open-interest-put-call-ratio.mdx
+- Infosys Q1 FY27 actuals (2026-07-24, updated preview file: PAT ~Rs 7,000cr, rev ~42,300cr +0.9% CC, margin 21.2%, FY27 guide RAISED to 2-4% CC) → infosys-q1-fy27-results-preview-2026.mdx
+- IT scorecard updated (2026-07-24, all four reported: Infosys row now actuals, 4-firm margin bar chart, verdict "recovery signalled"; EN + regional/hi) → it-sector-q1-fy27-scorecard-2026.mdx
+- Evergreen refresh (2026-07-24, Infosys-jump wrap, Nifty >24,300, Brent ~$83): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
+- ICICI Bank Q1 FY27 results (2026-07-24: PAT ~Rs 12,600cr +13%, NIM ~4.3% sector-leading, GNPA 1.9%, RoA 2.3%, ICICI-vs-HDFC comparison table) → icici-bank-q1-fy27-results-2026.mdx
 
 ## Evergreen SEO strategy note
 

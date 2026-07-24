@@ -12,9 +12,9 @@
   <text x="150" y="176" font-size="13" fill="#0b3b2e" fill-opacity="0.6">मार्जिन 24% &#183; डिविडेंड Rs 12 &#183; 9 जुलाई</text>
 
   <text x="48" y="222" font-size="18" font-weight="700" fill="#0b3b2e">इंफ़ोसिस</text>
-  <rect x="150" y="208" width="352" height="22" rx="5" fill="#9b6810"/>
-  <text x="514" y="225" font-size="16" font-weight="700" fill="#9b6810">~6,900 अनुमान</text>
-  <text x="150" y="248" font-size="13" fill="#0b3b2e" fill-opacity="0.6">मार्जिन 20-22% &#183; 23 जुलाई को &#183; FY27 अनुमान पर नज़र</text>
+  <rect x="150" y="208" width="357" height="22" rx="5" fill="#0b7a3e"/>
+  <text x="519" y="225" font-size="16" font-weight="700" fill="#0b7a3e">~7,000</text>
+  <text x="150" y="248" font-size="13" fill="#0b3b2e" fill-opacity="0.6">मार्जिन 21.2% &#183; 23 जुलाई &#183; FY27 अनुमान बढ़ाकर 2-4%</text>
 
   <text x="48" y="294" font-size="18" font-weight="700" fill="#0b3b2e">एचसीएल टेक</text>
   <rect x="150" y="280" width="222" height="22" rx="5" fill="#0b7a3e"/>
@@ -27,5 +27,5 @@
   <text x="150" y="392" font-size="13" fill="#0b3b2e" fill-opacity="0.6">मार्जिन 16.4% &#183; डिविडेंड Re 1 &#183; अगली तिमाही सपाट</text>
 
   <line x1="48" y1="418" x2="912" y2="418" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="444" font-size="15" font-weight="700" fill="#0b3b2e">नतीजा: किसी ने निराश नहीं किया, किसी ने अनुमान नहीं घटाया। इंफ़ोसिस 23 जुलाई को।</text>
+  <text x="48" y="444" font-size="15" font-weight="700" fill="#0b3b2e">नतीजा: चारों स्थिर, किसी ने अनुमान नहीं घटाया, इंफ़ोसिस ने बढ़ाया। रिकवरी के संकेत।</text>
 </svg>

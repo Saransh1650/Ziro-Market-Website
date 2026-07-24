@@ -12,11 +12,11 @@
   <text x="842" y="153" font-size="16" font-weight="700" fill="#0b3b2e">13,349</text>
   <text x="130" y="176" font-size="13" fill="#0b3b2e" fill-opacity="0.6">margin 24% &#183; div Rs 12 &#183; reported 9 Jul</text>
 
-  <!-- Infosys (est) -->
+  <!-- Infosys -->
   <text x="48" y="222" font-size="18" font-weight="700" fill="#0b3b2e">Infosys</text>
-  <rect x="130" y="208" width="362" height="22" rx="5" fill="#9b6810"/>
-  <text x="504" y="225" font-size="16" font-weight="700" fill="#9b6810">~6,900 est</text>
-  <text x="130" y="248" font-size="13" fill="#0b3b2e" fill-opacity="0.6">margin 20-22% &#183; due 23 Jul &#183; FY27 guide in focus</text>
+  <rect x="130" y="208" width="367" height="22" rx="5" fill="#0b7a3e"/>
+  <text x="509" y="225" font-size="16" font-weight="700" fill="#0b7a3e">~7,000</text>
+  <text x="130" y="248" font-size="13" fill="#0b3b2e" fill-opacity="0.6">margin 21.2% &#183; 23 Jul &#183; FY27 guide raised to 2-4%</text>
 
   <!-- HCLTech -->
   <text x="48" y="294" font-size="18" font-weight="700" fill="#0b3b2e">HCLTech</text>
@@ -31,5 +31,5 @@
   <text x="130" y="392" font-size="13" fill="#0b3b2e" fill-opacity="0.6">margin 16.4% &#183; div Re 1 &#183; Q2 guide flat</text>
 
   <line x1="48" y1="418" x2="912" y2="418" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="444" font-size="15" font-weight="700" fill="#0b3b2e">Verdict: none disappointed, nobody cut guidance. Infosys closes the season 23 July.</text>
+  <text x="48" y="444" font-size="15" font-weight="700" fill="#0b3b2e">Verdict: all four steady, none cut guidance, Infosys raised its. Recovery signalled.</text>
 </svg>
