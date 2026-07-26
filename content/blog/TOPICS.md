@@ -54,6 +54,9 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - IT scorecard updated (2026-07-24, all four reported: Infosys row now actuals, 4-firm margin bar chart, verdict "recovery signalled"; EN + regional/hi) → it-sector-q1-fy27-scorecard-2026.mdx
 - Evergreen refresh (2026-07-24, Infosys-jump wrap, Nifty >24,300, Brent ~$83): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
 - ICICI Bank Q1 FY27 results (2026-07-24: PAT ~Rs 12,600cr +13%, NIM ~4.3% sector-leading, GNPA 1.9%, RoA 2.3%, ICICI-vs-HDFC comparison table) → icici-bank-q1-fy27-results-2026.mdx
+- Evergreen refresh (2026-07-26, weekend wrap, Nifty ~24,300 +1% week best-in-a-while, RBI next): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
+- Private bank Q1 FY27 scorecard (2026-07-26, data-rich: HDFC/ICICI/Axis/Kotak comparison table + NIM bar chart, SBI due; hub linking the two bank result posts) → private-bank-q1-fy27-scorecard-2026.mdx
+- How to read FII and DII activity (2026-07-26, smart-money cluster ANCHOR: flip-signal table + StatGrid, anchored to DII May Rs 82,668cr / FPI 14.7% 14-yr low / SIP Rs 26k cr) → how-to-read-fii-dii-activity.mdx
 
 ## Evergreen SEO strategy note
 
@@ -64,9 +67,12 @@ Traffic was dead because early posts chased hyper-competitive news / "price toda
 Ordered by SEO ROI. The cron agent picks from the TOP of Priority 1 first and works down. Each post must interlink 2-3 sibling posts in its cluster (cluster linking is what makes these rank). Every topic here is evergreen unless tagged (event). Reframe any "what is X" as a specific searchable question in the title per RULES.md.
 
 ### Priority 1 — Smart-money cluster (Bet B: unique edge, low competition, high intent)
-These map to real searches AND showcase the app's data. Build the cluster densely and cross-link every post to `fii-vs-dii`, `how-circuit-breakers-work-nse`, and each other.
-- How to read FII and DII activity (daily/monthly flows, what a flip signals) — anchor of the cluster
+These map to real searches AND showcase the app's data. Build the cluster densely and cross-link every post to `fii-vs-dii`, `how-to-read-fii-dii-activity`, `how-circuit-breakers-work-nse`, and each other. Cluster now has 8 posts (bulk/block, delivery %, promoter pledging/holding, sector rotation, OI+PCR, FII/DII anchor); keep extending.
 - FII/DII monthly flow tracker — recurring evergreen data page, dateless slug, update in place
+- How to spot institutional accumulation (delivery % + volume + bulk deals read together) — synthesises the cluster
+- What mutual fund managers are buying: how to track MF portfolio changes (ties to the app's MF-holdings data, near-zero competition)
+- Anchor investors in an IPO: what their participation and lock-in really signal
+- Insider trading disclosures (SAST + SEBI PIT): what promoter buy/sell filings tell retail
 
 ### Priority 2 — High-intent evergreen how-to / comparison (Bet A continued, beatable SERP)
 - How IPOs are priced (book building, cut-off price, GMP) — high volume, evergreen
@@ -77,6 +83,18 @@ These map to real searches AND showcase the app's data. Build the cluster densel
 - How mutual fund NAV is calculated (and why it is not "cheap vs expensive")
 - Old vs new tax regime for investors FY27 — which is better, worked example
 - How to read a cash flow statement (companion to the done balance-sheet guide)
+- How to choose a mutual fund (expense ratio, tracking error, direct vs regular) — huge intent
+- Index funds vs active funds in India (and why most active funds lag) — huge evergreen intent
+- NPS vs mutual funds for retirement — high intent, decision-framed
+- How dividends are taxed in India after the 2020 rule change — evergreen, high intent
+- ELSS vs PPF vs other 80C tax-savers — seasonal spike + evergreen
+
+### Priority 2b — Data-rich comparison hubs (proven scorecard format, strong for snippets)
+The IT and private-bank Q1 scorecards work well: a comparison table + a bar chart + cluster links. Reuse the format.
+- Nifty 50 sector weights explained (which sectors actually move the index)
+- Large-cap vs mid-cap vs small-cap in India (risk, return, when each leads)
+- PSU banks vs private banks (ownership, NIM, valuation, when PSUs outperform)
+- Quarterly earnings scorecard template — reuse each results season (IT, banks, auto, FMCG)
 
 ### Priority 3 — Terminology backlog ("what is X", compounding long-tail SEO)
 Dedup'd: Market Cap, Dividend Yield, P/B, D/E, ROE, EPS, India VIX are DONE — do not rewrite.
