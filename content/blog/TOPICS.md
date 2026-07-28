@@ -57,6 +57,9 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Evergreen refresh (2026-07-26, weekend wrap, Nifty ~24,300 +1% week best-in-a-while, RBI next): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
 - Private bank Q1 FY27 scorecard (2026-07-26, data-rich: HDFC/ICICI/Axis/Kotak comparison table + NIM bar chart, SBI due; hub linking the two bank result posts) → private-bank-q1-fy27-scorecard-2026.mdx
 - How to read FII and DII activity (2026-07-26, smart-money cluster ANCHOR: flip-signal table + StatGrid, anchored to DII May Rs 82,668cr / FPI 14.7% 14-yr low / SIP Rs 26k cr) → how-to-read-fii-dii-activity.mdx
+- Evergreen refresh (2026-07-28, consolidation wrap, Nifty ~24,320, US Fed + RBI + F&O expiry ahead): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
+- Maruti Suzuki Q1 FY27 results (2026-07-28: PAT ~Rs 4,200cr +8%, ~5.4 lakh units, record exports ~90k, margin 12.5%, small cars soft; volume table + callout; auto bellwether, first auto post) → maruti-suzuki-q1-fy27-results-2026.mdx
+- SBI Q1 FY27 preview (2026-07-28, reports early Aug: PAT ~Rs 19,500cr est largest, NIM ~3% below private, GNPA ~2% improving, scale-over-spread; ties to private-bank scorecard + RBI) → sbi-q1-fy27-results-preview-2026.mdx
 
 ## Evergreen SEO strategy note
 
