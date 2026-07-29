@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="420" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">US Fed decision, 30 July 2026</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">What it means for India</text>
+  <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">FED RATE (EXPECTED)</text>
+  <text x="48" y="224" font-size="42" font-weight="800" fill="#0b3b2e">4.25-4.50%</text>
+  <text x="48" y="258" font-size="20" font-weight="700" fill="#0b3b2e">hold, eyes on September</text>
+  <text x="530" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">USD / INR</text>
+  <text x="530" y="224" font-size="42" font-weight="800" fill="#c0392b">~96.1</text>
+  <text x="530" y="258" font-size="20" font-weight="700" fill="#0b3b2e">near record low</text>
+  <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">DOVISH = </text>
+  <text x="48" y="372" font-size="22" font-weight="700" fill="#0b7a3e">rupee relief, FII return</text>
+  <text x="530" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">HAWKISH = </text>
+  <text x="530" y="372" font-size="22" font-weight="700" fill="#c0392b">rupee pressure, selling</text>
+</svg>

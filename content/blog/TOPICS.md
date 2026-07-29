@@ -60,6 +60,9 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Evergreen refresh (2026-07-28, consolidation wrap, Nifty ~24,320, US Fed + RBI + F&O expiry ahead): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
 - Maruti Suzuki Q1 FY27 results (2026-07-28: PAT ~Rs 4,200cr +8%, ~5.4 lakh units, record exports ~90k, margin 12.5%, small cars soft; volume table + callout; auto bellwether, first auto post) → maruti-suzuki-q1-fy27-results-2026.mdx
 - SBI Q1 FY27 preview (2026-07-28, reports early Aug: PAT ~Rs 19,500cr est largest, NIM ~3% below private, GNPA ~2% improving, scale-over-spread; ties to private-bank scorecard + RBI) → sbi-q1-fy27-results-preview-2026.mdx
+- Evergreen refresh (2026-07-29, Fed-day wrap, Nifty ~24,310 flat pre-Fed, expiry Thu): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
+- US Fed decision July 2026 + impact on India (2026-07-29, news: hold 4.25-4.50% expected + Sept-cut signal in focus; India-first scenario table dovish/hawkish -> rupee/FII/RBI; anchored to June US jobs 57k/4.2%) → us-fed-decision-july-2026-india-impact.mdx
+- Tata Motors Q1 FY27 results (2026-07-29: PAT ~Rs 5,800cr, rev ~Rs 1.08L cr, JLR ~£7bn @9% margin, India CV steady, EV lead vs rising rivals; 3-engine segment table + callout; contrasts Maruti) → tata-motors-q1-fy27-results-2026.mdx
 
 ## Evergreen SEO strategy note
 
