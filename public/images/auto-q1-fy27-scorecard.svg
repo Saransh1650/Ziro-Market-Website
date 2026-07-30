@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="460" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="458" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="60" font-size="30" font-weight="700" fill="#0b3b2e">Auto Q1 FY27 scorecard</text>
+  <text x="48" y="90" font-size="16" fill="#0b3b2e" fill-opacity="0.55">Net profit (Rs crore) &#183; quarter ended June 2026</text>
+  <text x="912" y="56" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="112" x2="912" y2="112" stroke="#0b3b2e" stroke-opacity="0.12"/>
+
+  <!-- Tata Motors -->
+  <text x="48" y="152" font-size="18" font-weight="700" fill="#0b3b2e">Tata Motors</text>
+  <rect x="210" y="138" width="660" height="22" rx="5" fill="#0b7a3e"/>
+  <text x="862" y="155" font-size="16" font-weight="700" fill="#0b7a3e" text-anchor="end">~5,800</text>
+  <text x="210" y="178" font-size="13" fill="#0b3b2e" fill-opacity="0.6">JLR luxury &#183; reported 29 Jul</text>
+
+  <!-- Maruti -->
+  <text x="48" y="228" font-size="18" font-weight="700" fill="#0b3b2e">Maruti Suzuki</text>
+  <rect x="210" y="214" width="478" height="22" rx="5" fill="#0b7a3e"/>
+  <text x="700" y="231" font-size="16" font-weight="700" fill="#0b7a3e">~4,200</text>
+  <text x="210" y="254" font-size="13" fill="#0b3b2e" fill-opacity="0.6">SUVs + record exports &#183; reported 28 Jul</text>
+
+  <!-- M&M (due) -->
+  <text x="48" y="304" font-size="18" font-weight="700" fill="#0b3b2e">Mahindra</text>
+  <rect x="210" y="290" width="410" height="22" rx="5" fill="#9b6810"/>
+  <text x="632" y="307" font-size="16" font-weight="700" fill="#9b6810">~3,600 est</text>
+  <text x="210" y="330" font-size="13" fill="#0b3b2e" fill-opacity="0.6">SUVs + tractors &#183; due early Aug</text>
+
+  <!-- Two-wheelers -->
+  <text x="48" y="380" font-size="18" font-weight="700" fill="#0b3b2e">Two-wheelers</text>
+  <text x="210" y="380" font-size="16" font-weight="700" fill="#0b3b2e" fill-opacity="0.6">Bajaj, Hero, TVS &#183; due &#183; rural + export read</text>
+
+  <line x1="48" y1="418" x2="912" y2="418" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="444" font-size="15" font-weight="700" fill="#0b3b2e">So far: strength at the top (luxury, SUVs, exports), mass market still soft.</text>
+</svg>
