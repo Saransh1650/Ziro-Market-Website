@@ -66,14 +66,42 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Evergreen refresh (2026-07-30, expiry-day wrap, Nifty ~24,300 choppy, Fed decision tonight IST): indian-stock-market-today, gold-price-today, bitcoin-price-today, rupee-dollar-today, crude-oil-price-today
 - Auto sector Q1 FY27 scorecard (2026-07-30, hub: Maruti+Tata reported, M&M+two-wheelers due; domestic-mass vs global-luxury contrast table + callout; links Maruti/Tata/M&M) → auto-sector-q1-fy27-scorecard-2026.mdx
 - M&M Q1 FY27 preview (2026-07-30, reports early Aug: PAT ~Rs 3,600cr est, SUVs strong + tractors #1 ~40% share monsoon-dependent; two-engine table + risk callout; links monsoon + auto scorecard) → mahindra-q1-fy27-results-preview-2026.mdx
+- STRATEGY PIVOT (2026-07-31, from real traffic data): rewrote strategy note + added Priority 0 attention themes. Winners = crypto, new-age brands, AI, forward monthly outlooks, curiosity-gap titles. Losers = single-name earnings reports (~1 view each) + daily wrap/price bumps (~0). Stopped the daily grind this turn on purpose.
+- Stock market August 2026 what to watch (2026-07-31, proven top-page outlook format: RBI/Fed/earnings-tail/monsoon, numbered themes) → stock-market-august-2026-what-to-watch.mdx
+- Quick commerce war 2026 (2026-07-31, new-age brands, rides Eternal/Blinkit winner: Blinkit vs Zepto vs Instamart share table + giants-entering risk callout) → quick-commerce-war-2026-blinkit-zepto-instamart.mdx
+- Bitcoin H2 2026 range breakout (2026-07-31, crypto forward, rides top crypto pages: bull/base/bear scenario table, Fed/ETF-flow catalysts) → bitcoin-h2-2026-range-breakout.mdx
 
 ## Evergreen SEO strategy note
 
-Traffic was dead because early posts chased hyper-competitive news / "price today" queries (gold price, nifty today, IPO news) that a low-authority site cannot rank against Moneycontrol/ET/Groww/NSE. Pivot: build EVERGREEN, high-intent, beatable-SERP clusters that compound instead of decaying. Bet A (evergreen tax/how-to/comparison + core terminology) is now largely done. Current focus, in order: Bet B (smart-money cluster: FII/DII, bulk deals, sector rotation, F&O positioning — the app's unique edge, low competition) then Bet C (programmatic per-stock/per-sector pages from app data — the millions-of-pages lever). Dated news and price-today one-offs decay and do not rank, so cap them at the canonical evergreen pages only.
+REVISED with real traffic data (week of 2026-07-24). Total traffic is still small, so treat as directional, but the pattern is unmistakable.
+
+**What actually gets reach (do MORE, lead with these):**
+- Crypto. bitcoin-dominance/altcoin-season, bitcoin ETF flows, tokenization are consistently top-5 pages. This audience clicks crypto.
+- New-age / consumer brands people recognise. Eternal (Zomato/Blinkit) was the #2 blog page; SpaceX, quick commerce, big-name IPOs also pull. Recognisable brand in the title wins.
+- AI theme. data-center capex, AI-driven S&P records. Ride it.
+- Forward-looking monthly outlooks. "stock market <month> what to watch" was the #2 page OVERALL. Numbered, scannable, multiple hooks, forward not backward.
+- Roundups/scorecards beat single-name reports (the IT Q1 scorecard was the best-performing of the whole earnings batch).
+
+**What flops (STOP or cut hard):**
+- Individual "X Q1 results" reporting (TCS/Wipro/HCL/Infosys/HDFC/ICICI/Reliance/Maruti/Tata all got ~1 view each). Incumbents own these queries. Replace with ONE scorecard per season, not 8 posts.
+- The daily evergreen wrap (indian-stock-market-today) and daily price-page date-bumps: ~0 traffic for real effort. STOP the daily ritual; refresh these only on a genuinely big move, not every day.
+- Dry terminology / "what is X": 1-2 views. Keep as long-tail support only, never as headline output.
+
+**Title craft that works:** curiosity gap + a real number or a "vs" (e.g. "Blinkit turns profitable, profit jumps 4.5x"). Forward framing ("what's next / can X survive / where does it go") beats backward ("X reported Y"). Put the recognisable brand or the surprising number in the title.
+
+**Still worth building but at LOWER cadence (compounding, needs time + authority):** the smart-money cluster (FII/DII, bulk deals, sector rotation) and evergreen how-tos. They are long-term bets and have not paid off in one week; keep seeding them, but they are no longer the main output. Programmatic per-stock/sector pages (Bet C) remain the scale lever once authority builds.
 
 ## Queue
 
 Ordered by SEO ROI. The cron agent picks from the TOP of Priority 1 first and works down. Each post must interlink 2-3 sibling posts in its cluster (cluster linking is what makes these rank). Every topic here is evergreen unless tagged (event). Reframe any "what is X" as a specific searchable question in the title per RULES.md.
+
+### Priority 0 — Attention themes (PROVEN by traffic; write these first)
+These are the categories that actually got reach. Every post: curiosity-gap title with a real number or a "vs", forward framing, recognisable brand where possible. Interlink within the theme.
+- Monthly "stock market <month> what to watch" outlook — the single best-performing format; do one every month, forward-looking, numbered themes.
+- Crypto, forward-angled: bitcoin range-break / next catalyst, ETH vs BTC, altcoin-season updates, halving-cycle math, XRP/Solana catalysts. (Cluster with the top crypto pages.)
+- New-age / consumer brands: quick commerce war (Blinkit/Zepto/Instamart), big-name IPOs, Zomato/Eternal/Swiggy, PhonePe, etc. Recognisable names, curiosity titles.
+- AI theme with an India or stock angle: AI stocks to watch, Nvidia/AI capex, AI and Indian IT, data-centre boom.
+- Result SEASONS as ONE scorecard, never 8 single-name posts. New-age/consumer results (Eternal, Swiggy, Nykaa, Paytm) as brand-led stories, not dry reports.
 
 ### Priority 1 — Smart-money cluster (Bet B: unique edge, low competition, high intent)
 These map to real searches AND showcase the app's data. Build the cluster densely and cross-link every post to `fii-vs-dii`, `how-to-read-fii-dii-activity`, `how-circuit-breakers-work-nse`, and each other. Cluster now has 8 posts (bulk/block, delivery %, promoter pledging/holding, sector rotation, OI+PCR, FII/DII anchor); keep extending.

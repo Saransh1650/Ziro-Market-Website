@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="420" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Bitcoin H2 2026: which way?</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Stuck near $63,000, half its record</text>
+  <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BULL CASE</text>
+  <text x="48" y="220" font-size="34" font-weight="800" fill="#0b7a3e">$100k+</text>
+  <text x="48" y="250" font-size="15" font-weight="700" fill="#0b3b2e">Fed cuts + ETF inflows</text>
+  <text x="370" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BASE CASE</text>
+  <text x="370" y="220" font-size="34" font-weight="800" fill="#0b3b2e">$60-70k</text>
+  <text x="370" y="250" font-size="15" font-weight="700" fill="#0b3b2e">range holds</text>
+  <text x="690" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BEAR CASE</text>
+  <text x="690" y="220" font-size="34" font-weight="800" fill="#c0392b">$40-50k</text>
+  <text x="690" y="250" font-size="15" font-weight="700" fill="#0b3b2e">risk-off, outflows</text>
+  <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">SWING FACTORS</text>
+  <text x="48" y="372" font-size="22" font-weight="700" fill="#0b3b2e">The Fed &#183; ETF flows &#183; risk appetite</text>
+</svg>

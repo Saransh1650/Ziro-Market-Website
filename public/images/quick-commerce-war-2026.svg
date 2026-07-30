@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="460" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="458" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="60" font-size="30" font-weight="700" fill="#0b3b2e">Quick commerce war 2026</text>
+  <text x="48" y="90" font-size="16" fill="#0b3b2e" fill-opacity="0.55">Estimated market share &#183; 10-minute delivery, India</text>
+  <text x="912" y="56" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="112" x2="912" y2="112" stroke="#0b3b2e" stroke-opacity="0.12"/>
+
+  <text x="48" y="150" font-size="18" font-weight="700" fill="#0b3b2e">Blinkit</text>
+  <rect x="240" y="136" width="470" height="22" rx="5" fill="#0b7a3e"/>
+  <text x="722" y="153" font-size="16" font-weight="700" fill="#0b7a3e">~45%</text>
+  <text x="240" y="176" font-size="13" fill="#0b3b2e" fill-opacity="0.6">Eternal (Zomato) &#183; profitable (adj. EBITDA)</text>
+
+  <text x="48" y="222" font-size="18" font-weight="700" fill="#0b3b2e">Zepto</text>
+  <rect x="240" y="208" width="261" height="22" rx="5" fill="#9b6810"/>
+  <text x="513" y="225" font-size="16" font-weight="700" fill="#9b6810">~25%</text>
+  <text x="240" y="248" font-size="13" fill="#0b3b2e" fill-opacity="0.6">IPO 2026 &#183; burning cash to grow</text>
+
+  <text x="48" y="294" font-size="18" font-weight="700" fill="#0b3b2e">Instamart</text>
+  <rect x="240" y="280" width="230" height="22" rx="5" fill="#9b6810"/>
+  <text x="482" y="297" font-size="16" font-weight="700" fill="#9b6810">~22%</text>
+  <text x="240" y="320" font-size="13" fill="#0b3b2e" fill-opacity="0.6">Swiggy &#183; losses narrowing</text>
+
+  <text x="48" y="366" font-size="18" font-weight="700" fill="#0b3b2e">Giants</text>
+  <rect x="240" y="352" width="80" height="22" rx="5" fill="#c0392b"/>
+  <text x="332" y="369" font-size="16" font-weight="700" fill="#c0392b">rising</text>
+  <text x="240" y="392" font-size="13" fill="#0b3b2e" fill-opacity="0.6">Amazon, Flipkart Minutes, Reliance &#183; deep pockets</text>
+
+  <line x1="48" y1="418" x2="912" y2="418" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="444" font-size="15" font-weight="700" fill="#0b3b2e">Blinkit leads on scale AND profit. The giants entering is the big risk.</text>
+</svg>
