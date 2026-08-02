@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="460" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="458" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="60" font-size="30" font-weight="700" fill="#0b3b2e">The AI stack in India</text>
+  <text x="48" y="90" font-size="16" fill="#0b3b2e" fill-opacity="0.55">No Nvidia, but exposure at every other layer</text>
+  <text x="912" y="56" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="112" x2="912" y2="112" stroke="#0b3b2e" stroke-opacity="0.12"/>
+
+  <rect x="48" y="132" width="864" height="52" rx="8" fill="rgba(11,59,46,0.06)"/>
+  <text x="66" y="164" font-size="19" font-weight="700" fill="#0b3b2e">IT services &#183; TCS, Infosys, Wipro</text>
+  <text x="894" y="164" font-size="14" fill="#0b3b2e" fill-opacity="0.6" text-anchor="end">AI transformation deals</text>
+
+  <rect x="48" y="196" width="864" height="52" rx="8" fill="rgba(11,59,46,0.06)"/>
+  <text x="66" y="228" font-size="19" font-weight="700" fill="#0b3b2e">AI engineering &#183; Persistent, Tata Elxsi, KPIT</text>
+  <text x="894" y="228" font-size="14" fill="#0b3b2e" fill-opacity="0.6" text-anchor="end">build AI for clients</text>
+
+  <rect x="48" y="260" width="864" height="52" rx="8" fill="rgba(11,59,46,0.06)"/>
+  <text x="66" y="292" font-size="19" font-weight="700" fill="#0b3b2e">Data centres &#183; Reliance, Adani, Anant Raj</text>
+  <text x="894" y="292" font-size="14" fill="#0b3b2e" fill-opacity="0.6" text-anchor="end">host the compute</text>
+
+  <rect x="48" y="324" width="864" height="52" rx="8" fill="rgba(11,59,46,0.06)"/>
+  <text x="66" y="356" font-size="19" font-weight="700" fill="#0b3b2e">Servers &#183; Netweb &#183; Power &#183; NTPC, Tata Power</text>
+  <text x="894" y="356" font-size="14" fill="#0b3b2e" fill-opacity="0.6" text-anchor="end">hardware &amp; electricity</text>
+
+  <text x="48" y="410" font-size="15" font-weight="700" fill="#9b6810">Cannot buy the chip? Own the picks and shovels: data centres, servers, power.</text>
+  <text x="48" y="438" font-size="13" fill="#0b3b2e" fill-opacity="0.55">Educational, not investment advice. Each layer carries different risk.</text>
+</svg>

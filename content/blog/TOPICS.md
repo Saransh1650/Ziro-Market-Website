@@ -70,6 +70,12 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Stock market August 2026 what to watch (2026-07-31, proven top-page outlook format: RBI/Fed/earnings-tail/monsoon, numbered themes) → stock-market-august-2026-what-to-watch.mdx
 - Quick commerce war 2026 (2026-07-31, new-age brands, rides Eternal/Blinkit winner: Blinkit vs Zepto vs Instamart share table + giants-entering risk callout) → quick-commerce-war-2026-blinkit-zepto-instamart.mdx
 - Bitcoin H2 2026 range breakout (2026-07-31, crypto forward, rides top crypto pages: bull/base/bear scenario table, Fed/ETF-flow catalysts) → bitcoin-h2-2026-range-breakout.mdx
+- PhonePe IPO 2026 (2026-07-31, new-age fintech, curiosity title "free UPI app worth $15bn"; monetisation table + callout; UPI-is-free hook) → phonepe-ipo-2026.mdx
+- AI stocks India 2026 (2026-07-31, AI theme + India, "playing AI without Nvidia"; AI-stack table + callout; exposure not advice; links AI/data-centre/IT posts) → ai-stocks-india-2026.mdx
+- Internal-link update (2026-07-31, funnel authority from top pages to new posts): July what-to-watch (#2 page) -> August outlook; Eternal/Blinkit -> quick-commerce war; bitcoin-etf-outflows + bitcoin-dominance -> bitcoin H2. Do this every time a new post has a high-traffic sibling.
+- Groww IPO 2026 (2026-07-31, app-audience fintech: "the app that dethroned Zerodha"; F&O-dependence risk callout; revenue table; app's own retail-investor audience) → groww-ipo-2026.mdx
+- Ethereum 2026 vs bitcoin (2026-07-31, crypto forward, high-search: ETH lagging, ETH/BTC ratio as the number to watch; clusters bitcoin-h2 / eth-crash / solana / dominance) → ethereum-2026-vs-bitcoin.mdx
+- Internal-link update (2026-07-31 #2): demat-accounts (retail boom) -> Groww; ethereum-price-crash -> ethereum-2026; bitcoin-h2 -> ethereum-2026.
 
 ## Evergreen SEO strategy note
 

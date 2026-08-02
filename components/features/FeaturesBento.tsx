@@ -131,8 +131,8 @@ export default function FeaturesBento() {
               lineHeight: 1.7,
             }}
           >
-            Everything you need to stay on top of Indian markets, without
-            switching apps.
+            The stuff you check across five different tabs. Now it&apos;s
+            one app.
           </p>
         </div>
 
@@ -163,7 +163,7 @@ export default function FeaturesBento() {
                 to movement.
               </>
             }
-            desc="Headlines linked to the stocks and sectors they actually affect. Not just a feed."
+            desc="Headlines linked to the stocks and sectors they affect. Not just a feed."
             imgSrc="/screenshots/2.png"
           />
 
@@ -189,7 +189,7 @@ export default function FeaturesBento() {
               <>
                 Your picks,
                 <br />
-                finally useful.
+                ranked against Nifty.
               </>
             }
             desc="Multiple lists. Live prices. Relative performance vs Nifty, all in one glance."

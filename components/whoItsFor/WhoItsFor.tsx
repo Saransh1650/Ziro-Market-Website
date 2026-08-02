@@ -7,7 +7,7 @@ const PERSONAS = [
   {
     num: '02',
     headline: 'Still learning',
-    desc: 'The beginner still learning what beta or sector rotation actually means. Ziro Market shows you the concept alongside the live data, so it clicks faster.',
+    desc: 'The beginner still learning what beta or sector rotation means. Ziro Market shows you the concept alongside the live data, so it clicks faster.',
   },
   {
     num: '03',
@@ -57,7 +57,7 @@ export default function WhoItsFor() {
             color: 'rgba(255,255,255,0.50)',
             lineHeight: 1.6, maxWidth: 680,
           }}>
-            &ldquo;If you&apos;re curious about markets and want to stay informed without it becoming a second job, Ziro Market was built with you in mind.&rdquo;
+            Doesn&apos;t matter which one you are today. Same data, same app, one tab instead of five.
           </p>
         </div>
       </div>

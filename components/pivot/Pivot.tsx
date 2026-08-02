@@ -24,7 +24,7 @@ export default function Pivot() {
       }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-        <span className="section-num" style={{ justifyContent: 'center', marginBottom: 40 }}>05 / Manifesto</span>
+        <span className="section-num" style={{ justifyContent: 'center', marginBottom: 36 }}>Manifesto</span>
 
         {/* "But" — the pivot word */}
         <p style={{
@@ -62,7 +62,7 @@ export default function Pivot() {
           lineHeight: 1.72,
           color: 'rgba(255,255,255,0.52)',
         }}>
-          Live. Indian. Ad-free. Every market in one place that actually makes sense.
+          Live. Indian. Ad-free. Every market in one place that makes sense.
         </p>
 
         {/* Tags */}
@@ -80,9 +80,9 @@ export default function Pivot() {
       </div>
 
       <style>{`
-        .pivot-section { padding: 160px 0; }
-        @media (max-width: 768px) { .pivot-section { padding: 100px 0; } }
-        @media (max-width: 480px) { .pivot-section { padding: 80px 0; } }
+        .pivot-section { padding: 128px 0; }
+        @media (max-width: 768px) { .pivot-section { padding: 92px 0; } }
+        @media (max-width: 480px) { .pivot-section { padding: 76px 0; } }
       `}</style>
     </section>
   );

@@ -22,105 +22,157 @@ function PlayIcon() {
 
 export default function Hero() {
   return (
-    <section id="top" className="crosshair" style={{ paddingTop: 72, paddingBottom: 0, borderBottom: '1px solid var(--border-1)' }}>
-      <div className="container">
-        <div className="hero-layout">
-          {/* ── Left column ── */}
-          <div className="hero-text-col">
-            <h1 className="display" style={{ marginTop: 20 }}>
-              The Indian market,<br />
-              <em>finally</em> <span className="amber">simplified.</span>
-            </h1>
+    <section id="top" className="crosshair hero-section">
+      <div className="hero-inner">
+        <div className="container hero-stage">
+          <div className="hero-layout">
+            {/* ── Left column ── */}
+            <div className="hero-text-col">
+              <h1 className="display hero-title">
+                The Indian market,<br />
+                <span className="amber">simplified.</span>
+              </h1>
 
-            <p style={{ marginTop: 20, maxWidth: 460, color: 'var(--text-2)', lineHeight: 1.65 }}>
-              Track what's moving, understand why it's moving, and make sense of it all, without spending your day glued to finance apps.
-            </p>
+              <p className="hero-sub">
+                Track what's moving and understand why it's moving, without spending your day glued to finance apps.
+              </p>
 
-            {/* CTAs */}
-            <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap', alignItems: 'center' }}>
-              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-amber btn-lg">
-                Download →
-              </a>
-              <a href="#features" className="btn btn-ghost btn-lg">See the app →</a>
+              {/* CTAs */}
+              <div className="hero-ctas">
+                <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-amber btn-lg">
+                  Download →
+                </a>
+                <a href="#features" className="btn btn-ghost btn-lg">See the app →</a>
+              </div>
+
+              {/* Platform badges */}
+              <div className="hero-badges">
+                <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="hero-badge">
+                  <AppleIcon />
+                  <div>
+                    <div className="hero-badge-top">AVAILABLE ON</div>
+                    <div className="hero-badge-name">App Store</div>
+                  </div>
+                </a>
+                <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className="hero-badge">
+                  <PlayIcon />
+                  <div>
+                    <div className="hero-badge-top">GET IT ON</div>
+                    <div className="hero-badge-name">Google Play</div>
+                  </div>
+                </a>
+              </div>
+
             </div>
 
-            {/* Platform badges */}
-            <div style={{ display: 'flex', gap: 10, marginTop: 22 }}>
-              <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                background: 'var(--bg-2)', border: '1px solid var(--border-1)',
-                padding: '8px 14px', borderRadius: 8, cursor: 'pointer',
-                color: 'var(--text-1)', textDecoration: 'none',
-              }}>
-                <AppleIcon />
-                <div>
-                  <div style={{ fontSize: '0.42rem', color: 'var(--text-3)', letterSpacing: '0.06em', fontFamily: 'var(--mono)' }}>AVAILABLE ON</div>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 700, lineHeight: 1.1 }}>App Store</div>
-                </div>
-              </a>
-              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                background: 'var(--bg-2)', border: '1px solid var(--border-1)',
-                padding: '8px 14px', borderRadius: 8, cursor: 'pointer',
-                color: 'var(--text-1)', textDecoration: 'none',
-              }}>
-                <PlayIcon />
-                <div>
-                  <div style={{ fontSize: '0.42rem', color: 'var(--text-3)', letterSpacing: '0.06em', fontFamily: 'var(--mono)' }}>GET IT ON</div>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 700, lineHeight: 1.1 }}>Google Play</div>
-                </div>
-              </a>
+            {/* ── Right column: phone mockup ── */}
+            <div className="hero-phone-col" aria-hidden>
+              <Image
+                src="/screenshots/3D_mockup_trim.png"
+                alt="App screens"
+                width={1600}
+                height={1261}
+                priority
+                sizes="(max-width: 820px) 90vw, 45vw"
+                className="hero-phone-img"
+              />
             </div>
-
-          </div>
-
-          {/* ── Right column: phone mockup ── */}
-          <div className="hero-phone-col" aria-hidden>
-            <Image
-              src="/screenshots/3D_mockup.png"
-              alt="App screens"
-              width={720}
-              height={480}
-              priority
-              style={{ width: '100%', height: 'auto' }}
-            />
           </div>
         </div>
+
+        <LiveIndices />
       </div>
 
-      <LiveIndices />
-
       <style>{`
-        .hero-layout {
-          display: grid;
-          grid-template-columns: 2fr 3fr;
-          gap: 24px;
-          align-items: center;
-          padding-bottom: 72px;
-        }
-        .hero-phone-col {
+        .hero-section { border-bottom: 1px solid var(--border-1); }
+
+        /* Hero owns the first screen: content block flexes, the index strip
+           sits on the fold line so nothing below it peeks through. */
+        .hero-inner {
+          min-height: calc(100svh - 60px);
           display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          overflow: hidden;
+          flex-direction: column;
         }
+        .hero-stage {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+        .hero-layout {
+          width: 100%;
+          display: grid;
+          /* minmax(0,…) stops the oversized display type from blowing the
+             column out and squeezing the mockup */
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+          gap: 48px;
+          align-items: center;
+        }
+        .hero-text-col { min-width: 0; }
+        .hero-title {
+          font-size: clamp(2.7rem, 5vw, 4.9rem);
+          line-height: 0.98;
+        }
+        .hero-sub {
+          margin-top: 22px;
+          max-width: 44ch;
+          color: var(--text-2);
+          font-size: 1.02rem;
+          line-height: 1.65;
+        }
+        .hero-ctas {
+          display: flex;
+          gap: 12px;
+          margin-top: 30px;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+        .hero-badges { display: flex; gap: 10px; margin-top: 22px; }
+        .hero-badge {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: var(--bg-2);
+          border: 1px solid var(--border-1);
+          padding: 8px 14px;
+          border-radius: 8px;
+          color: var(--text-1);
+          transition: border-color 0.15s, background 0.15s;
+        }
+        .hero-badge:hover { border-color: var(--border-2); background: var(--bg-3); }
+        .hero-badge-top {
+          font-size: 0.42rem;
+          color: var(--text-3);
+          letter-spacing: 0.06em;
+          font-family: var(--mono);
+        }
+        .hero-badge-name { font-size: 0.72rem; font-weight: 700; line-height: 1.1; }
+
+        .hero-phone-col {
+          min-width: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .hero-phone-img { width: 100%; max-width: 660px; height: auto; }
+
         @media (max-width: 1100px) {
-          .hero-layout { grid-template-columns: 1fr 1fr; }
+          .hero-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
         }
         @media (max-width: 820px) {
-          .hero-layout {
-            grid-template-columns: 1fr;
-            gap: 32px;
-            padding-bottom: 56px;
-          }
-          .hero-phone-col {
-            justify-content: center;
-            max-height: 360px;
-          }
+          .hero-inner { min-height: 0; }
+          .hero-stage { padding-top: 48px; padding-bottom: 56px; }
+          .hero-layout { grid-template-columns: 1fr; gap: 36px; }
+          .hero-title { font-size: clamp(2.6rem, 10vw, 3.8rem); }
+          .hero-phone-img { max-width: 460px; }
         }
         @media (max-width: 480px) {
-          .hero-layout { padding-bottom: 48px; gap: 24px; }
-          .hero-phone-col { max-height: 280px; }
+          .hero-stage { padding-top: 32px; padding-bottom: 36px; }
+          .hero-layout { gap: 24px; }
+          .hero-sub { margin-top: 18px; font-size: 0.96rem; }
+          .hero-ctas { margin-top: 24px; }
+          .hero-phone-img { max-width: 300px; }
         }
       `}</style>
     </section>

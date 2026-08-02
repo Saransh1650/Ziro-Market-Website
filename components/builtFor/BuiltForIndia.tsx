@@ -4,7 +4,7 @@ const DATA_POINTS = [
   { label: "32 Sectors", desc: "Every Indian sector tracked" },
   { label: "Mutual Funds", desc: "MF holdings & overlap analysis" },
   { label: "ETFs", desc: "Find Indian ETFs" },
-  { label: "Daily Activity", desc: "Track daily market movements" },
+  { label: "Daily Activity", desc: "What moved today, and by how much" },
 ];
 
 const INDICES = [
@@ -31,12 +31,12 @@ export default function BuiltForIndia() {
             </h2>
             <p style={{ marginTop: 18, maxWidth: 440, lineHeight: 1.7 }}>
               NSE and BSE data. 32 sectors. Nifty 50, Bank Nifty, IT, Midcap,
-              Smallcap. MCX commodities. Mutual funds. Calibrated for how Indian
-              markets actually work.
+              Smallcap. MCX commodities. Mutual funds. Built around how Indian
+              markets trade, not how US ones do.
             </p>
             <p style={{ marginTop: 12, maxWidth: 440, lineHeight: 1.7 }}>
               Rupee formatting. IST timezone. Lakh and crore conventions. Tax
-              rules that match what you actually file.
+              rules that match what you file.
             </p>
             {/* Index pills */}
             <div
