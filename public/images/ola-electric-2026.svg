@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="420" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Ola Electric 2026</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Comeback or collapse for the EV star?</text>
+  <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">E-SCOOTER MARKET SHARE</text>
+  <text x="48" y="224" font-size="42" font-weight="800" fill="#c0392b">~50% &#8594; ~33%</text>
+  <text x="48" y="258" font-size="20" font-weight="700" fill="#c0392b">leader turned challenger</text>
+  <text x="560" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">CHASING IT</text>
+  <text x="560" y="220" font-size="22" font-weight="700" fill="#0b3b2e">Bajaj &#183; TVS</text>
+  <text x="560" y="250" font-size="22" font-weight="700" fill="#0b3b2e">Ather</text>
+  <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">THE TURNAROUND BET</text>
+  <text x="48" y="366" font-size="22" font-weight="700" fill="#0b3b2e">motorcycles &#183; own battery cells &#183; cost cuts</text>
+  <text x="48" y="396" font-size="15" font-weight="700" fill="#9b6810">Still loss-making. A widely held, volatile retail stock.</text>
+</svg>

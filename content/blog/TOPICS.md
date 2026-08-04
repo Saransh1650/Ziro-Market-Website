@@ -76,6 +76,10 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Groww IPO 2026 (2026-07-31, app-audience fintech: "the app that dethroned Zerodha"; F&O-dependence risk callout; revenue table; app's own retail-investor audience) → groww-ipo-2026.mdx
 - Ethereum 2026 vs bitcoin (2026-07-31, crypto forward, high-search: ETH lagging, ETH/BTC ratio as the number to watch; clusters bitcoin-h2 / eth-crash / solana / dominance) → ethereum-2026-vs-bitcoin.mdx
 - Internal-link update (2026-07-31 #2): demat-accounts (retail boom) -> Groww; ethereum-price-crash -> ethereum-2026; bitcoin-h2 -> ethereum-2026.
+- Evergreen update (2026-07-31, Fed-reaction: dovish hold -> Nifty ~24,420 relief rally, rupee firms ~95.8, IT/banks lead): indian-stock-market-today (skipped routine gold/btc/crude/rupee bumps per new strategy; only updated on the big Fed move)
+- Ola Electric 2026 (2026-07-31, new-age EV, "comeback or collapse": share ~50%->33%, Bajaj/TVS/Ather competition table + risk callout; widely-held retail stock) → ola-electric-2026.mdx
+- XRP 2026 (2026-07-31, crypto forward, "rally over after the CLARITY Act?": bull/bear cases + buy-rumour-sell-news callout; clusters clarity-act/bitcoin-h2/ethereum/dominance) → xrp-2026-clarity-act.mdx
+- Internal-link update (2026-07-31 #3): crypto-clarity-act-xrp -> xrp-2026; auto-scorecard -> ola-electric.
 
 ## Evergreen SEO strategy note
 
