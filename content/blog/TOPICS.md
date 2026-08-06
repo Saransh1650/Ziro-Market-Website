@@ -85,6 +85,11 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Paytm comeback 2026 (2026-08-05, fintech, "is the comeback real?": 2024 bank-crisis near-collapse -> profit, stock ~310->1,050 vs Rs 2,150 IPO; bull/bear table + regulatory-shadow callout) → paytm-comeback-2026.mdx
 - Solana 2026 (2026-08-05, crypto forward, high-search: SOL ~$150, bull/bear + SOL-vs-ETH table + "not either-or" callout; completes BTC/ETH/XRP/SOL cluster) → solana-2026-outlook.mdx
 - Internal-link update (2026-08-05): solana-ecosystem -> solana-2026; phonepe-ipo -> paytm-comeback.
+- SBI Q1 FY27 ACTUALS (2026-08-06, flipped preview -> results: PAT ~Rs 19,800cr the sector's largest, NIM ~3.05%, GNPA improved <2%, credit growth teens; closes a healthy bank season) → sbi-q1-fy27-results-preview-2026.mdx
+- IPO pipeline hub refresh (2026-08-06, "update old": redated + funnels authority to PhonePe/Groww/Zepto/Jio posts) → india-upcoming-ipos-2026-pipeline.mdx [NOTE: NSE IPO already covered by nse-ipo-drhp-2026-india-largest-ever; did NOT duplicate]
+- Nykaa 2026 (2026-08-06, profitable new-age consumer: "the new-age stock that actually makes money"; beauty crown jewel vs fashion drag, Reliance Tira threat; competition table + risk callout) → nykaa-2026.mdx
+- Swiggy vs Zomato 2026 (2026-08-06, "vs" format, two big brands: Eternal ahead on profit + QC, Swiggy the cheaper challenger; scorecard table + callout; distinct from quick-commerce-war) → swiggy-vs-zomato-2026.mdx
+- Internal-link update (2026-08-06): eternal + quick-commerce-war -> swiggy-vs-zomato; quick-commerce-war -> nykaa.
 
 ## Evergreen SEO strategy note
 
