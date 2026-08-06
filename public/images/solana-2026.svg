@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="420" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Solana 2026: can it keep rising?</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Ethereum's fastest, cheapest rival</text>
+  <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BULL CASE</text>
+  <text x="48" y="216" font-size="21" font-weight="700" fill="#0b7a3e">SOL ETF &#183; ultra-low fees</text>
+  <text x="48" y="246" font-size="21" font-weight="700" fill="#0b7a3e">consumer apps, activity</text>
+  <text x="510" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BEAR CASE</text>
+  <text x="510" y="216" font-size="21" font-weight="700" fill="#c0392b">network outages</text>
+  <text x="510" y="246" font-size="21" font-weight="700" fill="#c0392b">meme-coin reliance</text>
+  <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">VS ETHEREUM</text>
+  <text x="48" y="366" font-size="21" font-weight="700" fill="#0b3b2e">SOL: speed &amp; cost &#183; ETH: depth &amp; trust</text>
+  <text x="48" y="396" font-size="15" font-weight="700" fill="#9b6810">Comeback done; maturing is the next test</text>
+</svg>

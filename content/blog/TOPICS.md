@@ -80,6 +80,11 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Ola Electric 2026 (2026-07-31, new-age EV, "comeback or collapse": share ~50%->33%, Bajaj/TVS/Ather competition table + risk callout; widely-held retail stock) → ola-electric-2026.mdx
 - XRP 2026 (2026-07-31, crypto forward, "rally over after the CLARITY Act?": bull/bear cases + buy-rumour-sell-news callout; clusters clarity-act/bitcoin-h2/ethereum/dominance) → xrp-2026-clarity-act.mdx
 - Internal-link update (2026-07-31 #3): crypto-clarity-act-xrp -> xrp-2026; auto-scorecard -> ola-electric.
+- RBI Aug 2026 decision ACTUALS (2026-08-05, flipped preview file -> decision: held repo 5.25%, neutral stance, 5-1 vote, FY27 GDP 6.6% / CPI ~4.3%, door open to a later cut given dovish Fed) → rbi-mpc-august-2026-preview.mdx
+- Evergreen update (2026-08-05, RBI-day: Nifty steady ~24,450, banks lead, Fed + RBI both dovish; skipped routine price-page bumps per strategy) → indian-stock-market-today
+- Paytm comeback 2026 (2026-08-05, fintech, "is the comeback real?": 2024 bank-crisis near-collapse -> profit, stock ~310->1,050 vs Rs 2,150 IPO; bull/bear table + regulatory-shadow callout) → paytm-comeback-2026.mdx
+- Solana 2026 (2026-08-05, crypto forward, high-search: SOL ~$150, bull/bear + SOL-vs-ETH table + "not either-or" callout; completes BTC/ETH/XRP/SOL cluster) → solana-2026-outlook.mdx
+- Internal-link update (2026-08-05): solana-ecosystem -> solana-2026; phonepe-ipo -> paytm-comeback.
 
 ## Evergreen SEO strategy note
 
