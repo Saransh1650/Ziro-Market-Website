@@ -90,6 +90,9 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Nykaa 2026 (2026-08-06, profitable new-age consumer: "the new-age stock that actually makes money"; beauty crown jewel vs fashion drag, Reliance Tira threat; competition table + risk callout) → nykaa-2026.mdx
 - Swiggy vs Zomato 2026 (2026-08-06, "vs" format, two big brands: Eternal ahead on profit + QC, Swiggy the cheaper challenger; scorecard table + callout; distinct from quick-commerce-war) → swiggy-vs-zomato-2026.mdx
 - Internal-link update (2026-08-06): eternal + quick-commerce-war -> swiggy-vs-zomato; quick-commerce-war -> nykaa.
+- Central banks buying gold 2026 (2026-08-06, rides VALIDATED de-dollarization + gold themes: "why central banks are buying gold like never before"; who's-buying table + StatGrid; bridges de-dollar post to gold cluster) → central-banks-buying-gold-2026.mdx
+- India data center boom 2026 (2026-08-06, rides VALIDATED AI-infra theme + India angle: builders table (Reliance/Adani/Anant Raj/hyperscalers) + power-constraint callout; links ai-data-center + ai-stocks-india) → india-data-center-boom-2026.mdx
+- Internal-link update (2026-08-06 #2): de-dollarization-brics + gold-ath -> central-banks-gold; ai-data-center -> india-data-center. (Funneling from the week-2 organic winners.)
 
 ## Evergreen SEO strategy note
 
@@ -111,6 +114,8 @@ REVISED with real traffic data (week of 2026-07-24). Total traffic is still smal
 
 **Still worth building but at LOWER cadence (compounding, needs time + authority):** the smart-money cluster (FII/DII, bulk deals, sector rotation) and evergreen how-tos. They are long-term bets and have not paid off in one week; keep seeding them, but they are no longer the main output. Programmatic per-stock/sector pages (Bet C) remain the scale lever once authority builds.
 
+**UPDATE — Week 2 data (2026-08-06). The pivot is WORKING, keep going.** quick-commerce-war and stock-market-august-what-to-watch are now the #2 and #3 blog pages; the IT and auto Q1 scorecards and the RBI decision post all pull traffic. Confirmed winners: recognisable-brand + curiosity posts, forward monthly outlooks, comparison scorecards. TWO themes broke out on their OWN (not even actively pushed) and now deserve MORE: (1) geopolitical-macro narratives, especially de-dollarization / BRICS / dollar-vs-gold (de-dollarization-brics got ~10 views), and (2) AI infrastructure (ai-data-center-capex got ~8). Gold pages also consistently rank (gold-ath, gold-rate). Lean into these three. Note: brand-new posts take ~a week to climb, so judge them on a lag, not day one.
+
 ## Queue
 
 Ordered by SEO ROI. The cron agent picks from the TOP of Priority 1 first and works down. Each post must interlink 2-3 sibling posts in its cluster (cluster linking is what makes these rank). Every topic here is evergreen unless tagged (event). Reframe any "what is X" as a specific searchable question in the title per RULES.md.
@@ -122,6 +127,8 @@ These are the categories that actually got reach. Every post: curiosity-gap titl
 - New-age / consumer brands: quick commerce war (Blinkit/Zepto/Instamart), big-name IPOs, Zomato/Eternal/Swiggy, PhonePe, etc. Recognisable names, curiosity titles.
 - AI theme with an India or stock angle: AI stocks to watch, Nvidia/AI capex, AI and Indian IT, data-centre boom.
 - Result SEASONS as ONE scorecard, never 8 single-name posts. New-age/consumer results (Eternal, Swiggy, Nykaa, Paytm) as brand-led stories, not dry reports.
+- Geopolitical-macro narratives (VALIDATED, week 2): de-dollarization / BRICS / dollar dominance, dollar-vs-gold, central-bank gold buying, sanctions and reserves. Big global search + curiosity titles ("Is the Dollar Done?"). Cluster with gold pages.
+- AI infrastructure (VALIDATED, week 2): data-center capex, the AI power crunch, who builds and who benefits. Add an India angle (India data-center boom) for app relevance. Cluster with ai-stocks-india + ai-data-center.
 
 ### Priority 1 — Smart-money cluster (Bet B: unique edge, low competition, high intent)
 These map to real searches AND showcase the app's data. Build the cluster densely and cross-link every post to `fii-vs-dii`, `how-to-read-fii-dii-activity`, `how-circuit-breakers-work-nse`, and each other. Cluster now has 8 posts (bulk/block, delivery %, promoter pledging/holding, sector rotation, OI+PCR, FII/DII anchor); keep extending.
