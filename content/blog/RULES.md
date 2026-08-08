@@ -273,3 +273,27 @@ One punchy sentence under 25 words. State the news and the impact. Do not repeat
 ### No investment advice rule
 
 News articles must not recommend buying, selling, or holding any stock, fund, or asset. State facts, explain significance, describe risks. Never say "investors should buy" or "this is a good time to invest."
+
+---
+
+## AI-friendly writing (GEO / answer-engine optimization)
+
+More than 60% of searches now involve an AI answer (ChatGPT, Perplexity, Google AI Overviews, Copilot, Claude). These engines chunk a page into passages, embed them, and quote the passage that best answers the query. So we optimise the PASSAGE, not just the page. Research shows the biggest lifts in AI citation come from adding statistics (about +26%), direct quotes/quotable lines (about +28%), and citing sources (about +25%). Apply these to every post:
+
+1. **Answer first, in a self-contained passage.** The opening bold sentence must directly answer the question the title asks, in 40 to 60 words, with the key numbers, and make sense on its own with zero prior context. An AI must be able to lift that one sentence and have a complete answer. This is the single most important GEO rule.
+
+2. **Add a "quick answer" box near the top of news posts.** Right after the intro, add `<Callout type="note" title="The quick answer">` with a 40 to 60 word, self-contained, quotable answer to the headline question. This is the passage most likely to be extracted and cited. Keep it factual and standalone.
+
+3. **Phrase H2 headings as the questions people actually ask.** Prefer "Why is the RBI holding rates?" over "What Is Happening", and "Who is winning quick commerce?" over "The Scorecard". Each section then answers its own heading in the first sentence. (News-format section names like "What Happened" / "Why This Matters" are still fine, but lean question-shaped where natural.)
+
+4. **Every paragraph's bold line must be self-contained and quotable.** No "this" or "it" referring back; state the subject. A reader (or an AI) skimming only the bold lines should get the full story, and any one bold line should stand alone as a citable fact.
+
+5. **Lead with specific numbers and keep them close to the claim.** Stats get cited far more than vague statements. "Blinkit holds about 45% share" beats "Blinkit leads". Put the number in the same sentence as the claim.
+
+6. **Use citation-friendly formats:** comparison tables, definitions (define the term in one plain sentence on first use), numbered steps, and the FAQ array (which becomes FAQPage schema). AI engines lift these directly.
+
+7. **Name entities explicitly and consistently.** Write "Reserve Bank of India (RBI)" and "National Stock Exchange (NSE)" on first use, then the short form. Clear entities help the model connect the passage to the query.
+
+8. **Freshness matters.** AI-cited content skews ~25% fresher than classic search results, so keep the `date` current on updates and publish on live topics.
+
+The site already emits Article, FAQPage and BreadcrumbList JSON-LD, exposes `/llms.txt`, and explicitly allows the AI crawlers (GPTBot, PerplexityBot, ClaudeBot, Google-Extended, Applebot-Extended and more) in robots. Do not remove those. When adding a genuinely new recurring topic to `/llms.txt`, keep the entry to one line with a real benefit.

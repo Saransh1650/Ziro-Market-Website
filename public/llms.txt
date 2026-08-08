@@ -1,0 +1,48 @@
+# Ziro Market
+
+> Ziro Market publishes clear, data-backed explainers and news on the Indian stock market, crypto, IPOs, and global macro for retail investors. Every article leads with a direct answer, cites specific numbers, and is written to be quoted. This is general information, not investment advice.
+
+Site: https://ziromarket.com
+Blog: https://ziromarket.com/blog
+
+## Markets and macro
+- [Stock market this month: what to watch](https://ziromarket.com/blog/stock-market-august-2026-what-to-watch): forward monthly outlook of the events that will move the Nifty and Sensex.
+- [Indian stock market today](https://ziromarket.com/blog/indian-stock-market-today): the daily Nifty and Sensex wrap with the reasons behind the move.
+- [RBI rate decision, August 2026](https://ziromarket.com/blog/rbi-mpc-august-2026-preview): the RBI held the repo rate at 5.25% with a neutral stance.
+- [US Fed decision and its impact on India](https://ziromarket.com/blog/us-fed-decision-july-2026-india-impact): how the Fed's move drives the rupee and foreign flows.
+- [De-dollarization in 2026](https://ziromarket.com/blog/de-dollarization-brics-2026-dollar-dominance): the dollar still holds 59% of reserves but BRICS, gold and CIPS are gaining.
+- [Why central banks are buying gold](https://ziromarket.com/blog/central-banks-buying-gold-2026): record central-bank gold buying near 1,000 tonnes a year and why.
+
+## AI and technology
+- [AI data centers and the power crunch](https://ziromarket.com/blog/ai-data-center-capex-power-2026): the $690bn AI build-out is hitting an electricity wall.
+- [India's data center boom](https://ziromarket.com/blog/india-data-center-boom-2026): who is building India's AI infrastructure and who benefits.
+- [AI stocks in India](https://ziromarket.com/blog/ai-stocks-india-2026): a map of the AI stack across Indian companies, chip-free.
+
+## New-age companies and IPOs
+- [Quick commerce war: Blinkit vs Zepto vs Instamart](https://ziromarket.com/blog/quick-commerce-war-2026-blinkit-zepto-instamart): who is winning India's 10-minute delivery race.
+- [Swiggy vs Zomato](https://ziromarket.com/blog/swiggy-vs-zomato-2026): which food-delivery stock is ahead in 2026.
+- [PhonePe IPO 2026](https://ziromarket.com/blog/phonepe-ipo-2026): how a free UPI app is valued near $15 billion.
+- [Groww IPO 2026](https://ziromarket.com/blog/groww-ipo-2026): the broker that overtook Zerodha goes public.
+- [Paytm in 2026](https://ziromarket.com/blog/paytm-comeback-2026): is the comeback real after the payments-bank crisis.
+- [Nykaa 2026](https://ziromarket.com/blog/nykaa-2026): the new-age stock that actually makes money.
+- [Upcoming IPOs in India 2026](https://ziromarket.com/blog/india-upcoming-ipos-2026-pipeline): the loaded 2026 IPO pipeline including NSE.
+
+## Crypto
+- [Bitcoin H2 2026 outlook](https://ziromarket.com/blog/bitcoin-h2-2026-range-breakout): what breaks bitcoin out of its range.
+- [Ethereum vs bitcoin 2026](https://ziromarket.com/blog/ethereum-2026-vs-bitcoin): can ETH catch up.
+- [Solana 2026](https://ziromarket.com/blog/solana-2026-outlook): the fast, cheap Ethereum challenger.
+- [XRP 2026](https://ziromarket.com/blog/xrp-2026-clarity-act): where XRP goes after the CLARITY Act.
+- [Crypto tax in India](https://ziromarket.com/blog/crypto-tax-india-2026): the flat 30% plus cess regime explained.
+
+## Earnings scorecards
+- [IT Q1 FY27 scorecard](https://ziromarket.com/blog/it-sector-q1-fy27-scorecard-2026): TCS, Infosys, Wipro and HCLTech compared.
+- [Private bank Q1 FY27 scorecard](https://ziromarket.com/blog/private-bank-q1-fy27-scorecard-2026): HDFC, ICICI, Axis and Kotak compared.
+- [Auto Q1 FY27 scorecard](https://ziromarket.com/blog/auto-sector-q1-fy27-scorecard-2026): the auto majors compared.
+
+## Learn (evergreen explainers)
+- [What is PE ratio](https://ziromarket.com/blog/what-is-pe-ratio)
+- [FII vs DII](https://ziromarket.com/blog/fii-vs-dii): who moves Indian markets.
+- [How to read FII and DII activity](https://ziromarket.com/blog/how-to-read-fii-dii-activity): the daily flows and what a flip signals.
+- [How NSE circuit breakers work](https://ziromarket.com/blog/how-circuit-breakers-work-nse): the 10, 15, 20 percent rule.
+- [How to invest in gold in India](https://ziromarket.com/blog/how-to-invest-in-gold-india)
+- [How to start investing in stocks in India](https://ziromarket.com/blog/how-to-start-investing-in-stocks-india)

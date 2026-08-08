@@ -93,6 +93,9 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
 - Central banks buying gold 2026 (2026-08-06, rides VALIDATED de-dollarization + gold themes: "why central banks are buying gold like never before"; who's-buying table + StatGrid; bridges de-dollar post to gold cluster) → central-banks-buying-gold-2026.mdx
 - India data center boom 2026 (2026-08-06, rides VALIDATED AI-infra theme + India angle: builders table (Reliance/Adani/Anant Raj/hyperscalers) + power-constraint callout; links ai-data-center + ai-stocks-india) → india-data-center-boom-2026.mdx
 - Internal-link update (2026-08-06 #2): de-dollarization-brics + gold-ath -> central-banks-gold; ai-data-center -> india-data-center. (Funneling from the week-2 organic winners.)
+- GEO / AI-FRIENDLY UPGRADE (2026-08-07, researched current GEO best practice): (1) robots.ts now EXPLICITLY allows AI crawlers (GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended, Applebot-Extended, Bingbot, CCBot) — crawler access is the precondition for AI citation; (2) added public/llms.txt (curated LLM map of best pages by cluster); (3) added an "AI-friendly writing (GEO)" section to RULES.md (answer-first 40-60 word passages, "quick answer" callout, question-shaped H2s, self-contained quotable bold lines, stats next to claims, define terms); (4) added answer-first "quick answer" callouts to the top winners quick-commerce-war, stock-market-august, it-sector-scorecard. Site already had Article/FAQPage/Breadcrumb JSON-LD.
+- AI bubble 2026 (2026-08-07, NEW, fully GEO-formatted exemplar: question title, quick-answer callout, question H2s, definition, bull-vs-bear table, India-impact section; rides validated AI theme) → ai-bubble-2026-will-it-burst.mdx
+- Internal-link update (2026-08-07): ai-data-center + sp500-ai-earnings -> ai-bubble.
 
 ## Evergreen SEO strategy note
 
