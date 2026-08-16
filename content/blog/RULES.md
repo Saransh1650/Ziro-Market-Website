@@ -45,6 +45,43 @@ Available components (write them directly in the MDX body, capitalised exactly, 
 
 7. Images — original SVG infographics saved in /public/images and referenced with `![alt text](/images/file.svg)`. Build them from verified numbers. For evergreen pages, keep the image filename dateless and overwrite it on each update.
 
+8. Real-world imagery (logos and photos) — see the section below. Use when the post is about a nameable company, brand, exchange, or institution.
+
+## Real images in posts (logos and photos, never AI-generated)
+
+Posts about a real company read better with that company's real mark on the page. A reader scanning the listing or the article recognises the Blinkit logo faster than any headline, and a real image also gives the page something to rank in Google Images.
+
+The rule: **add a real image when one genuinely fits, and skip it when one does not.** This is a nice-to-have, not a checklist item. Never stretch a post's subject to justify an image, and never pad a macro or concept post with a decorative picture that adds nothing.
+
+What counts as a real image:
+
+- Official company logos or wordmarks (Blinkit, Zomato/Eternal, Paytm, Nykaa, Ola Electric, HDFC Bank, NSE, RBI, SEBI).
+- Institutional emblems for policy posts (Reserve Bank of India, SEBI, the Fed, the Bank of Japan).
+- Genuine photographs of a real product, storefront, plant, or event where one is clearly relevant.
+
+What is banned:
+
+- **AI-generated images of any kind.** No generated "stock photos", no generated logos, no generated scenes. If the only way to get a picture is to generate one, the post ships without a picture.
+- Fake or redrawn logos, or a logo altered beyond a straight resize.
+- Generic stock imagery (handshakes, glowing charts, rows of screens) that could sit on any article.
+
+How to add one:
+
+1. Save the asset in `/public/images/logos/` with a plain kebab-case filename: `blinkit.svg`, `paytm.svg`, `rbi.svg`. Prefer SVG, then PNG or JPG.
+2. Source it from the company's own brand or press page, or from Wikimedia Commons. Prefer a public-domain file where one exists; if the only usable file is CC BY or CC BY-SA, that is fine as long as you pass the credit through the `credit` prop. Do not hotlink; the file has to live in the repo so the page has no external image dependency.
+3. Use the `<Logo>` component, not a bare markdown image. A raw `![]()` stretches to the full column width, which turns a square app icon into a giant block:
+
+   ```
+   <Logo src="/images/logos/blinkit.svg" alt="Blinkit logo" width={110} />
+   ```
+
+   `width` is in pixels: about 100 to 130 for a square app icon, 150 to 200 for a wide wordmark, 560 to 720 for a photograph. Add `caption` for context and `credit` when the licence needs it (`credit="Photo: katorisi / Wikimedia Commons, CC BY-SA 3.0"`).
+4. Write real alt text that names the entity and the context. "Blinkit logo" is fine; "image" or "logo" alone is not. Alt text is what Google Images and screen readers read.
+5. Place it near the paragraph that discusses that company, not stacked at the top. In a "vs" post, put each logo beside its own section rather than side by side as a banner.
+6. Reuse the same file across posts. One `blinkit.svg` serves every Blinkit post; do not save a second copy per article.
+
+Logos stay a small part of the page. The SVG infographic built from verified numbers is still the primary visual, since it is the one thing a competitor cannot copy.
+
 The FAQ is automatic. Do NOT write a "## Frequently Asked Questions" section in the body. Put the 5 FAQs in the frontmatter `faq[]` array only. The site renders them as an interactive, expandable accordion (native, accessible, no JavaScript) and generates the FAQPage structured data. Any FAQ heading left in the body is stripped on render.
 
 ## Bold statements for scanners
@@ -214,6 +251,7 @@ Read the post back and check:
 8. No conclusion section?
 9. (News only) Are 5 FAQs in the frontmatter faq[] array (not the body), each answered with verified facts?
 10. Is there at least one data-backed visual element (table, chart, stat row, callout, or key-takeaways box), and does the mix differ from the last post rather than a fixed template?
+11. If the post is about a nameable company or institution, is its real logo on the page with descriptive alt text? (Optional. Skip it if no real asset fits. Never generate one.)
 
 ---
 

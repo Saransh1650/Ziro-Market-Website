@@ -12,6 +12,10 @@ Blog: https://ziromarket.com/blog
 - [US Fed decision and its impact on India](https://ziromarket.com/blog/us-fed-decision-july-2026-india-impact): how the Fed's move drives the rupee and foreign flows.
 - [De-dollarization in 2026](https://ziromarket.com/blog/de-dollarization-brics-2026-dollar-dominance): the dollar still holds 59% of reserves but BRICS, gold and CIPS are gaining.
 - [Why central banks are buying gold](https://ziromarket.com/blog/central-banks-buying-gold-2026): record central-bank gold buying near 1,000 tonnes a year and why.
+- [Gold price forecast 2026](https://ziromarket.com/blog/gold-6000-dollars-2026-forecast): JPMorgan says $6,000, Goldman says $4,900, and why they disagree.
+- [Bank of Japan at 1%](https://ziromarket.com/blog/japan-boj-economy-2026-yen-rate-hike): Japan's highest interest rate since 1995 and what it unwinds.
+- [Yen carry trade and India](https://ziromarket.com/blog/yen-carry-trade-2026-india-impact): why a Japanese rate hike sells Indian mid-caps.
+- [Nifty 50 in 2026](https://ziromarket.com/blog/nifty-50-2026-bear-phase-what-happened): the 15.9% fall, the recovery, and what actually caused each.
 
 ## AI and technology
 - [AI data centers and the power crunch](https://ziromarket.com/blog/ai-data-center-capex-power-2026): the $690bn AI build-out is hitting an electricity wall.
@@ -21,6 +25,7 @@ Blog: https://ziromarket.com/blog
 ## New-age companies and IPOs
 - [Quick commerce war: Blinkit vs Zepto vs Instamart](https://ziromarket.com/blog/quick-commerce-war-2026-blinkit-zepto-instamart): who is winning India's 10-minute delivery race.
 - [Swiggy vs Zomato](https://ziromarket.com/blog/swiggy-vs-zomato-2026): which food-delivery stock is ahead in 2026.
+- [Eternal Q1 FY27 results](https://ziromarket.com/blog/eternal-q1-fy27-blinkit-bigger-than-zomato): Blinkit's revenue is 5x food delivery's, and what that number hides.
 - [PhonePe IPO 2026](https://ziromarket.com/blog/phonepe-ipo-2026): how a free UPI app is valued near $15 billion.
 - [Groww IPO 2026](https://ziromarket.com/blog/groww-ipo-2026): the broker that overtook Zerodha goes public.
 - [Paytm in 2026](https://ziromarket.com/blog/paytm-comeback-2026): is the comeback real after the payments-bank crisis.
@@ -38,6 +43,7 @@ Blog: https://ziromarket.com/blog
 - [IT Q1 FY27 scorecard](https://ziromarket.com/blog/it-sector-q1-fy27-scorecard-2026): TCS, Infosys, Wipro and HCLTech compared.
 - [Private bank Q1 FY27 scorecard](https://ziromarket.com/blog/private-bank-q1-fy27-scorecard-2026): HDFC, ICICI, Axis and Kotak compared.
 - [Auto Q1 FY27 scorecard](https://ziromarket.com/blog/auto-sector-q1-fy27-scorecard-2026): the auto majors compared.
+- [India Inc Q1 FY27 scorecard](https://ziromarket.com/blog/india-inc-q1-fy27-earnings-scorecard-2026): every sector ranked, and why the quarter beat a forecast decline.
 
 ## Learn (evergreen explainers)
 - [What is PE ratio](https://ziromarket.com/blog/what-is-pe-ratio)

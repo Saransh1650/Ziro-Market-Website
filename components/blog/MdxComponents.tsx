@@ -256,6 +256,52 @@ export function Pullquote({ children, cite }: { children?: ReactNode; cite?: str
   )
 }
 
+// Real (never AI-generated) company logo or photograph. Bare markdown images
+// blow up to the full column width, which is wrong for a square app icon, so
+// logos go through this instead: fixed intrinsic width, optional caption and
+// the attribution line some Wikimedia licences require.
+// <Logo src="/images/logos/blinkit.svg" alt="Blinkit logo" width={110} caption="..." credit="..." />
+export function Logo({
+  src,
+  alt,
+  width = 110,
+  caption,
+  credit,
+}: {
+  src: string
+  alt: string
+  width?: number
+  caption?: string
+  credit?: string
+}) {
+  return (
+    <figure style={{ margin: '26px 0' }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        style={{
+          width,
+          maxWidth: '100%',
+          height: 'auto',
+          display: 'block',
+          margin: 0,
+          border: 'none',
+          borderRadius: 10,
+        }}
+      />
+      {(caption || credit) && (
+        <figcaption style={{ fontSize: '0.72rem', color: 'rgba(11,59,46,0.55)', marginTop: 8 }}>
+          {caption}
+          {caption && credit ? ' ' : null}
+          {credit && <span style={{ opacity: 0.8 }}>{credit}</span>}
+        </figcaption>
+      )}
+    </figure>
+  )
+}
+
 // Wraps every markdown table so it scrolls horizontally inside its own
 // container on narrow screens instead of the table itself overflowing the
 // page — a bare `overflow-x: auto` on a wide comparison table with no visual
@@ -272,5 +318,6 @@ export const mdxComponents = {
   Stat,
   BarChart,
   Pullquote,
+  Logo,
   table: TableWrap,
 }

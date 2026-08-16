@@ -12,7 +12,9 @@
     "e2e": "playwright test",
     "typecheck": "tsc --noEmit",
     "indexnow": "node scripts/indexnow.mjs",
-    "google-index": "node scripts/google-index.mjs"
+    "google-index": "node scripts/google-index.mjs",
+    "linkedin": "node scripts/linkedin-drafts.mjs",
+    "linkedin:post": "node scripts/linkedin-post.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
