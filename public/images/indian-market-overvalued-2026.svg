@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="420" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Is the Indian market overvalued?</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">2026 &#183; Nifty near record highs</text>
+  <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">NIFTY 50 PE</text>
+  <text x="48" y="224" font-size="42" font-weight="800" fill="#0b3b2e">~22x</text>
+  <text x="48" y="258" font-size="20" font-weight="700" fill="#9b6810">just above 20-22 average</text>
+  <text x="510" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">MID &amp; SMALL CAPS</text>
+  <text x="510" y="224" font-size="42" font-weight="800" fill="#c0392b">~30x+</text>
+  <text x="510" y="258" font-size="20" font-weight="700" fill="#c0392b">the real froth</text>
+  <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">VERDICT</text>
+  <text x="48" y="364" font-size="22" font-weight="700" fill="#0b3b2e">Headline: full, not a bubble. Underneath: frothy.</text>
+  <text x="48" y="396" font-size="15" font-weight="700" fill="#9b6810">Expensive markets leave less cushion for a shock. Not investment advice.</text>
+</svg>

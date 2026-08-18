@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="440" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="438" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="60" font-size="30" font-weight="700" fill="#0b3b2e">Gold vs Bitcoin 2026</text>
+  <text x="48" y="90" font-size="16" fill="#0b3b2e" fill-opacity="0.55">Which is the better safe haven?</text>
+  <text x="912" y="56" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="112" x2="912" y2="112" stroke="#0b3b2e" stroke-opacity="0.12"/>
+
+  <text x="270" y="150" font-size="20" font-weight="700" fill="#9b6810" text-anchor="middle">GOLD</text>
+  <text x="690" y="150" font-size="20" font-weight="700" fill="#0b3b2e" text-anchor="middle">BITCOIN</text>
+
+  <text x="48" y="196" font-size="15" fill="#0b3b2e" fill-opacity="0.6">Track record</text>
+  <text x="270" y="196" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">~5,000 years</text>
+  <text x="690" y="196" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">~16 years</text>
+
+  <text x="48" y="240" font-size="15" fill="#0b3b2e" fill-opacity="0.6">Volatility</text>
+  <text x="270" y="240" font-size="17" font-weight="700" fill="#0b7a3e" text-anchor="middle">low to moderate</text>
+  <text x="690" y="240" font-size="17" font-weight="700" fill="#c0392b" text-anchor="middle">very high</text>
+
+  <text x="48" y="284" font-size="15" fill="#0b3b2e" fill-opacity="0.6">2026 status</text>
+  <text x="270" y="284" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">ATH $5,602</text>
+  <text x="690" y="284" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">~$63k (-50%)</text>
+
+  <text x="48" y="328" font-size="15" fill="#0b3b2e" fill-opacity="0.6">Big buyers</text>
+  <text x="270" y="328" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">central banks</text>
+  <text x="690" y="328" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">ETFs, retail</text>
+
+  <text x="48" y="372" font-size="15" fill="#0b3b2e" fill-opacity="0.6">India tax</text>
+  <text x="270" y="372" font-size="17" font-weight="700" fill="#0b7a3e" text-anchor="middle">~12.5% LTCG</text>
+  <text x="690" y="372" font-size="17" font-weight="700" fill="#c0392b" text-anchor="middle">~34% flat</text>
+
+  <line x1="48" y1="400" x2="912" y2="400" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="426" font-size="16" font-weight="700" fill="#0b3b2e">Gold protects wealth; Bitcoin can multiply it, with far bigger risk. Not investment advice.</text>
+</svg>
