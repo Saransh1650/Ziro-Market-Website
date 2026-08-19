@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="440" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="438" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="60" font-size="30" font-weight="700" fill="#0b3b2e">SIP vs lumpsum</text>
+  <text x="48" y="90" font-size="16" fill="#0b3b2e" fill-opacity="0.55">Which is better for you? India</text>
+  <text x="912" y="56" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="112" x2="912" y2="112" stroke="#0b3b2e" stroke-opacity="0.12"/>
+
+  <text x="270" y="150" font-size="20" font-weight="700" fill="#0b7a3e" text-anchor="middle">SIP (monthly)</text>
+  <text x="690" y="150" font-size="20" font-weight="700" fill="#9b6810" text-anchor="middle">LUMPSUM (one-time)</text>
+
+  <text x="48" y="196" font-size="15" fill="#0b3b2e" fill-opacity="0.6">Best for</text>
+  <text x="270" y="196" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">monthly income</text>
+  <text x="690" y="196" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">a windfall</text>
+
+  <text x="48" y="240" font-size="15" fill="#0b3b2e" fill-opacity="0.6">Timing risk</text>
+  <text x="270" y="240" font-size="17" font-weight="700" fill="#0b7a3e" text-anchor="middle">low (averaged)</text>
+  <text x="690" y="240" font-size="17" font-weight="700" fill="#c0392b" text-anchor="middle">high (one price)</text>
+
+  <text x="48" y="284" font-size="15" fill="#0b3b2e" fill-opacity="0.6">Returns (rising mkt)</text>
+  <text x="270" y="284" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">good</text>
+  <text x="690" y="284" font-size="17" font-weight="700" fill="#0b7a3e" text-anchor="middle">often higher</text>
+
+  <text x="48" y="328" font-size="15" fill="#0b3b2e" fill-opacity="0.6">Discipline / ease</text>
+  <text x="270" y="328" font-size="17" font-weight="700" fill="#0b7a3e" text-anchor="middle">automatic, calm</text>
+  <text x="690" y="328" font-size="17" font-weight="700" fill="#c0392b" text-anchor="middle">needs conviction</text>
+
+  <line x1="48" y1="360" x2="912" y2="360" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="390" font-size="16" font-weight="700" fill="#0b3b2e">Rule of thumb: SIP your salary. For a windfall, use a lumpsum or stagger it via an STP.</text>
+  <text x="48" y="418" font-size="13" fill="#0b3b2e" fill-opacity="0.55">Educational, not investment advice.</text>
+</svg>
