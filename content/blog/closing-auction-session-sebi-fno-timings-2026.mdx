@@ -1,0 +1,83 @@
+---
+title: "Why F&O stocks now close at 3:40 and not 3:30"
+seoTitle: "Closing Auction Session | New F&O Timings"
+date: "2026-08-21"
+category: "concept"
+excerpt: "SEBI changed how the closing price is set for F&O stocks. Your 3:29 pm market order does not work the way it used to."
+primaryKeyword: "closing auction session"
+secondaryKeywords: ["CAS SEBI", "new market timings 2026", "F&O stocks closing time 3:40", "how closing price is calculated NSE", "SEBI closing auction rules"]
+eli5: |
+  Imagine a vegetable market where the day's official price used to be decided by averaging whatever people paid in the last half hour. If one person bought a lot of tomatoes at a silly price right at the end, the official price got pulled up a little. Not fair, but that is how it worked.
+
+  Now the market does something smarter. Everyone writes down how much they want to buy or sell and at what price, all the slips go into one box, and the market finds the single price at which the largest number of tomatoes can actually change hands. That price becomes the official closing price. India started doing this for its most-traded stocks on 3 August 2026, and it is why futures and options on those stocks now trade until 3:40 pm instead of 3:30 pm.
+tags: ["sebi", "closing-auction-session", "market-timings", "fno", "nse", "how-markets-work", "trading", "india-markets"]
+faq:
+  - q: "What is the Closing Auction Session (CAS)?"
+    a: "The Closing Auction Session is a call auction that decides the official closing price of a stock. Instead of averaging the last 30 minutes of trades, the exchange collects buy and sell orders in a separate order book and then finds the single equilibrium price at which the maximum number of shares can trade. SEBI implemented it in India from 3 August 2026 for stocks that have futures and options contracts."
+  - q: "What are the new market timings from 3 August 2026?"
+    a: "For F&O-linked stocks, normal continuous trading stops at 3:15 pm, the auction order-entry window runs from 3:20 pm to 3:30 pm with a random close between 3:28 and 3:30, order matching happens between 3:30 and 3:35, and a post-close session runs from 3:50 pm to 4:00 pm at the auction price. Futures and options contracts on those stocks trade until 3:40 pm. Non-F&O stocks are unchanged and still close at 3:30 pm."
+  - q: "Which stocks does the closing auction apply to?"
+    a: "Only the cash-segment shares of companies that have futures and options contracts, which is a few hundred of the most liquid names on the NSE and BSE. Every other listed stock continues to close at 3:30 pm with the closing price calculated as the volume weighted average price of the last 30 minutes of trading."
+  - q: "Why did SEBI introduce the closing auction?"
+    a: "To make the closing price harder to manipulate and more reflective of genuine supply and demand. A volume weighted average can be nudged by a small number of late trades, while a call auction requires an order book deep enough to move the equilibrium price. It also aligns India with the closing-auction mechanism used by exchanges in the US, Europe and Hong Kong."
+  - q: "Can I still place a market order at 3:29 pm?"
+    a: "No. Market orders are accepted only in the first order-entry window from 3:20 pm to 3:25 pm. From 3:25 pm to 3:30 pm the auction accepts limit orders only, so an order placed in that window has to carry a price. This is the single change most retail traders notice first. This is general information, not investment advice."
+---
+
+If you traded an F&O stock this month and found your usual 3:29 pm market order rejected, nothing broke. **India changed how closing prices are set on 3 August 2026, replacing the old 30-minute average with a Closing Auction Session, and futures and options contracts on those stocks now trade until 3:40 pm while the shares themselves stop at 3:15 pm.**
+
+The mechanics matter more than the timings, because the closing price is not just a number on a screen. It settles derivatives, values every mutual fund NAV, and decides what index funds pay when they rebalance.
+
+<Callout type="note" title="The quick answer">
+
+The Closing Auction Session (CAS) is a call auction that sets the official closing price for F&O-linked stocks, live in India since 3 August 2026. Continuous trading ends at 3:15 pm, orders are collected from 3:20 pm to 3:30 pm, matching happens by 3:35 pm at the single price where the most shares can trade, and F&O contracts run until 3:40 pm.
+
+</Callout>
+
+## How the new closing works, minute by minute
+
+The session is built in stages, and each one has a different rule about what you can send.
+
+| Time | What happens |
+| --- | --- |
+| 3:00 to 3:15 pm | Normal trading. VWAP from this window sets a 3% price band for the auction |
+| 3:15 to 3:20 pm | Continuous trading halts, pending orders move into the auction book |
+| 3:20 to 3:25 pm | Order entry with both market and limit orders allowed |
+| 3:25 to 3:30 pm | Limit orders only, with a random close between 3:28 and 3:30 |
+| 3:30 to 3:35 pm | Matching. The exchange finds the equilibrium price |
+| 3:40 pm | F&O contracts on these stocks stop trading |
+| 3:50 to 4:00 pm | Post-close cash session at the auction-discovered price |
+
+**The equilibrium price is the single price at which the largest number of shares can actually change hands**, found by stacking every buy and sell order together rather than executing them one by one. If a lot of buyers want in at Rs 1,000 and a lot of sellers want out at Rs 1,010, the auction settles wherever the two curves cross with maximum volume.
+
+The random close between 3:28 and 3:30 is a deliberate anti-gaming feature. **Nobody knows the exact second the order book freezes, which removes the value of firing a large order at the last possible instant.**
+
+## Why did SEBI change something that worked?
+
+Because the old method had a soft spot. **A closing price built from the volume weighted average of the last 30 minutes can be nudged by a handful of well-timed trades, while a call auction requires enough real orders to move the crossing point.** Manipulating a VWAP is a matter of trade timing. Manipulating an auction means bringing genuine size and risking getting filled.
+
+There is a second, quieter reason. **The close is the single most important price of the day for passive money, because index funds and ETFs are obliged to transact at it when an index rebalances**, and India's passive assets have grown enough that the mechanism now carries real money. Global exchanges in the US, Europe and Hong Kong have used closing auctions for years for exactly this reason.
+
+The change lands alongside SEBI's broader derivatives tightening, which raised index derivative contract sizes to roughly Rs 15 lakh and added an extra 2% margin on short options on expiry day. That programme has already cost the exchange itself, since **NSE's FY26 profit fell 15.5% to Rs 10,302 crore as F&O volumes moderated**, a wrinkle our [NSE IPO](/blog/nse-ipo-drhp-2026-india-largest-ever) piece works through.
+
+## What actually changes for a retail trader
+
+The first change is the one that trips people up. **Market orders are only accepted between 3:20 pm and 3:25 pm, so anything sent in the last five minutes must be a limit order with a price on it.** A trader used to hitting "market" at 3:29 pm has to plan a price instead.
+
+<Callout type="insight" title="The practical habit to build">
+
+Decide your closing-price order before 3:15 pm, not after. Once continuous trading stops, you are no longer negotiating with a live tape, you are placing a bid into a sealed auction where your only lever is the limit price you choose.
+
+</Callout>
+
+The second is that **the closing price can differ from the last traded price you saw at 3:15 pm**, sometimes noticeably in a thin stock, because it is discovered fresh in the auction rather than carried over.
+
+The third affects anyone holding derivatives. **Futures and options on these stocks keep trading until 3:40 pm, ten minutes after the underlying share has already been priced**, which gives derivative traders a window to react to a close they can already see. Whether that window helps or hurts depends entirely on which side of it you are on, and it is worth reading alongside how [open interest and the put-call ratio](/blog/open-interest-put-call-ratio) behave near the close.
+
+## What is still coming
+
+The framework is being rolled out in phases rather than all at once. **The pre-open auction session gets aligned with the CAS framework from 7 September 2026**, which brings the start of the day into the same logic as the end of it.
+
+Non-F&O stocks stay on the old system for now, closing at 3:30 pm with a 30-minute VWAP. That two-speed market is temporary by design, and the obvious next step is extending the auction to the wider cash market once the exchanges are comfortable with how the first phase behaves.
+
+For most long-term investors, none of this changes anything. **A closing price is only a valuation stamp for someone who is not selling.** For anyone who trades near the close, hedges with options, or runs a systematic strategy against the settlement price, the last twenty-five minutes of the Indian trading day are now a different game with different rules, and the exchanges have already published the rulebook.

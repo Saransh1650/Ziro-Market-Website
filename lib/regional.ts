@@ -92,6 +92,60 @@ export const LANGUAGES: Record<string, LangConfig> = {
       ctaButtonIos: 'iPhone पर डाउनलोड करें',
     },
   },
+  ta: {
+    code: 'ta',
+    name: 'தமிழ்',
+    englishName: 'Tamil',
+    locale: 'ta-IN',
+    ui: {
+      home: 'முகப்பு',
+      learn: 'தகவல்',
+      alsoRead: 'இதையும் படியுங்கள்',
+      updatedOn: 'புதுப்பிக்கப்பட்டது',
+      readInEnglish: 'ஆங்கிலத்தில் படிக்க',
+      eli5Label: 'மிக எளிய மொழியில்',
+      eli5Desc: 'முன் அறிவு எதுவும் தேவையில்லை, மிகவும் எளிய விளக்கம்',
+      faqTitle: 'அடிக்கடி கேட்கப்படும் கேள்விகள்',
+      popupTitle: 'Ziro Market செயலியைப் பதிவிறக்குங்கள்',
+      popupBody:
+        'தங்கம், வெள்ளி மற்றும் பங்குச் சந்தை விலைகளை உங்கள் மொழியில் பாருங்கள். செயலி முழுவதும் இலவசம்.',
+      popupCta: 'இலவசமாகப் பதிவிறக்குங்கள்',
+      popupDismiss: 'இப்போது வேண்டாம்',
+      ctaKicker: 'செயலியைப் பெறுங்கள்',
+      ctaTitle: 'எல்லாம் ஒரே இடத்தில், உங்கள் மொழியில்',
+      ctaBody:
+        'தங்கம், வெள்ளி, சந்தை விலைகளை தினமும் உங்கள் கைபேசியில் பாருங்கள். இலவசம், எளிமை, தமிழில்.',
+      ctaButtonAndroid: 'Android இல் பதிவிறக்குங்கள்',
+      ctaButtonIos: 'iPhone இல் பதிவிறக்குங்கள்',
+    },
+  },
+  te: {
+    code: 'te',
+    name: 'తెలుగు',
+    englishName: 'Telugu',
+    locale: 'te-IN',
+    ui: {
+      home: 'హోమ్',
+      learn: 'సమాచారం',
+      alsoRead: 'ఇది కూడా చదవండి',
+      updatedOn: 'నవీకరించిన తేదీ',
+      readInEnglish: 'ఇంగ్లీషులో చదవండి',
+      eli5Label: 'చాలా సులభమైన భాషలో',
+      eli5Desc: 'ముందు ఏ అవగాహన అవసరం లేదు, అత్యంత సులభమైన వివరణ',
+      faqTitle: 'తరచుగా అడిగే ప్రశ్నలు',
+      popupTitle: 'Ziro Market యాప్‌ను డౌన్‌లోడ్ చేసుకోండి',
+      popupBody:
+        'బంగారం, వెండి, స్టాక్ మార్కెట్ ధరలను మీ భాషలో చూడండి. యాప్ పూర్తిగా ఉచితం.',
+      popupCta: 'ఉచితంగా డౌన్‌లోడ్ చేసుకోండి',
+      popupDismiss: 'ఇప్పుడు వద్దు',
+      ctaKicker: 'యాప్ పొందండి',
+      ctaTitle: 'అన్నీ ఒకే చోట, మీ భాషలో',
+      ctaBody:
+        'బంగారం, వెండి, మార్కెట్ ధరలను ప్రతిరోజూ మీ ఫోన్‌లో చూడండి. ఉచితం, సులభం, తెలుగులో.',
+      ctaButtonAndroid: 'Android లో డౌన్‌లోడ్ చేసుకోండి',
+      ctaButtonIos: 'iPhone లో డౌన్‌లోడ్ చేసుకోండి',
+    },
+  },
 }
 
 export function getLanguages(): string[] {
