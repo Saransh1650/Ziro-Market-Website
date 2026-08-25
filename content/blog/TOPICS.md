@@ -151,6 +151,14 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
   - Internal-link update (2026-08-23): august-what-to-watch -> september outlook; hormuz-closes + india-resumes-iran-oil + how-crude-affects-india -> the new sanctions post; market-today -> crude, sanctions, Jackson Hole, September.
   - NOTE: gold-6000 has grown to ~1,450 words across three refreshes, above the 900-1100 news band. Trim a section on the next pass rather than adding to it.
 
+- SANCTIONS-LANDED BATCH (2026-08-25). The package arrived and the market did the opposite of the obvious thing, which is the story.
+  - **What happened:** on 24 Aug Washington unveiled **"Operation Economic Outcast"**, sanctioning foreign entities that deal with five sectors of Iran's economy (digital assets, technology, **gold**, aviation, shipping). Chinese **teapot refineries** named (Hengli Petrochemical Dalian); major Chinese banks deliberately NOT named. Bessent: "the single greatest financial offensive ever marshalled against an adversary". **Oil FELL**: Brent -2.5% to **$92.06**, WTI -2.5% to **$84.89**. China takes **>80% of Iran's shipped oil**. UAE cut trade ties.
+  - EN new: **operation-economic-outcast-iran-sanctions-2026** — the counterintuitive angle ("oil fell 2.5% on the toughest sanctions ever written") plus the China teapot/bank distinction that decides the next move. Table of what was announced vs what would actually reprice oil. This is country-macro + curiosity title, both validated categories.
+  - Updated so nothing contradicts: **crude-oil-price-today** (retitled to $92, new "why did oil fall on sanctions day" section), **india-iran-oil-sanctions-august-2026** (added a landed-package update callout; it had said "due on Monday"), **indian-stock-market-today** (removed the "sanctions due 24 August" forward language).
+  - Metals refresh: gold spot **$4,670** on 24 Aug, a **15-week high, +13% over three weeks** — gold-6000 retitled and JPMorgan's gap recut to **+28%** (Goldman +5%); silver **$69.52** after **+19% in three weeks**, ratio 66 -> 67. All four gold rate pages (EN/hi/ta/te) to **Rs 1,63,970 24K / Rs 1,50,300 22K (+Rs 880 on the day)**; Tamil savaran now Rs 1,20,240.
+  - PATTERN WORTH KEEPING: gold is literally one of the five sanctioned sectors, which links the geopolitics cluster to the gold cluster. Used that in both posts.
+  - CADENCE NOTE: this is the third run in five days where the price evergreens moved enough to matter (74 -> 94 -> 92 on Brent, 4,479 -> 4,601 -> 4,670 on gold). While the Iran story is live, check crude + gold + the India rate pages every run.
+
 ## Evergreen SEO strategy note
 
 REVISED with real traffic data (week of 2026-07-24). Total traffic is still small, so treat as directional, but the pattern is unmistakable.
