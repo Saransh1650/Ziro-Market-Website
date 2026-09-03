@@ -166,6 +166,17 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
   - Also corrected in the September outlook: Nvidia consensus is **$92.07bn revenue vs $91bn +/- 2% guidance, EPS ~$2.09, data centre ~$85.7bn, Q3 guide ~$102-103bn** (the earlier "$93-95bn" was from a low-quality aggregator), and section 1 rewritten now that the sanctions landed and oil FELL.
   - DATA WARNING: goodreturns silver page returned content dated **2 September 2026** while today is 25 August, quoting Rs 2,45,000/kg against Rs 2,60,000 on 24 Aug. Did not update the silver pages off it. If a source returns a future-dated page, treat it as unusable rather than as news.
 
+- THE REGIME FLIPPED (2026-09-03). Nine days, four scheduled events, and every directional call on the site inverted. This is the single biggest reversal of the year so far.
+  - **Warsh went hawkish at Jackson Hole on 28 Aug**, sharpening his inflation warning and pledging a return to the 2% target. September rate-hike odds went from **~35% before the speech to ~66%** (2 Sep), easing to ~62% (3 Sep). FOMC is 15-16 Sep. The Fed is now openly at odds with the Treasury, which spent August buying back long bonds to hold yields down.
+  - **US strikes on Iran resumed near Hormuz**, pushing Brent toward **$97**. Note the contrast worth teaching: sanctions (24 Aug) made oil FALL because paperwork removes no barrels; strikes made it RISE because they threaten the barrels.
+  - **Gold erased most of its 2026 gain**: $4,670 (24 Aug) -> **$4,336.30** (2 Sep), a four-week low. Silver $69.87 -> **$63.87**. India 24K Rs 1,63,970 -> **Rs 1,55,350**; silver Rs 2,60,000 -> **Rs 2,45,000/kg**.
+  - **Nifty lost 24,000**: closed **23,914.45** (-0.59%), Sensex **76,570.35** (-0.49%) on 2 Sep. Rupee resilient on RBI dollar sales + FCNR(B) inflows. Bitcoin $81k -> **$77,592.74**, ETH **$2,419.24**. US 10-year **4.78%**.
+  - **Nvidia beat**: Q2 FY27 revenue **$96.22bn** vs $92.17bn consensus, EPS $2.22, and guided Q3 to **$108bn +/- 2%**, about 4% above the street, revenue more than doubling from $46.7bn. Stock $209.66 close, $217.70 after hours.
+  - EN new: **why-gold-fell-war-restarted-2026** — the teaching post of the batch. Gold fell during an escalation because the war reached it through the INFLATION channel (oil -> hike odds -> real yields -> dollar), not the safe-haven channel. Rides the validated gold cluster with a genuinely counterintuitive hook.
+  - EN new: **fed-rate-hike-september-2026-india-impact** — forward event page for 16 Sep, country-macro, with the three India channels (FPI flows, rupee, RBI's closed cut window) in a table.
+  - Converted preview -> outcome: **jackson-hole-2026-warsh-india-impact** (it was still previewing a speech that had already happened and moved everything). Refreshed: gold-6000 (#1, JPMorgan now needs +38%), crude evergreen, market-today, September outlook, silver post, both crypto pages, ai-bubble (Nvidia actuals), and all six India rate pages EN/hi/ta/te.
+  - **BUG I SHIPPED AND FIXED:** the 25 Aug batch inserted update callouts using a replace-all on the `## ` heading marker, so altcoin-season-2026 and gold-vs-bitcoin-2026 went live with **6 copies of the same callout** each, and ai-bubble nearly did today. When inserting a block before "the first heading", always pass count=1. Checked every post touched this way; all now at 1.
+
 ## Evergreen SEO strategy note
 
 REVISED with real traffic data (week of 2026-07-24). Total traffic is still small, so treat as directional, but the pattern is unmistakable.
