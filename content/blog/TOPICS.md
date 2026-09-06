@@ -197,6 +197,39 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
   - PROCESS NOTE: adding an update callout to a stale page is not enough on its own. On sp500 the callout was current while the title, StatGrid, quick answer and eli5 still described the 18 August bond rout, which reads as broken to anyone landing cold. When refreshing a leader, bring the whole top of the page current: title, excerpt, eli5, quick answer, StatGrid. The body can stay as history.
   - STILL STALE on the traffic list, for the next pass: rwa-tokenization (5 Jun), quick-commerce-war (31 Jul), eternal-q1-fy27 (11 Aug), swiggy-vs-zomato (6 Aug). All consumer/crypto rather than macro, so none of them contradict the current regime, which is why they were left.
 
+## STOP. READ THIS BEFORE WRITING ANYTHING (2026-09-06 reset)
+
+Real Google Search Console data: **~11 impressions total, 0 clicks.** Only four URLs had any impressions at all (paytm-comeback 5, eternal-q4 3, nykaa 2, /blog 1), and Paytm and Nykaa were "Previously: 0", meaning they had just started surfacing.
+
+**The honest conclusion: this site has never ranked in Google.** A 179-post site with real search visibility would have hundreds to thousands of impressions. So the ~350 weekly pageviews back in August were NOT organic search; they came from some other source (app, direct, referral) that has since dried up. Five months of publishing has produced approximately zero search traffic. Writing more posts does not fix this and has been making it worse.
+
+**What went wrong, including what this agent did:**
+1. **Volume on a no-authority domain.** 179 posts in ~5 months on a young domain with no backlink profile is the exact shape Google's systems suppress. The bottleneck is trust, not content quantity.
+2. **Churn.** 32 posts edited in 14 days; 13 posts all carry date 2026-09-05, 8 carry 09-03, 5 carry 09-04. Mass re-dating reads as manipulation and burns crawl budget on trivial diffs.
+3. **Title instability.** gold-6000 was retitled four times, nse-ipo three times, sp500 twice, yen-carry once, all on live URLs. Every retitle resets the relevance signal Google was building for that page.
+4. **Cannibalisation.** Four overlapping oil/Iran posts (crude-oil-price-today, india-iran-oil-sanctions, operation-economic-outcast, why-gold-fell) and five overlapping gold-falling posts compete with each other for the same queries.
+5. **Sitemap noise.** All 179 posts were declared `changefreq: daily, priority: 0.7`. FIXED 2026-09-06: only the eight true daily price pages are daily/0.8, everything else monthly/0.6.
+
+**New rules, effective now:**
+- **No daily publishing.** Target one or two genuinely good posts a WEEK, not five a day.
+- **Never mass re-date.** Change `date` only when the substance of the page actually changed. A number refresh is not a republish.
+- **Never retitle a live URL** unless the current title is factually wrong. Ranking accrues to a stable title.
+- **One page per query.** Before writing, check whether an existing post already targets that primaryKeyword; if so, update that page instead of adding a sibling.
+- **Follow the impressions, not the news cycle.** The only pages Google is showing are recognisable-brand consumer stories: Paytm, Eternal/Blinkit, Nykaa. Not macro, not gold, not oil. That matches the July 2026 strategy note, which was right.
+- **The real blocker is off-site.** No amount of on-page work fixes zero domain authority. Distribution and backlinks are the constraint; that is a founder task, not a writing task.
+
+**Cleanup actually executed 2026-09-06:**
+- **Sitemaps fixed** (both `app/sitemap.ts` and `app/blog/sitemap.xml/route.ts`): only the eight true daily price pages are now `changefreq: daily, priority 0.8`; all other posts are `monthly, 0.6`. Previously all 179 posts claimed daily change, which wasted crawl budget and made the signal meaningless.
+- **Four cannibalising pages consolidated with 301s** (unique analysis folded into the survivor first, internal links repointed, files deleted so they leave the sitemap):
+  - operation-economic-outcast-iran-sanctions-2026 -> india-iran-oil-sanctions-august-2026 (same event, same day, written by this agent twice)
+  - iran-us-ceasefire-oil-price-2026-global-impact -> india-iran-oil-sanctions-august-2026 (ceasefire expired, superseded)
+  - strait-of-hormuz-india-oil-crisis-2026 -> what-happens-if-strait-of-hormuz-closes (evergreen wins over dated)
+  - gold-price-india-record-2026 -> gold-rate-today-india (Feb-dated duplicate of the live India rate page)
+  - Post count 179 -> 175.
+- **15 publish dates restored** to their true original values (recovered via `git log --diff-filter=A`) on posts where this agent had only appended a dated update callout. The callout carries its own date inline, so readers still see currency while the publish date stops claiming a republish that did not happen. The 13-posts-on-one-day cluster is gone.
+
+**Still to do, in priority order:** (1) get the GSC Pages report (Indexed vs Not indexed + reasons) because that decides whether the remaining problem is trust or crawl; (2) deepen the four pages that actually earn impressions (paytm-comeback, eternal-q4, nykaa, zepto) and leave their titles alone; (3) off-site distribution.
+
 ## Evergreen SEO strategy note
 
 REVISED with real traffic data (week of 2026-07-24). Total traffic is still small, so treat as directional, but the pattern is unmistakable.

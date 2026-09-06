@@ -53,6 +53,13 @@ const nextConfig: NextConfig = {
     // Same-day pre-release forecast, superseded by the actuals post once MOSPI
     // published the real May 2026 CPI print (both dated 2026-06-12).
     { source: '/blog/india-may-cpi-inflation-2026', destination: '/blog/india-may-2026-cpi-inflation-3-93-percent', permanent: true },
+    // Consolidation 2026-09-06. GSC showed ~11 impressions sitewide and these
+    // pages were competing with each other for the same queries. Merged into
+    // one canonical page per query; unique analysis was folded in first.
+    { source: '/blog/operation-economic-outcast-iran-sanctions-2026', destination: '/blog/india-iran-oil-sanctions-august-2026', permanent: true },
+    { source: '/blog/iran-us-ceasefire-oil-price-2026-global-impact', destination: '/blog/india-iran-oil-sanctions-august-2026', permanent: true },
+    { source: '/blog/strait-of-hormuz-india-oil-crisis-2026', destination: '/blog/what-happens-if-strait-of-hormuz-closes', permanent: true },
+    { source: '/blog/gold-price-india-record-2026', destination: '/blog/gold-rate-today-india', permanent: true },
   ]),
 };
 

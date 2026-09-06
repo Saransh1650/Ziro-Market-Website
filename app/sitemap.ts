@@ -6,12 +6,31 @@ import { SITE_URL as BASE } from '@/lib/site'
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts()
 
-  const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${BASE}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: 'daily',
-    priority: 0.7,
-  }))
+  // Evergreen pages that genuinely change often (daily price pages). Everything
+  // else is a dated article: telling Google it changes "daily" when it does not
+  // burns crawl budget on trivial diffs and devalues the signal for the pages
+  // that really do update. Priority is also differentiated, because marking all
+  // 179 posts 0.7 tells Google nothing about what matters.
+  const DAILY_EVERGREEN = new Set([
+    'indian-stock-market-today',
+    'gold-rate-today-india',
+    'gold-price-today',
+    'silver-rate-today-india',
+    'rupee-dollar-today',
+    'crude-oil-price-today',
+    'bitcoin-price-today',
+    'petrol-diesel-price-today',
+  ])
+
+  const postEntries: MetadataRoute.Sitemap = posts.map((post) => {
+    const isDaily = DAILY_EVERGREEN.has(post.slug)
+    return {
+      url: `${BASE}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: isDaily ? ('daily' as const) : ('monthly' as const),
+      priority: isDaily ? 0.8 : 0.6,
+    }
+  })
 
   // Regional-language pages. Each carries an hreflang alternate back to its
   // English original so Google serves the right language per searcher.
