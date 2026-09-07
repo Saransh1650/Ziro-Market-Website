@@ -60,6 +60,38 @@ const nextConfig: NextConfig = {
     { source: '/blog/iran-us-ceasefire-oil-price-2026-global-impact', destination: '/blog/india-iran-oil-sanctions-august-2026', permanent: true },
     { source: '/blog/strait-of-hormuz-india-oil-crisis-2026', destination: '/blog/what-happens-if-strait-of-hormuz-closes', permanent: true },
     { source: '/blog/gold-price-india-record-2026', destination: '/blog/gold-rate-today-india', permanent: true },
+    // Dead dated pages retired 2026-09-07. A "week ahead" page for a week in
+    // July, and a superseded monthly outlook, can never rank again and only
+    // dilute the live equivalents. Equity flows to the current pages.
+    { source: '/blog/stock-market-week-ahead-13-july-2026', destination: '/blog/stock-market-september-2026-what-to-watch', permanent: true },
+    { source: '/blog/stock-market-july-2026-what-to-watch', destination: '/blog/stock-market-september-2026-what-to-watch', permanent: true },
+    { source: '/blog/us-strikes-iran-oil-sanctions-july-2026', destination: '/blog/india-iran-oil-sanctions-august-2026', permanent: true },
+    { source: '/blog/us-fed-decision-july-2026-india-impact', destination: '/blog/fed-rate-hike-september-2026-india-impact', permanent: true },
+    // Retired 2026-09-07: its entire thesis (a jobs report building the case for
+    // Fed CUTS) inverted. The 4 Sept jobs report made a HIKE the base case, and
+    // the wrong premise is baked into the slug, so correcting in place is futile.
+    { source: '/blog/us-jobs-report-fed-rate-cut-2026', destination: '/blog/fed-rate-hike-september-2026-india-impact', permanent: true },
+    // Q1 FY27 single-name earnings consolidation, 2026-09-07. The site's own
+    // analytics showed these got ~1 view each while the sector scorecard that
+    // links them beat them roughly 18x, and all eleven cannibalise the
+    // scorecards for "q1 fy27 results" queries. Equity flows to the scorecard
+    // for their sector. Eternal is kept: it is a consumer brand that ranks.
+    { source: '/blog/tcs-q1-fy27-results-preview-2026', destination: '/blog/it-sector-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/wipro-q1-fy27-results-preview-2026', destination: '/blog/it-sector-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/infosys-q1-fy27-results-preview-2026', destination: '/blog/it-sector-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/hcltech-q1-fy27-results-2026', destination: '/blog/it-sector-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/hdfc-bank-q1-fy27-results-2026', destination: '/blog/private-bank-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/icici-bank-q1-fy27-results-2026', destination: '/blog/private-bank-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/sbi-q1-fy27-results-preview-2026', destination: '/blog/private-bank-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/maruti-suzuki-q1-fy27-results-2026', destination: '/blog/auto-sector-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/tata-motors-q1-fy27-results-2026', destination: '/blog/auto-sector-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/mahindra-q1-fy27-results-preview-2026', destination: '/blog/auto-sector-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/reliance-q1-fy27-results-2026', destination: '/blog/india-inc-q1-fy27-earnings-scorecard-2026', permanent: true },
+    // Final duplicate pairs found by the keyword-overlap audit, 2026-09-07.
+    { source: '/blog/solana-ecosystem-2026-defi-institutional', destination: '/blog/solana-2026-outlook', permanent: true },
+    { source: '/blog/ethereum-price-crash-2026-staking-etf', destination: '/blog/ethereum-2026-vs-bitcoin', permanent: true },
+    { source: '/blog/stock-market-crash-today-july-2026', destination: '/blog/indian-stock-market-today', permanent: true },
+    { source: '/regional/hi/stock-market-crash-today-july-2026', destination: '/regional/hi/indian-stock-market-today', permanent: true },
   ]),
 };
 
