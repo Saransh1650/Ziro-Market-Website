@@ -91,6 +91,17 @@ const nextConfig: NextConfig = {
     { source: '/blog/solana-ecosystem-2026-defi-institutional', destination: '/blog/solana-2026-outlook', permanent: true },
     { source: '/blog/ethereum-price-crash-2026-staking-etf', destination: '/blog/ethereum-2026-vs-bitcoin', permanent: true },
     { source: '/blog/stock-market-crash-today-july-2026', destination: '/blog/indian-stock-market-today', permanent: true },
+    // Date-locked event posts retired 2026-09-08. A single month's IIP, CPI, GST
+    // or EV sales print, or a passed tariff deadline, has no recurring search
+    // and cannot rank again; each 301s to the living page for its topic.
+    { source: '/blog/hdfc-bank-q4-fy26-results-profit-19221-crore', destination: '/blog/private-bank-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/india-ev-sales-may-2026-tata-mahindra-record', destination: '/blog/auto-sector-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/india-gst-collection-may-2026', destination: '/blog/gst-collection-record-2026', permanent: true },
+    { source: '/blog/india-iip-april-2026-manufacturing-growth', destination: '/blog/india-fy26-gdp-7-7-percent-beats-estimates', permanent: true },
+    { source: '/blog/india-may-2026-cpi-inflation-3-93-percent', destination: '/blog/india-june-cpi-inflation-2026', permanent: true },
+    { source: '/blog/india-pharma-us-tariff-july-2026-deadline', destination: '/blog/us-tariffs-india-exports-impact-2026', permanent: true },
+    { source: '/blog/it-sector-q1-fy27-earnings-preview-2026', destination: '/blog/it-sector-q1-fy27-scorecard-2026', permanent: true },
+    { source: '/blog/nvidia-q1-fy27-record-revenue-81-billion', destination: '/blog/ai-bubble-2026-will-it-burst', permanent: true },
     { source: '/regional/hi/stock-market-crash-today-july-2026', destination: '/regional/hi/indian-stock-market-today', permanent: true },
   ]),
 };
