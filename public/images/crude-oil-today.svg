@@ -2,18 +2,23 @@
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Crude oil price today</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Per barrel, 19 August 2026</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Brent tops $100 as Hormuz traffic stalls</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">WTI CRUDE</text>
-  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b7a3e">~$70</text>
-  <text x="48" y="258" font-size="20" font-weight="700" fill="#0b3b2e">off the July peak</text>
-  <text x="360" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BRENT CRUDE</text>
-  <text x="360" y="224" font-size="46" font-weight="800" fill="#0b7a3e">~$74</text>
-  <text x="360" y="258" font-size="20" font-weight="700" fill="#0b3b2e">from ~$85 in July</text>
-  <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">HORMUZ</text>
-  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b7a3e">standoff eased</text>
-  <text x="480" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">FOR INDIA</text>
-  <text x="480" y="372" font-size="24" font-weight="700" fill="#0b7a3e">rupee + inflation relief</text>
+  <text x="48" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BRENT CRUDE</text>
+  <text x="48" y="222" font-size="42" font-weight="800" fill="#c0392b">$100.69</text>
+  <text x="48" y="252" font-size="18" font-weight="700" fill="#0b3b2e">highest since July</text>
+  <text x="360" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">INDIA CRUDE BASKET</text>
+  <text x="360" y="222" font-size="42" font-weight="800" fill="#c0392b">$108.9</text>
+  <text x="360" y="252" font-size="18" font-weight="700" fill="#0b3b2e">four-month high</text>
+  <text x="690" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">HORMUZ TRAFFIC</text>
+  <text x="690" y="222" font-size="42" font-weight="800" fill="#c0392b">restricted</text>
+  <text x="690" y="252" font-size="18" font-weight="700" fill="#0b3b2e">IEA: largest ever disruption</text>
+  <line x1="48" y1="288" x2="912" y2="288" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">INDIA IMPORT DEPENDENCE</text>
+  <text x="48" y="366" font-size="26" font-weight="800" fill="#0b3b2e">90%+ of crude used</text>
+  <text x="440" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">EACH $10 ON CRUDE</text>
+  <text x="440" y="366" font-size="26" font-weight="800" fill="#c0392b">20-30 bps off GDP</text>
+  <text x="770" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">RUPEE</text>
+  <text x="770" y="366" font-size="26" font-weight="800" fill="#c0392b">~94.8 / $</text>
 </svg>
