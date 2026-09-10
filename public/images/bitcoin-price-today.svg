@@ -1,19 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Crypto market today</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">30 July 2026 &#183; rangebound</text>
+  <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Bitcoin price today</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Week's lowest open before CPI, CLARITY vote and the Fed</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BITCOIN</text>
-  <text x="48" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$63,000</text>
-  <text x="48" y="258" font-size="20" font-weight="700" fill="#0b3b2e">range-bound</text>
-  <text x="430" y="178" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ETHEREUM</text>
-  <text x="430" y="224" font-size="46" font-weight="800" fill="#0b3b2e">~$1,800</text>
-  <text x="430" y="258" font-size="20" font-weight="700" fill="#0b3b2e">drifting</text>
-  <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
-  <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">CAUGHT BETWEEN</text>
-  <text x="48" y="372" font-size="24" font-weight="700" fill="#0b3b2e">War fear vs rate cuts</text>
-  <text x="560" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ATH</text>
-  <text x="560" y="372" font-size="24" font-weight="700" fill="#0b3b2e">$126,200</text>
+  <text x="48" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BITCOIN</text>
+  <text x="48" y="222" font-size="42" font-weight="800" fill="#c0392b">~$78,000</text>
+  <text x="48" y="252" font-size="18" font-weight="700" fill="#0b3b2e">38% below Oct 2025 peak</text>
+  <text x="360" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ETHEREUM</text>
+  <text x="360" y="222" font-size="42" font-weight="800" fill="#c0392b">~$2,460</text>
+  <text x="360" y="252" font-size="18" font-weight="700" fill="#0b3b2e">lagging bitcoin all cycle</text>
+  <text x="690" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">CRYPTO MARKET CAP</text>
+  <text x="690" y="222" font-size="42" font-weight="800" fill="#c0392b">$2.75 tn</text>
+  <text x="690" y="252" font-size="18" font-weight="700" fill="#0b3b2e">down 1.2% in 24 hours</text>
+  <line x1="48" y1="288" x2="912" y2="288" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">11 SEPTEMBER</text>
+  <text x="48" y="366" font-size="24" font-weight="800" fill="#0b3b2e">US CPI print</text>
+  <text x="360" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">15 SEPTEMBER</text>
+  <text x="360" y="366" font-size="24" font-weight="800" fill="#0b3b2e">CLARITY Act vote</text>
+  <text x="690" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">16 SEPTEMBER</text>
+  <text x="690" y="366" font-size="24" font-weight="800" fill="#0b3b2e">Fed decision</text>
 </svg>
