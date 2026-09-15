@@ -12,7 +12,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 
-const BASE_URL = 'https://ziromarket.com';
+const BASE_URL = 'https://www.ziromarket.com'; // must match the canonical host in lib/site.ts; apex 308-redirects here
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 const REGIONAL_DIR = path.join(process.cwd(), 'content', 'regional');
 

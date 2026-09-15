@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import BlogListing from "@/components/blog/BlogListing";
 import DownloadCTA from "@/components/blog/DownloadCTA";
 import { getAllPosts } from "@/lib/blog";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Learn",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Learn | Ziro Market",
     description: "Indian stock market explained in plain English.",
-    url: "https://ziromarket.com/blog",
+    url: `${SITE_URL}/blog`,
   },
 };
 

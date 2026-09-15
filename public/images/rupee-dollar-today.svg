@@ -2,18 +2,18 @@
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Rupee vs dollar today</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Close, 11 September 2026</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">Close, 15 September 2026</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">USD / INR</text>
-  <text x="48" y="222" font-size="42" font-weight="800" fill="#c0392b">95.55</text>
-  <text x="48" y="252" font-size="18" font-weight="700" fill="#0b3b2e">worst week since mid-May</text>
+  <text x="48" y="222" font-size="42" font-weight="800" fill="#c0392b">95.91</text>
+  <text x="48" y="252" font-size="18" font-weight="700" fill="#0b3b2e">six-week low</text>
   <text x="500" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">RECORD LOW</text>
   <text x="500" y="222" font-size="42" font-weight="800" fill="#0b3b2e">96.96</text>
   <text x="500" y="252" font-size="18" font-weight="700" fill="#0b3b2e">set in May 2026</text>
   <line x1="48" y1="288" x2="912" y2="288" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BRENT CRUDE</text>
-  <text x="48" y="366" font-size="26" font-weight="800" fill="#c0392b">~$104</text>
+  <text x="48" y="366" font-size="26" font-weight="800" fill="#c0392b">~$107</text>
   <text x="360" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">FX RESERVES</text>
   <text x="360" y="366" font-size="26" font-weight="800" fill="#0b3b2e">$740.8 bn</text>
   <text x="690" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">FPI OUTFLOWS, 2026</text>
