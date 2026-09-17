@@ -53,7 +53,13 @@ export function getAllPosts(dir = BLOG_DIR): PostMeta[] {
       }
       return { ...(data as Omit<PostMeta, 'slug'>), slug }
     })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => {
+      const byDate = new Date(b.date).getTime() - new Date(a.date).getTime()
+      if (byDate !== 0) return byDate
+      // Every post can share one `date` after a sitewide refresh, so fall back
+      // to the original publish date to keep the listing in a sensible order.
+      return new Date(b.datePublished ?? b.date).getTime() - new Date(a.datePublished ?? a.date).getTime()
+    })
 }
 
 export function getPost(slug: string, dir = BLOG_DIR): Post | null {

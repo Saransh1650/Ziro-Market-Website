@@ -187,7 +187,13 @@ export function getRegionalPostsForLang(lang: string): RegionalPostMeta[] {
       const { data } = matter(raw)
       return { ...(data as Omit<RegionalPostMeta, 'slug' | 'lang'>), slug, lang }
     })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => {
+      const byDate = new Date(b.date).getTime() - new Date(a.date).getTime()
+      if (byDate !== 0) return byDate
+      // Every post can share one `date` after a sitewide refresh, so fall back
+      // to the original publish date to keep the listing in a sensible order.
+      return new Date(b.datePublished ?? b.date).getTime() - new Date(a.datePublished ?? a.date).getTime()
+    })
 }
 
 // All (lang, slug) pairs across every language, for generateStaticParams + sitemap.
