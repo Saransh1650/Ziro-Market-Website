@@ -49,7 +49,64 @@ after each block):
 The FAQ is automatic. Do NOT write a FAQ heading in the body. Put 5 FAQs in the
 frontmatter `faq[]` array only, written in the target language.
 
-### Bold statements for scanners
+### Photographs: sourcing, licensing and placement
+
+Every post ships with at least one image. The infographic SVG is for data. The photograph is for the thing the article is actually about, and it is what makes a post read like an article rather than a wall of text.
+
+### Where photographs come from
+
+**Wikimedia Commons, through the script, never by hand.** Use `scripts/fetch-commons-image.mjs` for a single file or `scripts/fetch-commons-batch.mjs` for several:
+
+```
+node scripts/fetch-commons-image.mjs "File:Strait of Hormuz.jpg" strait-of-hormuz
+node scripts/fetch-commons-batch.mjs jobs.json     # [["File:X.jpg","out-name"], ...]
+```
+
+The script reads the licence out of the Commons metadata and **refuses anything that is not public domain, CC0, CC BY or CC BY-SA**. It saves into `/public/images/photos/` and prints the exact attribution string to paste into the post. If it refuses a file, find another file. Do not override it, and do not download the image another way.
+
+To find candidates, search the Commons file namespace first and pick the most specific result, not the prettiest one.
+
+### Licences that are allowed
+
+| Licence | Allowed | Credit required |
+| --- | --- | --- |
+| Public domain, CC0 | Yes | Credit anyway, it costs nothing |
+| CC BY, CC BY-SA (any version) | Yes | Yes, always |
+| GODL-India, CC BY-NC, CC BY-ND, "fair use", unknown | No | Not usable, find another file |
+
+### Hard rules
+
+- **No AI-generated images of any kind.** Not backgrounds, not illustrations, not "just a header image".
+- **No hotlinking.** The file lives in the repo, so the page has no external image dependency.
+- **Every photograph carries a `credit`.** Format: `Photo: <author> / Wikimedia Commons, <licence>`. A CC BY-SA image without attribution is a licence breach, not a style miss.
+- **No generic stock.** Handshakes, glowing arrows, anonymous trading screens and "businessman looking at chart" imagery are banned. If the only available picture could sit on any article, the post ships without one.
+- **Compress before committing.** `sips -Z 1100 -s formatOptions 72 file.jpg --out file.jpg` keeps a photo around 100 to 300KB. Nothing over 400KB.
+
+### Placement
+
+- Use the `<Logo>` component, never a bare markdown image, so the caption and credit render together:
+
+  ```
+  <Logo src="/images/photos/rbi-building.jpg" alt="The Reserve Bank of India headquarters in Mumbai, the institution whose inflation target the August 2026 print tested" width={680} caption="The Reserve Bank of India, Mumbai." credit="Photo: Pinakpani / Wikimedia Commons, CC BY-SA 4.0" />
+  ```
+
+- `width={680}` for photographs, 100 to 130 for a square logo, 150 to 200 for a wordmark.
+- **Place it beside the paragraph it illustrates**, usually after the first paragraph of the section that discusses the subject. Never stack images at the top, and never drop one immediately under the H1.
+- Leave a blank line before and after the tag, or the heading that follows it will not parse.
+- One photograph is usually enough. A long post can take two if they illustrate different sections.
+
+### Alt text and captions
+
+- **Alt text names the entity and the context**: "The Marriner S. Eccles Federal Reserve Board Building in Washington, where the FOMC raised rates in September 2026". Not "Federal Reserve", not "building", not the post title repeated.
+- **The caption adds a fact the photo cannot show.** "The Reserve Bank of India, Mumbai. Its target is 4%, with a band of two percentage points either side." A caption that only restates the alt text is wasted space.
+
+### Reuse
+
+Regional posts reuse the same files as their English originals, so a Hindi gold page points at the same `/images/photos/gold-bullion-bar.jpg`. Captions and alt text are written natively in the page language, never machine-translated from the English caption.
+
+One file serves every post on that subject. `/public/images/photos/` is a shared library, so check it before fetching anything new, and never save a second copy of the same subject under a different name.
+
+## Bold statements for scanners
 
 Every paragraph gets exactly one bolded key insight — a complete thought, the line
 a fast reader should catch. Never bold more than one sentence per paragraph. Never
