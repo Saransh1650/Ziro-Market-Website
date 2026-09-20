@@ -91,3 +91,13 @@ Priority blogs to publish as Articles first (highest search + AI-answer value):
   - LinkedIn's official Marketing API (needs a LinkedIn developer app + Page admin approval), which a scheduled cloud routine could then call, or
   - a scheduler like Buffer/Publer/Zapier that holds the queue and posts on a cadence.
   Tell me which and I'll wire the automation (e.g., a weekly routine that generates the drafts and hands them to the scheduler).
+
+---
+
+## Posting manually (current workflow, from 18 September 2026)
+
+`content/linkedin/posts-queue.md` holds a ready-to-post queue, one post per working day, written from the newest blog content. Copy the block between the POST / END POST markers, publish, then paste the FIRST COMMENT text as a comment on your own post. Tick the checkbox in the file so the next day starts in the right place.
+
+The automation (`scripts/linkedin-post.mjs` and the GitHub Action) still exists and still works if you want it back, but it is not required and does not run against this queue. The queue is deliberately hand-written per post rather than generated, because the generated drafts read like summaries and the hand-written ones lead with the surprise.
+
+Refill the queue by asking for a new batch once you are three or four posts from the end. Every figure in a post should be re-checked if it has been sitting unposted for more than a week.

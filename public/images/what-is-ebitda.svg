@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="960" height="420" rx="18" fill="#f4efe3"/>
+  <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="62" font-size="29" font-weight="700" fill="#0b3b2e">What EBITDA leaves out</text>
+  <text x="48" y="92" font-size="16" fill="#0b3b2e" fill-opacity="0.55">Earnings before interest, taxes, depreciation and amortisation</text>
+  <text x="912" y="58" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
+  <line x1="48" y1="112" x2="912" y2="112" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <rect x="48" y="146" width="864" height="52" rx="8" fill="#1e7a4f" fill-opacity="0.16"/>
+  <text x="68" y="178" font-size="19" font-weight="700" fill="#0b3b2e">EBITDA: what the operations earn</text>
+  <text x="48" y="238" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ADDED BACK, SO NOT COUNTED</text>
+  <rect x="48" y="252" width="204" height="60" rx="8" fill="#9b6810" fill-opacity="0.18"/>
+  <text x="150" y="278" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">Interest</text>
+  <text x="150" y="300" font-size="14" fill="#0b3b2e" fill-opacity="0.65" text-anchor="middle">real cash out</text>
+  <rect x="268" y="252" width="204" height="60" rx="8" fill="#9b6810" fill-opacity="0.18"/>
+  <text x="370" y="278" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">Tax</text>
+  <text x="370" y="300" font-size="14" fill="#0b3b2e" fill-opacity="0.65" text-anchor="middle">real cash out</text>
+  <rect x="488" y="252" width="204" height="60" rx="8" fill="#9b6810" fill-opacity="0.1"/>
+  <text x="590" y="278" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">Depreciation</text>
+  <text x="590" y="300" font-size="14" fill="#0b3b2e" fill-opacity="0.65" text-anchor="middle">non-cash</text>
+  <rect x="708" y="252" width="204" height="60" rx="8" fill="#9b6810" fill-opacity="0.1"/>
+  <text x="810" y="278" font-size="17" font-weight="700" fill="#0b3b2e" text-anchor="middle">Amortisation</text>
+  <text x="810" y="300" font-size="14" fill="#0b3b2e" fill-opacity="0.65" text-anchor="middle">non-cash</text>
+  <line x1="48" y1="344" x2="912" y2="344" stroke="#0b3b2e" stroke-opacity="0.12"/>
+  <text x="48" y="376" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">READ IT NEXT TO</text>
+  <text x="48" y="400" font-size="21" font-weight="700" fill="#0b3b2e">Interest expense and capital expenditure. Alone, it tells you almost nothing.</text>
+</svg>

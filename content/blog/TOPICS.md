@@ -197,6 +197,18 @@ The cron agent picks the next 2 topics from the Queue each run, writes posts, th
   - PROCESS NOTE: adding an update callout to a stale page is not enough on its own. On sp500 the callout was current while the title, StatGrid, quick answer and eli5 still described the 18 August bond rout, which reads as broken to anyone landing cold. When refreshing a leader, bring the whole top of the page current: title, excerpt, eli5, quick answer, StatGrid. The body can stay as history.
   - STILL STALE on the traffic list, for the next pass: rwa-tokenization (5 Jun), quick-commerce-war (31 Jul), eternal-q1-fy27 (11 Aug), swiggy-vs-zomato (6 Aug). All consumer/crypto rather than macro, so none of them contradict the current regime, which is why they were left.
 
+- SITEWIDE REFRESH (2026-09-20): all 8 evergreen price pages rewritten to 18/19 Sept verified data (Nifty 23,346.40 +0.33% and Sensex 74,294.96 on 18 Sept, sixth straight weekly fall, midcap +1.24% / smallcap +1.74%; Brent BACK UNDER $100 at $99.29 on 19 Sept from ~$107; rupee 95.88 close, firmer; spot gold $4,383.45 +0.97% and India 24K Rs 1,55,950 per 10g / 22K Rs 1,42,850; silver Rs 2.50 lakh per kg and $66.24/oz; bitcoin ~$80,800 recovering from $76,300, ether $2,511.51; petrol/diesel still frozen). Six SVG infographics overwritten in place, filenames unchanged.
+- FULL-COVERAGE PASS (2026-09-20, second sweep): the 45 posts that had NO stands callout were found still carrying 17 September numbers. 13 had their live figures corrected inline (rupee 95.94 -> 95.88, gold $4,387 -> $4,383) and the other 33 received a themed 20 September callout, so all 184 blog posts now carry current context and date: "2026-09-20". Regional: all 12 files date-bumped, the 8 English "Where this stands" callouts sitting inside Hindi/Tamil/Telugu pages were replaced with natively written ones, and the five Hindi price pages (gold, silver, market, rupee, crude) plus the Tamil and Telugu gold pages had titles, excerpts, eli5, intros, StatGrids, tables and lead FAQs rewritten to the new numbers. Tamil savaran figures recomputed at 8g (24K Rs 1,24,760).
+- GOTCHA: python3 on this machine refuses UTF-8 source read from stdin heredocs (Devanagari/Tamil raises "Non-UTF-8 code ... no encoding declared"). Write the script to a file with a "# -*- coding: utf-8 -*-" first line and run it from there when editing content/regional.
+- THEMED "WHERE THIS STANDS" REFRESH (2026-09-20): all 125 posts carrying the callout got new 20 September text routed by tag cluster into 10 variants (crypto, gold, silver, oil, IPO, flows, global/Fed, AI, India macro, market). Dates bumped to 2026-09-20 on those files.
+- DATA CORRECTIONS (2026-09-20): August food inflation was 5.95%, not 6.13%; corrected in india-cpi-august-2026 and 13 other files. All 19 banned-word violations surfaced by the lint (landscape, navigate, robust, vital, comprehensive, "leverage a") rewritten. Nine posts that had only 3 FAQs (fii-vs-dii and the eight what-is-X pages) now have the required 5, so FAQPage schema is complete sitewide. what-is-pe-ratio and what-is-india-vix extended past the 650-word floor.
+- Russia sanctions law and India's tariff risk (2026-09-20, THE trending India macro story: H.R. 5334 Lindsey O. Graham Sanctioning Russia and Iran Act signed 18 Sept, up to 100% tariffs on the top five buyers of Russian energy with India on the list, 30-day clock to ~18 Oct, India bought 2.08 mbpd / ~45% of imports from Russia in August against a February deal that cut US tariffs 50% -> 18% partly on a commitment to stop) -> russia-sanctions-act-2026-india-tariff-risk.mdx
+- NSE IPO updated in place, NOT duplicated (2026-09-20): day-two close 1.16x with QIB 1.53x / NII 1.68x / retail 0.72x, GMP collapse from Rs 227 on 11 Sept to Rs 70 on 19 Sept added as a day-by-day table, listing 24 Sept on BSE. Post trimmed from 1,483 to under 1,250 words to clear the lint.
+- How to spot institutional accumulation (2026-09-20, Bet B smart-money cluster, near-zero competition, showcases the app's data: delivery % vs its own average, bulk/block deals naming the buyer, quarterly shareholding pattern, OI for F&O names, with the SBI MF Rs 632 crore Urban Company bulk deal as the worked example) -> how-to-spot-institutional-accumulation.mdx
+- Old vs new tax regime FY27 for investors (2026-09-20, Priority 2 high-intent: full FY27 slab table both regimes, Rs 75,000 vs Rs 50,000 standard deduction, Section 87A Rs 60,000 rebate, the deductions the new regime kills, and the investor-specific point that capital gains rates are identical under both so ELSS loses its only reason to exist) -> old-vs-new-tax-regime-fy27-investors.mdx
+- How IPOs are priced (2026-09-20, Priority 2 evergreen, ridden on the NSE IPO trend: SEBI's 120%-of-floor band cap, pre-marketing, anchor book up to 60% of QIB with one-third for domestic MFs, QIB 50% / retail 35% / NII 15%, cut-off bidding, and why subscription and GMP can point in opposite directions) -> how-ipos-are-priced-book-building-india.mdx
+- What is EBITDA (2026-09-20, Priority 3 terminology: the four excluded costs, Adani FY26 EBITDA Rs 94,834 crore against a heavily depreciating asset base, Blinkit's Rs 102 crore adjusted EBITDA in Q1 FY27, and the "adjusted" reconciliation habit) -> what-is-ebitda.mdx
+
 ## STOP. READ THIS BEFORE WRITING ANYTHING (2026-09-06 reset)
 
 Real Google Search Console data: **~11 impressions total, 0 clicks.** Only four URLs had any impressions at all (paytm-comeback 5, eternal-q4 3, nykaa 2, /blog 1), and Paytm and Nykaa were "Previously: 0", meaning they had just started surfacing.
@@ -402,19 +414,16 @@ These are the categories that actually got reach. Every post: curiosity-gap titl
 ### Priority 1 — Smart-money cluster (Bet B: unique edge, low competition, high intent)
 These map to real searches AND showcase the app's data. Build the cluster densely and cross-link every post to `fii-vs-dii`, `how-to-read-fii-dii-activity`, `how-circuit-breakers-work-nse`, and each other. Cluster now has 8 posts (bulk/block, delivery %, promoter pledging/holding, sector rotation, OI+PCR, FII/DII anchor); keep extending.
 - FII/DII monthly flow tracker — recurring evergreen data page, dateless slug, update in place
-- How to spot institutional accumulation (delivery % + volume + bulk deals read together) — synthesises the cluster
 - What mutual fund managers are buying: how to track MF portfolio changes (ties to the app's MF-holdings data, near-zero competition)
 - Anchor investors in an IPO: what their participation and lock-in really signal
 - Insider trading disclosures (SAST + SEBI PIT): what promoter buy/sell filings tell retail
 
 ### Priority 2 — High-intent evergreen how-to / comparison (Bet A continued, beatable SERP)
-- How IPOs are priced (book building, cut-off price, GMP) — high volume, evergreen
 - Why SIP works mathematically (rupee cost averaging) — huge Indian search intent
 - How buybacks work and why companies do them (tender vs open market, tax angle)
 - How stock splits and bonus issues work (and why the price "drops")
 - T+1 and T+0 settlement: what changed and how instant settlement works
 - How mutual fund NAV is calculated (and why it is not "cheap vs expensive")
-- Old vs new tax regime for investors FY27 — which is better, worked example
 - How to read a cash flow statement (companion to the done balance-sheet guide)
 - How to choose a mutual fund (expense ratio, tracking error, direct vs regular) — huge intent
 - Index funds vs active funds in India (and why most active funds lag) — huge evergreen intent
@@ -431,7 +440,6 @@ The IT and private-bank Q1 scorecards work well: a comparison table + a bar char
 
 ### Priority 3 — Terminology backlog ("what is X", compounding long-tail SEO)
 Dedup'd: Market Cap, Dividend Yield, P/B, D/E, ROE, EPS, India VIX are DONE — do not rewrite.
-- EBITDA (and why it flatters profit)
 - Face Value (and why it matters for dividends and splits)
 - Beta (how a stock moves vs the Nifty)
 - 52-week high and low (how traders actually use it)
