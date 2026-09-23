@@ -281,6 +281,8 @@ export function Logo({
         src={src}
         alt={alt}
         width={width}
+        loading="lazy"
+        decoding="async"
         style={{
           width,
           maxWidth: '100%',

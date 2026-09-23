@@ -1,0 +1,1 @@
+- GST Aug 2026: gross 1,99,853 cr (+14.8% vs 1,74,116), domestic 1,37,249 (+9.3%), imports 62,604 (+29%), net 1,68,057 (+8.3%), refunds +67.9%. GST 2.0 effective 22 Sep 2025 (56th Council, 3 Sep 2025).

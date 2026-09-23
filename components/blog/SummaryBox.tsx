@@ -13,7 +13,7 @@ export default function SummaryBox({
   const [open, setOpen] = useState(false)
 
   return (
-    <div>
+    <div className="summary-box">
       <div
         style={{
           display: 'flex',

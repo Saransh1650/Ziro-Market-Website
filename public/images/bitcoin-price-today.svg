@@ -2,17 +2,17 @@
   <rect width="960" height="420" rx="18" fill="#f4efe3"/>
   <rect x="1" y="1" width="958" height="418" rx="18" fill="none" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="66" font-size="30" font-weight="700" fill="#0b3b2e">Bitcoin price today</text>
-  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">18 September 2026, after the CLARITY Act failed 49-50</text>
+  <text x="48" y="98" font-size="17" fill="#0b3b2e" fill-opacity="0.55">21 September 2026, eight-month high</text>
   <text x="912" y="62" font-size="15" font-weight="700" fill="#9b6810" text-anchor="end">ziromarket.com</text>
   <line x1="48" y1="126" x2="912" y2="126" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">BITCOIN</text>
-  <text x="48" y="222" font-size="42" font-weight="800" fill="#1e7a4f">~$80,800</text>
-  <text x="48" y="252" font-size="18" font-weight="700" fill="#0b3b2e">36% below Oct 2025 peak</text>
+  <text x="48" y="222" font-size="42" font-weight="800" fill="#1e7a4f">~$85,130</text>
+  <text x="48" y="252" font-size="18" font-weight="700" fill="#0b3b2e">33% below Oct 2025 peak</text>
   <text x="360" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ETHEREUM</text>
   <text x="360" y="222" font-size="42" font-weight="800" fill="#1e7a4f">$2,511</text>
   <text x="360" y="252" font-size="18" font-weight="700" fill="#0b3b2e">up about 4% on the day</text>
   <text x="690" y="176" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">RECOVERY FROM LOW</text>
-  <text x="690" y="222" font-size="42" font-weight="800" fill="#1e7a4f">+6%</text>
+  <text x="690" y="222" font-size="42" font-weight="800" fill="#1e7a4f">+12%</text>
   <text x="690" y="252" font-size="18" font-weight="700" fill="#0b3b2e">from $76,300 on 15 Sept</text>
   <line x1="48" y1="288" x2="912" y2="288" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="330" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">15 SEPTEMBER</text>

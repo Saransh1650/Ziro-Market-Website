@@ -27,13 +27,23 @@ export const metadata: Metadata = {
     template: "%s | Ziro Market",
   },
   description: "Track what's moving, understand why it's moving. Live heatmaps, portfolio analytics, sector intelligence and smart watchlists : built for India.",
-  keywords: ["Indian Stock Market", "NIFTY 50", "SENSEX", "NSE", "BSE", "MCX", "Sector Heatmap", "Portfolio Tracker", "Ziro Market"],
+  keywords: [
+    "Indian stock market", "Nifty 50 today", "Sensex today", "NSE", "BSE", "MCX", "stock market app India",
+    "sector heatmap", "portfolio tracker India", "FII DII data", "bulk and block deals", "smart money tracker",
+    "gold rate today India", "silver rate today", "rupee vs dollar", "IPO GMP", "mutual fund SIP",
+    "stock market for beginners India", "share market news", "Ziro Market",
+  ],
   authors: [{ name: "Ziro Market Team" }],
   creator: "Ziro Market",
   publisher: "Ziro Market",
   applicationName: "Ziro Market",
   formatDetection: { email: false, address: false, telephone: false },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 },
+  },
+  category: "finance",
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -77,6 +87,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${jetbrainsMono.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "Ziro Market",
+                url: SITE_URL,
+                inLanguage: "en-IN",
+                publisher: { "@type": "Organization", name: "Ziro Market" },
+              },
+            ]),
+          }}
+        />
         {children}
         <Analytics />
       </body>

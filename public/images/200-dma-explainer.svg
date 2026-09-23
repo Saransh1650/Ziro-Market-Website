@@ -11,6 +11,6 @@
   <line x1="48" y1="292" x2="912" y2="292" stroke="#0b3b2e" stroke-opacity="0.12"/>
   <text x="48" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">ABOVE THE LINE</text>
   <text x="48" y="372" font-size="24" font-weight="700" fill="#0b7a3e">Uptrend intact</text>
-  <text x="470" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">NIFTY, 6 JUL 2026</text>
-  <text x="470" y="372" font-size="24" font-weight="700" fill="#0b7a3e">&#9650; reclaimed 200-DMA</text>
+  <text x="470" y="338" font-size="15" fill="#0b3b2e" fill-opacity="0.55" letter-spacing="1.5">NIFTY 50 IN 2026</text>
+  <text x="470" y="372" font-size="24" font-weight="700" fill="#b3261e">&#9660; below it since 27 Feb</text>
 </svg>

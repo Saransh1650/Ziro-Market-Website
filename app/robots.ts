@@ -1,17 +1,24 @@
 import { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/site'
 
-// One rule for every crawler. `User-agent: *` already covers Googlebot,
-// Bingbot and every AI crawler (GPTBot, PerplexityBot, ClaudeBot,
-// Google-Extended, Applebot-Extended), so naming them separately with the
-// same Allow/Disallow adds lines without changing behaviour.
-// Only /api/ is blocked; it also carries an X-Robots-Tag: noindex header
-// from next.config.ts.
+// Search engines and AI answer engines (ChatGPT, Perplexity, Claude, Gemini,
+// Copilot, Apple Intelligence) are named explicitly so each one sees an
+// unambiguous Allow. Only /api/ is blocked; it also carries an
+// X-Robots-Tag: noindex header from next.config.ts.
+const CRAWLERS = [
+  'Googlebot', 'Googlebot-Image', 'Googlebot-News', 'Google-Extended', 'Bingbot', 'DuckDuckBot', 'Slurp', 'YandexBot',
+  'GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'PerplexityBot', 'Perplexity-User', 'ClaudeBot', 'Claude-User',
+  'Claude-SearchBot', 'anthropic-ai', 'Applebot', 'Applebot-Extended', 'CCBot', 'Meta-ExternalAgent', 'Amazonbot',
+  'cohere-ai', 'MistralAI-User',
+]
+
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: '*', allow: '/', disallow: '/api/' },
-    // /sitemap.xml already contains every blog and regional URL, so the
-    // per-section sitemaps do not need a second listing here.
-    sitemap: `${SITE_URL}/sitemap.xml`,
+    rules: [
+      { userAgent: CRAWLERS, allow: '/', disallow: '/api/' },
+      { userAgent: '*', allow: '/', disallow: '/api/' },
+    ],
+    sitemap: [`${SITE_URL}/sitemap.xml`, `${SITE_URL}/blog/sitemap.xml`, `${SITE_URL}/regional/sitemap.xml`],
+    host: SITE_URL,
   }
 }

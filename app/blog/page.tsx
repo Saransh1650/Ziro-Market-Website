@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   description:
     "Indian stock market concepts, events, and terminology explained in plain English.",
   alternates: { canonical: "/blog" },
+  keywords: [
+    "stock market for beginners India", "Indian stock market news", "what is PE ratio", "FII vs DII",
+    "capital gains tax on shares", "how to invest in gold India", "IPO GMP", "SIP vs lumpsum",
+    "Nifty today", "gold rate today India", "market explainers", "Ziro Market blog",
+  ],
   openGraph: {
     title: "Learn | Ziro Market",
     description: "Indian stock market explained in plain English.",

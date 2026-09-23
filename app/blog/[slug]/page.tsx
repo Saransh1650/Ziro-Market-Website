@@ -44,18 +44,21 @@ export async function generateMetadata({
         ])
       : undefined
 
+  const keywords = postKeywords(post)
   return {
     title: seoTitle,
     description: post.excerpt,
-    keywords: [...post.tags, 'Indian stock market', 'NSE', 'BSE', 'Ziro Market'],
+    keywords,
     alternates: { canonical: `/blog/${slug}`, languages },
     openGraph: {
       title: post.seoTitle ?? post.title,
       description: post.excerpt,
       url: `${SITE_URL}/blog/${slug}`,
       type: 'article',
-      publishedTime: post.date,
-      tags: post.tags,
+      publishedTime: post.datePublished ?? post.date,
+      modifiedTime: post.date,
+      section: post.category,
+      tags: keywords,
       siteName: 'Ziro Market',
     },
     twitter: {
@@ -64,6 +67,20 @@ export async function generateMetadata({
       description: post.excerpt,
     },
   }
+}
+
+// Search keywords for a post: the exact query it targets first, then its
+// secondary queries, then topical tags, de-duplicated and capped.
+function postKeywords(post: { primaryKeyword?: string; secondaryKeywords?: string[]; tags: string[] }) {
+  const all = [post.primaryKeyword, ...(post.secondaryKeywords ?? []), ...post.tags.map((t) => t.replace(/-/g, ' ')), 'Indian stock market']
+  const seen = new Set<string>()
+  return all.filter((k): k is string => {
+    if (!k) return false
+    const key = k.toLowerCase()
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  }).slice(0, 15)
 }
 
 export default async function PostPage({
@@ -94,9 +111,16 @@ export default async function PostPage({
     day: 'numeric',
   })
 
+  const keywords = postKeywords(post)
   const articleJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': post.type === 'news' ? 'NewsArticle' : 'Article',
+    inLanguage: 'en-IN',
+    articleSection: post.category,
+    about: keywords.slice(0, 3).map((name) => ({ '@type': 'Thing', name })),
+    // Marks the headline and summary as the passages voice and AI answer
+    // engines should read aloud or quote.
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.summary-box'] },
     headline: post.title,
     description: post.excerpt,
     datePublished: post.datePublished ?? post.date,
@@ -116,7 +140,7 @@ export default async function PostPage({
     },
     url: `${SITE_URL}/blog/${slug}`,
     mainEntityOfPage: `${SITE_URL}/blog/${slug}`,
-    keywords: post.tags.join(', '),
+    keywords: keywords.join(', '),
   }
 
   const breadcrumbJsonLd = {
