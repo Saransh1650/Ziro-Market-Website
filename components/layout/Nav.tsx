@@ -1,13 +1,14 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.ziro.market';
 
 const LINKS = [
+  { href: '/app/market', label: 'Markets' },
   { href: '/#features',  label: 'App' },
   { href: '/#pain',      label: 'Why' },
-  { href: '/#pivot',     label: 'Manifesto' },
   { href: '/blog',       label: 'Learn' },
 ];
 
@@ -45,7 +46,7 @@ export default function Nav() {
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
         {/* Logo (links to home — internal backlink on every page) */}
-        <a href="/" aria-label="Ziro Market home" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <Link href="/" aria-label="Ziro Market home" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Image src="/app_icon/ziro.png" alt="Ziro" width={24} height={24} style={{ borderRadius: 4, display: 'block' }} />
           <span style={{
             fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.06em',
@@ -53,7 +54,7 @@ export default function Nav() {
           }}>
             Ziro Market
           </span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -62,7 +63,7 @@ export default function Nav() {
               key={l.href} href={l.href}
               className="nav-link-md"
               style={{
-                fontSize: '0.82rem', color: 'rgba(11,59,46,0.60)',
+                fontSize: '0.82rem', color: 'rgba(11,59,46,0.68)',
                 fontWeight: 500, letterSpacing: '0.01em',
                 transition: 'color 0.15s',
               }}
@@ -72,10 +73,17 @@ export default function Nav() {
             href={PLAY_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary btn-sm nav-cta-md"
+            className="nav-link-md nav-cta-md"
             aria-label="Download Ziro Market on Google Play"
+            style={{ fontSize: '0.82rem', color: 'rgba(11,59,46,0.68)', fontWeight: 500 }}
           >
             Download
+          </a>
+          <a
+            href="/app/market"
+            className="btn btn-primary btn-sm nav-cta-md"
+          >
+            Open web app
           </a>
           <button
             type="button"
@@ -125,16 +133,25 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
-          <a
-            href={PLAY_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setMenuOpen(false)}
-            className="btn btn-primary"
-            style={{ marginTop: 24, alignSelf: 'flex-start' }}
-          >
-            Download →
-          </a>
+          <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap' }}>
+            <a
+              href="/app/market"
+              onClick={() => setMenuOpen(false)}
+              className="btn btn-primary"
+            >
+              Open web app
+            </a>
+            <a
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="btn"
+              style={{ border: '1px solid rgba(11,59,46,0.20)', color: '#0b3b2e' }}
+            >
+              Download the app
+            </a>
+          </div>
         </div>
       )}
 

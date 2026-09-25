@@ -67,7 +67,13 @@ function stop() {
 /** Run `fn` on every market tick. */
 export function useMarketTick(fn: () => void, enabled = true) {
   const ref = useRef(fn);
-  ref.current = fn;
+
+  // Kept in an effect, not assigned during render: mutating a ref while
+  // rendering is unsafe under concurrent React. The tick is always
+  // asynchronous, so by the time it fires the ref is current.
+  useEffect(() => {
+    ref.current = fn;
+  });
 
   useEffect(() => {
     if (!enabled) return;
@@ -88,7 +94,14 @@ export function useSessionState() {
     open: isMarketOpen(),
   }));
 
-  useMarketTick(() => setState({ label: sessionLabel(), open: isMarketOpen() }));
+  useMarketTick(() => {
+    const next = { label: sessionLabel(), open: isMarketOpen() };
+    // Only re-render when the session actually changes — this fires on
+    // every tick, and the state is identical almost every time.
+    setState((prev) =>
+      prev.label === next.label && prev.open === next.open ? prev : next,
+    );
+  });
 
   return state;
 }

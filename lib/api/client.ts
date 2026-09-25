@@ -28,20 +28,27 @@ export interface ApiError {
 }
 
 /**
- * Server Components have no origin to resolve a relative URL against, so
- * they need an absolute one. This is the single place that difference
- * lives.
+ * Where a request actually goes, which differs by environment.
+ *
+ * **Browser** → the relative `/api/backend/*` rewrite. It has to: the page
+ * is HTTPS and the backend is plain HTTP on a bare IP, so a direct call
+ * is blocked as mixed content. The rewrite also keeps the origin out of
+ * the client bundle and sidesteps CORS.
+ *
+ * **Server** (RSC, route handlers, `next build`) → the backend directly.
+ * None of those problems exist server-side, and the extra hop through
+ * our own rewrite would be pure latency.
+ *
+ * The server path must never guess an origin for itself. An earlier
+ * version fell back to `http://localhost:3000`, and during a build that
+ * reached an unrelated app someone had running on that port, which
+ * answered 404 — silently prerendering every stock page as "gone".
  */
 function resolve(path: string): string {
-  const url = `${BASE_PATH}${path}`;
-  if (typeof window !== 'undefined') return url;
+  if (typeof window !== 'undefined') return `${BASE_PATH}${path}`;
 
-  const origin =
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ??
-    'http://localhost:3000';
-
-  return `${origin}${url}`;
+  const backend = process.env.BACKEND_URL ?? 'http://52.90.228.120:3000';
+  return `${backend}/api${path}`;
 }
 
 interface RequestOptions {
@@ -152,4 +159,77 @@ export const apiDelete = <T>(path: string, opts?: RequestOptions) =>
 /** Unwrap with a fallback, for surfaces that degrade rather than error. */
 export function or<T>(result: ApiResult<T>, fallback: T): T {
   return result.ok ? result.data : fallback;
+}
+
+/**
+ * Unwrap the backend's response envelope.
+ *
+ * The backend is not consistent about this, so the check has to be
+ * tolerant of all three shapes it actually returns:
+ *
+ * - `{ success: true, data }`  — most routes
+ * - `{ data }`                 — /etfs, /mutual-funds (no success field)
+ * - `{ results }`              — /search (handled separately)
+ *
+ * Only an explicit `success: false` counts as a failure. Requiring
+ * `success === true` silently turned every ETF and fund response into an
+ * error state and rendered an empty table.
+ */
+export function unwrapEnvelope<T>(
+  result: ApiResult<{ success?: boolean; data?: T; error?: string }>,
+): ApiResult<T> {
+  if (!result.ok) return result;
+
+  const body = result.data;
+  if (body?.success === false) {
+    return { ok: false, error: { kind: 'http', message: body.error ?? 'The service returned no data.' } };
+  }
+  if (body?.data === undefined) {
+    return { ok: false, error: { kind: 'parse', message: 'The response was missing its data.' } };
+  }
+  return { ok: true, data: body.data };
+}
+
+/**
+ * Unwrap an envelope that names its payload instead of calling it
+ * `data` — `{ success, holdings }`, `{ success, orders }`.
+ *
+ * The portfolio and paper-trade routes do this. A fourth envelope shape
+ * in one backend, so the client absorbs the inconsistency rather than
+ * letting it leak into every surface.
+ */
+export function unwrapKey<T>(
+  result: ApiResult<Record<string, unknown>>,
+  key: string,
+  fallback?: T,
+): ApiResult<T> {
+  if (!result.ok) return result;
+
+  const body = result.data;
+  if (body?.success === false) {
+    return {
+      ok: false,
+      error: { kind: 'http', message: String(body.error ?? 'The service returned no data.') },
+    };
+  }
+
+  const value = body?.[key];
+  if (value === undefined) {
+    if (fallback !== undefined) return { ok: true, data: fallback };
+    return { ok: false, error: { kind: 'parse', message: 'The response was missing its data.' } };
+  }
+  return { ok: true, data: value as T };
+}
+
+/** Whole-body unwrap, for `{ success, ...fields }` responses. */
+export function unwrapBody<T>(result: ApiResult<Record<string, unknown>>): ApiResult<T> {
+  if (!result.ok) return result;
+  const body = result.data;
+  if (body?.success === false) {
+    return {
+      ok: false,
+      error: { kind: 'http', message: String(body.error ?? 'The service returned no data.') },
+    };
+  }
+  return { ok: true, data: body as T };
 }

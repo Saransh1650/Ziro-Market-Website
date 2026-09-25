@@ -36,15 +36,26 @@ export default function SectorMosaic({
   const field = MODES.find((m) => m.id === mode)!.field;
 
   const cells = useMemo(() => {
+    // The feed carries 34 sectors. Laying all of them out leaves the
+    // tail as slivers a few pixels wide — cells that can hold neither a
+    // name nor a number, so they carry no information and only add
+    // noise. The biggest MAX_CELLS by market cap are shown; the rest are
+    // still reachable from the sector list.
+    const MAX_CELLS = 20;
+    const ranked = [...sectors]
+      .filter((s) => s?.name)
+      .sort((a, b) => (b.marketCap ?? b.weight ?? 0) - (a.marketCap ?? a.weight ?? 0))
+      .slice(0, MAX_CELLS);
+
     const laid = squarify(
-      sectors.map((s) => ({
+      ranked.map((s) => ({
         id: s.name,
         // Weight drives area. Market cap is the honest measure; weight
         // and a flat fallback keep the mosaic whole when it is missing.
         value: s.marketCap ?? s.weight ?? 1,
       })),
     );
-    const bySector = new Map(sectors.map((s) => [s.name, s]));
+    const bySector = new Map(ranked.map((s) => [s.name, s]));
     return laid
       .map((c) => ({ ...c, sector: bySector.get(c.id)! }))
       .filter((c) => c.sector);
@@ -159,9 +170,13 @@ function MosaicCell({
   // below 4.5:1. Above that threshold the label flips to the inverse.
   const ink = step >= 4 ? 'var(--tint-ink-strong)' : 'var(--tint-ink)';
 
-  // A sliver cannot hold two lines of type. Below these thresholds the
-  // cell shows the name alone, and the number moves to the title.
+  // A sliver cannot hold two lines of type. Below the first threshold
+  // the cell shows its name alone; below the second it shows nothing at
+  // all, because "C…" is worse than an unlabelled block — it reads as a
+  // rendering fault rather than as a small sector. The name is still in
+  // the title and the accessible name either way.
   const roomy = rect.w > 9 && rect.h > 11;
+  const labelled = rect.w > 4.5 && rect.h > 5.5;
 
   return (
     <Link
@@ -190,6 +205,7 @@ function MosaicCell({
         textAlign: 'center',
       }}
     >
+      {labelled && (
       <span
         style={{
           fontSize: roomy ? 12 : 10,
@@ -204,6 +220,7 @@ function MosaicCell({
       >
         {sector.name}
       </span>
+      )}
       {roomy && (
         <span
           className="zw-num"

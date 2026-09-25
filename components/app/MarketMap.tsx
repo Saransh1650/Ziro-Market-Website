@@ -178,18 +178,39 @@ function FlowsPanel({ snapshot, loading }: { snapshot: MarketSnapshot | null; lo
     );
   }
 
+  // The backend zeroes every field until NSE publishes, which happens
+  // after the close. Showing those zeros would assert a flat session
+  // that never happened.
+  if (f.isAvailable === false) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+        <span className="zw-colhead">Institutional flows</span>
+        <p className="zw-sub" style={{ color: 'var(--text-3)' }}>
+          Not published yet. NSE releases FII and DII figures after the close.
+        </p>
+      </div>
+    );
+  }
+
   const fiiNet = f.fiiBuy - f.fiiSell;
   const diiNet = f.diiBuy - f.diiSell;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
       <span className="zw-colhead">
-        Institutional flows{f.date ? ` · ${f.date}` : ''}
+        Institutional flows{f.date ? ` \u00b7 ${sessionDate(f.date)}` : ''}
       </span>
       <FlowRow label="FII" net={fiiNet} />
       <FlowRow label="DII" net={diiNet} />
     </div>
   );
+}
+
+/** The backend sends a full ISO timestamp; only the date is meaningful. */
+function sessionDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' }).format(d);
 }
 
 function FlowRow({ label, net }: { label: string; net: number }) {

@@ -1,18 +1,17 @@
-import type { Metadata } from 'next';
 import './product.css';
 import { ThemeProvider, themeScript } from '@/components/app/ThemeProvider';
+import { AuthProvider } from '@/components/app/AuthProvider';
 
 /**
- * Wraps every product surface. Sits in a route group, so it adds no
- * segment to any URL and the marketing pages never see it.
+ * Everything built on the product design system: the signed-in app under
+ * `/app`, and the public instrument pages like `/stocks/[symbol]`.
+ *
+ * Sits in a route group, so it adds no segment to any URL and the
+ * marketing pages never see it.
+ *
+ * No robots directive here — the group holds both private and indexable
+ * surfaces. `/app` opts itself out in its own layout.
  */
-
-export const metadata: Metadata = {
-  // The product is a signed-in tool, not content to rank. The public,
-  // indexable surfaces — /stocks, /funds — sit outside this group.
-  robots: { index: false, follow: false },
-};
-
 export default function ProductLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -22,7 +21,9 @@ export default function ProductLayout({ children }: { children: React.ReactNode 
         which is a visible flash on every load in dark mode.
       */}
       <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      <ThemeProvider>{children}</ThemeProvider>
+      <ThemeProvider>
+        <AuthProvider>{children}</AuthProvider>
+      </ThemeProvider>
     </>
   );
 }

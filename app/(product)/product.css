@@ -34,9 +34,14 @@
   /* The marketing --text-3 is rgba(11,59,46,.42) — 2.36:1 on white.
      That is fine on a 16px marketing paragraph and not fine on a 10px
      column head, so the product darkens both muted steps and keeps the
-     hierarchy between them. */
+     hierarchy between them.
+
+     --text-3 is checked against --bg-2, not against the page canvas:
+     muted text lands on a hovered row or a selected palette result
+     constantly, and a value tuned only for white fails there (4.32:1).
+     At #4f7269 it clears 4.5:1 on both. */
   --text-2: #375e54;
-  --text-3: #597a71;
+  --text-3: #4f7269;
   --flat: var(--text-3);
   --max-w: 1560px;
 
@@ -71,7 +76,8 @@
   --border-2: rgba(239, 233, 221, 0.22);
   --text-1: #f3efe7;
   --text-2: #c0c7be;
-  --text-3: #92a399;
+  /* Same rule in dark: checked against --bg-2 (#194639), not the canvas. */
+  --text-3: #9faea4;
   --text-4: rgba(243, 239, 231, 0.2);
   --amber: #e0a84c;
   --amber-dim: rgba(224, 168, 76, 0.14);

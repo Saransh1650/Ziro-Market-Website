@@ -3,7 +3,7 @@
  * Mirrors `src/routes/market.ts` and `src/routes/commodities.ts`.
  */
 
-import { apiGet, type ApiResult } from './client';
+import { apiGet, unwrapEnvelope as unwrap } from './client';
 import type {
   Envelope,
   NiftyIndex,
@@ -21,17 +21,6 @@ import type {
  * check is not optional — without it a failed call renders as empty data
  * rather than as an error.
  */
-function unwrap<T>(result: ApiResult<Envelope<T>>): ApiResult<T> {
-  if (!result.ok) return result;
-  if (!result.data?.success) {
-    return {
-      ok: false,
-      error: { kind: 'http', message: result.data?.error ?? 'The service returned no data.' },
-    };
-  }
-  return { ok: true, data: result.data.data };
-}
-
 type Opts = { signal?: AbortSignal; revalidate?: number };
 
 export async function getIndices(opts?: Opts) {

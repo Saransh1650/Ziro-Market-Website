@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -8,18 +9,25 @@ export default function Footer() {
         <div className="footer-grid">
           <div>
             {/* Logo (links to home — internal backlink on every page) */}
-            <a href="/" aria-label="Ziro Market home" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, textDecoration: 'none' }}>
+            <Link href="/" aria-label="Ziro Market home" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, textDecoration: 'none' }}>
               <Image src="/app_icon/ziro.png" alt="Ziro" width={22} height={22} style={{ borderRadius: 4, display: 'block' }} />
               <span style={{
                 fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.06em',
                 textTransform: 'uppercase', color: '#ffffff', fontFamily: 'var(--sans)',
               }}>Ziro Market</span>
-            </a>
+            </Link>
             <p style={{ color: 'rgba(255,255,255,0.40)', fontSize: '0.85rem', maxWidth: 300, lineHeight: 1.6 }}>
               The Indian market, simplified. Built in India for Indian markets.
             </p>
           </div>
 
+          <FooterCol title="Markets" links={[
+            { label: 'Market map',    href: '/app/market' },
+            { label: 'Discover',      href: '/app/discover' },
+            { label: 'ETFs',          href: '/app/discover/etfs' },
+            { label: 'Mutual funds',  href: '/app/discover/funds' },
+            { label: 'Watchlist',     href: '/app/watchlist' },
+          ]} />
           <FooterCol title="Product" links={[
             { label: 'Why Ziro',    href: '/#pain' },
             { label: 'App features', href: '/#features' },
@@ -68,7 +76,8 @@ export default function Footer() {
         </div>
       </div>
       <style>{`
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; }
+        @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; } }
         @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
         @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
         .footer-link { display: block; font-size: 0.88rem; color: rgba(255,255,255,0.52); padding: 5px 0; transition: color 0.15s; }

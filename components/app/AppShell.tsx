@@ -3,9 +3,12 @@
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import { useTheme } from './ThemeProvider';
 import TickerStrip from './TickerStrip';
+import CommandPalette from './CommandPalette';
+import AccountMenu from './AccountMenu';
+import AssistantPanel from './AssistantPanel';
 
 /**
  * The frame every product surface renders inside.
@@ -46,7 +49,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </main>
       </div>
 
+      <AssistantPanel />
+
       <BottomBar pathname={pathname} />
+      <CommandPalette />
 
       <style>{`
         @media (max-width: 1023px) {
@@ -147,30 +153,51 @@ function Header() {
     >
       <TickerStrip />
       <SearchTrigger />
+      <AssistantTrigger />
       <ThemeToggle />
+      <AccountMenu />
     </header>
   );
 }
 
+/**
+ * Whether to label the palette shortcut ⌘K or Ctrl K.
+ *
+ * The platform is browser state that never changes, so it is read
+ * through an external store rather than mirrored into React with an
+ * effect. The server snapshot is `false`, matching what the pre-paint
+ * HTML says, so hydration stays consistent.
+ */
+const subscribePlatform = () => () => {};
+const isMacSnapshot = () => /Mac|iPhone|iPad/.test(navigator.userAgent);
+const isMacServerSnapshot = () => false;
+
 function SearchTrigger() {
-  const [mac, setMac] = useState(false);
-  useEffect(() => {
-    setMac(/Mac|iPhone|iPad/.test(navigator.platform));
-  }, []);
+  const mac = useSyncExternalStore(subscribePlatform, isMacSnapshot, isMacServerSnapshot);
 
   return (
     <button
       type="button"
       className="zw-chip"
       style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6 }}
-      onClick={() => {
-        // The palette lands in SAR-42. Until then the control is honest
-        // about doing nothing rather than opening an empty overlay.
-        document.dispatchEvent(new CustomEvent('zw:open-palette'));
-      }}
+      onClick={() => document.dispatchEvent(new CustomEvent('zw:open-palette'))}
     >
       <IconSearch />
       <span style={{ fontFamily: 'var(--mono)', fontSize: 10 }}>{mac ? '⌘K' : 'Ctrl K'}</span>
+    </button>
+  );
+}
+
+function AssistantTrigger() {
+  return (
+    <button
+      type="button"
+      className="zw-chip"
+      style={{ flexShrink: 0 }}
+      onClick={() => document.dispatchEvent(new CustomEvent('zw:open-assistant'))}
+      title="Ask Ziro  (⌘J)"
+    >
+      Ask Ziro
     </button>
   );
 }
