@@ -8,6 +8,7 @@ import { useResource } from '@/hooks/useResource';
 import { squarify } from '@/lib/market/treemap';
 import { heatColor, HEAT_GRADIENT, HEAT_RANGE } from '@/lib/market/heat';
 import { pct, compact, num } from '@/lib/format/number';
+import { StockLogo } from './StockCell';
 import type { SectorPerformance, SectorStockRow } from '@/lib/api/types';
 
 /**
@@ -43,7 +44,7 @@ interface Tile {
   value: number;
   change: number;
   href: string;
-  detail: { name: string; price?: number; cap?: number; extra?: string };
+  detail: { name: string; price?: number; cap?: number; extra?: string; group?: string };
 }
 interface Group {
   id: string;
@@ -60,6 +61,20 @@ interface Loaded {
 export default function Heatmap() {
   const [view, setView] = useState<View>('stocks');
   const [period, setPeriod] = useState<Period>('1d');
+  const [sectorFilter, setSectorFilter] = useState<string>('all');
+  const frame = useRef<HTMLElement>(null);
+  const [full, setFull] = useState(false);
+
+  useEffect(() => {
+    const onChange = () => setFull(document.fullscreenElement === frame.current);
+    document.addEventListener('fullscreenchange', onChange);
+    return () => document.removeEventListener('fullscreenchange', onChange);
+  }, []);
+
+  const toggleFull = () => {
+    if (document.fullscreenElement) void document.exitFullscreen();
+    else void frame.current?.requestFullscreen?.();
+  };
 
   const { data, loading, error, refetch } = useResource<Loaded>(async (signal) => {
     const all = await getAllSectors({ signal });
@@ -146,14 +161,16 @@ export default function Heatmap() {
             value: s.marketCap!,
             change: s.changePercent,
             href: `/stocks/${encodeURIComponent(s.symbol)}`,
-            detail: { name: s.name || s.symbol, price: s.price, cap: s.marketCap, extra: s.subSector },
+            detail: { name: s.name || s.symbol, price: s.price, cap: s.marketCap, extra: s.subSector, group: sector.name },
           })),
       }))
-      .filter((g) => g.tiles.length > 0);
-  }, [data, view, field]);
+      .filter((g) => g.tiles.length > 0 && (sectorFilter === 'all' || g.id === sectorFilter));
+  }, [data, view, field, sectorFilter]);
+
+  const sectorNames = useMemo(() => (data?.groups ?? []).map((g) => g.sector.name), [data]);
 
   return (
-    <section className="zw-heat" aria-label="Market heatmap">
+    <section ref={frame} className="zw-heat" data-full={full || undefined} aria-label="Market heatmap">
       <div className="zw-heat-bar">
         <div className="zw-seg" role="group" aria-label="Heatmap view">
           {(['stocks', 'sectors'] as View[]).map((v) => (
@@ -173,11 +190,29 @@ export default function Heatmap() {
           </div>
         )}
 
+        {view === 'stocks' && sectorNames.length > 0 && (
+          <select
+            className="zw-select"
+            value={sectorFilter}
+            onChange={(e) => setSectorFilter(e.target.value)}
+            aria-label="Filter by sector"
+          >
+            <option value="all">All sectors</option>
+            {sectorNames.map((n) => <option key={n} value={n}>{n}</option>)}
+          </select>
+        )}
+
         <span className="zw-meta zw-heat-note">
           Size: market cap · Colour: {view === 'sectors' ? PERIODS.find((p) => p.id === period)!.label : '1D'} change
         </span>
 
         <Legend />
+
+        <button type="button" className="zw-iconbtn" onClick={toggleFull} aria-label={full ? 'Exit full screen' : 'Full screen'}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            {full ? <path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" /> : <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />}
+          </svg>
+        </button>
       </div>
 
       <div className="zw-heat-canvas">
@@ -383,6 +418,9 @@ function HeatTile({
         background: heatColor(tile.change),
       }}
     >
+      {!flat && showLabel && showChange && w > 84 && h > 84 && (
+        <StockLogo symbol={tile.label} size={Math.round(Math.min(40, w * 0.28, h * 0.3))} />
+      )}
       {showLabel && (
         <span className="zw-heat-sym" style={{ fontSize: size }}>
           {tile.label}
@@ -400,7 +438,7 @@ function HeatTile({
 function Tip({ hover, width, height }: { hover: { tile: Tile; x: number; y: number }; width: number; height: number }) {
   const { tile, x, y } = hover;
   const W = 232;
-  const H = 108;
+  const H = 132;
   const left = x + 16 + W > width ? x - W - 12 : x + 16;
   const top = Math.min(Math.max(y - 12, 4), height - H - 4);
   const d = tile.detail;
@@ -415,7 +453,8 @@ function Tip({ hover, width, height }: { hover: { tile: Tile; x: number; y: numb
       <dl>
         {d.price != null && (<><dt>Price</dt><dd>₹{num(d.price, 2)}</dd></>)}
         {d.cap != null && (<><dt>Market cap</dt><dd>{compact(d.cap)}</dd></>)}
-        {d.extra && (<><dt>Group</dt><dd>{d.extra}</dd></>)}
+        {d.group && (<><dt>Sector</dt><dd>{d.group}</dd></>)}
+        {d.extra && d.extra !== d.group && (<><dt>Industry</dt><dd>{d.extra}</dd></>)}
       </dl>
     </div>
   );

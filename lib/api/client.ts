@@ -61,7 +61,7 @@ interface RequestOptions {
 }
 
 async function request<T>(
-  method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
   path: string,
   body?: unknown,
   opts: RequestOptions = {},
@@ -149,6 +149,9 @@ export const apiGet = <T>(path: string, opts?: RequestOptions) =>
 
 export const apiPost = <T>(path: string, body?: unknown, opts?: RequestOptions) =>
   request<T>('POST', path, body, opts);
+
+export const apiPut = <T>(path: string, body?: unknown, opts?: RequestOptions) =>
+  request<T>('PUT', path, body, opts);
 
 export const apiPatch = <T>(path: string, body?: unknown, opts?: RequestOptions) =>
   request<T>('PATCH', path, body, opts);

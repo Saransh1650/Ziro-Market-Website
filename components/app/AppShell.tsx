@@ -19,6 +19,7 @@ import AssistantPanel from './AssistantPanel';
  */
 
 const NAV = [
+  { href: '/app/ask', label: 'Ziro', key: 'z', icon: IconSpark },
   { href: '/app/market', label: 'Market', key: 'm', icon: IconGrid },
   { href: '/app/watchlist', label: 'Watchlist', key: 'w', icon: IconList },
   { href: '/app/discover', label: 'Discover', key: 'd', icon: IconCompass },

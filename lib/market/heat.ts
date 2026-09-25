@@ -11,14 +11,17 @@
  * composites differently on every surface.
  */
 
+// Every stop keeps white label text at >= 4.5:1. TradingView's own
+// brightest greens fail that; the floor in the Design System does not
+// bend for a heatmap, so the saturated ends are held a step darker.
 const STOPS: [number, [number, number, number]][] = [
-  [-3, [246, 53, 56]],
-  [-2, [191, 64, 69]],
+  [-3, [209, 47, 52]],
+  [-2, [178, 58, 64]],
   [-1, [139, 68, 78]],
   [0, [65, 69, 84]],
   [1, [53, 118, 78]],
-  [2, [47, 158, 79]],
-  [3, [48, 204, 90]],
+  [2, [43, 127, 72]],
+  [3, [23, 128, 64]],
 ];
 
 export const HEAT_RANGE = 3;
@@ -34,7 +37,7 @@ export function heatColor(changePercent: number | null | undefined): string {
       return `rgb(${c[0]} ${c[1]} ${c[2]})`;
     }
   }
-  return 'rgb(48 204 90)';
+  return 'rgb(23 128 64)';
 }
 
 /** The gradient the legend draws, so it is guaranteed to match the tiles. */

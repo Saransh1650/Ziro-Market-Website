@@ -1,19 +1,18 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import Nav from './Nav';
 
-const orig = process.env.NEXT_PUBLIC_LAUNCH_MODE;
-beforeEach(() => { delete process.env.NEXT_PUBLIC_LAUNCH_MODE; });
-afterEach(() => { process.env.NEXT_PUBLIC_LAUNCH_MODE = orig; });
-
+// The nav no longer switches its CTA on launch mode: the web app is the
+// primary action and the store download is always offered beside it.
 describe('Nav', () => {
-  it('shows "Get Early Access" in waitlist mode', () => {
+  it('leads with the web app', () => {
     render(<Nav />);
-    expect(screen.getByRole('link', { name: /get early access/i })).toBeInTheDocument();
+    const cta = screen.getAllByText(/open web app/i)[0].closest('a');
+    expect(cta).toHaveAttribute('href', '/app/market');
   });
-  it('shows "Download" in launched mode', () => {
-    process.env.NEXT_PUBLIC_LAUNCH_MODE = 'launched';
+
+  it('still offers the app download', () => {
     render(<Nav />);
-    expect(screen.getByRole('link', { name: /download/i })).toBeInTheDocument();
+    expect(screen.getAllByText(/^download/i).length).toBeGreaterThan(0);
   });
 });

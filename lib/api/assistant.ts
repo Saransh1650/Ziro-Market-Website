@@ -67,10 +67,16 @@ export async function askAssistant(
   body: { question: string; symbol?: string; userId?: string; sessionId?: number | null },
   onEvent: (event: AssistantEvent) => void,
   signal?: AbortSignal,
+  /** Signed-in users send their token so the server can personalise; guests omit it. */
+  token?: string,
 ): Promise<void> {
   const response = await fetch('/api/backend/assistant/ask', {
     method: 'POST',
-    headers: { 'content-type': 'application/json', accept: 'text/event-stream' },
+    headers: {
+      'content-type': 'application/json',
+      accept: 'text/event-stream',
+      ...(token ? { authorization: `Bearer ${token}` } : {}),
+    },
     body: JSON.stringify({
       ...body,
       // Capability negotiation: the server only sends widgets and actions this build can draw.

@@ -107,6 +107,8 @@ export const assistantStore = {
     set({ ...state, turns });
   },
   setSession(sessionId: number | null) { set({ ...state, sessionId }); },
+  /** Replace the whole conversation, e.g. when resuming a saved chat. */
+  load(turns: Turn[], sessionId: number | null) { set({ ...state, turns, sessionId }); },
   clear() { set({ ...state, turns: [], sessionId: null }); },
   /** Test helper. */
   _reset() { hydrated = false; state = EMPTY; },

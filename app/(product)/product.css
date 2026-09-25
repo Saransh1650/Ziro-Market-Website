@@ -42,8 +42,8 @@
      products get wrong: darker on white, lighter on black, and a
      third for chart strokes that needs neither to be legible as
      text. */
-  --up: #06806b;
-  --down: #c8322e;
+  --up: #046a58;
+  --down: #b02a27;
   --up-chart: #089981;
   --down-chart: #f23645;
   --up-wash: #e8f6f2;
@@ -991,3 +991,40 @@
 .zw-idcell { gap: 0; }
 .zw-idcell > .zw-sym { line-height: 18px; }
 .zw-idcell > .name { line-height: 14px; font-size: 12px; }
+
+/* ─── MARKET SUMMARY ────────────────────────────────────── */
+.zw-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); margin-bottom: var(--s-4); }
+.zw-stat { display: flex; flex-direction: column; gap: 6px; padding: var(--s-4); min-height: 96px; justify-content: space-between; }
+.zw-stat .big { font-size: 26px; line-height: 32px; font-weight: 700; letter-spacing: -0.02em; }
+.zw-stat .big .sep { color: var(--ink-3); font-weight: 400; margin: 0 6px; }
+.zw-stat .who { display: flex; align-items: center; gap: 10px; min-width: 0; }
+@media (max-width: 1023px) { .zw-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.zw-select {
+  height: 32px; padding: 0 28px 0 10px; border: 1px solid var(--line-strong); border-radius: 8px;
+  background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%23888' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E") no-repeat right 10px center;
+  color: var(--ink); font-size: 13px; font-weight: 500; cursor: pointer; appearance: none; -webkit-appearance: none;
+}
+.zw-heat[data-full] { display: flex; flex-direction: column; border-radius: 0; }
+.zw-heat[data-full] .zw-heat-canvas { flex: 1; height: auto; }
+.zw-heat-legend { margin-left: auto; }
+.zw-heat-tile .zw-logo { margin-bottom: 2px; box-shadow: none; }
+
+/* ─── STOCK PAGE NAV ────────────────────────────────────── */
+.zw-pagenav {
+  position: sticky; top: calc(var(--header-h) + var(--ticker-h)); z-index: 30;
+  display: flex; gap: var(--s-5); margin: var(--s-4) calc(var(--gutter) * -1) 0; padding: 0 var(--gutter);
+  background: var(--page); border-bottom: 1px solid var(--line);
+}
+.zw-pagenav a { padding: 12px 0; font-size: 14px; font-weight: 500; color: var(--ink-3); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.zw-pagenav a:hover { color: var(--ink); border-bottom-color: var(--accent); }
+.zw-stock-grid { scroll-margin-top: 120px; }
+#chart, #stats, #details { scroll-margin-top: 130px; }
+
+.zw-chartkey { display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: center; padding-top: var(--s-3); font-size: 13px; }
+.zw-chartkey .key { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-2); font-weight: 500; }
+.zw-chartkey .key i { width: 10px; height: 10px; border-radius: 3px; }
+.zw-chartkey .key b { color: var(--ink); font-weight: 600; margin-left: 4px; }
+
+/* A flat pill sits on --surface-active, which --ink-3 does not clear 4.5:1 on. */
+.zw-table .zw-delta[data-dir='flat'], .zw-delta.pill[data-dir='flat'] { color: var(--ink-2); }

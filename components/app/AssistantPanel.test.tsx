@@ -5,7 +5,7 @@ import type { AssistantEvent } from '@/lib/api/assistant';
 import { assistantStore } from '@/lib/assistant/store';
 
 const push = vi.fn();
-vi.mock('next/navigation', () => ({ useRouter: () => ({ push }) }));
+vi.mock('next/navigation', () => ({ useRouter: () => ({ push }), usePathname: () => '/app/market' }));
 vi.mock('./AuthProvider', () => ({ useAuth: () => ({ user: null, session: null, loading: false }) }));
 vi.mock('@/lib/api/stocks', () => ({ getStockChart: vi.fn(async () => ({ ok: true, data: { ohlc: [] } })) }));
 

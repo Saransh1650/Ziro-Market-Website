@@ -1,19 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from './AuthProvider';
-import { askAssistant, type AssistantEvent } from '@/lib/api/assistant';
-import { num, pct } from '@/lib/format/number';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { assistantStore, hydrateAssistantStore, useAssistantState } from '@/lib/assistant/store';
-import { SUPPORTED_INTENTS, parseBlocks, parseReferences, str } from '@/lib/assistant/types';
-import type { Intent, Turn } from '@/lib/assistant/types';
-import { AnswerBody } from './assistant/AnswerBody';
-import { BlockView } from './assistant/BlockView';
-import { References } from './assistant/References';
+import { useAsk } from '@/lib/assistant/useAsk';
 import { AssistantStyles } from './assistant/styles';
-import { runIntent } from './assistant/intents';
-import type { BlockCtx } from './assistant/blocks/Cards';
+import { TurnView } from './assistant/TurnView';
 
 /**
  * Ask Ziro.
@@ -30,37 +23,7 @@ import type { BlockCtx } from './assistant/blocks/Cards';
  * Toggled with ⌘J or the header button.
  */
 
-const ALLOWED = new Set<string>(SUPPORTED_INTENTS);
 const OVERLAY_QUERY = '(max-width: 1279px)';
-
-const TOOL_LABEL: Record<string, string> = {
-  get_live_price: 'Checking live price',
-  get_historical_summary: 'Pulling price history',
-  get_fundamentals: 'Reading fundamentals',
-  get_stock_news: 'Scanning news',
-  get_corporate_actions: 'Checking announcements',
-  get_fii_dii: 'Checking FII / DII flows',
-  get_index_levels: 'Checking index levels',
-  get_sector_performance: 'Checking sector moves',
-  get_global_cues: 'Checking global markets',
-  web_search: 'Searching the web',
-};
-
-/**
- * The backend's error strings are internal ("assistant failed"), which
- * tells a reader nothing about what happened or what to do. Translate
- * the ones we know; pass anything else through rather than inventing a
- * cause.
- */
-function humanError(message: string): string {
-  if (/too many|rate|limit|429/i.test(message)) {
-    return 'Too many questions in a short window. Give it a minute.';
-  }
-  if (/assistant failed|internal|timeout/i.test(message)) {
-    return 'Ziro could not answer that just now. The live price above is still current — try again in a moment.';
-  }
-  return message;
-}
 
 function useOverlayMode(): boolean {
   return useSyncExternalStore(
@@ -75,14 +38,14 @@ function useOverlayMode(): boolean {
 }
 
 export default function AssistantPanel() {
-  const { user, session } = useAuth();
-  const router = useRouter();
-  const { open, turns } = useAssistantState();
+  const pathname = usePathname();
+  const { open: wantOpen, turns } = useAssistantState();
+  const { ask, busy, stop, reset, ctx } = useAsk();
   const overlay = useOverlayMode();
+  // The full workspace replaces the panel; the panel would only duplicate it.
+  const open = wantOpen && !pathname.startsWith('/app/ask');
 
   const [question, setQuestion] = useState('');
-  const [busy, setBusy] = useState(false);
-  const abortRef = useRef<AbortController | null>(null);
   const threadRef = useRef<HTMLDivElement>(null);
   const asideRef = useRef<HTMLElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -106,8 +69,6 @@ export default function AssistantPanel() {
     };
   }, []);
 
-  useEffect(() => () => abortRef.current?.abort(), []);
-
   // Move focus into the panel when it opens, and back to where it came from when it closes.
   useEffect(() => {
     if (!open) return;
@@ -116,79 +77,12 @@ export default function AssistantPanel() {
     return () => returnFocusRef.current?.focus?.();
   }, [open]);
 
-  const ask = useCallback(async (text: string, symbol?: string) => {
-    const q = text.trim();
-    if (!q || busy) return;
-
+  const send = (text: string, symbol?: string) => {
+    if (!text.trim()) return;
     setQuestion('');
-    setBusy(true);
     stickRef.current = true;
-    assistantStore.addTurn({ question: q, answer: '', done: false, blocks: [], references: [] });
-
-    const controller = new AbortController();
-    abortRef.current = controller;
-    const patch = (fn: (t: Turn) => Turn) => assistantStore.patchLast(fn);
-
-    await askAssistant(
-      { question: q, symbol, userId: user?.id, sessionId: assistantStore.getState().sessionId },
-      (event: AssistantEvent) => {
-        switch (event.type) {
-          case 'meta':
-            assistantStore.setSession(event.sessionId);
-            break;
-          case 'price':
-            patch((t) => ({ ...t, price: { symbol: event.symbol, price: event.price, changePct: event.changePct } }));
-            break;
-          case 'clarify':
-            patch((t) => ({ ...t, clarify: event.candidates, done: true }));
-            break;
-          case 'tool_start':
-            patch((t) => ({ ...t, tool: event.name }));
-            break;
-          case 'tool_done':
-            patch((t) => ({ ...t, tool: null }));
-            break;
-          case 'token':
-            patch((t) => ({ ...t, answer: t.answer + event.text }));
-            break;
-          case 'final':
-            // `final.answer` is the finished text with stock links added, so it replaces the streamed draft.
-            patch((t) => ({
-              ...t,
-              answer: str(event.answer) || t.answer,
-              blocks: parseBlocks(event.blocks),
-              references: parseReferences(event.references),
-              done: true,
-              tool: null,
-            }));
-            break;
-          case 'error':
-            patch((t) => ({ ...t, error: humanError(event.message), done: true, tool: null }));
-            break;
-        }
-      },
-      controller.signal,
-    ).catch((e: unknown) => {
-      if (e instanceof DOMException && e.name === 'AbortError') return;
-      patch((t) => ({ ...t, error: 'The assistant stopped responding.', done: true }));
-    });
-
-    // "New chat" replaces the controller; a superseded request must not touch the new conversation.
-    if (abortRef.current !== controller) return;
-    setBusy(false);
-    patch((t) => ({ ...t, done: true, tool: null }));
-  }, [busy, user?.id]);
-
-  const token = session?.access_token ?? null;
-  const ctx: BlockCtx = useMemo(
-    () => ({
-      onAsk: (q, symbol) => void ask(q, symbol),
-      onIntent: (intent: Intent, params) =>
-        runIntent(intent, params, { token, userId: user?.id ?? null, navigate: (p) => router.push(p), ask: (q, s) => void ask(q, s) }),
-      allowed: ALLOWED,
-    }),
-    [ask, token, user?.id, router],
-  );
+    void ask(text, symbol);
+  };
 
   // Follow the answer as it streams, unless the reader has scrolled up to read.
   useEffect(() => {
@@ -236,10 +130,11 @@ export default function AssistantPanel() {
       <header className="zw-ask-head" style={{ display: 'flex', alignItems: 'center', gap: 'var(--s-2)', padding: 'var(--s-3)', borderBottom: '1px solid var(--line)' }}>
         <h2 className="zw-section" style={{ flex: 1 }}>Ask Ziro</h2>
         {turns.length > 0 && (
-          <button type="button" className="zw-chip" onClick={() => { abortRef.current?.abort(); abortRef.current = null; assistantStore.clear(); setBusy(false); }}>
+          <button type="button" className="zw-chip" onClick={reset}>
             New chat
           </button>
         )}
+        <Link href="/app/ask" className="zw-chip" onClick={() => assistantStore.setOpen(false)} aria-label="Open Ziro full screen">Expand</Link>
         <button type="button" className="zw-chip" onClick={() => assistantStore.setOpen(false)} aria-label="Close the assistant">Close</button>
       </header>
 
@@ -262,7 +157,7 @@ export default function AssistantPanel() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-2)' }}>
             <p className="zw-sub">Ask about a stock, a sector or the day&rsquo;s move.</p>
             {['Why did Nifty fall today?', 'How is RELIANCE doing?', 'Which sector led today?', 'Compare TCS and INFY'].map((s) => (
-              <button key={s} type="button" className="zw-chip" style={{ textAlign: 'left', height: 'auto', padding: '7px 9px' }} onClick={() => void ask(s)}>
+              <button key={s} type="button" className="zw-chip" style={{ textAlign: 'left', height: 'auto', padding: '7px 9px' }} onClick={() => send(s)}>
                 {s}
               </button>
             ))}
@@ -270,13 +165,13 @@ export default function AssistantPanel() {
         )}
 
         {turns.map((turn, i) => (
-          <TurnView key={i} turn={turn} ctx={ctx} onClarify={(symbol) => void ask(turn.question, symbol)} />
+          <TurnView key={i} turn={turn} ctx={ctx} onClarify={(symbol) => send(turn.question, symbol)} />
         ))}
       </div>
 
       <form
         className="zw-ask-form"
-        onSubmit={(e) => { e.preventDefault(); void ask(question); }}
+        onSubmit={(e) => { e.preventDefault(); send(question); }}
         style={{ display: 'flex', gap: 'var(--s-2)', padding: 'var(--s-3)', borderTop: '1px solid var(--line)' }}
       >
         <input
@@ -294,7 +189,7 @@ export default function AssistantPanel() {
           }}
         />
         {busy ? (
-          <button type="button" className="zw-chip" aria-label="Stop answering" onClick={() => abortRef.current?.abort()}>Stop</button>
+          <button type="button" className="zw-chip" aria-label="Stop answering" onClick={stop}>Stop</button>
         ) : (
           <button type="submit" className="zw-chip" aria-label="Send question" disabled={!question.trim()}>Send</button>
         )}
@@ -322,63 +217,5 @@ export default function AssistantPanel() {
         }
       `}</style>
     </aside>
-  );
-}
-
-function TurnView({ turn, ctx, onClarify }: { turn: Turn; ctx: BlockCtx; onClarify: (symbol: string) => void }) {
-  // A `stat` widget repeats the price line already shown above the answer.
-  const blocks = turn.price ? turn.blocks.filter((b) => b.type !== 'stat') : turn.blocks;
-  const toolLabel = turn.tool ? TOOL_LABEL[turn.tool] ?? 'Working' : null;
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-      <p style={{ fontSize: 13, fontWeight: 600 }}>{turn.question}</p>
-
-      {turn.price && (
-        <p className="zw-sub zw-num">
-          {turn.price.symbol} {num(turn.price.price, 2)}{' '}
-          <span style={{ color: turn.price.changePct >= 0 ? 'var(--up)' : 'var(--down)' }}>
-            {pct(turn.price.changePct)}
-          </span>
-        </p>
-      )}
-
-      {toolLabel && <p className="zw-sub" style={{ color: 'var(--ink-3)' }}>{toolLabel}…</p>}
-
-      {turn.clarify && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          <p className="zw-sub">Which one did you mean?</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-            {turn.clarify.map((c) => (
-              <button key={c.symbol} type="button" className="zw-chip" onClick={() => onClarify(c.symbol)}>
-                {c.name ? `${c.symbol} · ${c.name}` : c.symbol}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {turn.answer && (
-        <p className="zw-ab-prose">
-          <AnswerBody text={turn.answer} />
-        </p>
-      )}
-
-      {blocks.map((b, i) => (
-        <BlockView key={str(b.id) || i} block={b} ctx={ctx} />
-      ))}
-
-      <References items={turn.references} />
-
-      {turn.error && (
-        <p className="zw-sub" role="alert" style={{ color: 'var(--down)' }}>{turn.error}</p>
-      )}
-
-      {/* Generated text sitting beside exchange data must never be
-          mistaken for it. */}
-      {turn.done && turn.answer && (
-        <p className="zw-sub" style={{ color: 'var(--ink-3)' }}>AI generated · check before acting on it</p>
-      )}
-    </div>
   );
 }

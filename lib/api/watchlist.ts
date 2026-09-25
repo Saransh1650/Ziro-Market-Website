@@ -80,3 +80,29 @@ export async function removeSymbol(id: string, symbol: string, { token }: Auth) 
     ),
   );
 }
+
+export interface WatchlistComparison {
+  benchmark: string;
+  benchmarkReturn1m: number;
+  stocks: WatchlistRow[];
+  chartData: {
+    timestamps: number[];
+    /** Every series is rebased to 100 at the start of the period. */
+    series: { name: string; data: number[] }[];
+  };
+}
+
+export type ComparePeriod = '1W' | '1M' | '1Y';
+
+export async function getWatchlistComparison(
+  id: string,
+  period: ComparePeriod,
+  { token, signal }: Auth,
+) {
+  return unwrap(
+    await apiGet<{ success?: boolean; data?: WatchlistComparison }>(
+      `/watchlist/compare?watchlistId=${encodeURIComponent(id)}&period=${period}`,
+      { token, signal },
+    ),
+  );
+}

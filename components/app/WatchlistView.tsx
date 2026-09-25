@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { useAuth } from './AuthProvider';
 import { useResource } from '@/hooks/useResource';
@@ -203,6 +204,7 @@ export default function WatchlistView() {
         <header className="zw-panel-head">
           <h2 className="zw-section">{active?.name ?? 'Watchlist'}</h2>
           <p className="zw-meta">Press ⌘K to find a stock to add</p>
+          <Link href="/app/watchlist/compare" className="zw-viewall">Compare</Link>
         </header>
 
         <DataTable

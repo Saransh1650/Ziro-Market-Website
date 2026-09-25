@@ -1,3 +1,4 @@
+import { SUPPORTED_INTENTS } from '@/lib/assistant/types';
 import { describe, expect, it, vi } from 'vitest';
 import { consumeSse } from './assistant';
 import type { AssistantEvent } from './assistant';
@@ -66,7 +67,7 @@ describe('askAssistant request', () => {
     const sent = JSON.parse((fetchMock.mock.calls[0] as unknown as [string, RequestInit])[1].body as string);
     expect(sent.client.platform).toBe('web');
     expect(sent.client.blocks.snapshot).toBe(1);
-    expect(sent.client.intents).toEqual(['watchlist.add', 'alert.create', 'navigate.symbol', 'ask.followup']);
+    expect(sent.client.intents).toEqual([...SUPPORTED_INTENTS]);
     expect(sent.question).toBe('hi');
     expect(events).toEqual([{ type: 'final', answer: 'ok' }]);
     vi.unstubAllGlobals();

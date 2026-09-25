@@ -12,30 +12,30 @@ import type { StockDetail } from '@/lib/api/types';
 export default function StatGrid({ detail }: { detail: StockDetail }) {
   const f = detail.fundamentals;
 
-  const rows: Array<[string, React.ReactNode]> = [
-    ['Open', <Money key="o" value={detail.open} currency={false} />],
-    ['Previous close', <Money key="p" value={detail.previousClose} currency={false} />],
-    ['Day high', <Money key="h" value={detail.dayHigh} currency={false} />],
-    ['Day low', <Money key="l" value={detail.dayLow} currency={false} />],
-    ['Volume', <span key="v" className="zw-num">{detail.volume ? num(detail.volume, 0) : '—'}</span>],
+  // Day and 52-week ranges live in the page header, as range bars, so
+  // they are not repeated here. Rows the backend does not report at all
+  // are dropped rather than shown as a wall of dashes.
+  const all: Array<[string, React.ReactNode, boolean]> = [
+    ['Open', <Money key="o" value={detail.open} currency={false} />, detail.open > 0],
+    ['Previous close', <Money key="p" value={detail.previousClose} currency={false} />, detail.previousClose > 0],
+    ['Volume', <span key="v" className="zw-num">{detail.volume ? num(detail.volume, 0) : '—'}</span>, detail.volume > 0],
     // The top-level `marketCap` string is formatted in trillions and
     // billions by the backend. The numeric one gets crore scaling.
-    ['Market cap', <span key="mc" className="zw-num" title={f.marketCap ? `₹${num(f.marketCap, 0)}` : undefined}>{f.marketCap ? compact(f.marketCap) : '—'}</span>],
-    ['P/E', <Stat key="pe" value={f.pe} />],
-    ['Industry P/E', <Stat key="ipe" value={f.industryPe} />],
-    ['P/B', <Stat key="pb" value={f.pb} />],
-    ['EPS', <Stat key="eps" value={f.eps} />],
-    ['Book value', <Stat key="bv" value={f.bookValue} />],
-    ['Dividend yield', <Stat key="dy" value={f.divYield} suffix="%" />],
-    ['ROE', <Stat key="roe" value={f.roe} suffix="%" />],
-    ['Debt / equity', <Stat key="de" value={f.debtToEquity} />],
-    ['Face value', <Stat key="fv" value={f.faceValue} />],
-    ['52-week high', <Money key="yh" value={detail.yearHigh} currency={false} />],
-    ['52-week low', <Money key="yl" value={detail.yearLow} currency={false} />],
+    ['Market cap', <span key="mc" className="zw-num" title={f.marketCap ? `₹${num(f.marketCap, 0)}` : undefined}>{f.marketCap ? compact(f.marketCap) : '—'}</span>, !!f.marketCap],
+    ['P/E', <Stat key="pe" value={f.pe} />, !!f.pe],
+    ['Industry P/E', <Stat key="ipe" value={f.industryPe} />, !!f.industryPe],
+    ['P/B', <Stat key="pb" value={f.pb} />, !!f.pb],
+    ['EPS', <Stat key="eps" value={f.eps} />, !!f.eps],
+    ['Book value', <Stat key="bv" value={f.bookValue} />, !!f.bookValue],
+    ['Dividend yield', <Stat key="dy" value={f.divYield} suffix="%" />, !!f.divYield],
+    ['ROE', <Stat key="roe" value={f.roe} suffix="%" />, !!f.roe],
+    ['Debt / equity', <Stat key="de" value={f.debtToEquity} />, !!f.debtToEquity],
+    ['Face value', <Stat key="fv" value={f.faceValue} />, !!f.faceValue],
   ];
+  const rows = all.filter(([, , present]) => present);
 
   return (
-    <section aria-label="Key statistics">
+    <section id="stats" aria-label="Key statistics">
       <header className="zw-panel-head">
         <h2 className="zw-section">Key statistics</h2>
       </header>

@@ -3,8 +3,10 @@
 import { getSnapshot, getCommodities } from '@/lib/api/market';
 import { useResource } from '@/hooks/useResource';
 import Heatmap from './Heatmap';
+import SectorTable from './SectorTable';
+import SummaryStrip from './SummaryStrip';
 import { Delta, Money } from './Delta';
-import { compact, num, relativeTime } from '@/lib/format/number';
+import { compact } from '@/lib/format/number';
 import type { MarketSnapshot, CommodityMap } from '@/lib/api/types';
 
 /**
@@ -27,10 +29,13 @@ export default function MarketMap() {
           <h1 className="zw-title">Market map</h1>
           <p className="zw-sub">Every large NSE stock at a glance. Size is market cap, colour is today&apos;s move.</p>
         </div>
-        <BreadthBar snapshot={snapshot.data} />
       </header>
 
+      <SummaryStrip snapshot={snapshot.data} />
+
       <Heatmap />
+
+      <SectorTable />
 
       <div className="zw-band" style={{ marginTop: 'var(--s-4)', gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)' }}>
         <section className="zw-panel">
@@ -46,44 +51,20 @@ export default function MarketMap() {
   );
 }
 
-/* ── Breadth ──────────────────────────────────────────────────── */
-
-function BreadthBar({ snapshot }: { snapshot: MarketSnapshot | null }) {
-  const b = snapshot?.breadth;
-  if (!b) return null;
-
-  const total = b.advancers + b.decliners || 1;
-  const advPct = (b.advancers / total) * 100;
-
-  return (
-    <div
-      className="zw-breadth"
-      aria-label={`Market breadth: ${b.advancers} advancing, ${b.decliners} declining`}
-    >
-      <span className="zw-num up">{num(b.advancers, 0)} <span>advancing</span></span>
-      <span className="bar" aria-hidden="true">
-        <i style={{ width: `${advPct}%` }} />
-      </span>
-      <span className="zw-num down">{num(b.decliners, 0)} <span>declining</span></span>
-      {snapshot?.fetchedAt && <span className="zw-meta stamp">{relativeTime(snapshot.fetchedAt)}</span>}
-    </div>
-  );
-}
-
 /* ── Commodities ──────────────────────────────────────────────── */
 
 function CommoditiesRibbon({ data, loading }: { data: CommodityMap | null; loading: boolean }) {
   if (loading) return <div className="zw-state"><span className="zw-skel" style={{ width: '60%' }} /></div>;
 
-  const items = Object.values(data ?? {}).filter((c) => c && c.price > 0);
+  const items = Object.entries(data ?? {}).filter(([, c]) => c && c.price > 0);
   if (items.length === 0) {
     return <p className="zw-sub zw-panel-body">Commodity prices unavailable</p>;
   }
 
   return (
     <div className="zw-commodities">
-      {items.map((c) => (
-        <a key={c.symbol} href={`/app/commodities/${encodeURIComponent(c.symbol)}`} className="zw-commodity">
+      {items.map(([key, c]) => (
+        <a key={key} href={`/app/commodities/${encodeURIComponent(key)}`} className="zw-commodity">
           <span className="zw-colhead">{c.name}</span>
           <Money value={c.price} decimals={c.price > 1000 ? 0 : 2} />
           <Delta value={c.changePercent} />

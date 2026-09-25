@@ -31,7 +31,7 @@ function normalizeHost(raw: string): string {
 
 // Signed-in surfaces. Everything else — marketing, blog, /stocks,
 // /app/market, /app/discover — stays readable without an account.
-const PROTECTED = ["/app/watchlist", "/app/portfolio", "/app/paper", "/app/alerts"];
+const PROTECTED = ["/app/ask", "/app/watchlist", "/app/portfolio", "/app/paper", "/app/alerts"];
 
 /**
  * Refresh the Supabase session and gate the private surfaces.

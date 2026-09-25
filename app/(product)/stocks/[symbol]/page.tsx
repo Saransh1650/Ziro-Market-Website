@@ -211,9 +211,15 @@ export default async function StockPage(
         yearHigh={detail.yearHigh}
       />
 
+      <nav className="zw-pagenav" aria-label="On this page">
+        <a href="#chart">Overview</a>
+        <a href="#stats">Key statistics</a>
+        <a href="#details">News &amp; order book</a>
+      </nav>
+
       <div className="zw-stock-grid">
         <div className="zw-stock-main">
-          <section className="zw-panel zw-chartpanel">
+          <section id="chart" className="zw-panel zw-chartpanel">
             <PriceChart
               symbol={symbol}
               initialOhlc={detail.ohlc ?? []}
@@ -223,7 +229,7 @@ export default async function StockPage(
           {/* StockTabs reads the `tab` query param, which is not known
               at prerender time. The boundary lets the rest of the page
               stay static while this part resolves on the client. */}
-          <section className="zw-panel">
+          <section id="details" className="zw-panel">
             <Suspense fallback={<div style={{ height: 240 }} aria-hidden="true" />}>
               <StockTabs symbol={symbol} sector={sector} />
             </Suspense>

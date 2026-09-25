@@ -1,7 +1,8 @@
-import { addSymbol, createWatchlist, getWatchlists } from '@/lib/api/watchlist';
+import { addSymbol, createWatchlist, getWatchlists, removeSymbol } from '@/lib/api/watchlist';
+import { saveProfileAnswer } from '@/lib/api/assistantHome';
 import { createAlert } from '@/lib/api/alerts';
 import { money } from '@/lib/format/number';
-import { numOf, str } from '@/lib/assistant/types';
+import { APP_PAGES, numOf, str } from '@/lib/assistant/types';
 import type { Intent } from '@/lib/assistant/types';
 
 export interface IntentDeps {
@@ -12,6 +13,9 @@ export interface IntentDeps {
 }
 
 const DEFAULT_LIST = 'My Watchlist';
+
+/** Fired after Ziro learns something about the user, so open surfaces can refresh. */
+export const PROFILE_CHANGED = 'zw:profile-changed';
 
 /**
  * Carries out one whitelisted intent from an answer and returns a short
@@ -26,6 +30,31 @@ export async function runIntent(intent: Intent, params: Record<string, unknown>,
     case 'navigate.symbol':
       d.navigate(`/stocks/${encodeURIComponent(symbol)}`);
       return `Opening ${symbol}…`;
+
+    case 'navigate.page': {
+      const path = APP_PAGES[str(params.page)];
+      if (!path) return '';
+      d.navigate(path);
+      return 'Opening…';
+    }
+
+    case 'profile.set': {
+      if (!d.token) return 'Sign in so Ziro can remember this.';
+      const r = await saveProfileAnswer(str(params.key), str(params.value), d.token);
+      if (!r.ok) return 'Could not save that. Try again in a moment.';
+      document.dispatchEvent(new CustomEvent(PROFILE_CHANGED));
+      return 'Got it — Ziro will tailor answers to this.';
+    }
+
+    case 'watchlist.remove': {
+      if (!d.token) return 'Sign in to edit your watchlist.';
+      const auth = { token: d.token };
+      const lists = await getWatchlists(auth);
+      const owner = lists.ok ? lists.data.find((l) => l.symbols?.includes(symbol)) : undefined;
+      if (!owner) return `${symbol} is not on your watchlist.`;
+      const r = await removeSymbol(owner.id, symbol, auth);
+      return r.ok ? `Removed ${symbol} from ${owner.name}.` : `Could not remove ${symbol}. Try again in a moment.`;
+    }
 
     case 'ask.followup':
       d.ask(str(params.q), symbol || undefined);

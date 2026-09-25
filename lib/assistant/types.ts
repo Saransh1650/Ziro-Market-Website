@@ -19,8 +19,18 @@ export const SUPPORTED_BLOCKS: Record<string, number> = {
 };
 
 /** Closed intent registry — never URLs or code from the server. */
-export const SUPPORTED_INTENTS = ['watchlist.add', 'alert.create', 'navigate.symbol', 'ask.followup'] as const;
+export const SUPPORTED_INTENTS = [
+  'watchlist.add', 'watchlist.remove', 'alert.create', 'navigate.symbol', 'navigate.page', 'ask.followup', 'profile.set',
+] as const;
 export type Intent = (typeof SUPPORTED_INTENTS)[number];
+
+/** Product pages an answer may send the reader to. Paths are ours; the server only names one. */
+export const APP_PAGES: Record<string, string> = {
+  market: '/app/market', watchlist: '/app/watchlist', discover: '/app/discover',
+  portfolio: '/app/portfolio', paper: '/app/paper', alerts: '/app/alerts',
+};
+
+export const PROFILE_KEYS = ['experience', 'risk', 'horizon', 'interest'] as const;
 
 export const SYMBOL_RE = /^[A-Z0-9&.\-]{1,20}$/;
 
@@ -63,12 +73,17 @@ export function validAction(a: Record<string, unknown>, allowed: ReadonlySet<str
   const p = isObj(a.params) ? a.params : {};
   switch (intent) {
     case 'watchlist.add':
+    case 'watchlist.remove':
     case 'navigate.symbol':
       return SYMBOL_RE.test(str(p.symbol));
     case 'alert.create': {
       const price = p.price;
       return SYMBOL_RE.test(str(p.symbol)) && (price === undefined || (typeof price === 'number' && price > 0 && Number.isFinite(price)));
     }
+    case 'navigate.page':
+      return str(p.page) in APP_PAGES;
+    case 'profile.set':
+      return (PROFILE_KEYS as readonly string[]).includes(str(p.key)) && str(p.value).length > 0 && str(p.value).length <= 25;
     case 'ask.followup': {
       const q = str(p.q);
       return q.length > 0 && q.length <= 200;

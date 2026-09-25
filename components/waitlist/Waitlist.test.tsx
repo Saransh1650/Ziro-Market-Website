@@ -18,20 +18,20 @@ describe('Waitlist', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it('submits and shows position on success', async () => {
-    fetchMock.mockResolvedValue({ ok: true, json: async () => ({ position: 2847 }) });
+  it('submits and shows the server message on success', async () => {
+    fetchMock.mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true, message: "You're on the list" }) });
     render(<Waitlist />);
     await userEvent.click(screen.getByRole('radio', { name: /ios/i }));
-    await userEvent.type(screen.getByPlaceholderText(/your email/i), 'a@b.com');
+    await userEvent.type(screen.getByPlaceholderText(/your@email\.com/i), 'a@b.com');
     await userEvent.click(screen.getByRole('button', { name: /join the waitlist/i }));
-    await waitFor(() => expect(screen.getByText(/#2,847/)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText(/you're on the list/i)).toBeInTheDocument());
   });
 
   it('shows error on network failure', async () => {
     fetchMock.mockRejectedValue(new Error('net'));
     render(<Waitlist />);
     await userEvent.click(screen.getByRole('radio', { name: /android/i }));
-    await userEvent.type(screen.getByPlaceholderText(/your email/i), 'a@b.com');
+    await userEvent.type(screen.getByPlaceholderText(/your@email\.com/i), 'a@b.com');
     await userEvent.click(screen.getByRole('button', { name: /join the waitlist/i }));
     expect(await screen.findByText(/could not reach server/i)).toBeInTheDocument();
   });
