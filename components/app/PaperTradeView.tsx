@@ -8,6 +8,7 @@ import DataTable, { type Column } from './DataTable';
 import { Delta, Money } from './Delta';
 import { num, relativeTime } from '@/lib/format/number';
 import SignedOut from './SignedOut';
+import { StockCell } from './StockCell';
 import OrderTicket from './OrderTicket';
 
 /**
@@ -53,7 +54,7 @@ export default function PaperTradeView() {
   const a = account.data ?? {};
 
   const holdingColumns: Column<PaperHolding>[] = [
-    { key: 'symbol', header: 'Stock', sortable: true, render: (h) => <span className="zw-sym">{h.symbol}</span> },
+    { key: 'symbol', header: 'Stock', sortable: true, render: (h) => <StockCell symbol={h.symbol} /> },
     { key: 'product', header: 'Product', sortable: true, render: (h) => <span className="zw-sub">{h.product ?? 'Delivery'}</span> },
     { key: 'quantity', header: 'Qty', numeric: true, sortable: true, render: (h) => num(h.quantity, 0) },
     { key: 'avg_price', header: 'Avg', numeric: true, sortable: true, render: (h) => num(h.avg_price, 2) },
@@ -63,11 +64,11 @@ export default function PaperTradeView() {
   ];
 
   const orderColumns: Column<PaperOrder>[] = [
-    { key: 'symbol', header: 'Stock', sortable: true, render: (o) => <span className="zw-sym">{o.symbol}</span> },
+    { key: 'symbol', header: 'Stock', sortable: true, render: (o) => <StockCell symbol={o.symbol} /> },
     {
       key: 'side', header: 'Side', sortable: true,
       render: (o) => (
-        <span style={{ color: /buy/i.test(o.side) ? 'var(--positive)' : 'var(--negative)', fontWeight: 600 }}>
+        <span style={{ color: /buy/i.test(o.side) ? 'var(--up)' : 'var(--down)', fontWeight: 600 }}>
           {/buy/i.test(o.side) ? 'Buy' : 'Sell'}
         </span>
       ),
@@ -80,14 +81,14 @@ export default function PaperTradeView() {
   ];
 
   return (
-    <div style={{ maxWidth: 'var(--max-w)', padding: 'var(--s-4) var(--s-3) var(--s-7)' }}>
-      <header style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--s-3)', flexWrap: 'wrap', paddingBottom: 'var(--s-3)' }}>
+    <div className="zw-page">
+      <header className="zw-head">
         <h1 className="zw-title">Paper trade</h1>
         {/* Not decoration. This is the control that stops someone
             believing they placed a real order. */}
         <span
           style={{
-            border: '1px solid var(--amber)', color: 'var(--amber)', borderRadius: 'var(--r-ctl)',
+            border: '1px solid var(--ink)', color: 'var(--ink)', borderRadius: 'var(--r-ctl)',
             padding: '2px 8px', fontSize: 11, fontWeight: 600,
           }}
         >
@@ -96,14 +97,14 @@ export default function PaperTradeView() {
       </header>
 
       {account.error ? (
-        <p className="zw-sub" style={{ color: 'var(--text-3)', paddingBottom: 'var(--s-4)' }}>
+        <p className="zw-sub" style={{ color: 'var(--ink-3)', paddingBottom: 'var(--s-4)' }}>
           No paper trading account yet. Start one in the app and it appears here.
         </p>
       ) : (
         <dl
           style={{
             display: 'flex', flexWrap: 'wrap', gap: 'var(--s-6)', margin: 0,
-            borderTop: '1px solid var(--border-1)', borderBottom: '1px solid var(--border-1)',
+            borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)',
             padding: 'var(--s-3) 0', marginBottom: 'var(--s-4)',
           }}
         >
@@ -114,15 +115,15 @@ export default function PaperTradeView() {
         </dl>
       )}
 
-      <div role="tablist" aria-label="Paper trading" style={{ display: 'flex', gap: 'var(--s-4)', borderBottom: '1px solid var(--border-1)' }}>
+      <div role="tablist" aria-label="Paper trading" style={{ display: 'flex', gap: 'var(--s-4)', borderBottom: '1px solid var(--line)' }}>
         {([['holdings', `Holdings (${rows.length})`], ['orders', `Orders (${orderRows.length})`]] as const).map(([id, label]) => (
           <button
             key={id} type="button" role="tab" aria-selected={tab === id}
             onClick={() => setTab(id)}
             style={{
               background: 'none', border: 0, padding: '8px 0', cursor: 'pointer', fontSize: 12, fontWeight: 600,
-              color: tab === id ? 'var(--text-1)' : 'var(--text-3)',
-              borderBottom: `2px solid ${tab === id ? 'var(--text-1)' : 'transparent'}`, marginBottom: -1,
+              color: tab === id ? 'var(--ink)' : 'var(--ink-3)',
+              borderBottom: `2px solid ${tab === id ? 'var(--ink)' : 'transparent'}`, marginBottom: -1,
             }}
           >
             {label}
@@ -139,14 +140,14 @@ export default function PaperTradeView() {
             href={(h) => `/stocks/${encodeURIComponent(h.symbol)}`}
             caption="Paper holdings"
             loading={holdings.loading} error={holdings.error?.message ?? null} onRetry={holdings.refetch}
-            empty={<p className="zw-sub" style={{ color: 'var(--text-3)' }}>No positions yet.</p>}
+            empty={<p className="zw-sub" style={{ color: 'var(--ink-3)' }}>No positions yet.</p>}
           />
         ) : (
           <DataTable
             rows={orderRows} columns={orderColumns} rowKey={(o) => o.id}
             caption="Paper orders"
             loading={orders.loading} error={orders.error?.message ?? null} onRetry={orders.refetch}
-            empty={<p className="zw-sub" style={{ color: 'var(--text-3)' }}>No orders yet.</p>}
+            empty={<p className="zw-sub" style={{ color: 'var(--ink-3)' }}>No orders yet.</p>}
           />
         )}
       </div>
@@ -189,7 +190,7 @@ function Stat({ label, value, tone }: { label: string; value: React.ReactNode; t
       <dt className="zw-colhead">{label}</dt>
       <dd
         className="zw-num-lg"
-        style={{ margin: 0, color: tone == null ? undefined : tone >= 0 ? 'var(--positive)' : 'var(--negative)' }}
+        style={{ margin: 0, color: tone == null ? undefined : tone >= 0 ? 'var(--up)' : 'var(--down)' }}
       >
         {value}
       </dd>

@@ -1,0 +1,12 @@
+{
+  "name": "unknown type without alt is hidden",
+  "valid": false,
+  "block": {
+    "id": "b9",
+    "type": "holo_widget",
+    "v": 1
+  },
+  "expect": {
+    "render": "hidden"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "range_bar",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "range_bar",
+    "v": 1,
+    "alt": "RELIANCE at ₹1248, 6% of its 52-week range (₹1226.4–₹1611.8).",
+    "asof": "2026-09-25T09:58:00.000Z",
+    "src": "Yahoo Finance · Upstox",
+    "symbol": "RELIANCE",
+    "label": "52-week range",
+    "low": 1226.4,
+    "high": 1611.8,
+    "price": 1248,
+    "pct": 6
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "52-week range"
+    ]
+  }
+}

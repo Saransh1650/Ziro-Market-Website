@@ -86,11 +86,11 @@ export default function PriceChart({
         {points.length >= 2 ? (
           <Plot points={points} mode={mode} previousClose={range === '1D' ? previousClose : undefined} />
         ) : loading ? (
-          <div style={{ height: '100%', background: 'var(--bg-2)' }} aria-hidden="true" />
+          <div style={{ height: '100%', background: 'var(--surface-hover)' }} aria-hidden="true" />
         ) : (
           <p
             className="zw-sub"
-            style={{ height: '100%', display: 'grid', placeContent: 'center', color: 'var(--text-3)' }}
+            style={{ height: '100%', display: 'grid', placeContent: 'center', color: 'var(--ink-3)' }}
           >
             {error ? 'Chart data unavailable' : `No ${range} data for ${symbol}`}
           </p>
@@ -142,7 +142,7 @@ function Plot({
   }, [points, mode, previousClose]);
 
   const dir = direction(geom.net);
-  const stroke = dir === 'down' ? 'var(--negative)' : dir === 'up' ? 'var(--positive)' : 'var(--text-3)';
+  const stroke = dir === 'down' ? 'var(--down)' : dir === 'up' ? 'var(--up)' : 'var(--ink-3)';
 
   const linePath = useMemo(
     () => points.map((p, i) => `${i === 0 ? 'M' : 'L'}${geom.x(i).toFixed(2)},${geom.y(p.close).toFixed(2)}`).join(' '),
@@ -189,7 +189,7 @@ function Plot({
               right: 0,
               transform: i === 0 ? 'translateY(0)' : i === ticks.length - 1 ? 'translateY(-100%)' : 'translateY(-50%)',
               fontSize: 10,
-              color: 'var(--text-3)',
+              color: 'var(--ink-3)',
             }}
           >
             {num(v, 2)}
@@ -206,7 +206,7 @@ function Plot({
         aria-hidden="true"
       >
         {timeLabels.map((t, i) => (
-          <span key={i} className="zw-num" style={{ fontSize: 10, color: 'var(--text-3)' }}>{t}</span>
+          <span key={i} className="zw-num" style={{ fontSize: 10, color: 'var(--ink-3)' }}>{t}</span>
         ))}
       </div>
 
@@ -261,7 +261,7 @@ function Plot({
             x2={VB_W}
             y1={geom.y(v)}
             y2={geom.y(v)}
-            stroke="var(--border-1)"
+            stroke="var(--line)"
             strokeWidth={1}
             vectorEffect="non-scaling-stroke"
           />
@@ -275,7 +275,7 @@ function Plot({
             x2={VB_W}
             y1={geom.y(previousClose)}
             y2={geom.y(previousClose)}
-            stroke="var(--border-2)"
+            stroke="var(--line-strong)"
             strokeWidth={1}
             strokeDasharray="4 4"
             vectorEffect="non-scaling-stroke"
@@ -305,7 +305,7 @@ function Plot({
             x2={geom.x(hover!)}
             y1={0}
             y2={VB_H}
-            stroke="var(--text-3)"
+            stroke="var(--ink-3)"
             strokeWidth={1}
             vectorEffect="non-scaling-stroke"
           />
@@ -339,7 +339,7 @@ function Candles({
     <g>
       {points.map((p, i) => {
         const up = p.close >= p.open;
-        const colour = up ? 'var(--positive)' : 'var(--negative)';
+        const colour = up ? 'var(--up)' : 'var(--down)';
         const cx = geom.x(i);
         const yOpen = geom.y(p.open);
         const yClose = geom.y(p.close);

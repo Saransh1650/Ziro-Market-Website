@@ -1,0 +1,33 @@
+{
+  "name": "invalid params hide the action",
+  "valid": false,
+  "block": {
+    "id": "b1",
+    "type": "actions",
+    "v": 1,
+    "alt": "Actions",
+    "items": [
+      {
+        "id": "a1",
+        "label": "Add to watchlist",
+        "intent": "watchlist.add",
+        "params": {
+          "symbol": "reliance; DROP TABLE"
+        }
+      },
+      {
+        "id": "a2",
+        "label": "Set price alert",
+        "intent": "alert.create",
+        "params": {
+          "symbol": "RELIANCE",
+          "price": -5
+        }
+      }
+    ]
+  },
+  "expect": {
+    "render": "hidden",
+    "visibleActions": []
+  }
+}

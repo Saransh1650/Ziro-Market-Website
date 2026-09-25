@@ -40,11 +40,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
         <Header />
-        <main
-          id="surface"
-          tabIndex={-1}
-          style={{ flex: 1, minWidth: 0, paddingBottom: 'var(--bottom-pad, 0px)' }}
-        >
+        <main id="surface" tabIndex={-1} className="zw-surface">
           {children}
         </main>
       </div>
@@ -54,13 +50,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       <BottomBar pathname={pathname} />
       <CommandPalette />
 
-      <style>{`
-        @media (max-width: 1023px) {
-          .zw-rail { display: none !important; }
-          .zw-bottombar { display: grid !important; }
-          #surface { --bottom-pad: 56px; }
-        }
-      `}</style>
+
     </div>
   );
 }
@@ -72,19 +62,6 @@ function Rail({ pathname }: { pathname: string }) {
     <nav
       className="zw-rail"
       aria-label="Product sections"
-      style={{
-        width: 'var(--rail-w)',
-        flexShrink: 0,
-        borderRight: '1px solid var(--border-1)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: 'var(--s-1)',
-        paddingTop: 'var(--s-2)',
-        position: 'sticky',
-        top: 0,
-        height: '100dvh',
-      }}
     >
       <Link
         href="/"
@@ -114,21 +91,10 @@ function RailItem({
       href={item.href}
       aria-current={active ? 'page' : undefined}
       title={`${item.label}  (g ${item.key})`}
-      style={{
-        width: 56,
-        height: 48,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 3,
-        borderRadius: 'var(--r-ctl)',
-        color: active ? 'var(--text-1)' : 'var(--text-3)',
-        background: active ? 'var(--bg-2)' : 'transparent',
-      }}
+      className="zw-railitem"
     >
       <Icon />
-      <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '-0.01em' }}>{item.label}</span>
+      <span>{item.label}</span>
     </Link>
   );
 }
@@ -137,26 +103,18 @@ function RailItem({
 
 function Header() {
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 40,
-        background: 'var(--bg-0)',
-        borderBottom: '1px solid var(--border-1)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: 'var(--s-3)',
-        height: 'var(--header-h)',
-        padding: '0 var(--s-3)',
-      }}
-    >
-      <TickerStrip />
-      <SearchTrigger />
-      <AssistantTrigger />
-      <ThemeToggle />
-      <AccountMenu />
-    </header>
+    <>
+      <header className="zw-header">
+        <SearchTrigger />
+        <span style={{ flex: 1 }} />
+        <AssistantTrigger />
+        <ThemeToggle />
+        <AccountMenu />
+      </header>
+      <div className="zw-tickerbar">
+        <TickerStrip />
+      </div>
+    </>
   );
 }
 
@@ -178,12 +136,12 @@ function SearchTrigger() {
   return (
     <button
       type="button"
-      className="zw-chip"
-      style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6 }}
+      className="zw-search"
       onClick={() => document.dispatchEvent(new CustomEvent('zw:open-palette'))}
     >
       <IconSearch />
-      <span style={{ fontFamily: 'var(--mono)', fontSize: 10 }}>{mac ? '⌘K' : 'Ctrl K'}</span>
+      <span className="ph">Search stocks, ETFs, funds…</span>
+      <kbd>{mac ? '⌘K' : 'Ctrl K'}</kbd>
     </button>
   );
 }
@@ -192,11 +150,11 @@ function AssistantTrigger() {
   return (
     <button
       type="button"
-      className="zw-chip"
-      style={{ flexShrink: 0 }}
+      className="zw-btn zw-btn-sm zw-btn-ghost"
       onClick={() => document.dispatchEvent(new CustomEvent('zw:open-assistant'))}
       title="Ask Ziro  (⌘J)"
     >
+      <IconSpark />
       Ask Ziro
     </button>
   );
@@ -208,8 +166,7 @@ function ThemeToggle() {
   return (
     <button
       type="button"
-      className="zw-chip"
-      style={{ flexShrink: 0, width: 26, padding: 0, display: 'grid', placeItems: 'center' }}
+      className="zw-iconbtn"
       aria-label={`Theme: ${setting}. Switch to ${resolved === 'dark' ? 'light' : 'dark'}.`}
       onClick={() => setTheme(resolved === 'dark' ? 'light' : 'dark')}
     >
@@ -226,17 +183,7 @@ function BottomBar({ pathname }: { pathname: string }) {
       className="zw-bottombar"
       aria-label="Product sections"
       style={{
-        display: 'none',
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
         gridTemplateColumns: `repeat(${NAV.length}, 1fr)`,
-        height: 56,
-        background: 'var(--bg-0)',
-        borderTop: '1px solid var(--border-1)',
-        paddingBottom: 'env(safe-area-inset-bottom)',
       }}
     >
       {NAV.map((item) => {
@@ -247,17 +194,10 @@ function BottomBar({ pathname }: { pathname: string }) {
             key={item.href}
             href={item.href}
             aria-current={active ? 'page' : undefined}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 3,
-              color: active ? 'var(--text-1)' : 'var(--text-3)',
-            }}
+            className="zw-railitem"
           >
             <Icon />
-            <span style={{ fontSize: 10, fontWeight: 600 }}>{item.label}</span>
+            <span>{item.label}</span>
           </Link>
         );
       })}
@@ -309,7 +249,7 @@ function useGoToShortcut(router: ReturnType<typeof useRouter>) {
 /* ── Icons ────────────────────────────────────────────────────── */
 /* Inline so the shell has no icon-library dependency in its bundle. */
 
-const S = { width: 17, height: 17, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true };
+const S = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true };
 
 function IconGrid() {
   return <svg {...S}><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></svg>;
@@ -327,11 +267,14 @@ function IconTicket() {
   return <svg {...S}><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-6z" /></svg>;
 }
 function IconSearch() {
-  return <svg {...S} width={13} height={13}><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>;
+  return <svg {...S} width={15} height={15}><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>;
+}
+function IconSpark() {
+  return <svg {...S} width={14} height={14}><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" /><path d="M19 16l.7 1.8L21.5 18.5l-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7z" /></svg>;
 }
 function IconSun() {
-  return <svg {...S} width={14} height={14}><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>;
+  return <svg {...S} width={16} height={16}><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>;
 }
 function IconMoon() {
-  return <svg {...S} width={14} height={14}><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>;
+  return <svg {...S} width={16} height={16}><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>;
 }

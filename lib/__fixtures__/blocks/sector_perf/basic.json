@@ -1,0 +1,37 @@
+{
+  "name": "sector_perf",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "sector_perf",
+    "v": 1,
+    "alt": "Sector performance today: leading IT +1.2%, lagging Financial services -2.39%.",
+    "title": "Sector performance today",
+    "items": [
+      {
+        "label": "Financial services",
+        "changePct": -2.39
+      },
+      {
+        "label": "Auto",
+        "changePct": -0.4
+      },
+      {
+        "label": "Pharma",
+        "changePct": 0.3
+      },
+      {
+        "label": "IT",
+        "changePct": 1.2
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "Sector performance today",
+      "Financial services",
+      "IT"
+    ]
+  }
+}

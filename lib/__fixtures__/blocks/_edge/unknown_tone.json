@@ -1,0 +1,29 @@
+{
+  "name": "unknown enum value maps to neutral",
+  "valid": false,
+  "block": {
+    "id": "b1",
+    "type": "signals",
+    "v": 1,
+    "alt": "quick read",
+    "title": "quick read",
+    "items": [
+      {
+        "label": "Trend",
+        "value": "Sideways",
+        "tone": "radioactive"
+      },
+      {
+        "label": "Momentum",
+        "value": "Flat",
+        "tone": "neutral"
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "Sideways"
+    ]
+  }
+}

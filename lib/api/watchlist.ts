@@ -14,19 +14,25 @@ export interface WatchlistSummary {
   symbols?: string[];
 }
 
+/**
+ * One row of `/watchlist/performance`.
+ *
+ * `/watchlist/symbols` looks like the natural source but returns bare
+ * ticker strings, not rows — which is why an earlier build rendered blank
+ * symbol cells. Performance carries the price and the return over each
+ * horizon, which is what a watchlist table is for.
+ */
 export interface WatchlistRow {
   symbol: string;
   name?: string;
-  companyName?: string;
-  price?: number;
-  lastPrice?: number;
-  change?: number;
-  changePercent?: number;
-  pChange?: number;
-  volume?: number;
-  marketCap?: number;
-  dayHigh?: number;
-  dayLow?: number;
+  price: number;
+  return1d: number;
+  return3d?: number;
+  return1w?: number;
+  return1m?: number;
+  return3m?: number;
+  returnYTD?: number;
+  rs?: number;
 }
 
 type Auth = { token: string; signal?: AbortSignal };
@@ -40,12 +46,14 @@ export async function getWatchlistOverview({ token, signal }: Auth) {
 }
 
 export async function getWatchlistSymbols(id: string, { token, signal }: Auth) {
-  return unwrap(
+  const res = unwrap(
     await apiGet<{ success?: boolean; data?: WatchlistRow[] }>(
-      `/watchlist/symbols?watchlistId=${encodeURIComponent(id)}`,
+      `/watchlist/performance?watchlistId=${encodeURIComponent(id)}`,
       { token, signal },
     ),
   );
+  // Drop anything without a symbol rather than crash a table on it.
+  return res.ok ? { ok: true as const, data: res.data.filter((r) => r?.symbol) } : res;
 }
 
 export async function createWatchlist(name: string, { token }: Auth) {

@@ -1,0 +1,18 @@
+{
+  "name": "notice info",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "notice",
+    "v": 1,
+    "alt": "Prices are from the previous close.",
+    "tone": "info",
+    "text": "Prices are from the previous close."
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "Prices are from the previous close."
+    ]
+  }
+}

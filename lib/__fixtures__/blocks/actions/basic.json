@@ -1,0 +1,36 @@
+{
+  "name": "actions",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "actions",
+    "v": 1,
+    "alt": "Actions: Add to watchlist, Set price alert.",
+    "items": [
+      {
+        "id": "a1",
+        "label": "Add to watchlist",
+        "intent": "watchlist.add",
+        "params": {
+          "symbol": "RELIANCE"
+        }
+      },
+      {
+        "id": "a2",
+        "label": "Set price alert",
+        "intent": "alert.create",
+        "params": {
+          "symbol": "RELIANCE",
+          "price": 1248
+        }
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "visibleActions": [
+      "Add to watchlist",
+      "Set price alert"
+    ]
+  }
+}

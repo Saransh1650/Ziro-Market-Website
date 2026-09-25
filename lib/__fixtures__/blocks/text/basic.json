@@ -1,0 +1,17 @@
+{
+  "name": "text",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "text",
+    "v": 1,
+    "alt": "Plain text block",
+    "text": "Reliance looks fairly valued."
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "Reliance looks fairly valued."
+    ]
+  }
+}

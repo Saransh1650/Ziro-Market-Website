@@ -1,0 +1,23 @@
+{
+  "name": "known valid block without alt still renders (older server)",
+  "valid": false,
+  "block": {
+    "id": "b1",
+    "type": "table",
+    "v": 1,
+    "title": "RELIANCE fundamentals",
+    "rows": [
+      {
+        "label": "PE",
+        "value": "22.10"
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "RELIANCE fundamentals",
+      "22.10"
+    ]
+  }
+}

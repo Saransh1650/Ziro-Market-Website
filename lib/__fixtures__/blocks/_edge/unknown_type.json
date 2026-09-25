@@ -1,0 +1,17 @@
+{
+  "name": "unknown type falls back to alt",
+  "valid": false,
+  "block": {
+    "id": "b9",
+    "type": "holo_widget",
+    "v": 1,
+    "alt": "A brand new widget about RELIANCE",
+    "foo": 1
+  },
+  "expect": {
+    "render": "fallback",
+    "textContains": [
+      "A brand new widget about RELIANCE"
+    ]
+  }
+}

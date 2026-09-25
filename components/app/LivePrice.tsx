@@ -57,16 +57,14 @@ export default function LivePrice({
   return (
     <div
       ref={ref}
-      style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--s-3)', padding: '0 4px' }}
+      className="zw-liveprice"
     >
-      <Money value={price} className="zw-num-lg" />
-      <span style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--s-2)' }}>
+      <Money value={price} className="px" />
+      <span className="chg">
         <Delta value={change} mode="absolute" />
-        <Delta value={pChange} />
+        <Delta value={pChange} className="pill" />
       </span>
-      {!session.open && (
-        <span className="zw-sub" style={{ color: 'var(--text-3)' }}>at close</span>
-      )}
+      {!session.open && <span className="zw-meta">At close</span>}
     </div>
   );
 }

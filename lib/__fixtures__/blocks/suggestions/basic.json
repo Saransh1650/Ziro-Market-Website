@@ -1,0 +1,31 @@
+{
+  "name": "suggestions",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "suggestions",
+    "v": 1,
+    "alt": "Suggested follow-ups: How is RELIANCE technically placed?",
+    "items": [
+      {
+        "q": "How is RELIANCE technically placed?",
+        "symbol": "RELIANCE"
+      },
+      {
+        "q": "Any recent news on RELIANCE?",
+        "symbol": "RELIANCE"
+      },
+      {
+        "q": "Is RELIANCE a good buy now?",
+        "symbol": "RELIANCE"
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "How is RELIANCE technically placed?",
+      "Any recent news on RELIANCE?"
+    ]
+  }
+}

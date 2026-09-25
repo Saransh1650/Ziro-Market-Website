@@ -1,0 +1,28 @@
+{
+  "name": "very long value does not overflow or throw",
+  "valid": false,
+  "block": {
+    "id": "b1",
+    "type": "table",
+    "v": 1,
+    "alt": "RELIANCE notes",
+    "title": "RELIANCE notes",
+    "rows": [
+      {
+        "label": "Note",
+        "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      },
+      {
+        "label": "PE",
+        "value": "22.10"
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "RELIANCE notes",
+      "22.10"
+    ]
+  }
+}

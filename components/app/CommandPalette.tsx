@@ -193,7 +193,7 @@ export default function CommandPalette() {
         position: 'fixed',
         inset: 0,
         zIndex: 200,
-        background: 'rgba(11,59,46,0.28)',
+        background: 'var(--scrim)',
         display: 'grid',
         placeItems: 'start center',
         paddingTop: '12vh',
@@ -205,10 +205,10 @@ export default function CommandPalette() {
         aria-label="Search stocks, ETFs and funds"
         style={{
           width: 'min(560px, calc(100vw - 32px))',
-          background: 'var(--bg-0)',
-          border: '1px solid var(--border-2)',
+          background: 'var(--surface)',
+          border: '1px solid var(--line-strong)',
           borderRadius: 'var(--r-overlay)',
-          boxShadow: '0 20px 60px rgba(11,59,46,0.22)',
+          boxShadow: 'var(--shadow-overlay)',
           overflow: 'hidden',
         }}
         onKeyDown={(e) => {
@@ -242,7 +242,7 @@ export default function CommandPalette() {
             width: '100%',
             padding: 'var(--s-4)',
             border: 0,
-            borderBottom: '1px solid var(--border-1)',
+            borderBottom: '1px solid var(--line)',
             background: 'transparent',
             fontSize: 15,
             outline: 'none',
@@ -253,17 +253,17 @@ export default function CommandPalette() {
           {/* Height is reserved so a slow network does not collapse the
               palette to a sliver and then snap it open again. */}
           {loading && flat.length === 0 && (
-            <p className="zw-sub" style={{ padding: 'var(--s-4)', color: 'var(--text-3)', minHeight: 72 }}>Searching…</p>
+            <p className="zw-sub" style={{ padding: 'var(--s-4)', color: 'var(--ink-3)', minHeight: 72 }}>Searching…</p>
           )}
 
           {!loading && ready && flat.length === 0 && (
-            <p className="zw-sub" style={{ padding: 'var(--s-4)', color: 'var(--text-3)', minHeight: 72 }}>
+            <p className="zw-sub" style={{ padding: 'var(--s-4)', color: 'var(--ink-3)', minHeight: 72 }}>
               Nothing matches “{q}”.
             </p>
           )}
 
           {!ready && flat.length === 0 && (
-            <p className="zw-sub" style={{ padding: 'var(--s-4)', color: 'var(--text-3)', minHeight: 72 }}>
+            <p className="zw-sub" style={{ padding: 'var(--s-4)', color: 'var(--ink-3)', minHeight: 72 }}>
               Type at least two characters.
             </p>
           )}
@@ -293,7 +293,7 @@ export default function CommandPalette() {
                       gap: 'var(--s-3)',
                       padding: '9px var(--s-4)',
                       cursor: 'pointer',
-                      background: selected ? 'var(--bg-2)' : 'transparent',
+                      background: selected ? 'var(--surface-hover)' : 'transparent',
                     }}
                   >
                     <span className="zw-sym" style={{ minWidth: 84 }}>{hit.symbol}</span>
@@ -301,7 +301,7 @@ export default function CommandPalette() {
                       {hit.name}
                     </span>
                     {hit.subLabel && (
-                      <span className="zw-sub" style={{ color: 'var(--text-3)', flexShrink: 0 }}>{hit.subLabel}</span>
+                      <span className="zw-sub" style={{ color: 'var(--ink-3)', flexShrink: 0 }}>{hit.subLabel}</span>
                     )}
                   </div>
                 );
@@ -315,7 +315,7 @@ export default function CommandPalette() {
             display: 'flex',
             gap: 'var(--s-4)',
             padding: '8px var(--s-4)',
-            borderTop: '1px solid var(--border-1)',
+            borderTop: '1px solid var(--line)',
           }}
         >
           <Hint keys="↑↓" label="Navigate" />
@@ -329,8 +329,8 @@ export default function CommandPalette() {
 
 function Hint({ keys, label }: { keys: string; label: string }) {
   return (
-    <span className="zw-sub" style={{ display: 'flex', gap: 5, alignItems: 'center', color: 'var(--text-3)' }}>
-      <kbd className="zw-num" style={{ fontSize: 10, border: '1px solid var(--border-1)', borderRadius: 3, padding: '1px 4px' }}>{keys}</kbd>
+    <span className="zw-sub" style={{ display: 'flex', gap: 5, alignItems: 'center', color: 'var(--ink-3)' }}>
+      <kbd className="zw-num" style={{ fontSize: 10, border: '1px solid var(--line)', borderRadius: 3, padding: '1px 4px' }}>{keys}</kbd>
       {label}
     </span>
   );

@@ -1,0 +1,44 @@
+{
+  "name": "signals",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "signals",
+    "v": 1,
+    "alt": "RELIANCE · quick read: Trend Below its 50-day average.",
+    "title": "RELIANCE · quick read",
+    "asof": "2026-09-25T09:58:00.000Z",
+    "src": "Yahoo Finance · Upstox",
+    "items": [
+      {
+        "label": "Trend",
+        "value": "Below its 50-day average",
+        "tone": "bad"
+      },
+      {
+        "label": "Momentum",
+        "value": "-11.6% over the period",
+        "tone": "bad"
+      },
+      {
+        "label": "52-week position",
+        "value": "Near its 52-week low",
+        "tone": "warn"
+      },
+      {
+        "label": "Valuation",
+        "value": "PE 22.1 vs industry 24.0 (in line)",
+        "tone": "good"
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "RELIANCE · quick read",
+      "Trend",
+      "Below its 50-day average",
+      "Near its 52-week low"
+    ]
+  }
+}

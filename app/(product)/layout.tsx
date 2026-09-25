@@ -1,4 +1,5 @@
 import './product.css';
+import { productFont } from './fonts';
 import { ThemeProvider, themeScript } from '@/components/app/ThemeProvider';
 import { AuthProvider } from '@/components/app/AuthProvider';
 
@@ -21,9 +22,11 @@ export default function ProductLayout({ children }: { children: React.ReactNode 
         which is a visible flash on every load in dark mode.
       */}
       <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      <ThemeProvider>
-        <AuthProvider>{children}</AuthProvider>
-      </ThemeProvider>
+      <div className={productFont.variable}>
+        <ThemeProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ThemeProvider>
+      </div>
     </>
   );
 }

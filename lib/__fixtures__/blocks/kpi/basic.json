@@ -1,0 +1,36 @@
+{
+  "name": "kpi",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "kpi",
+    "v": 1,
+    "alt": "Indices: NIFTY 50 23,446.8.",
+    "title": "Indices",
+    "items": [
+      {
+        "label": "NIFTY 50",
+        "value": "23,446.8",
+        "delta": 0.5
+      },
+      {
+        "label": "SENSEX",
+        "value": "74,828.25",
+        "delta": 0.4
+      },
+      {
+        "label": "BANK NIFTY",
+        "value": "52,110.5",
+        "delta": -0.2
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "Indices",
+      "NIFTY 50",
+      "23,446.8"
+    ]
+  }
+}

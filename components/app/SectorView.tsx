@@ -4,6 +4,7 @@ import { getSectorDetail } from '@/lib/api/sectors';
 import { useResource } from '@/hooks/useResource';
 import DataTable, { type Column } from './DataTable';
 import { Delta } from './Delta';
+import { StockCell } from './StockCell';
 import { num, compact, relativeTime } from '@/lib/format/number';
 import type { SectorDetail, SectorStockRow } from '@/lib/api/types';
 
@@ -26,16 +27,7 @@ export default function SectorView({ sector }: { sector: string }) {
       key: 'symbol',
       header: 'Stock',
       sortable: true,
-      render: (r) => (
-        <span style={{ display: 'block', minWidth: 0 }}>
-          <span className="zw-sym">{r.symbol}</span>
-          {r.name && r.name !== r.symbol && (
-            <span className="zw-sub" style={{ display: 'block', maxWidth: 260, overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              {r.name}
-            </span>
-          )}
-        </span>
-      ),
+      render: (r) => <StockCell symbol={r.symbol} name={r.name} />,
     },
     { key: 'price', header: 'Price', numeric: true, sortable: true, render: (r) => num(r.price, 2) },
     { key: 'changePercent', header: 'Change', numeric: true, sortable: true, render: (r) => <Delta value={r.changePercent} /> },
@@ -49,8 +41,8 @@ export default function SectorView({ sector }: { sector: string }) {
   const total = data?.pagination?.total;
 
   return (
-    <div style={{ maxWidth: 'var(--max-w)', padding: 'var(--s-4) var(--s-3) var(--s-7)' }}>
-      <header style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--s-3)', flexWrap: 'wrap', paddingBottom: 'var(--s-3)' }}>
+    <div className="zw-page">
+      <header className="zw-head">
         <h1 className="zw-title">{data?.sectorName ?? sector}</h1>
         {total != null && (
           <span className="zw-sub">
@@ -58,7 +50,7 @@ export default function SectorView({ sector }: { sector: string }) {
           </span>
         )}
         {data?.lastUpdated && (
-          <span className="zw-sub" style={{ marginLeft: 'auto', color: 'var(--text-3)' }}>
+          <span className="zw-sub" style={{ marginLeft: 'auto', color: 'var(--ink-3)' }}>
             Updated {relativeTime(data.lastUpdated)}
           </span>
         )}
@@ -81,7 +73,7 @@ export default function SectorView({ sector }: { sector: string }) {
         onRetry={refetch}
         initialSort={{ key: 'changePercent', dir: 'desc' }}
         maxRows={100}
-        empty={<p className="zw-sub" style={{ color: 'var(--text-3)' }}>No stocks listed under {sector}.</p>}
+        empty={<p className="zw-sub" style={{ color: 'var(--ink-3)' }}>No stocks listed under {sector}.</p>}
       />
     </div>
   );

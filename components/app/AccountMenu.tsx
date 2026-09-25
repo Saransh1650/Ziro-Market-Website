@@ -42,9 +42,9 @@ export default function AccountMenu() {
   if (!user) {
     return (
       <a
-        className="zw-chip"
+        className="zw-btn zw-btn-sm"
         href="/app/login"
-        style={{ flexShrink: 0, display: 'grid', placeItems: 'center', textDecoration: 'none' }}
+        style={{ flexShrink: 0, textDecoration: 'none' }}
       >
         Sign in
       </a>
@@ -66,8 +66,8 @@ export default function AccountMenu() {
         aria-label={`Account: ${name}`}
         style={{
           width: 26, height: 26, borderRadius: '50%',
-          border: '1px solid var(--border-2)', background: 'var(--bg-2)',
-          color: 'var(--text-1)', fontSize: 11, fontWeight: 700, cursor: 'pointer',
+          border: '1px solid var(--line-strong)', background: 'var(--surface-hover)',
+          color: 'var(--ink)', fontSize: 11, fontWeight: 700, cursor: 'pointer',
           display: 'grid', placeItems: 'center',
         }}
       >
@@ -79,12 +79,12 @@ export default function AccountMenu() {
           role="menu"
           style={{
             position: 'absolute', right: 0, top: 32, zIndex: 120, minWidth: 210,
-            background: 'var(--bg-0)', border: '1px solid var(--border-2)',
-            borderRadius: 'var(--r-overlay)', boxShadow: '0 12px 32px rgba(11,59,46,0.18)',
+            background: 'var(--surface)', border: '1px solid var(--line-strong)',
+            borderRadius: 'var(--r-overlay)', boxShadow: 'var(--shadow-overlay)',
             padding: 'var(--s-2)',
           }}
         >
-          <div style={{ padding: '6px 8px 8px', borderBottom: '1px solid var(--border-1)', marginBottom: 4 }}>
+          <div style={{ padding: '6px 8px 8px', borderBottom: '1px solid var(--line)', marginBottom: 4 }}>
             <p className="zw-sym" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{name}</p>
             {email && (
               <p className="zw-sub" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{email}</p>
@@ -107,7 +107,7 @@ export default function AccountMenu() {
             style={{
               display: 'block', width: '100%', textAlign: 'left', padding: '7px 8px',
               background: 'none', border: 0, cursor: 'pointer', fontSize: 12,
-              color: 'var(--text-1)', borderTop: '1px solid var(--border-1)', marginTop: 4,
+              color: 'var(--ink)', borderTop: '1px solid var(--line)', marginTop: 4,
             }}
           >
             Sign out
@@ -140,7 +140,7 @@ export default function AccountMenu() {
             style={{
               display: 'block', width: '100%', textAlign: 'left', padding: '7px 8px',
               background: 'none', border: 0, cursor: deleting ? 'progress' : 'pointer', fontSize: 12,
-              color: 'var(--negative)',
+              color: 'var(--down)',
             }}
           >
             {deleting ? 'Deleting…' : 'Delete account'}
@@ -156,7 +156,7 @@ function MenuLink({ href, children }: { href: string; children: React.ReactNode 
     <a
       role="menuitem"
       href={href}
-      style={{ display: 'block', padding: '7px 8px', fontSize: 12, color: 'var(--text-1)', borderRadius: 'var(--r-ctl)' }}
+      style={{ display: 'block', padding: '7px 8px', fontSize: 12, color: 'var(--ink)', borderRadius: 'var(--r-ctl)' }}
     >
       {children}
     </a>

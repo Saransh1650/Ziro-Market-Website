@@ -1,0 +1,45 @@
+{
+  "name": "table",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "table",
+    "v": 1,
+    "alt": "RELIANCE fundamentals: PE 22.10, PB 1.83.",
+    "title": "RELIANCE fundamentals",
+    "asof": "2026-09-25T09:58:00.000Z",
+    "src": "Yahoo Finance · NSE",
+    "rows": [
+      {
+        "label": "PE",
+        "value": "22.10"
+      },
+      {
+        "label": "PB",
+        "value": "1.83"
+      },
+      {
+        "label": "EPS",
+        "value": "₹55.16"
+      },
+      {
+        "label": "Div Yield",
+        "value": "0.48%"
+      },
+      {
+        "label": "Debt/Equity",
+        "value": "36.65%"
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "RELIANCE fundamentals",
+      "PE",
+      "22.10",
+      "Debt/Equity",
+      "36.65%"
+    ]
+  }
+}

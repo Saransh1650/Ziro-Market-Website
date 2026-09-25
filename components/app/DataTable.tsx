@@ -6,23 +6,28 @@ import { useRouter } from 'next/navigation';
 /**
  * The workhorse table.
  *
- * Watchlist, holdings, movers, ETFs, funds, orders and constituents are
- * all this component with different columns.
+ * Structure and spacing live in `product.css` (`.zw-table`), not in
+ * inline styles — a row is 44px and a cell is 11px/12px everywhere,
+ * which is the only way the reading rhythm survives across surfaces.
  *
  * A real `<table>` with `<th scope>` and `aria-sort`, never a grid of
- * divs — a screen reader announces a real table correctly and a div grid
- * not at all, and essentially all of this product's data is tabular.
+ * divs: a screen reader announces a real table correctly and a div grid
+ * not at all.
  */
 
 export interface Column<T> {
   key: string;
   header: string;
-  /** Right-aligned with tabular figures. Use for anything numeric. */
+  /** Right-aligned with asymmetric padding. Use for anything numeric. */
   numeric?: boolean;
   width?: string;
   sortable?: boolean;
   /** Value used for sorting. Falls back to the raw field. */
   sortValue?: (row: T) => number | string;
+  /** Gives the column a permanent colourless wash, to draw the eye. */
+  emphasis?: boolean;
+  /** Hidden until the row is hovered or focused. For row actions. */
+  onHover?: boolean;
   render: (row: T) => React.ReactNode;
 }
 
@@ -30,7 +35,6 @@ export interface DataTableProps<T> {
   rows: T[];
   columns: Column<T>[];
   rowKey: (row: T) => string;
-  /** Navigating on row click. Makes the whole row a target. */
   href?: (row: T) => string;
   caption?: string;
   initialSort?: { key: string; dir: 'asc' | 'desc' };
@@ -38,7 +42,7 @@ export interface DataTableProps<T> {
   error?: string | null;
   onRetry?: () => void;
   empty?: React.ReactNode;
-  /** Rows rendered before windowing kicks in. */
+  /** Rows rendered before the "showing N of M" cut-off. */
   maxRows?: number;
 }
 
@@ -74,33 +78,42 @@ export default function DataTable<T>({
     return [...rows].sort((a, b) => {
       const av = value(a);
       const bv = value(b);
-      let cmp: number;
-      if (typeof av === 'number' && typeof bv === 'number') cmp = av - bv;
-      else cmp = String(av).localeCompare(String(bv));
+      const cmp =
+        typeof av === 'number' && typeof bv === 'number'
+          ? av - bv
+          : String(av).localeCompare(String(bv));
       return sort.dir === 'asc' ? cmp : -cmp;
     });
   }, [rows, columns, sort]);
 
   const visible = sorted.slice(0, maxRows);
 
-  if (loading) return <TableSkeleton columns={columns.length} />;
+  if (loading) return <TableSkeleton columns={columns} />;
 
   if (error) {
     return (
-      <div role="alert" style={{ display: 'flex', alignItems: 'center', gap: 'var(--s-3)', padding: 'var(--s-4) 0' }}>
+      <div role="alert" className="zw-state">
         <p className="zw-sub">{error}</p>
-        {onRetry && <button type="button" className="zw-chip" onClick={onRetry}>Try again</button>}
+        {onRetry && (
+          <button type="button" className="zw-chip" onClick={onRetry}>
+            Try again
+          </button>
+        )}
       </div>
     );
   }
 
   if (!rows.length) {
-    return <div style={{ padding: 'var(--s-4) 0' }}>{empty ?? <p className="zw-sub" style={{ color: 'var(--text-3)' }}>Nothing here yet.</p>}</div>;
+    return (
+      <div className="zw-state">
+        {empty ?? <p className="zw-sub">Nothing here yet.</p>}
+      </div>
+    );
   }
 
   return (
     <div className="zw-scroll-x">
-      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: columns.length > 4 ? 560 : undefined }}>
+      <table className="zw-table">
         {caption && <caption className="zw-sr">{caption}</caption>}
         <thead>
           <tr>
@@ -110,22 +123,15 @@ export default function DataTable<T>({
                 <th
                   key={col.key}
                   scope="col"
-                  className="zw-colhead"
+                  className={`zw-colhead${col.numeric ? ' num' : ''}${col.emphasis ? ' emphasis' : ''}`}
                   aria-sort={active ? (sort!.dir === 'asc' ? 'ascending' : 'descending') : undefined}
-                  style={{
-                    textAlign: col.numeric ? 'right' : 'left',
-                    width: col.width,
-                    padding: '0 var(--s-2) 6px 0',
-                    position: 'sticky',
-                    top: 0,
-                    background: 'var(--bg-0)',
-                    borderBottom: '1px solid var(--border-2)',
-                    whiteSpace: 'nowrap',
-                  }}
+                  style={col.width ? { width: col.width } : undefined}
                 >
                   {col.sortable ? (
                     <button
                       type="button"
+                      className="zw-sortbtn"
+                      data-active={active || undefined}
                       onClick={() =>
                         setSort((prev) =>
                           prev?.key === col.key
@@ -133,21 +139,17 @@ export default function DataTable<T>({
                             : { key: col.key, dir: col.numeric ? 'desc' : 'asc' },
                         )
                       }
-                      style={{
-                        background: 'none',
-                        border: 0,
-                        padding: 0,
-                        cursor: 'pointer',
-                        font: 'inherit',
-                        letterSpacing: 'inherit',
-                        textTransform: 'inherit',
-                        color: active ? 'var(--text-1)' : 'inherit',
-                      }}
                     >
                       {col.header}
-                      <span aria-hidden="true" style={{ opacity: active ? 1 : 0.25, marginLeft: 3 }}>
-                        {active && sort!.dir === 'asc' ? '↑' : '↓'}
-                      </span>
+                      <svg
+                        aria-hidden="true"
+                        className="zw-sortarrow"
+                        data-dir={active ? sort!.dir : undefined}
+                        width="8" height="10" viewBox="0 0 8 10" fill="none"
+                        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                      >
+                        <path d="M4 1.5v7M1.5 6 4 8.5 6.5 6" />
+                      </svg>
                     </button>
                   ) : (
                     col.header
@@ -164,28 +166,22 @@ export default function DataTable<T>({
               <tr
                 key={rowKey(row)}
                 onClick={to ? () => router.push(to) : undefined}
-                style={{
-                  borderBottom: '1px solid var(--border-1)',
-                  cursor: to ? 'pointer' : undefined,
-                }}
                 className={to ? 'zw-rowlink' : undefined}
               >
                 {columns.map((col, i) => (
                   <td
                     key={col.key}
-                    className={col.numeric ? 'zw-num' : undefined}
-                    style={{
-                      textAlign: col.numeric ? 'right' : 'left',
-                      padding: '7px var(--s-2) 7px 0',
-                      fontSize: 12,
-                      whiteSpace: 'nowrap',
-                    }}
+                    className={[
+                      col.numeric ? 'num' : '',
+                      col.emphasis ? 'emphasis' : '',
+                      col.onHover ? 'zw-rowaction' : '',
+                    ].filter(Boolean).join(' ') || undefined}
                   >
-                    {/* The first cell carries the link, so the row is
-                        reachable by keyboard and openable in a new tab —
+                    {/* The first cell carries the link, so a row is
+                        keyboard-reachable and openable in a new tab —
                         a click handler alone is neither. */}
                     {i === 0 && to ? (
-                      <a href={to} onClick={(e) => e.stopPropagation()} style={{ color: 'inherit' }}>
+                      <a href={to} onClick={(e) => e.stopPropagation()} className="zw-cellink">
                         {col.render(row)}
                       </a>
                     ) : (
@@ -200,35 +196,28 @@ export default function DataTable<T>({
       </table>
 
       {sorted.length > visible.length && (
-        <p className="zw-sub" style={{ padding: 'var(--s-2) 0', color: 'var(--text-3)' }}>
+        <p className="zw-meta zw-tablefoot">
           Showing {visible.length} of {sorted.length}
         </p>
       )}
-
-      <style>{`
-        .zw-rowlink:hover { background: var(--bg-2); }
-      `}</style>
     </div>
   );
 }
 
-function TableSkeleton({ columns }: { columns: number }) {
+function TableSkeleton({ columns }: { columns: { numeric?: boolean }[] }) {
   return (
     <div aria-hidden="true">
-      {Array.from({ length: 8 }).map((_, r) => (
-        <div
-          key={r}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: `repeat(${columns}, 1fr)`,
-            gap: 'var(--s-3)',
-            height: 'var(--row-h)',
-            alignItems: 'center',
-            borderBottom: '1px solid var(--border-1)',
-          }}
-        >
-          {Array.from({ length: columns }).map((__, c) => (
-            <span key={c} style={{ height: 9, background: 'var(--bg-2)', borderRadius: 2, width: c === 0 ? '70%' : '50%', justifySelf: c === 0 ? 'start' : 'end' }} />
+      {Array.from({ length: 6 }).map((_, r) => (
+        <div key={r} className="zw-skelrow">
+          {columns.map((col, c) => (
+            <span
+              key={c}
+              className="zw-skel"
+              style={{
+                width: c === 0 ? '55%' : '70%',
+                justifySelf: col.numeric ? 'end' : 'start',
+              }}
+            />
           ))}
         </div>
       ))}

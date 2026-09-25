@@ -15,7 +15,7 @@ export default function DepthLadder({ symbol }: { symbol: string }) {
 
   if (!available) {
     return (
-      <p className="zw-sub" style={{ padding: 'var(--s-4) 0', color: 'var(--text-3)', maxWidth: '68ch' }}>
+      <p className="zw-sub" style={{ padding: 'var(--s-4) 0', color: 'var(--ink-3)', maxWidth: '68ch' }}>
         Live depth needs a secure connection to the market feed, which this
         site cannot open yet. It works in local development and will work
         here once the data service is served over TLS.
@@ -25,7 +25,7 @@ export default function DepthLadder({ symbol }: { symbol: string }) {
 
   if (!depth) {
     return (
-      <p className="zw-sub" style={{ padding: 'var(--s-4) 0', color: 'var(--text-3)' }}>
+      <p className="zw-sub" style={{ padding: 'var(--s-4) 0', color: 'var(--ink-3)' }}>
         {status === 'reconnecting'
           ? 'Reconnecting to the market feed…'
           : `Waiting for ${symbol} order book…`}
@@ -52,13 +52,13 @@ export default function DepthLadder({ symbol }: { symbol: string }) {
         style={{
           display: 'flex',
           gap: 'var(--s-5)',
-          borderTop: '1px solid var(--border-1)',
+          borderTop: '1px solid var(--line)',
           paddingTop: 'var(--s-2)',
           margin: 0,
         }}
       >
-        <Total label="Total bid qty" value={depth.totalBuyQty} tone="var(--positive)" />
-        <Total label="Total ask qty" value={depth.totalSellQty} tone="var(--negative)" />
+        <Total label="Total bid qty" value={depth.totalBuyQty} tone="var(--up)" />
+        <Total label="Total ask qty" value={depth.totalSellQty} tone="var(--down)" />
       </dl>
 
       <style>{`
@@ -82,7 +82,7 @@ function Side({
   peak: number;
   side: 'buy' | 'sell';
 }) {
-  const colour = side === 'buy' ? 'var(--positive)' : 'var(--negative)';
+  const colour = side === 'buy' ? 'var(--up)' : 'var(--down)';
 
   return (
     <table style={{ width: '100%', borderCollapse: 'collapse' }}>
@@ -96,7 +96,7 @@ function Side({
       <tbody>
         {levels.length === 0 ? (
           <tr>
-            <td colSpan={2} className="zw-sub" style={{ padding: '8px 0', color: 'var(--text-3)' }}>
+            <td colSpan={2} className="zw-sub" style={{ padding: '8px 0', color: 'var(--ink-3)' }}>
               {/* Routine outside market hours, and real information
                   during them: one side of the book is genuinely empty. */}
               No {side === 'buy' ? 'bids' : 'asks'} on the book

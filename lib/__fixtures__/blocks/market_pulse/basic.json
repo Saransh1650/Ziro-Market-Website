@@ -1,0 +1,67 @@
+{
+  "name": "market_pulse",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "market_pulse",
+    "v": 1,
+    "alt": "Global cues: S&P 500 7,706.6 (+0.01%), Crude oil $94.95 (+3.03%).",
+    "title": "Global cues",
+    "asof": "2026-09-24T19:20:51.116Z",
+    "src": "Yahoo Finance",
+    "groups": [
+      {
+        "label": "US markets",
+        "items": [
+          {
+            "label": "S&P 500",
+            "value": "7,706.6",
+            "changePct": 0.01
+          },
+          {
+            "label": "Nasdaq",
+            "value": "26,933.83",
+            "changePct": -0.01
+          },
+          {
+            "label": "Dow Jones",
+            "value": "51,335.46",
+            "changePct": -0.34
+          }
+        ]
+      },
+      {
+        "label": "Commodities, rates & volatility",
+        "items": [
+          {
+            "label": "Crude oil",
+            "value": "$94.95",
+            "changePct": 3.03
+          },
+          {
+            "label": "US 10Y yield",
+            "value": "5.16%",
+            "changePct": 0.94
+          },
+          {
+            "label": "India VIX",
+            "value": "12.69",
+            "changePct": 15.35
+          }
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "Global cues",
+      "US markets",
+      "S&P 500",
+      "7,706.6",
+      "Crude oil",
+      "$94.95",
+      "India VIX"
+    ]
+  }
+}

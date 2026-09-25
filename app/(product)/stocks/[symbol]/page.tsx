@@ -190,11 +190,7 @@ export default async function StockPage(
   const sector = real(detail.sector);
 
   return (
-    // This page is outside AppShell, so it provides its own landmark.
-    <main
-      className="zw"
-      style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: 'var(--s-4) var(--s-4) var(--s-7)' }}
-    >
+    <div className="zw-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(detail, symbol, name, sector)) }}
@@ -216,40 +212,31 @@ export default async function StockPage(
       />
 
       <div className="zw-stock-grid">
-        <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: 'var(--s-5)' }}>
-          <PriceChart
-            symbol={symbol}
-            initialOhlc={detail.ohlc ?? []}
-            previousClose={detail.previousClose}
-          />
+        <div className="zw-stock-main">
+          <section className="zw-panel zw-chartpanel">
+            <PriceChart
+              symbol={symbol}
+              initialOhlc={detail.ohlc ?? []}
+              previousClose={detail.previousClose}
+            />
+          </section>
           {/* StockTabs reads the `tab` query param, which is not known
               at prerender time. The boundary lets the rest of the page
               stay static while this part resolves on the client. */}
-          <Suspense fallback={<div style={{ height: 240 }} aria-hidden="true" />}>
-            <StockTabs symbol={symbol} sector={sector} />
-          </Suspense>
+          <section className="zw-panel">
+            <Suspense fallback={<div style={{ height: 240 }} aria-hidden="true" />}>
+              <StockTabs symbol={symbol} sector={sector} />
+            </Suspense>
+          </section>
         </div>
 
-        <aside style={{ minWidth: 0 }}>
+        <aside className="zw-panel">
           <StatGrid detail={detail} />
         </aside>
       </div>
 
-      <style>{`
-        .zw-stock-grid {
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) 300px;
-          gap: var(--s-6);
-          margin-top: var(--s-5);
-          align-items: start;
-        }
-        @media (max-width: 1023px) {
-          /* The stat rail becomes a section below the chart. It is never
-             hidden behind a tab — these are the numbers people come for. */
-          .zw-stock-grid { grid-template-columns: 1fr; gap: var(--s-5); }
-        }
-      `}</style>
-    </main>
+
+    </div>
   );
 }
 
@@ -273,7 +260,7 @@ function Breadcrumbs({ name, sector }: { name: string; sector?: string }) {
           </>
         )}
         <li className="zw-sub" aria-hidden="true">/</li>
-        <li className="zw-sub" aria-current="page" style={{ color: 'var(--text-1)' }}>{name}</li>
+        <li className="zw-sub" aria-current="page" style={{ color: 'var(--ink)' }}>{name}</li>
       </ol>
     </nav>
   );

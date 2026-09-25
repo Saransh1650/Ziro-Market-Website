@@ -79,13 +79,13 @@ export default function OrderTicket({
       onSubmit={submit}
       aria-label="Place a simulated order"
       style={{
-        border: '1px solid var(--border-1)', borderRadius: 'var(--r-data)',
+        border: '1px solid var(--line)', borderRadius: 'var(--r-ctl)',
         padding: 'var(--s-3)', display: 'flex', flexDirection: 'column', gap: 'var(--s-3)',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 'var(--s-2)' }}>
         <h2 className="zw-section">Place an order</h2>
-        <span className="zw-sub" style={{ color: marketOpen ? 'var(--positive)' : 'var(--text-3)' }}>
+        <span className="zw-sub" style={{ color: marketOpen ? 'var(--up)' : 'var(--ink-3)' }}>
           {marketOpen ? 'Market open' : 'Market closed — queues to next open'}
         </span>
       </div>
@@ -136,12 +136,12 @@ export default function OrderTicket({
       <p
         aria-live="polite"
         className="zw-sub"
-        style={{ minHeight: 18, color: message?.tone === 'bad' ? 'var(--negative)' : 'var(--positive)' }}
+        style={{ minHeight: 18, color: message?.tone === 'bad' ? 'var(--down)' : 'var(--up)' }}
       >
         {message?.text ?? ' '}
       </p>
 
-      <p className="zw-sub" style={{ color: 'var(--text-3)' }}>
+      <p className="zw-sub" style={{ color: 'var(--ink-3)' }}>
         Simulated only. No real money and no real order reaches an exchange.
       </p>
     </form>
@@ -150,5 +150,5 @@ export default function OrderTicket({
 
 const fieldStyle: React.CSSProperties = {
   height: 34, padding: '0 8px', background: 'transparent',
-  border: '1px solid var(--border-2)', borderRadius: 'var(--r-ctl)', fontSize: 13,
+  border: '1px solid var(--line-strong)', borderRadius: 'var(--r-ctl)', fontSize: 13,
 };

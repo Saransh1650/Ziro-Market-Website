@@ -1,5 +1,6 @@
 import { num } from '@/lib/format/number';
 import LivePrice from './LivePrice';
+import { StockLogo } from './StockCell';
 
 /**
  * Symbol, name, price, change, and the day's range with the current
@@ -32,39 +33,32 @@ export default function PriceHeader({
   yearHigh?: number;
 }) {
   return (
-    <header style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-2)' }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--s-3)', flexWrap: 'wrap' }}>
+    <header className="zw-panel zw-pricehead">
+      <div className="id">
+        <StockLogo symbol={symbol} size={56} />
         <div style={{ minWidth: 0 }}>
-          <h1 style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--s-2)', flexWrap: 'wrap' }}>
-            <span className="zw-title">{companyName}</span>
-            <span className="zw-num" style={{ fontSize: 13, color: 'var(--text-3)' }}>{symbol}</span>
-          </h1>
-          {sector && (
-            <p className="zw-sub" style={{ marginTop: 2 }}>
-              NSE · {sector}
-            </p>
-          )}
-        </div>
-
-        <div style={{ marginLeft: 'auto' }}>
-          <LivePrice
-            symbol={symbol}
-            initialPrice={lastPrice}
-            initialChange={change}
-            initialPChange={pChange}
-          />
+          <h1 className="zw-title">{companyName}</h1>
+          <p className="zw-sub">
+            <span className="tag">{symbol}</span>
+            <span className="tag">NSE</span>
+            {sector && <span>{sector}</span>}
+          </p>
         </div>
       </div>
 
-      <RangeBar
-        label="Day range"
-        low={dayLow}
-        high={dayHigh}
-        current={lastPrice}
+      <LivePrice
+        symbol={symbol}
+        initialPrice={lastPrice}
+        initialChange={change}
+        initialPChange={pChange}
       />
-      {yearLow != null && yearHigh != null && yearHigh > 0 && (
-        <RangeBar label="52-week range" low={yearLow} high={yearHigh} current={lastPrice} />
-      )}
+
+      <div className="ranges">
+        <RangeBar label="Day range" low={dayLow} high={dayHigh} current={lastPrice} />
+        {yearLow != null && yearHigh != null && yearHigh > 0 && (
+          <RangeBar label="52-week range" low={yearLow} high={yearHigh} current={lastPrice} />
+        )}
+      </div>
     </header>
   );
 }
@@ -93,31 +87,22 @@ function RangeBar({
   const position = span > 0 ? Math.min(100, Math.max(0, ((current - low) / span) * 100)) : 50;
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--s-3)', maxWidth: 520 }}>
-      <span className="zw-colhead" style={{ width: 96, flexShrink: 0 }}>{label}</span>
-      <span className="zw-num" style={{ fontSize: 11, color: 'var(--text-2)', width: 68, textAlign: 'right' }}>
-        {num(low, 2)}
-      </span>
+    <div className="zw-range">
+      <div className="lbl">
+        <span className="zw-colhead">{label}</span>
+      </div>
       <span
-        style={{ position: 'relative', flex: 1, height: 3, background: 'var(--bg-3)', borderRadius: 2 }}
+        className="track"
+        style={{ ['--pos' as string]: `${position}%` }}
         role="img"
         aria-label={`${label}: ${num(low, 2)} to ${num(high, 2)}, currently ${num(current, 2)}`}
       >
-        <span
-          style={{
-            position: 'absolute',
-            left: `${position}%`,
-            top: -3,
-            width: 2,
-            height: 9,
-            background: 'var(--text-1)',
-            transform: 'translateX(-1px)',
-          }}
-        />
+        <span className="dot" style={{ left: `${position}%` }} />
       </span>
-      <span className="zw-num" style={{ fontSize: 11, color: 'var(--text-2)', width: 68 }}>
-        {num(high, 2)}
-      </span>
+      <div className="ends">
+        <span className="zw-num">{num(low, 2)}</span>
+        <span className="zw-num">{num(high, 2)}</span>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,43 @@
+{
+  "name": "snapshot",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "snapshot",
+    "v": 1,
+    "alt": "RELIANCE (Reliance Industries Limited): Sector Energy, Market cap ₹16.50 lakh cr.",
+    "asof": "2026-09-25T09:58:00.000Z",
+    "src": "Yahoo Finance · Upstox",
+    "symbol": "RELIANCE",
+    "name": "Reliance Industries Limited",
+    "sector": "Energy",
+    "stats": [
+      {
+        "label": "Sector",
+        "value": "Energy"
+      },
+      {
+        "label": "Market cap",
+        "value": "₹16.50 lakh cr"
+      },
+      {
+        "label": "Prev close",
+        "value": "₹1,240.40"
+      },
+      {
+        "label": "Volume (latest)",
+        "value": "68.20 L"
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "RELIANCE",
+      "Reliance Industries Limited",
+      "Market cap",
+      "₹16.50 lakh cr",
+      "Volume (latest)"
+    ]
+  }
+}

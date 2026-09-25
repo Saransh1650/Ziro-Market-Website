@@ -48,11 +48,7 @@ export default function StockTabs({ symbol, sector }: { symbol: string; sector?:
 
   return (
     <section style={{ display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-      <div
-        role="tablist"
-        aria-label="More about this stock"
-        style={{ display: 'flex', gap: 'var(--s-4)', borderBottom: '1px solid var(--border-1)' }}
-      >
+      <div role="tablist" aria-label="More about this stock" className="zw-tabs zw-tabs-inset">
         {tabs.map(([id, label]) => (
           <button
             key={id}
@@ -62,17 +58,7 @@ export default function StockTabs({ symbol, sector }: { symbol: string; sector?:
             aria-selected={tab === id}
             aria-controls={`panel-${id}`}
             onClick={() => setTab(id)}
-            style={{
-              background: 'none',
-              border: 0,
-              padding: '8px 0',
-              cursor: 'pointer',
-              fontSize: 12,
-              fontWeight: 600,
-              color: tab === id ? 'var(--text-1)' : 'var(--text-3)',
-              borderBottom: `2px solid ${tab === id ? 'var(--text-1)' : 'transparent'}`,
-              marginBottom: -1,
-            }}
+            className="zw-tab"
           >
             {label}
           </button>
@@ -84,7 +70,7 @@ export default function StockTabs({ symbol, sector }: { symbol: string; sector?:
         id={`panel-${tab}`}
         aria-labelledby={`tab-${tab}`}
         tabIndex={0}
-        style={{ paddingTop: 'var(--s-3)' }}
+        className="zw-tabpanel"
       >
         {tab === 'depth' ? (
           <DepthLadder symbol={symbol} />
@@ -116,7 +102,7 @@ function NewsPanel({ symbol }: { symbol: string }) {
         const href = item.link ?? item.url;
         const when = item.publishedAt ?? item.pubDate;
         return (
-          <li key={`${item.title}-${i}`} style={{ borderBottom: '1px solid var(--border-1)' }}>
+          <li key={`${item.title}-${i}`} style={{ borderBottom: '1px solid var(--line)' }}>
             {/* No thumbnails. Indian financial feeds return stock photos
                 and logos, which make a list of headlines slower to scan,
                 not faster. */}
@@ -126,7 +112,7 @@ function NewsPanel({ symbol }: { symbol: string }) {
               rel="noopener noreferrer"
               style={{ display: 'block', padding: '10px 0' }}
             >
-              <p style={{ fontSize: 14, lineHeight: 1.45, maxWidth: '68ch', color: 'var(--text-1)' }}>
+              <p style={{ fontSize: 14, lineHeight: 1.45, maxWidth: '68ch', color: 'var(--ink)' }}>
                 {item.title}
               </p>
               <p className="zw-sub" style={{ marginTop: 3 }}>
@@ -173,9 +159,9 @@ function RelatedPanel({ symbol, sector }: { symbol: string; sector: string }) {
           const price = s.lastPrice ?? s.price;
           const change = s.pChange ?? s.changePercent;
           return (
-            <tr key={s.symbol} style={{ borderTop: '1px solid var(--border-1)' }}>
+            <tr key={s.symbol} style={{ borderTop: '1px solid var(--line)' }}>
               <th scope="row" style={{ textAlign: 'left', padding: '7px 0', fontWeight: 400 }}>
-                <Link href={`/stocks/${encodeURIComponent(s.symbol)}`} style={{ color: 'var(--text-1)' }}>
+                <Link href={`/stocks/${encodeURIComponent(s.symbol)}`} style={{ color: 'var(--ink)' }}>
                   <span className="zw-sym">{s.symbol}</span>
                   {(s.name ?? s.companyName) && (
                     <span className="zw-sub" style={{ display: 'block' }}>{s.name ?? s.companyName}</span>
@@ -202,8 +188,8 @@ function ListSkeleton({ rows }: { rows: number }) {
   return (
     <div aria-hidden="true">
       {Array.from({ length: rows }).map((_, i) => (
-        <div key={i} style={{ height: 36, borderBottom: '1px solid var(--border-1)', display: 'flex', alignItems: 'center' }}>
-          <span style={{ width: `${60 - i * 4}%`, height: 9, background: 'var(--bg-2)', borderRadius: 2 }} />
+        <div key={i} style={{ height: 36, borderBottom: '1px solid var(--line)', display: 'flex', alignItems: 'center' }}>
+          <span style={{ width: `${60 - i * 4}%`, height: 9, background: 'var(--surface-hover)', borderRadius: 2 }} />
         </div>
       ))}
     </div>
@@ -211,7 +197,7 @@ function ListSkeleton({ rows }: { rows: number }) {
 }
 
 function Empty({ children }: { children: React.ReactNode }) {
-  return <p className="zw-sub" style={{ padding: 'var(--s-4) 0', color: 'var(--text-3)' }}>{children}</p>;
+  return <p className="zw-sub" style={{ padding: 'var(--s-4) 0', color: 'var(--ink-3)' }}>{children}</p>;
 }
 
 function Failed({ message, onRetry }: { message: string; onRetry: () => void }) {

@@ -26,7 +26,7 @@ export default function TickerStrip() {
     return (
       <div
         className="zw-sub"
-        style={{ flex: 1, minWidth: 0, color: 'var(--text-3)' }}
+        style={{ flex: 1, minWidth: 0, color: 'var(--ink-3)' }}
       >
         Index data unavailable
       </div>
@@ -43,7 +43,6 @@ export default function TickerStrip() {
           minWidth: 0,
           display: 'flex',
           alignItems: 'center',
-          gap: 'var(--s-4)',
           height: 'var(--ticker-h)',
         }}
         // Not a live region. It would never stop talking.
@@ -85,25 +84,15 @@ function TickerItem({ index }: { index: NiftyIndex }) {
   return (
     <div
       ref={ref}
-      style={{
-        display: 'flex',
-        alignItems: 'baseline',
-        gap: 6,
-        whiteSpace: 'nowrap',
-        flexShrink: 0,
-        padding: '0 2px',
-      }}
+      className="zw-tick"
     >
-      <span style={{ fontSize: 10, fontWeight: 600, color: 'var(--text-3)', letterSpacing: '0.02em' }}>
-        {index.displayName}
-      </span>
-      <span className="zw-num" style={{ fontSize: 12, fontWeight: 500 }}>
+      <span className="lbl">{index.displayName}</span>
+      <span className="zw-num val">
         {num(index.price, 2)}
       </span>
       <span
         className="zw-delta"
         data-dir={dir}
-        style={{ fontSize: 11 }}
         aria-label={`${index.displayName} ${dir === 'up' ? 'up' : dir === 'down' ? 'down' : 'unchanged'} ${Math.abs(index.changePercent).toFixed(2)} percent`}
       >
         <span className="sign" aria-hidden="true">
@@ -127,10 +116,10 @@ function SessionDot({ open, label }: { open: boolean; label: string }) {
           width: 6,
           height: 6,
           borderRadius: '50%',
-          background: open ? 'var(--positive)' : 'var(--text-4)',
+          background: open ? 'var(--up)' : 'var(--ink-3)',
         }}
       />
-      <span style={{ fontSize: 10, fontWeight: 600, color: 'var(--text-3)' }}>{label}</span>
+      <span style={{ fontSize: 10, fontWeight: 600, color: 'var(--ink-3)' }}>{label}</span>
     </div>
   );
 }
@@ -144,7 +133,7 @@ function TickerSkeleton() {
       {[110, 96, 104, 88].map((w, i) => (
         <span
           key={i}
-          style={{ width: w, height: 10, background: 'var(--bg-2)', borderRadius: 2, flexShrink: 0 }}
+          style={{ width: w, height: 10, background: 'var(--surface-hover)', borderRadius: 2, flexShrink: 0 }}
         />
       ))}
     </div>

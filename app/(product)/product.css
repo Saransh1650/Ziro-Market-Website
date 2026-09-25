@@ -1,353 +1,993 @@
 /* ============================================================
    ZIRO WEB — PRODUCT SURFACE
-   Loaded only on /app/* and the public product pages. Extends the
-   marketing tokens in globals.css; never redefines them for the
-   marketing site.
+   Loaded only on /app/* and the public product pages.
 
-   The design is a ledger, not a dashboard: ruled rows, no cards,
-   no shadows outside true overlays, numbers in aligned columns.
+   Position: monochrome chrome, colour reserved entirely for data.
+   The only hues in the product are up-green and down-red. Buttons,
+   active tabs and links are ink. Nothing else gets colour, because
+   on a screen of numbers anything coloured claims to be a number
+   that moved.
    ============================================================ */
 
+/* ─── LIGHT ─────────────────────────────────────────────── */
 .zw {
-  /* Structure — a row is 36px everywhere in the product, so the
-     reading rhythm never changes between surfaces. */
-  --row-h: 36px;
-  --rail-w: 72px;
-  --header-h: 52px;
-  --ticker-h: 36px;
-  --panel-w: 380px;
+  /* Surfaces. Two planes, not one: the page is a step darker than
+     the panels sitting on it. Elevation in this category is a
+     background step plus a 1px border — not a drop shadow. */
+  --page: #f6f7f8;
+  --surface: #ffffff;
+  --surface-sunken: #fafbfb;
+  --surface-hover: rgba(17, 20, 24, 0.035);
+  --surface-active: rgba(17, 20, 24, 0.06);
 
-  --s-1: 4px;
-  --s-2: 8px;
-  --s-3: 12px;
-  --s-4: 16px;
-  --s-5: 24px;
-  --s-6: 32px;
-  --s-7: 48px;
+  /* Lines. The divider is the single most-used structural device in
+     the product, so it is a real line, not a hairline you squint at. */
+  --line: #e6e8ea;
+  --line-strong: #d4d8dc;
 
-  /* Three radii, each with a reason: data is square, controls are
-     softened, overlays float. */
-  --r-data: 0px;
-  --r-ctl: 4px;
-  --r-overlay: 8px;
+  /* Ink. Never pure black — #000 on white is harsh at 13px and no
+     competitor uses it. */
+  --ink: #16191d;
+  --ink-2: #5b636e;
+  /* Checked against --page, the darker of the two surfaces it lands on:
+     5.01:1 there, 5.38:1 on a panel. The lighter #868f9b it replaced
+     was 3.05:1 and failed at the 12px it is used for. */
+  --ink-3: #646b75;
 
-  /* The marketing --text-3 is rgba(11,59,46,.42) — 2.36:1 on white.
-     That is fine on a 16px marketing paragraph and not fine on a 10px
-     column head, so the product darkens both muted steps and keeps the
-     hierarchy between them.
+  /* Ink is also the accent: buttons, active states and links. */
+  --accent: #16191d;
+  --on-accent: #ffffff;
 
-     --text-3 is checked against --bg-2, not against the page canvas:
-     muted text lands on a hovered row or a selected palette result
-     constantly, and a value tuned only for white fails there (4.32:1).
-     At #4f7269 it clears 4.5:1 on both. */
-  --text-2: #375e54;
-  --text-3: #4f7269;
-  --flat: var(--text-3);
-  --max-w: 1560px;
+  /* Data. Three variants per direction, which is the detail most
+     products get wrong: darker on white, lighter on black, and a
+     third for chart strokes that needs neither to be legible as
+     text. */
+  --up: #06806b;
+  --down: #c8322e;
+  --up-chart: #089981;
+  --down-chart: #f23645;
+  --up-wash: #e8f6f2;
+  --down-wash: #fdecea;
+  --flat: var(--ink-3);
 
-  /* Tint ramp for the sector mosaic.
-     Opaque, not alpha over the canvas. Transparency made the scale
-     depend on whatever it sat on: the same red composited over the
-     forest canvas in dark mode came out brown, which nobody reads as
-     "down". Five steps a side, so a 0.1% move and a 4% move never
-     look alike. */
-  --pos-1: #e8f2ec;
-  --pos-2: #c7e2d3;
-  --pos-3: #8ec4a8;
-  --pos-4: #1f7a4a;
-  --pos-5: #14522f;
-  --neg-1: #fbeaea;
-  --neg-2: #f5cfcf;
-  --neg-3: #e9a3a3;
-  --neg-4: #c0392b;
-  --neg-5: #99211f;
-  --tint-ink: var(--text-1);
+  --scrim: rgba(12, 15, 18, 0.32);
+  --shadow-pop: 0 4px 12px rgba(12, 15, 18, 0.08), 0 1px 3px rgba(12, 15, 18, 0.06);
+  --shadow-overlay: 0 16px 48px rgba(12, 15, 18, 0.16), 0 2px 8px rgba(12, 15, 18, 0.08);
+
+  /* Mosaic tint ramp. Opaque per theme — alpha over a canvas made the
+     same red composite differently on every surface. */
+  --pos-1: #e6f4f0; --pos-2: #c3e6dd; --pos-3: #8ed0c1;
+  --pos-4: #23947c; --pos-5: #0d6b58;
+  --neg-1: #fdeceb; --neg-2: #f8d2cf; --neg-3: #efa8a3;
+  --neg-4: #cf4038; --neg-5: #9e2a24;
+  --tint-ink: var(--ink);
   --tint-ink-strong: #ffffff;
 }
 
-/* ─── DARK ─── forest becomes the canvas, cream becomes the ink.
-   A token flip. No component changes structure between themes. */
-[data-theme="dark"] .zw {
-  --bg-0: #0b3b2e;
-  --bg-1: #0e4535;
-  --bg-2: rgba(239, 233, 221, 0.06);
-  --bg-3: rgba(239, 233, 221, 0.11);
-  --border-1: rgba(239, 233, 221, 0.12);
-  --border-2: rgba(239, 233, 221, 0.22);
-  --text-1: #f3efe7;
-  --text-2: #c0c7be;
-  /* Same rule in dark: checked against --bg-2 (#194639), not the canvas. */
-  --text-3: #9faea4;
-  --text-4: rgba(243, 239, 231, 0.2);
-  --amber: #e0a84c;
-  --amber-dim: rgba(224, 168, 76, 0.14);
-  --gold: #f2c270;
-  --positive: #22c55e;
-  --positive-dim: rgba(34, 197, 94, 0.14);
-  /* The mobile app's #ef4444 is 3.32:1 on this canvas — fine on its
-     near-black background, not on forest. Lightened until a 11px
-     figure is legible; the positive at #22c55e already clears 5.49. */
-  --negative: #f98080;
-  --negative-dim: rgba(249, 128, 128, 0.14);
+/* ─── DARK ──────────────────────────────────────────────── */
+/* Near-black, not green. The page is deeper than the panels so a
+   chart reads as sitting *in* the surface. */
+[data-theme='dark'] .zw {
+  --page: #0b0d0f;
+  --surface: #16191d;
+  --surface-sunken: #101316;
+  --surface-hover: rgba(235, 240, 245, 0.05);
+  --surface-active: rgba(235, 240, 245, 0.09);
 
-  /* Negatives are kept free of any green channel, so they read as red
-     against the forest canvas rather than blending into brown. */
-  --pos-1: #10493a;
-  --pos-2: #14664a;
-  --pos-3: #157650;
-  --pos-4: #1faf6d;
-  --pos-5: #3ee08d;
-  --neg-1: #45201f;
-  --neg-2: #6b2422;
-  --neg-3: #9e2f2a;
-  --neg-4: #e0635b;
-  --neg-5: #f58b84;
-  --tint-ink: var(--text-1);
-  --tint-ink-strong: #06241b;
+  --line: #24282d;
+  --line-strong: #363c43;
+
+  /* Never pure white on a dark data UI. */
+  --ink: #e6e9ed;
+  --ink-2: #9aa3ae;
+  /* 5.31:1 on a panel, 5.86:1 on the page. */
+  --ink-3: #858e99;
+
+  --accent: #e6e9ed;
+  --on-accent: #0b0d0f;
+
+  --up: #22ab94;
+  --down: #f7525f;
+  --up-chart: #089981;
+  --down-chart: #f23645;
+  --up-wash: rgba(34, 171, 148, 0.14);
+  --down-wash: rgba(247, 82, 95, 0.14);
+
+  --scrim: rgba(0, 0, 0, 0.6);
+  --shadow-pop: 0 4px 12px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-overlay: 0 16px 48px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5);
+
+  --pos-1: #10352e; --pos-2: #12503f; --pos-3: #15705a;
+  --pos-4: #1a9a7c; --pos-5: #33c9a6;
+  --neg-1: #3a1c1c; --neg-2: #5c2523; --neg-3: #8f332f;
+  --neg-4: #d9483f; --neg-5: #f4766c;
+  --tint-ink: var(--ink);
+  --tint-ink-strong: #0b0d0f;
 }
 
-/* ─── SURFACE RESET ───
-   `.zw` wraps every product page. The marketing site sets
-   scroll-behavior:smooth and overflow-x:hidden globally; a data
-   surface wants neither. */
+/* ─── STRUCTURE ─────────────────────────────────────────── */
 .zw {
-  background: var(--bg-0);
-  color: var(--text-1);
-  font-family: var(--sans);
-  font-size: 13px;
-  line-height: 1.4;
-  min-height: 100dvh;
-}
-.zw :where(p) {
-  font-size: inherit;
-  color: inherit;
-  line-height: inherit;
+  --rail-w: 68px;
+  --header-h: 56px;
+  --ticker-h: 36px;
+  --panel-w: 380px;
+
+  /* Retail density: a 44px row. Under 40px reads as a pro terminal,
+     over 60px as a phone app scaled up. */
+  --row-h: 44px;
+  --cell-x: 12px;
+  --cell-y: 11px;
+
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
+  --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px;
+
+  --r-ctl: 8px;
+  --r-card: 14px;
+  --r-pill: 999px;
+
+  --max-w: 1280px;
+  --gutter: 32px;
+
+  --ease: cubic-bezier(0.2, 0, 0.2, 1);
+  --t-fast: 120ms;
 }
 
-/* ─── TYPE ROLES ───
-   Small, because density is the point. A 16px base would halve how
-   many rows fit on screen. */
-.zw-title {
-  font-size: 22px;
-  line-height: 28px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-.zw-section {
-  font-size: 13px;
-  line-height: 18px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-.zw-sym {
-  font-size: 13px;
-  line-height: 18px;
-  font-weight: 600;
-}
-.zw-sub {
-  font-size: 11px;
-  line-height: 15px;
-  color: var(--text-2);
-}
-/* The only all-caps in the product. It earns it: a 10px head is what
-   separates a header row from a body row at a glance. */
-.zw-colhead {
-  font-size: 10px;
-  line-height: 14px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-3);
-}
-.zw-prose {
-  font-size: 15px;
-  line-height: 25px;
-  max-width: 68ch;
-  color: var(--text-2);
-}
-
-/* ─── NUMERALS ───
-   Every number in the product is mono and tabular, so a column of
-   prices aligns on the decimal with no per-cell hacks. */
-.zw-num {
-  font-family: var(--mono);
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1;
-  letter-spacing: -0.01em;
-}
-.zw-num-lg {
-  font-size: 15px;
+/* ─── BASE ──────────────────────────────────────────────── */
+.zw {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-product), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 14px;
   line-height: 20px;
-  font-weight: 500;
+  min-height: 100dvh;
+
+  /* The single highest-return line in this file. Tabular figures keep
+     every column aligned on the decimal, and lining figures stop them
+     dropping below the baseline. Applied once, globally — no
+     monospace face anywhere. */
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  font-variant-numeric: tabular-nums lining-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.zw :where(p) { font-size: inherit; color: inherit; line-height: inherit; margin: 0; }
+.zw :where(h1, h2, h3, h4) { font-weight: 600; margin: 0; }
+.zw :where(input, select, textarea, button) { font-family: inherit; font-feature-settings: inherit; }
+
+/* ─── TYPE ──────────────────────────────────────────────── */
+/* Line-heights are px on a 4px grid, not ratios — that is what keeps
+   a dense screen on rhythm. */
+.zw-title    { font-size: 24px; line-height: 32px; font-weight: 650; letter-spacing: -0.02em; }
+.zw-section  { font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; }
+.zw-sym      { font-size: 14px; line-height: 20px; font-weight: 600; }
+.zw-body     { font-size: 14px; line-height: 20px; }
+.zw-sub      { font-size: 13px; line-height: 18px; color: var(--ink-2); }
+.zw-meta     { font-size: 12px; line-height: 16px; color: var(--ink-3); }
+.zw-prose    { font-size: 15px; line-height: 24px; max-width: 68ch; color: var(--ink-2); }
+
+/* The one uppercase style in the product. A 10px tracked eyebrow does
+   a disproportionate amount of "designed" work for its cost. */
+.zw-eyebrow {
+  font-size: 10px; line-height: 14px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
 }
 
-/* ─── THE SIGN COLUMN ───
-   The signature device. The +/- sits in its own fixed-width cell
-   before the digits, so scanning a column shows a clean run of signs
-   before a single digit is read. The glyph is always rendered —
-   colour is never the only signal. */
-.zw-delta {
-  display: inline-grid;
-  grid-template-columns: 0.6em auto;
-  gap: 1px;
-  align-items: baseline;
-  font-family: var(--mono);
-  font-variant-numeric: tabular-nums;
-}
-.zw-delta > .sign {
-  text-align: center;
-}
-.zw-delta[data-dir="up"] {
-  color: var(--positive);
-}
-.zw-delta[data-dir="down"] {
-  color: var(--negative);
-}
-.zw-delta[data-dir="flat"] {
-  color: var(--flat);
+/* Column heads match the page, at normal weight and muted. A grey
+   header band with bold text is the raw-HTML default; nobody in this
+   category ships it. */
+.zw-colhead {
+  font-size: 12px; line-height: 16px; font-weight: 400;
+  color: var(--ink-3); white-space: nowrap;
 }
 
-/* A value that stopped updating says so, rather than passing itself
-   off as live. */
-.zw-stale {
-  opacity: 0.6;
+/* Numerals need no class now that tnum is global. Kept as a hook for
+   the few places that want a size bump. */
+.zw-num { font-variant-numeric: tabular-nums lining-nums; }
+.zw-num-lg { font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -0.01em; }
+
+/* Interactive text, distinguishable from a caption. Muted text that
+   is also a link was the single most confusing thing in the old build. */
+.zw-link { color: var(--ink); font-weight: 500; }
+.zw-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.zw-stale { opacity: 0.55; }
+
+/* ─── PAGE ──────────────────────────────────────────────── */
+/* One container, used by every surface. The old build repeated an
+   inline copy in eight files with a 12px gutter — less than half the
+   marketing site's. */
+.zw-page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--s-5) var(--gutter) var(--s-8);
+}
+.zw-page-wide { max-width: 1560px; }
+
+.zw-head {
+  display: flex; align-items: baseline; gap: var(--s-3);
+  flex-wrap: wrap; padding-bottom: var(--s-4);
 }
 
-/* ─── RULES, NOT CARDS ─── */
-.zw-rule {
-  border: 0;
-  border-top: 1px solid var(--border-1);
-}
+/* ─── PANEL ─────────────────────────────────────────────── */
+/* The container primitive. The old system defined one and never used
+   it, which is why everything sat on a single flat plane. */
 .zw-panel {
-  border: 1px solid var(--border-1);
-  border-radius: var(--r-data);
-  background: var(--bg-0);
-}
-
-/* ─── ROWS ─── */
-.zw-row {
-  display: grid;
-  align-items: center;
-  height: var(--row-h);
-  padding: 0 var(--s-3);
-  border-bottom: 1px solid var(--border-1);
-}
-.zw-row:hover {
-  background: var(--bg-2);
-}
-
-/* ─── CONTROLS ─── */
-.zw-chip {
-  height: 26px;
-  padding: 0 10px;
-  border: 1px solid var(--border-1);
-  border-radius: var(--r-ctl);
-  background: transparent;
-  color: var(--text-2);
-  font-size: 11px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.zw-chip:hover {
-  border-color: var(--border-2);
-  color: var(--text-1);
-}
-.zw-chip[aria-pressed="true"],
-.zw-chip[data-active="true"] {
-  background: var(--text-1);
-  border-color: var(--text-1);
-  color: var(--bg-0);
-}
-
-/* ─── FOCUS ─── never removed, always visible. */
-.zw :focus-visible {
-  outline: 2px solid var(--amber);
-  outline-offset: 2px;
-  border-radius: var(--r-ctl);
-}
-
-/* ─── VISUALLY HIDDEN ───
-   For the page heading. The surfaces are deliberately chrome-free — a
-   "Market map" title above a market map is a label nobody needs — but a
-   page still owes a screen reader one h1 saying where it is. */
-.zw-sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  /* Clip so a table's rules stop cleanly at the rounded corner and
+     the panel reads as one object. */
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+}
+.zw-panel-head {
+  display: flex; align-items: center; gap: var(--s-2);
+  padding: var(--s-4) var(--s-4) var(--s-3);
+}
+.zw-panel-head > .zw-section { flex: 1; min-width: 0; }
+.zw-panel-body { padding: 0 var(--s-4) var(--s-4); }
+.zw-panel-foot {
+  border-top: 1px solid var(--line);
+  padding: 10px var(--s-4);
 }
 
-/* ─── SKIP LINK ─── */
-.zw-skip {
-  position: absolute;
-  left: -9999px;
-  z-index: 999;
+/* A section grouping several panels. */
+.zw-group { padding-top: var(--s-6); }
+.zw-group:first-of-type { padding-top: 0; }
+.zw-group-head {
+  display: flex; align-items: baseline; gap: var(--s-3);
+  padding-bottom: var(--s-3);
 }
+
+/* ─── TABLE ─────────────────────────────────────────────── */
+.zw-table { width: 100%; border-collapse: collapse; }
+.zw-table th, .zw-table td { white-space: nowrap; }
+
+.zw-table thead th {
+  /* Matches the surface rather than sitting in a grey band. */
+  background: var(--surface);
+  padding: 0 var(--cell-x) 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+.zw-table tbody td {
+  padding: var(--cell-y) var(--cell-x);
+  border-bottom: 1px solid var(--line);
+  height: var(--row-h);
+}
+.zw-table tbody tr:last-child td { border-bottom: 0; }
+
+/* First column gets extra leading room; right-aligned numerals get
+   asymmetric padding so they sit optically centred on the edge. */
+.zw-table th:first-child, .zw-table td:first-child { padding-left: var(--s-4); }
+.zw-table th:last-child,  .zw-table td:last-child  { padding-right: var(--s-4); }
+.zw-table .num { text-align: right; padding-right: var(--cell-x); padding-left: var(--s-2); }
+.zw-table th.num { text-align: right; }
+
+.zw-rowlink { cursor: pointer; transition: background var(--t-fast) var(--ease); }
+.zw-rowlink:hover { background: var(--surface-hover); }
+
+/* Row actions stay invisible until the row is under the cursor. This
+   is the main reason a dense table feels calm rather than busy. */
+.zw-rowaction { opacity: 0; transition: opacity var(--t-fast) var(--ease); }
+.zw-rowlink:hover .zw-rowaction,
+.zw-rowaction:focus-within { opacity: 1; }
+@media (hover: none) { .zw-rowaction { opacity: 1; } }
+
+/* A permanent, colourless wash on the column that matters, so the eye
+   finds it without spending a hue. */
+.zw-table .emphasis { font-weight: 600; }
+
+/* ─── CONTROLS ──────────────────────────────────────────── */
+.zw-chip {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: 32px; padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-ctl);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer;
+  transition: background var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease);
+}
+.zw-chip:hover { background: var(--surface-hover); color: var(--ink); }
+.zw-chip[aria-pressed='true'], .zw-chip[data-active='true'] {
+  background: var(--accent); border-color: var(--accent); color: var(--on-accent);
+}
+.zw-chip:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.zw-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 40px; padding: 0 18px;
+  border: 1px solid var(--accent); border-radius: var(--r-ctl);
+  background: var(--accent); color: var(--on-accent);
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: opacity var(--t-fast) var(--ease);
+}
+.zw-btn:hover { opacity: 0.88; }
+.zw-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.zw-field {
+  height: 40px; padding: 0 12px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-ctl);
+  color: var(--ink); font-size: 14px;
+  transition: border-color var(--t-fast) var(--ease);
+}
+.zw-field:focus { border-color: var(--ink-2); outline: none; }
+
+/* Segmented control — for switchers that were previously bare links
+   indistinguishable from captions. */
+.zw-seg { display: inline-flex; background: var(--surface-sunken);
+  border: 1px solid var(--line); border-radius: var(--r-ctl); padding: 2px; gap: 2px; }
+.zw-seg > * {
+  height: 28px; padding: 0 12px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--ink-2);
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  display: inline-flex; align-items: center;
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.zw-seg > [aria-pressed='true'], .zw-seg > [aria-current='page'] {
+  background: var(--surface); color: var(--ink); box-shadow: var(--shadow-pop);
+}
+
+/* ─── TABS ──────────────────────────────────────────────── */
+.zw-tabs { display: flex; gap: var(--s-5); border-bottom: 1px solid var(--line); }
+.zw-tab {
+  background: none; border: 0; padding: 10px 0; cursor: pointer;
+  font-size: 14px; font-weight: 500; color: var(--ink-3);
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.zw-tab:hover { color: var(--ink-2); }
+.zw-tab[aria-selected='true'], .zw-tab[data-active='true'] {
+  color: var(--ink); border-bottom-color: var(--accent);
+}
+
+/* ─── DELTA ─────────────────────────────────────────────── */
+/* The sign sits in its own fixed cell so a column shows a clean run of
+   signs. The glyph is always rendered — colour is never the only
+   signal. */
+.zw-delta {
+  display: inline-grid; grid-template-columns: 0.62em auto;
+  gap: 1px; align-items: baseline;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.zw-delta > .sign { text-align: center; }
+.zw-delta[data-dir='up'] { color: var(--up); }
+.zw-delta[data-dir='down'] { color: var(--down); }
+.zw-delta[data-dir='flat'] { color: var(--flat); }
+
+/* ─── FOCUS ─────────────────────────────────────────────── */
+.zw :focus-visible {
+  outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px;
+}
+.zw-skip { position: absolute; left: -9999px; z-index: 999; }
 .zw-skip:focus {
-  left: var(--s-3);
-  top: var(--s-2);
-  padding: var(--s-2) var(--s-3);
-  background: var(--bg-0);
-  border: 1px solid var(--border-2);
+  left: var(--s-3); top: var(--s-2); padding: var(--s-2) var(--s-3);
+  background: var(--surface); border: 1px solid var(--line-strong);
   border-radius: var(--r-ctl);
 }
+.zw-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
 
-/* ─── MOTION ───
-   The one piece of ambient motion in the product: a changed value
-   flashes, so the eye knows which of forty numbers just moved. */
+/* ─── MOTION ────────────────────────────────────────────── */
+/* A changed value flashes as a filled chip in its direction's colour,
+   which reads at a glance in a way a text-colour change does not. */
 @keyframes zw-flash-up {
-  from {
-    background: var(--positive-dim);
-  }
-  to {
-    background: transparent;
-  }
+  from { background: var(--up-wash); }
+  to   { background: transparent; }
 }
 @keyframes zw-flash-down {
-  from {
-    background: var(--negative-dim);
-  }
-  to {
-    background: transparent;
-  }
+  from { background: var(--down-wash); }
+  to   { background: transparent; }
 }
-.zw-flash-up {
-  animation: zw-flash-up 400ms var(--ease-out);
-}
-.zw-flash-down {
-  animation: zw-flash-down 400ms var(--ease-out);
-}
+.zw-flash-up   { animation: zw-flash-up 500ms var(--ease); }
+.zw-flash-down { animation: zw-flash-down 500ms var(--ease); }
 
 @media (prefers-reduced-motion: reduce) {
-  .zw *,
-  .zw *::before,
-  .zw *::after {
+  .zw *, .zw *::before, .zw *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  /* The flash still needs to communicate. It becomes a static
-     outline instead of an animation. */
-  .zw-flash-up,
-  .zw-flash-down {
-    outline: 1px solid currentColor;
-  }
+  .zw-flash-up, .zw-flash-down { outline: 1px solid currentColor; }
 }
 
-/* ─── SCROLLBARS ─── thin, so a dense table isn't eaten by chrome. */
-.zw-scroll-x {
-  overflow-x: auto;
-  scrollbar-width: thin;
-}
-.zw-scroll-x::-webkit-scrollbar {
-  height: 6px;
-}
+/* ─── SCROLL ────────────────────────────────────────────── */
+.zw-scroll-x { overflow-x: auto; scrollbar-width: thin; }
+.zw-scroll-x::-webkit-scrollbar { height: 8px; }
 .zw-scroll-x::-webkit-scrollbar-thumb {
-  background: var(--border-2);
-  border-radius: 3px;
+  background: var(--line-strong); border-radius: 4px;
 }
+.zw-scroll-x::-webkit-scrollbar-track { background: transparent; }
+
+/* ─── SKELETON ──────────────────────────────────────────── */
+.zw-skel {
+  background: var(--surface-active); border-radius: 4px;
+  height: 10px; display: block;
+}
+
+@media (max-width: 767px) {
+  .zw { --gutter: 16px; }
+  .zw-page { padding: var(--s-4) var(--gutter) var(--s-7); }
+}
+
+/* ─── TABLE CHROME ──────────────────────────────────────── */
+.zw-cellink { color: inherit; display: block; min-width: 0; }
+.zw-tablefoot { padding: 10px var(--s-4); border-top: 1px solid var(--line); }
+
+.zw-state {
+  display: flex; align-items: center; gap: var(--s-3);
+  padding: var(--s-6) var(--s-4); color: var(--ink-3);
+}
+.zw-skelrow {
+  display: flex; align-items: center; gap: var(--s-4);
+  height: var(--row-h); padding: 0 var(--s-4);
+  border-bottom: 1px solid var(--line);
+}
+.zw-skelrow > .zw-skel { flex: 1; }
+
+/* A two-line cell: symbol over company name. Reserving the second line
+   keeps every row the same height — the old build had 32px and 47px
+   rows inside one table. */
+.zw-stockcell { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.zw-idcell { display: flex; flex-direction: column; justify-content: center; gap: 1px; min-width: 0; }
+.zw-idcell > .name {
+  font-size: 12px; line-height: 16px; color: var(--ink-3);
+  overflow: hidden; text-overflow: ellipsis; max-width: 22ch;
+}
+
+/* ─── DISCOVER ──────────────────────────────────────────── */
+.zw-headnav { display: flex; gap: var(--s-4); }
+.zw-headmeta { margin-left: auto; }
+
+/* Panels sit two-up and stretch to a common height. Every panel shows
+   the same row budget, so the stretch is a few pixels rather than the
+   150px void the old auto-height grid produced. */
+.zw-band {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+  align-items: stretch;
+}
+.zw-band > .zw-panel { display: flex; flex-direction: column; }
+.zw-band > .zw-panel > .zw-scroll-x { flex: 1; }
+@media (max-width: 1100px) { .zw-band { grid-template-columns: 1fr; } }
+
+.zw-side { font-weight: 600; }
+.zw-side[data-side='buy'] { color: var(--up); }
+.zw-side[data-side='sell'] { color: var(--down); }
+
+.zw-newslist { list-style: none; margin: 0; padding: 0; }
+.zw-newslist > li { border-bottom: 1px solid var(--line); }
+.zw-newslist > li:last-child { border-bottom: 0; }
+.zw-newslist .row { display: flex; flex-direction: column; gap: 4px; padding: 12px var(--s-5); transition: background var(--t-fast) var(--ease); }
+.zw-newslist .row:hover { background: var(--surface-hover); }
+.zw-newslist .headline:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.zw-newslist .head { display: flex; align-items: baseline; gap: var(--s-2); }
+.zw-newslist .headline {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; max-width: 60ch;
+}
+
+/* ─── SHELL ─────────────────────────────────────────────── */
+.zw-surface { flex: 1; min-width: 0; }
+
+.zw-header {
+  position: sticky; top: 0; z-index: 41;
+  display: flex; align-items: center; gap: var(--s-2);
+  height: var(--header-h); padding: 0 var(--s-4);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Index strip under the header. A separate band, not header content: it
+   is ambient context, and sharing a row with search and account made the
+   header a crowd. */
+.zw-tickerbar {
+  position: sticky; top: var(--header-h); z-index: 40;
+  height: var(--ticker-h);
+  display: flex; align-items: center;
+  padding: 0 var(--s-4);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.zw-tick {
+  display: flex; align-items: baseline; gap: 8px; flex-shrink: 0;
+  white-space: nowrap; padding: 0 var(--s-4);
+  border-right: 1px solid var(--line);
+  line-height: 16px;
+}
+.zw-tick:first-child { padding-left: var(--s-3); }
+.zw-tick .lbl { font-size: 11px; font-weight: 600; color: var(--ink-3); letter-spacing: 0.01em; }
+.zw-tick .val { font-size: 13px; font-weight: 600; }
+.zw-tick .zw-delta { font-size: 12px; font-weight: 500; }
+
+/* Search reads as a field, not a button — it is the primary navigation
+   of a product with thousands of instruments. */
+.zw-search {
+  display: flex; align-items: center; gap: 10px;
+  width: min(360px, 40vw); height: 36px; padding: 0 10px 0 12px;
+  background: var(--page); color: var(--ink-3);
+  border: 1px solid var(--line); border-radius: 10px;
+  font-size: 13px; cursor: text; text-align: left;
+  transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.zw-search:hover { border-color: var(--line-strong); background: var(--surface); }
+.zw-search .ph { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.zw-search kbd {
+  font: inherit; font-size: 11px; font-weight: 500; color: var(--ink-3);
+  padding: 2px 6px; border: 1px solid var(--line-strong); border-radius: 5px;
+  background: var(--surface);
+}
+
+.zw-iconbtn {
+  width: 36px; height: 36px; display: grid; place-items: center;
+  border: 1px solid transparent; border-radius: 10px;
+  background: transparent; color: var(--ink-2); cursor: pointer;
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.zw-iconbtn:hover { background: var(--surface-hover); color: var(--ink); }
+
+.zw-rail {
+  width: var(--rail-w); flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding-top: var(--s-3);
+  position: sticky; top: 0; height: 100dvh;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+}
+
+.zw-railitem {
+  position: relative;
+  width: 56px; height: 54px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  border-radius: 12px;
+  color: var(--ink-3);
+  font-size: 10.5px; font-weight: 500; letter-spacing: 0;
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.zw-railitem:hover { background: var(--surface-hover); color: var(--ink); }
+.zw-railitem[aria-current='page'] { background: var(--surface-active); color: var(--ink); font-weight: 600; }
+.zw-railitem[aria-current='page']::before {
+  content: ''; position: absolute; left: -6px; top: 14px; bottom: 14px;
+  width: 3px; border-radius: 0 3px 3px 0; background: var(--accent);
+}
+
+.zw-bottombar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+  height: 58px;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (max-width: 1023px) {
+  .zw-rail { display: none; }
+  .zw-bottombar { display: grid; }
+  .zw-surface { padding-bottom: 58px; }
+}
+
+/* ─── STOCK DETAIL ──────────────────────────────────────── */
+.zw-stock-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: var(--s-4);
+  margin-top: var(--s-5);
+  align-items: start;
+}
+.zw-stock-main { min-width: 0; display: flex; flex-direction: column; gap: var(--s-4); }
+.zw-chartpanel { padding: var(--s-4); }
+@media (max-width: 1023px) {
+  /* The stat rail becomes a section below the chart. It is never hidden
+     behind a tab — these are the numbers people come for. */
+  .zw-stock-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── STAT GRID ─────────────────────────────────────────── */
+.zw-statgrid { display: grid; grid-template-columns: minmax(0, 1fr) auto; margin: 0; }
+.zw-statrow { display: contents; }
+.zw-statrow > dt,
+.zw-statrow > dd {
+  padding: 10px var(--s-4);
+  border-top: 1px solid var(--line);
+  font-size: 13px; line-height: 18px; margin: 0;
+}
+.zw-statrow > dt { color: var(--ink-2); padding-right: var(--s-2); }
+.zw-statrow > dd { text-align: right; font-weight: 500; }
+.zw-muted { color: var(--ink-3); }
+
+.zw-tabs-inset { padding: 0 var(--s-4); gap: var(--s-4); }
+.zw-tabpanel { padding: var(--s-4); }
+.zw-tabpanel:focus-visible { outline-offset: -2px; }
+
+/* ═══════════════════════════════════════════════════════════
+   DESIGN PASS — components
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── BUTTONS ───────────────────────────────────────────── */
+.zw-btn { gap: 8px; border-radius: 10px; letter-spacing: -0.005em; }
+.zw-btn-sm { height: 36px; padding: 0 14px; font-size: 13px; }
+.zw-chip { border-radius: 10px; }
+.zw-chip:hover { border-color: var(--ink-3); }
+
+/* Segmented control: taller, softer track, lifted active thumb. */
+.zw-seg { padding: 3px; border-radius: 10px; background: var(--surface-active); border-color: transparent; }
+.zw-seg > * { height: 30px; border-radius: 8px; padding: 0 14px; }
+.zw-seg > *:hover { color: var(--ink); }
+.zw-seg > [aria-pressed='true'], .zw-seg > [aria-current='page'] {
+  background: var(--surface); color: var(--ink); font-weight: 600;
+  box-shadow: 0 1px 2px rgba(12, 15, 18, 0.12), 0 0 0 1px var(--line);
+}
+[data-theme='dark'] .zw .zw-seg > [aria-pressed='true'],
+[data-theme='dark'] .zw .zw-seg > [aria-current='page'] { background: var(--line-strong); box-shadow: none; }
+
+.zw-field { border-radius: 10px; height: 44px; }
+.zw-field:focus { border-color: var(--ink); box-shadow: 0 0 0 3px var(--surface-active); }
+
+/* ─── PAGE + PANEL ──────────────────────────────────────── */
+.zw-head { align-items: flex-end; gap: var(--s-4); padding-bottom: var(--s-5); }
+.zw-head .zw-title { font-size: 26px; line-height: 34px; }
+.zw-panel { border-color: var(--line); box-shadow: 0 1px 0 rgba(12, 15, 18, 0.02); }
+.zw-panel-head { padding: 18px var(--s-5) var(--s-3); align-items: baseline; }
+.zw-panel-head .zw-section { font-size: 15px; }
+.zw-panel-body { padding: 0 var(--s-5) var(--s-5); }
+.zw-panel-foot { padding: 12px var(--s-5); }
+.zw-panel-foot .zw-link { display: inline-flex; align-items: center; gap: 4px; font-weight: 600; }
+.zw-panel-foot .zw-link::after { content: '→'; transition: transform var(--t-fast) var(--ease); }
+.zw-panel-foot .zw-link:hover::after { transform: translateX(3px); }
+.zw-panel-foot .zw-link:hover { text-decoration: none; }
+
+.zw-group-head { padding-bottom: var(--s-3); }
+.zw-band { gap: var(--s-4); }
+.zw-headnav { gap: 0; margin-left: 4px; padding-left: var(--s-4); border-left: 1px solid var(--line-strong); }
+.zw-headnav .zw-link { padding: 6px 12px; border-radius: 8px; color: var(--ink-2); }
+.zw-headnav .zw-link:hover { background: var(--surface-hover); color: var(--ink); text-decoration: none; }
+
+/* ─── TABLE ─────────────────────────────────────────────── */
+.zw-table thead th { padding: 0 var(--cell-x) 10px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.01em; }
+.zw-table th:first-child, .zw-table td:first-child { padding-left: var(--s-5); }
+.zw-table th:last-child, .zw-table td:last-child { padding-right: var(--s-5); }
+.zw-table tbody td { vertical-align: middle; height: 56px; padding-top: 8px; padding-bottom: 8px; font-weight: 500; }
+.zw-table tbody tr:hover { background: var(--surface-hover); }
+.zw-cellink { display: flex; align-items: center; }
+.zw-cellink:hover { text-decoration: none; }
+.zw-sym { letter-spacing: -0.005em; }
+.zw-idcell > .name { font-weight: 400; max-width: 24ch; }
+
+/* Groww-style change: a tinted pill. The sign glyph stays, so colour is
+   still never the only signal. */
+.zw-table .zw-delta, .zw-delta.pill {
+  padding: 3px 9px; border-radius: 7px; font-weight: 600; font-size: 13px;
+}
+.zw-table .zw-delta[data-dir='up'], .zw-delta.pill[data-dir='up'] { background: var(--up-wash); }
+.zw-table .zw-delta[data-dir='down'], .zw-delta.pill[data-dir='down'] { background: var(--down-wash); }
+.zw-table .zw-delta[data-dir='flat'], .zw-delta.pill[data-dir='flat'] { background: var(--surface-active); }
+
+/* Monogram. */
+.zw-ava {
+  flex-shrink: 0; display: inline-grid; place-items: center;
+  border-radius: 50%; font-weight: 700; letter-spacing: 0.01em;
+  background: hsl(var(--ava-h) 45% 94%); color: hsl(var(--ava-h) 42% 34%);
+  box-shadow: inset 0 0 0 1px hsl(var(--ava-h) 40% 86%);
+}
+[data-theme='dark'] .zw .zw-ava {
+  background: hsl(var(--ava-h) 28% 20%); color: hsl(var(--ava-h) 60% 80%);
+  box-shadow: inset 0 0 0 1px hsl(var(--ava-h) 25% 28%);
+}
+
+/* ─── HEATMAP ───────────────────────────────────────────── */
+.zw-heat {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-card); overflow: hidden;
+}
+.zw-heat-bar {
+  display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap;
+  padding: 12px var(--s-4); border-bottom: 1px solid var(--line);
+}
+.zw-heat-note { margin-left: var(--s-2); }
+.zw-heat-legend {
+  margin-left: auto; display: flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 500; color: var(--ink-3);
+}
+.zw-heat-legend .bar { width: 168px; height: 8px; border-radius: 4px; }
+
+.zw-heat-canvas {
+  position: relative; background: var(--surface);
+  height: clamp(520px, calc(100dvh - 300px), 820px);
+}
+.zw-treemap { position: absolute; inset: 0; overflow: hidden; }
+
+.zw-heat-tile {
+  position: absolute; overflow: hidden; color: #fff;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1px; text-align: center; line-height: 1.1;
+  border-radius: 2px;
+  transition: filter var(--t-fast) var(--ease);
+}
+.zw-heat-tile:hover { filter: brightness(1.14); z-index: 2; box-shadow: inset 0 0 0 2px rgba(255,255,255,0.85); }
+.zw-heat-tile:focus-visible { outline: 2px solid #fff; outline-offset: -3px; z-index: 3; }
+.zw-heat-sym { font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; max-width: 100%; padding: 0 4px; text-shadow: 0 1px 2px rgba(0,0,0,0.25); }
+.zw-heat-chg { font-weight: 500; opacity: 0.95; white-space: nowrap; text-shadow: 0 1px 2px rgba(0,0,0,0.25); }
+
+.zw-heat-group {
+  position: absolute; display: flex; align-items: center; gap: 8px;
+  padding: 0 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+  text-transform: uppercase; color: var(--ink-2); overflow: hidden; white-space: nowrap;
+}
+.zw-heat-group:hover { color: var(--ink); }
+.zw-heat-group .name { overflow: hidden; text-overflow: ellipsis; }
+.zw-heat-group .chg { font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--ink-3); }
+.zw-heat-group .chg.up { color: var(--up); }
+.zw-heat-group .chg.down { color: var(--down); }
+
+.zw-heat-state {
+  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center;
+  gap: var(--s-3); color: var(--ink-3); text-align: center;
+}
+.zw-heat-spin {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--line-strong); border-top-color: var(--ink);
+  animation: zw-spin 0.8s linear infinite;
+}
+@keyframes zw-spin { to { transform: rotate(360deg); } }
+
+.zw-heat-tip {
+  position: absolute; z-index: 10; pointer-events: none;
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: 12px;
+  box-shadow: var(--shadow-overlay); padding: 12px 14px;
+}
+.zw-heat-tip-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.zw-heat-tip .sym { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
+.zw-heat-tip .chg { color: #fff; font-weight: 600; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+.zw-heat-tip .name { color: var(--ink-3); font-size: 12px; margin-top: 2px; }
+.zw-heat-tip dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 10px 0 0; font-size: 12px; }
+.zw-heat-tip dt { color: var(--ink-3); }
+.zw-heat-tip dd { margin: 0; text-align: right; font-weight: 600; }
+
+@media (max-width: 767px) {
+  .zw-heat-canvas { height: 62dvh; min-height: 420px; }
+  .zw-heat-legend { margin-left: 0; width: 100%; }
+  .zw-heat-note { display: none; }
+}
+
+/* ─── MARKET PAGE ───────────────────────────────────────── */
+.zw-breadth { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; }
+.zw-breadth .up { color: var(--up); }
+.zw-breadth .down { color: var(--down); }
+.zw-breadth span span { font-weight: 400; color: var(--ink-3); font-size: 12px; }
+.zw-breadth .bar { width: 160px; height: 6px; border-radius: 3px; background: var(--down-chart); overflow: hidden; display: block; }
+.zw-breadth .bar i { display: block; height: 100%; background: var(--up-chart); }
+.zw-breadth .stamp { padding-left: 12px; border-left: 1px solid var(--line-strong); font-weight: 400; }
+
+.zw-commodities { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); padding: 0 var(--s-2) var(--s-3); }
+.zw-commodity {
+  display: flex; flex-direction: column; gap: 2px; padding: 10px var(--s-3);
+  border-radius: 10px; font-weight: 600;
+}
+.zw-commodity:hover { background: var(--surface-hover); }
+.zw-flow { display: grid; grid-template-columns: 40px 1fr auto; align-items: baseline; gap: var(--s-2);
+  padding: 10px 0; border-bottom: 1px solid var(--line); }
+.zw-flow:last-of-type { border-bottom: 0; }
+
+/* ─── STOCK PAGE HEADER ─────────────────────────────────── */
+.zw-pricehead {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-4) var(--s-6);
+  align-items: center; padding: var(--s-5);
+}
+.zw-pricehead .id { display: flex; align-items: center; gap: var(--s-4); min-width: 0; }
+.zw-pricehead .id .zw-title { font-size: 22px; line-height: 28px; }
+.zw-pricehead .id .zw-sub { display: flex; align-items: center; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
+.zw-pricehead .tag {
+  font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 5px;
+  background: var(--surface-active); color: var(--ink-2); letter-spacing: 0.02em;
+}
+.zw-pricehead .ranges {
+  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-6); padding-top: var(--s-4); border-top: 1px solid var(--line);
+}
+.zw-liveprice { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.zw-liveprice .px { font-size: 32px; line-height: 38px; font-weight: 700; letter-spacing: -0.02em; }
+.zw-liveprice .chg { display: flex; align-items: center; gap: var(--s-2); font-weight: 600; font-size: 14px; }
+
+.zw-range { display: grid; gap: 6px; }
+.zw-range .track { position: relative; height: 4px; border-radius: 2px; display: block;
+  background: linear-gradient(90deg, var(--down-chart), var(--line-strong) 50%, var(--up-chart)); opacity: 0.9; }
+.zw-range .dot {
+  position: absolute; top: 50%; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--surface); border: 3px solid var(--ink); transform: translate(-50%, -50%);
+}
+.zw-range .ends { display: flex; justify-content: space-between; font-size: 12px; font-weight: 500; color: var(--ink-2); }
+
+.zw-stock-grid { margin-top: var(--s-4); }
+.zw-chartpanel { padding: var(--s-5); }
+.zw-statrow > dt, .zw-statrow > dd { padding: 11px var(--s-5); }
+.zw-tabs-inset { padding: 0 var(--s-5); }
+
+@media (max-width: 767px) {
+  .zw-pricehead { grid-template-columns: 1fr; padding: var(--s-4); }
+  .zw-liveprice { align-items: flex-start; }
+  .zw-pricehead .ranges { grid-template-columns: 1fr; gap: var(--s-4); }
+  .zw-search { width: auto; flex: 1; }
+  .zw-search kbd { display: none; }
+}
+
+/* ─── AUTH + EMPTY STATES ───────────────────────────────── */
+.zw-authwrap { display: grid; place-content: center; min-height: 78dvh; padding: var(--s-5); }
+.zw-authcard {
+  width: min(400px, 92vw); display: flex; flex-direction: column; gap: var(--s-5);
+  padding: var(--s-6); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow-pop);
+}
+.zw-authcard .mark { border-radius: 12px; }
+.zw-authcard header { display: grid; gap: 6px; }
+.zw-authcard .stack { display: grid; gap: var(--s-2); }
+.zw-authcard .foot { text-align: center; padding-top: var(--s-2); border-top: 1px solid var(--line); }
+.zw-provider {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  height: 46px; border: 1px solid var(--line-strong); border-radius: 12px;
+  background: var(--surface); color: var(--ink); font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.zw-provider:hover:not(:disabled) { background: var(--surface-hover); border-color: var(--ink-3); }
+.zw-provider:disabled { cursor: progress; opacity: 0.55; }
+
+.zw-empty {
+  display: grid; place-content: center; justify-items: center; gap: var(--s-3);
+  min-height: 62dvh; text-align: center; padding: var(--s-5);
+}
+.zw-empty .badge {
+  width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center;
+  background: var(--surface); border: 1px solid var(--line); color: var(--ink-2);
+  box-shadow: var(--shadow-pop); margin-bottom: var(--s-2);
+}
+.zw-empty .zw-btn { margin-top: var(--s-2); }
+
+/* ─── WATCHLIST ─────────────────────────────────────────── */
+.zw-wl { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: var(--s-4); align-items: start; }
+.zw-wl-lists { position: sticky; top: calc(var(--header-h) + var(--ticker-h) + var(--s-4)); }
+.zw-wl-new { display: flex; gap: var(--s-2); padding: 0 var(--s-4) var(--s-3); }
+.zw-wl-new .zw-field { flex: 1; min-width: 0; height: 36px; }
+.zw-wl-items { list-style: none; margin: 0; padding: 0 var(--s-2) var(--s-2); display: grid; gap: 2px; }
+.zw-wl-items li { display: flex; align-items: center; border-radius: 10px; }
+.zw-wl-items li:hover { background: var(--surface-hover); }
+.zw-wl-items li[data-active] { background: var(--surface-active); }
+.zw-wl-items .pick {
+  flex: 1; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 10px 12px; border: 0; background: none; color: var(--ink); font-size: 14px; cursor: pointer; text-align: left;
+}
+.zw-wl-items li[data-active] .pick { font-weight: 600; }
+.zw-wl-items .ct { font-size: 12px; color: var(--ink-3); background: var(--surface-active); padding: 1px 8px; border-radius: 999px; }
+.zw-wl-items .del { opacity: 0; width: 28px; height: 28px; margin-right: 4px; border: 0; border-radius: 8px;
+  background: none; color: var(--ink-3); font-size: 16px; cursor: pointer; }
+.zw-wl-items li:hover .del, .zw-wl-items .del:focus-visible { opacity: 1; }
+.zw-wl-items .del:hover { background: var(--down-wash); color: var(--down); }
+.zw-chip-quiet { border-color: transparent; background: transparent; color: var(--ink-3); height: 28px; }
+.zw-chip-danger { background: var(--down-wash); border-color: transparent; color: var(--down); height: 28px; margin-right: 4px; }
+@media (hover: none) { .zw-wl-items .del { opacity: 1; } }
+@media (max-width: 899px) { .zw-wl { grid-template-columns: 1fr; } .zw-wl-lists { position: static; } }
+
+/* ─── SMALL SCREENS ─────────────────────────────────────── */
+.zw-btn { white-space: nowrap; }
+@media (max-width: 767px) {
+  .zw-header { padding: 0 var(--s-3); }
+  .zw-tickerbar { padding: 0 var(--s-2); }
+  .zw-breadth { margin-left: 0; width: 100%; flex-wrap: nowrap; font-size: 12px; }
+  .zw-breadth .bar { flex: 1; width: auto; min-width: 40px; }
+  .zw-breadth span span { display: none; }
+  .zw-head .zw-title { font-size: 22px; line-height: 30px; }
+  .zw-panel-head { padding: 14px var(--s-4) var(--s-2); }
+  .zw-table th:first-child, .zw-table td:first-child { padding-left: var(--s-4); }
+  .zw-table th:last-child, .zw-table td:last-child { padding-right: var(--s-4); }
+}
+.zw-bottombar .zw-railitem { width: auto; height: 100%; border-radius: 0; }
+.zw-bottombar .zw-railitem[aria-current='page'] { background: none; color: var(--ink); }
+.zw-bottombar .zw-railitem[aria-current='page']::before { left: 22%; right: 22%; top: 0; bottom: auto; width: auto; height: 3px; border-radius: 0 0 3px 3px; }
+
+/* ═══════════════════════════════════════════════════════════
+   REVISION 2 (Linear: Design System → Revision 2)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── COLUMN HEADS ──────────────────────────────────────── */
+/* The quietest text in the panel. A tinted band separates it from the
+   panel title above and the data below; the sorted head is never the
+   brightest thing on screen. */
+.zw-table thead th {
+  height: 40px; padding: 0 var(--cell-x);
+  background: var(--surface-sunken);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  font-size: 11px; line-height: 16px; font-weight: 600;
+  letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-3);
+}
+.zw-table tbody td { height: 48px; }
+
+.zw-sortbtn {
+  position: relative; display: inline-flex; align-items: center;
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit;
+  transition: color var(--t-fast) var(--ease);
+}
+.zw-sortbtn:hover { color: var(--ink-2); }
+/* Out of flow, so the label always sits exactly on its column edge:
+   text columns get the chevron on their right, numeric on their left. */
+.zw-sortarrow {
+  position: absolute; top: 50%; margin-top: -5px;
+  left: calc(100% + 5px); opacity: 0; color: var(--ink);
+  transition: opacity var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.zw-table th.num .zw-sortarrow { left: auto; right: calc(100% + 5px); }
+.zw-sortbtn:hover .zw-sortarrow, .zw-sortbtn:focus-visible .zw-sortarrow { opacity: 0.4; }
+.zw-sortbtn[data-active] { color: var(--ink-2); }
+.zw-sortbtn[data-active] .zw-sortarrow { opacity: 1; }
+.zw-sortarrow[data-dir='asc'] { transform: rotate(180deg); }
+.zw-table th.num .zw-sortbtn { flex-direction: row; }
+
+/* ─── LOGO ──────────────────────────────────────────────── */
+.zw-logo {
+  flex-shrink: 0; position: relative; overflow: hidden;
+  border-radius: 8px; background: #fff;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.zw-logo img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 3px; }
+.zw-logo .zw-ava { position: absolute; inset: 0; width: 100% !important; height: 100% !important; border-radius: 0; }
+
+/* ─── HEADER HIERARCHY ──────────────────────────────────── */
+.zw-btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line-strong); }
+.zw-btn-ghost:hover { background: var(--surface-hover); opacity: 1; }
+
+/* Ticker: soft edges say "this scrolls", instead of a clipped item. */
+.zw-tickerbar { position: sticky; }
+.zw-tickerbar > div { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 40px), transparent 100%); }
+
+/* ─── SHADOWS ONLY ON OVERLAYS ──────────────────────────── */
+.zw-panel { box-shadow: none; }
+.zw-authcard, .zw-empty .badge { box-shadow: none; }
+.zw-seg > [aria-pressed='true'], .zw-seg > [aria-current='page'] { box-shadow: 0 0 0 1px var(--line); }
+
+/* ─── RADIUS SCALE: 6 / 8 / 12 / 999 ────────────────────── */
+.zw { --r-ctl: 8px; --r-card: 12px; }
+.zw-chip, .zw-btn, .zw-field, .zw-search, .zw-iconbtn, .zw-provider { border-radius: 8px; }
+.zw-seg { border-radius: 8px; }
+.zw-seg > * { border-radius: 6px; }
+.zw-railitem, .zw-commodity, .zw-wl-items li { border-radius: 8px; }
+.zw-authcard { border-radius: 12px; }
+.zw-empty .badge { border-radius: 12px; }
+.zw-logo { border-radius: 8px; }
+.zw-table .zw-delta, .zw-delta.pill { border-radius: 6px; }
+
+/* ─── PANEL HEAD: title left, hint + action right ───────── */
+.zw-panel-head { justify-content: space-between; }
+.zw-panel-head .zw-viewall { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 600; color: var(--ink); }
+.zw-panel-head .zw-viewall::after { content: '→'; transition: transform var(--t-fast) var(--ease); }
+.zw-panel-head .zw-viewall:hover::after { transform: translateX(3px); }
+
+/* ─── INSTRUMENT TABS ───────────────────────────────────── */
+.zw-instabs { display: flex; gap: var(--s-5); border-bottom: 1px solid var(--line); margin-bottom: var(--s-5); }
+.zw-instabs a {
+  padding: 10px 0; font-size: 14px; font-weight: 500; color: var(--ink-3);
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.zw-instabs a:hover { color: var(--ink-2); }
+.zw-instabs a[aria-current='page'] { color: var(--ink); font-weight: 600; border-bottom-color: var(--accent); }
+.zw-subhead { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; margin-bottom: var(--s-4); }
+
+/* ─── STOCK HERO ────────────────────────────────────────── */
+.zw-liveprice .px { font-size: 40px; line-height: 44px; }
+.zw-range .track { background: var(--line-strong); opacity: 1; }
+.zw-range .track::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; border-radius: 2px;
+  width: var(--pos, 50%); background: var(--ink-3);
+}
+
+/* One row height, with or without a company name under the symbol. */
+.zw-table tbody td { padding-top: 0; padding-bottom: 0; }
+.zw-idcell { gap: 0; }
+.zw-idcell > .zw-sym { line-height: 18px; }
+.zw-idcell > .name { line-height: 14px; font-size: 12px; }

@@ -99,13 +99,13 @@ export default function Onboarding() {
             aria-invalid={username.length > 0 && !valid}
             style={{
               height: 40, padding: '0 10px', background: 'transparent',
-              border: `1px solid ${username.length > 0 && !valid ? 'var(--negative)' : 'var(--border-2)'}`,
+              border: `1px solid ${username.length > 0 && !valid ? 'var(--down)' : 'var(--line-strong)'}`,
               borderRadius: 'var(--r-ctl)', fontSize: 14,
             }}
           />
         </label>
 
-        <p id="username-hint" className="zw-sub" style={{ color: error ? 'var(--negative)' : 'var(--text-3)', minHeight: 18 }} role={error ? 'alert' : undefined}>
+        <p id="username-hint" className="zw-sub" style={{ color: error ? 'var(--down)' : 'var(--ink-3)', minHeight: 18 }} role={error ? 'alert' : undefined}>
           {error ?? (username.length > 0 && !valid ? 'Use 3–20 lowercase letters, numbers or underscores.' : ' ')}
         </p>
 

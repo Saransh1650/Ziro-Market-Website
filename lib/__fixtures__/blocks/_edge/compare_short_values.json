@@ -1,0 +1,39 @@
+{
+  "name": "rows with fewer values than columns show an em dash",
+  "valid": false,
+  "block": {
+    "id": "b1",
+    "type": "compare_table",
+    "v": 1,
+    "alt": "compare",
+    "title": "TCS vs INFY",
+    "columns": [
+      "TCS",
+      "INFY"
+    ],
+    "rows": [
+      {
+        "label": "PE",
+        "values": [
+          "15.16"
+        ]
+      },
+      {
+        "label": "ROE",
+        "values": [
+          "47.74%",
+          "32.10%"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "TCS vs INFY",
+      "15.16",
+      "—",
+      "32.10%"
+    ]
+  }
+}

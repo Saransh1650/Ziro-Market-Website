@@ -65,8 +65,8 @@ export default function PortfolioAnalysis() {
   }
 
   return (
-    <div style={{ maxWidth: 'var(--max-w)', padding: 'var(--s-4) var(--s-3) var(--s-7)' }}>
-      <header style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--s-3)', flexWrap: 'wrap', paddingBottom: 'var(--s-3)' }}>
+    <div className="zw-page">
+      <header className="zw-head">
         <h1 className="zw-title">Portfolio analysis</h1>
         <Link href="/app/portfolio" className="zw-sub">Back to holdings</Link>
       </header>
@@ -75,20 +75,20 @@ export default function PortfolioAnalysis() {
         // Not an error. Beta, correlation and volatility are undefined or
         // meaningless below two positions, so the surface says why
         // instead of rendering confident nonsense.
-        <p className="zw-sub" style={{ color: 'var(--text-3)', maxWidth: '60ch' }}>
+        <p className="zw-sub" style={{ color: 'var(--ink-3)', maxWidth: '60ch' }}>
           Analysis needs at least two equity holdings. Correlation compares positions against each other, and beta and
           volatility are not meaningful for a single stock.
         </p>
       ) : (
         <>
-          <div role="tablist" aria-label="Analysis views" style={{ display: 'flex', gap: 'var(--s-4)', borderBottom: '1px solid var(--border-1)' }}>
+          <div role="tablist" aria-label="Analysis views" style={{ display: 'flex', gap: 'var(--s-4)', borderBottom: '1px solid var(--line)' }}>
             {VIEWS.map(([id, label]) => (
               <button
                 key={id} type="button" role="tab" aria-selected={view === id} onClick={() => setView(id)}
                 style={{
                   background: 'none', border: 0, padding: '8px 0', cursor: 'pointer', fontSize: 12, fontWeight: 600,
-                  color: view === id ? 'var(--text-1)' : 'var(--text-3)',
-                  borderBottom: `2px solid ${view === id ? 'var(--text-1)' : 'transparent'}`, marginBottom: -1,
+                  color: view === id ? 'var(--ink)' : 'var(--ink-3)',
+                  borderBottom: `2px solid ${view === id ? 'var(--ink)' : 'transparent'}`, marginBottom: -1,
                 }}
               >
                 {label}
@@ -150,9 +150,9 @@ function RiskPanel({ symbols, holdings }: { symbols: string[]; holdings: Holding
           </thead>
           <tbody>
             {(data.stockRisk ?? []).map((r) => (
-              <tr key={r.symbol} style={{ borderTop: '1px solid var(--border-1)' }}>
+              <tr key={r.symbol} style={{ borderTop: '1px solid var(--line)' }}>
                 <th scope="row" style={{ textAlign: 'left', padding: '7px 0', fontWeight: 400 }}>
-                  <Link href={`/stocks/${encodeURIComponent(r.symbol)}`} className="zw-sym" style={{ color: 'var(--text-1)' }}>{r.symbol}</Link>
+                  <Link href={`/stocks/${encodeURIComponent(r.symbol)}`} className="zw-sym" style={{ color: 'var(--ink)' }}>{r.symbol}</Link>
                 </th>
                 <td className="zw-num" style={{ textAlign: 'right', padding: '7px 0', fontSize: 12 }}>{num(r.beta, 2)}</td>
                 <td className="zw-num" style={{ textAlign: 'right', padding: '7px 0', fontSize: 12 }}>{num(r.volatility, 1)}%</td>
@@ -209,9 +209,9 @@ function CorrelationPanel({ symbols }: { symbols: string[] }) {
                     title={`${labels[i]} vs ${labels[j]}: ${num(v, 2)}`}
                     style={{
                       width: 56, height: 34, textAlign: 'center', fontSize: 11,
-                      fontFamily: 'var(--mono)', border: '1px solid var(--bg-0)',
+                      fontFamily: 'var(--mono)', border: '1px solid var(--surface)',
                       background: divergingFill(v),
-                      color: Math.abs(v) > 0.6 ? 'var(--tint-ink-strong)' : 'var(--text-1)',
+                      color: Math.abs(v) > 0.6 ? 'var(--tint-ink-strong)' : 'var(--ink)',
                     }}
                   >
                     {num(v, 2)}
@@ -235,7 +235,7 @@ function CorrelationPanel({ symbols }: { symbols: string[] }) {
  */
 function divergingFill(v: number): string {
   const a = Math.min(1, Math.abs(v));
-  if (a < 0.08) return 'var(--bg-2)';
+  if (a < 0.08) return 'var(--surface-hover)';
   const alpha = 0.12 + a * 0.68;
   return v > 0 ? `rgba(155, 104, 16, ${alpha})` : `rgba(49, 102, 138, ${alpha})`;
 }
@@ -252,9 +252,9 @@ function NavPanel({ holdings }: { holdings: Holding[] }) {
   if (error || !data?.portfolioNav?.length) return <Failed message={error?.message ?? 'The NAV curve could not be built.'} onRetry={refetch} />;
 
   const series = [
-    { name: 'Portfolio', values: data.portfolioNav, colour: 'var(--text-1)', width: 1.8 },
-    { name: 'Nifty 50', values: data.benchmarkNav, colour: 'var(--amber)', width: 1.3 },
-    { name: 'Invested', values: data.investedLine, colour: 'var(--text-3)', width: 1 },
+    { name: 'Portfolio', values: data.portfolioNav, colour: 'var(--ink)', width: 1.8 },
+    { name: 'Nifty 50', values: data.benchmarkNav, colour: 'var(--ink)', width: 1.3 },
+    { name: 'Invested', values: data.investedLine, colour: 'var(--ink-3)', width: 1 },
   ].filter((s) => s.values?.length);
 
   const all = series.flatMap((s) => s.values);
@@ -330,13 +330,13 @@ function Metric({ label, value, note }: { label: string; value: string; note?: s
       <dd className="zw-num-lg" style={{ margin: 0 }}>{value}</dd>
       {/* Every metric names its lookback. A Sharpe ratio with no period
           is not a number anyone can act on. */}
-      {note && <p className="zw-sub" style={{ color: 'var(--text-3)' }}>{note}</p>}
+      {note && <p className="zw-sub" style={{ color: 'var(--ink-3)' }}>{note}</p>}
     </div>
   );
 }
 
 function Loading({ label }: { label: string }) {
-  return <p className="zw-sub" style={{ color: 'var(--text-3)', padding: 'var(--s-4) 0' }}>{label}</p>;
+  return <p className="zw-sub" style={{ color: 'var(--ink-3)', padding: 'var(--s-4) 0' }}>{label}</p>;
 }
 
 function Failed({ message, onRetry }: { message: string; onRetry: () => void }) {

@@ -96,7 +96,7 @@ export default function SectorMosaic({
         <div aria-live="polite" style={{ marginLeft: 'auto', minWidth: 0 }}>
           {hovered && (
             <span className="zw-sub" style={{ whiteSpace: 'nowrap' }}>
-              <strong style={{ color: 'var(--text-1)' }}>{hovered.name}</strong>
+              <strong style={{ color: 'var(--ink)' }}>{hovered.name}</strong>
               {hovered.indexValue != null && <> · {hovered.indexValue.toFixed(2)}</>}
               {hovered.marketCap != null && <> · {compact(hovered.marketCap)}</>}
               {hovered.rs != null && <> · RS {hovered.rs}</>}
@@ -163,7 +163,7 @@ function MosaicCell({
 
   const fill =
     step === 0
-      ? 'var(--bg-2)'
+      ? 'var(--surface-hover)'
       : `var(--${dir === 'up' ? 'pos' : 'neg'}-${step})`;
 
   // At the strongest tints the fill is dark enough that forest ink drops
@@ -193,8 +193,10 @@ function MosaicCell({
         height: `${rect.h}%`,
         background: fill,
         color: ink,
-        border: '1px solid var(--bg-0)',
-        borderRadius: 'var(--r-data)',
+        border: '1px solid var(--surface)',
+        /* A treemap is a continuous surface. 8px control radius turned it
+           into a grid of separate tiles. */
+        borderRadius: '3px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',

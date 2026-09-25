@@ -1,0 +1,23 @@
+{
+  "name": "known type with v higher than supported falls back",
+  "valid": false,
+  "block": {
+    "id": "b1",
+    "type": "table",
+    "v": 99,
+    "alt": "RELIANCE fundamentals: PE 22.10 (newer schema)",
+    "title": "RELIANCE fundamentals",
+    "rows": [
+      {
+        "label": "PE",
+        "value": "22.10"
+      }
+    ]
+  },
+  "expect": {
+    "render": "fallback",
+    "textContains": [
+      "RELIANCE fundamentals: PE 22.10 (newer schema)"
+    ]
+  }
+}

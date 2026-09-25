@@ -1,0 +1,26 @@
+{
+  "name": "unknown extra fields are ignored",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "range_bar",
+    "v": 1,
+    "alt": "RELIANCE range",
+    "symbol": "RELIANCE",
+    "label": "52-week range",
+    "low": 1226.4,
+    "high": 1611.8,
+    "price": 1248,
+    "pct": 6,
+    "sparkle": true,
+    "futureField": {
+      "a": 1
+    }
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "52-week range"
+    ]
+  }
+}

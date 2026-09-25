@@ -9,6 +9,7 @@ import DataTable, { type Column } from './DataTable';
 import { Delta, Money } from './Delta';
 import { num, compact } from '@/lib/format/number';
 import SignedOut from './SignedOut';
+import { StockCell } from './StockCell';
 
 /**
  * Holdings, totals and allocation.
@@ -67,14 +68,7 @@ export default function PortfolioView() {
   const columns: Column<Holding>[] = [
     {
       key: 'symbol', header: 'Holding', sortable: true,
-      render: (h) => (
-        <span style={{ display: 'block', minWidth: 0 }}>
-          <span className="zw-sym">{h.symbol}</span>
-          {h.name && h.name !== h.symbol && (
-            <span className="zw-sub" style={{ display: 'block', maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis' }}>{h.name}</span>
-          )}
-        </span>
-      ),
+      render: (h) => <StockCell symbol={h.symbol} name={h.name} />,
     },
     { key: 'quantity', header: 'Qty', numeric: true, sortable: true, render: (h) => num(h.quantity, 0) },
     { key: 'avg_price', header: 'Avg cost', numeric: true, sortable: true, render: (h) => num(h.avg_price, 2) },
@@ -102,8 +96,8 @@ export default function PortfolioView() {
   ];
 
   return (
-    <div style={{ maxWidth: 'var(--max-w)', padding: 'var(--s-4) var(--s-3) var(--s-7)' }}>
-      <header style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--s-3)', paddingBottom: 'var(--s-3)' }}>
+    <div className="zw-page">
+      <header className="zw-head">
         <h1 className="zw-title">Portfolio</h1>
         <Link href="/app/portfolio/analysis" className="zw-sub">Risk &amp; analysis</Link>
       </header>
@@ -111,7 +105,7 @@ export default function PortfolioView() {
       <dl
         style={{
           display: 'flex', flexWrap: 'wrap', gap: 'var(--s-6)', margin: 0,
-          borderTop: '1px solid var(--border-1)', borderBottom: '1px solid var(--border-1)',
+          borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)',
           padding: 'var(--s-3) 0', marginBottom: 'var(--s-4)',
         }}
       >
@@ -131,7 +125,7 @@ export default function PortfolioView() {
         loading={loading}
         error={error?.message ?? null}
         onRetry={refetch}
-        empty={<p className="zw-sub" style={{ color: 'var(--text-3)' }}>No holdings yet. Add them in the app and they appear here.</p>}
+        empty={<p className="zw-sub" style={{ color: 'var(--ink-3)' }}>No holdings yet. Add them in the app and they appear here.</p>}
       />
 
       {bySector.length > 0 && (
@@ -160,7 +154,7 @@ function Stat({ label, value, tone }: { label: string; value: React.ReactNode; t
       <dt className="zw-colhead">{label}</dt>
       <dd
         className="zw-num-lg"
-        style={{ margin: 0, color: tone == null ? undefined : tone >= 0 ? 'var(--positive)' : 'var(--negative)' }}
+        style={{ margin: 0, color: tone == null ? undefined : tone >= 0 ? 'var(--up)' : 'var(--down)' }}
       >
         {value}
       </dd>
@@ -175,7 +169,7 @@ function Stat({ label, value, tone }: { label: string; value: React.ReactNode; t
  */
 function AllocationBar({ entries, total }: { entries: [string, number][]; total: number }) {
   const sum = total || entries.reduce((s, [, v]) => s + v, 0) || 1;
-  const shades = ['#0b3b2e', '#1f6b52', '#3d8f72', '#66ab92', '#9b6810', '#c08a2e', '#5b7f96', '#8aa4b5'];
+  const shades = ['#3d4b5c', '#5b7f96', '#7fa8bd', '#a8c4d4', '#8a7fa8', '#b0a3c9', '#c9a86b', '#d9c79a'];
 
   return (
     <>
@@ -189,7 +183,7 @@ function AllocationBar({ entries, total }: { entries: [string, number][]; total:
           <li key={name} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span aria-hidden="true" style={{ width: 8, height: 8, background: shades[i % shades.length], borderRadius: 2 }} />
             <span className="zw-sub">{name}</span>
-            <span className="zw-num" style={{ fontSize: 11, color: 'var(--text-3)' }}>
+            <span className="zw-num" style={{ fontSize: 11, color: 'var(--ink-3)' }}>
               {((value / sum) * 100).toFixed(1)}% · {compact(value)}
             </span>
           </li>

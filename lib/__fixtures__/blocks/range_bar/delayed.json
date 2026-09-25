@@ -1,0 +1,24 @@
+{
+  "name": "range_bar delayed",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "range_bar",
+    "v": 1,
+    "alt": "RELIANCE at ₹1219.2, 0% of its 52-week range.",
+    "delayed": true,
+    "symbol": "RELIANCE",
+    "label": "52-week range",
+    "low": 1219.2,
+    "high": 1611.8,
+    "price": 1219.2,
+    "pct": 0
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "52-week range"
+    ],
+    "showsDelayed": true
+  }
+}

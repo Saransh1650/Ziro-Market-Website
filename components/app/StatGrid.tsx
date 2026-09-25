@@ -36,36 +36,14 @@ export default function StatGrid({ detail }: { detail: StockDetail }) {
 
   return (
     <section aria-label="Key statistics">
-      <h2 className="zw-colhead" style={{ paddingBottom: 'var(--s-2)' }}>Key statistics</h2>
-      <dl style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) auto', margin: 0 }}>
+      <header className="zw-panel-head">
+        <h2 className="zw-section">Key statistics</h2>
+      </header>
+      <dl className="zw-statgrid">
         {rows.map(([label, value]) => (
-          <div
-            key={label}
-            style={{
-              display: 'contents',
-            }}
-          >
-            <dt
-              className="zw-sub"
-              style={{
-                padding: '7px 0',
-                borderBottom: '1px solid var(--border-1)',
-                color: 'var(--text-2)',
-              }}
-            >
-              {label}
-            </dt>
-            <dd
-              style={{
-                padding: '7px 0 7px var(--s-4)',
-                borderBottom: '1px solid var(--border-1)',
-                textAlign: 'right',
-                fontSize: 12,
-                margin: 0,
-              }}
-            >
-              {value}
-            </dd>
+          <div key={label} className="zw-statrow">
+            <dt>{label}</dt>
+            <dd>{value}</dd>
           </div>
         ))}
       </dl>
@@ -80,7 +58,7 @@ export default function StatGrid({ detail }: { detail: StockDetail }) {
  */
 function Stat({ value, suffix = '' }: { value: number | null | undefined; suffix?: string }) {
   if (value == null || !Number.isFinite(value) || value === 0) {
-    return <span className="zw-num" style={{ color: 'var(--text-3)' }}>—</span>;
+    return <span className="zw-muted">—</span>;
   }
   return <span className="zw-num">{num(value, 2)}{suffix}</span>;
 }

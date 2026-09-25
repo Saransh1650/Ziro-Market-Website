@@ -1,0 +1,37 @@
+{
+  "name": "unknown intents are hidden, known ones kept",
+  "valid": false,
+  "block": {
+    "id": "b1",
+    "type": "actions",
+    "v": 1,
+    "alt": "Actions",
+    "items": [
+      {
+        "id": "a1",
+        "label": "Add to watchlist",
+        "intent": "watchlist.add",
+        "params": {
+          "symbol": "RELIANCE"
+        }
+      },
+      {
+        "id": "a2",
+        "label": "Launch rocket",
+        "intent": "rocket.launch",
+        "params": {
+          "target": "moon"
+        }
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "visibleActions": [
+      "Add to watchlist"
+    ],
+    "forbidText": [
+      "Launch rocket"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "line_chart",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "line_chart",
+    "v": 1,
+    "alt": "RELIANCE · 6M: price moved -11.6% over the period.",
+    "title": "RELIANCE · 6M",
+    "symbol": "RELIANCE",
+    "range": "6M",
+    "asof": "2026-09-25T09:58:00.000Z",
+    "src": "Upstox",
+    "series": [
+      {
+        "t": "2026-04-01",
+        "v": 1410
+      },
+      {
+        "t": "2026-05-01",
+        "v": 1390
+      },
+      {
+        "t": "2026-06-01",
+        "v": 1330
+      },
+      {
+        "t": "2026-07-01",
+        "v": 1290
+      },
+      {
+        "t": "2026-08-01",
+        "v": 1248
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "RELIANCE · 6M"
+    ]
+  }
+}

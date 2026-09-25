@@ -1,0 +1,26 @@
+{
+  "name": "tech_chart",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "tech_chart",
+    "v": 1,
+    "alt": "RELIANCE · Moving avg + RSI chart, 3M range.",
+    "symbol": "RELIANCE",
+    "range": "3M",
+    "indicators": [
+      "MA",
+      "RSI"
+    ],
+    "caption": "RELIANCE · Moving avg + RSI"
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "RELIANCE · Moving avg + RSI"
+    ],
+    "skip": [
+      "flutter"
+    ]
+  }
+}

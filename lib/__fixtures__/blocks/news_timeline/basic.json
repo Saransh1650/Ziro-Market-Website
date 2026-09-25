@@ -1,0 +1,39 @@
+{
+  "name": "news_timeline",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "news_timeline",
+    "v": 1,
+    "alt": "3 recent headlines. Latest: Reliance Retail plans IPO filing.",
+    "title": "RELIANCE · recent headlines",
+    "items": [
+      {
+        "title": "Reliance Retail plans IPO filing",
+        "source": "Google News",
+        "at": "2026-09-24T16:10:00.000Z",
+        "url": "https://example.com/a"
+      },
+      {
+        "title": "Jio adds 2.1 million subscribers in August",
+        "source": "Google News",
+        "at": "2026-09-23T09:30:00.000Z",
+        "url": "https://example.com/b"
+      },
+      {
+        "title": "Brokerages trim Reliance targets on refining margins",
+        "source": "Google News",
+        "at": "2026-09-22T12:00:00.000Z",
+        "url": "https://example.com/c"
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "RELIANCE · recent headlines",
+      "Reliance Retail plans IPO filing",
+      "Jio adds 2.1 million subscribers in August"
+    ]
+  }
+}

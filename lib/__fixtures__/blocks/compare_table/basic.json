@@ -1,0 +1,52 @@
+{
+  "name": "compare_table",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "compare_table",
+    "v": 1,
+    "alt": "TCS vs INFY vs HCLTECH: PE 15.16 vs 13.13 vs 21.4.",
+    "title": "TCS vs INFY vs HCLTECH",
+    "columns": [
+      "TCS",
+      "INFY",
+      "HCLTECH"
+    ],
+    "rows": [
+      {
+        "label": "PE",
+        "values": [
+          "15.16",
+          "13.13",
+          "21.40"
+        ]
+      },
+      {
+        "label": "ROE",
+        "values": [
+          "47.74%",
+          "32.10%",
+          "24.80%"
+        ]
+      },
+      {
+        "label": "Market cap",
+        "values": [
+          "₹7.55 lakh cr",
+          "₹4.11 lakh cr",
+          "₹4.60 lakh cr"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "TCS vs INFY vs HCLTECH",
+      "INFY",
+      "15.16",
+      "47.74%",
+      "₹7.55 lakh cr"
+    ]
+  }
+}

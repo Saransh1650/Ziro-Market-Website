@@ -9,11 +9,11 @@ import type { Envelope, SectorDetail } from './types';
  */
 export async function getSectorDetail(
   sector: string,
-  { limit = 100, page = 1, signal, revalidate }: { limit?: number; page?: number; signal?: AbortSignal; revalidate?: number } = {},
+  { limit = 100, page = 1, sort, signal, revalidate }: { limit?: number; page?: number; sort?: 'default' | 'gainers' | 'losers' | 'volume_desc' | 'volume_asc' | 'market_cap'; signal?: AbortSignal; revalidate?: number } = {},
 ) {
   return unwrap(
     await apiGet<Envelope<SectorDetail>>(
-      `/sectors/${encodeURIComponent(sector)}/stocks?limit=${limit}&page=${page}`,
+      `/sectors/${encodeURIComponent(sector)}/stocks?limit=${limit}&page=${page}${sort ? `&sort=${sort}` : ''}`,
       { signal, revalidate },
     ),
   );

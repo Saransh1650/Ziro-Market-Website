@@ -1,0 +1,17 @@
+{
+  "name": "disclaimer",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "disclaimer",
+    "v": 1,
+    "alt": "Educational analysis based on market data, not investment advice.",
+    "text": "Educational analysis based on market data, not investment advice."
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "not investment advice"
+    ]
+  }
+}

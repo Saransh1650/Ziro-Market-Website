@@ -1,0 +1,19 @@
+{
+  "name": "stat",
+  "valid": true,
+  "block": {
+    "id": "b1",
+    "type": "stat",
+    "v": 1,
+    "alt": "RELIANCE ₹1,248.00",
+    "symbol": "RELIANCE",
+    "price": 1248,
+    "changePct": 0.61
+  },
+  "expect": {
+    "render": "known",
+    "textContains": [
+      "RELIANCE"
+    ]
+  }
+}

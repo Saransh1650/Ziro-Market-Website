@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { getEtfs, getMutualFunds } from '@/lib/api/discovery';
 import { useResource } from '@/hooks/useResource';
 import DataTable, { type Column } from './DataTable';
 import { Delta } from './Delta';
+import InstrumentTabs from './InstrumentTabs';
 import { num, compact } from '@/lib/format/number';
 import type { Etf, MutualFund } from '@/lib/api/types';
 
@@ -18,18 +18,12 @@ import type { Etf, MutualFund } from '@/lib/api/types';
  */
 export default function FundsView({ kind }: { kind: 'etf' | 'fund' }) {
   return (
-    <div style={{ maxWidth: 'var(--max-w)', padding: 'var(--s-4) var(--s-3) var(--s-7)' }}>
-      <header style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--s-4)', paddingBottom: 'var(--s-3)', flexWrap: 'wrap' }}>
-        <h1 className="zw-title">{kind === 'etf' ? 'ETFs' : 'Mutual funds'}</h1>
-        <nav style={{ display: 'flex', gap: 'var(--s-3)' }}>
-          <Link href="/app/discover/etfs" className="zw-sub" style={{ color: kind === 'etf' ? 'var(--text-1)' : undefined, fontWeight: kind === 'etf' ? 600 : 400 }}>
-            ETFs
-          </Link>
-          <Link href="/app/discover/funds" className="zw-sub" style={{ color: kind === 'fund' ? 'var(--text-1)' : undefined, fontWeight: kind === 'fund' ? 600 : 400 }}>
-            Mutual funds
-          </Link>
-        </nav>
+    <div className="zw-page">
+      <header className="zw-head">
+        <h1 className="zw-title">Discover</h1>
       </header>
+
+      <InstrumentTabs current={kind === 'etf' ? 'etfs' : 'funds'} />
 
       {kind === 'etf' ? <EtfTable /> : <FundTable />}
     </div>
@@ -49,7 +43,7 @@ function CategoryChips({
 }) {
   if (categories.length < 2) return null;
   return (
-    <div style={{ display: 'flex', gap: 'var(--s-1)', flexWrap: 'wrap', paddingBottom: 'var(--s-3)' }}>
+    <div style={{ display: 'flex', gap: 'var(--s-1)', flexWrap: 'wrap', padding: 'var(--s-4) var(--s-5)' }}>
       <button type="button" className="zw-chip" aria-pressed={active === null} onClick={() => onChange(null)}>
         All
       </button>
@@ -114,7 +108,7 @@ function EtfTable() {
   ];
 
   return (
-    <>
+    <section className="zw-panel">
       <CategoryChips categories={categories} active={category} onChange={setCategory} />
       <DataTable
         rows={filtered} columns={columns} rowKey={(r) => r.symbol}
@@ -123,7 +117,7 @@ function EtfTable() {
         loading={loading} error={error?.message} onRetry={refetch}
         initialSort={{ key: 'avg_volume_10d', dir: 'desc' }} maxRows={100}
       />
-    </>
+    </section>
   );
 }
 
@@ -170,7 +164,7 @@ function FundTable() {
   ];
 
   return (
-    <>
+    <section className="zw-panel">
       <CategoryChips categories={categories} active={category} onChange={setCategory} />
       <DataTable
         rows={filtered} columns={columns} rowKey={(r) => String(r.scheme_code)}
@@ -178,7 +172,7 @@ function FundTable() {
         loading={loading} error={error?.message} onRetry={refetch}
         initialSort={{ key: 'return_1y', dir: 'desc' }} maxRows={100}
       />
-    </>
+    </section>
   );
 }
 
@@ -191,7 +185,7 @@ function FundTable() {
  */
 function Return({ value }: { value: number | null | undefined }) {
   if (value == null || !Number.isFinite(value) || value === 0) {
-    return <span style={{ color: 'var(--text-3)' }}>—</span>;
+    return <span style={{ color: 'var(--ink-3)' }}>—</span>;
   }
   return <Delta value={value} />;
 }

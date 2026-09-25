@@ -7,6 +7,7 @@ import { getAlerts, createAlert, deleteAlert, toggleAlert, type PriceAlert, type
 import DataTable, { type Column } from './DataTable';
 import { num } from '@/lib/format/number';
 import SignedOut from './SignedOut';
+import { StockCell } from './StockCell';
 
 /**
  * Price alerts.
@@ -70,7 +71,7 @@ export default function AlertsView() {
   }
 
   const columns: Column<PriceAlert>[] = [
-    { key: 'symbol', header: 'Stock', sortable: true, render: (a) => <span className="zw-sym">{a.symbol}</span> },
+    { key: 'symbol', header: 'Stock', sortable: true, render: (a) => <StockCell symbol={a.symbol} /> },
     {
       key: 'condition', header: 'Condition', sortable: true,
       render: (a) => <span className="zw-sub">{a.condition === 'above' ? 'Goes above' : a.condition === 'below' ? 'Falls below' : 'Reaches'}</span>,
@@ -81,11 +82,11 @@ export default function AlertsView() {
       sortValue: (a) => (a.triggered_at ? 2 : a.is_active === false ? 1 : 0),
       render: (a) =>
         a.triggered_at ? (
-          <span className="zw-sub" style={{ color: 'var(--amber)' }}>Fired</span>
+          <span className="zw-sub" style={{ color: 'var(--ink)' }}>Fired</span>
         ) : a.is_active === false ? (
-          <span className="zw-sub" style={{ color: 'var(--text-3)' }}>Paused</span>
+          <span className="zw-sub" style={{ color: 'var(--ink-3)' }}>Paused</span>
         ) : (
-          <span className="zw-sub" style={{ color: 'var(--positive)' }}>Active</span>
+          <span className="zw-sub" style={{ color: 'var(--up)' }}>Active</span>
         ),
     },
     {
@@ -111,14 +112,14 @@ export default function AlertsView() {
   ];
 
   return (
-    <div style={{ maxWidth: 'var(--max-w)', padding: 'var(--s-4) var(--s-3) var(--s-7)' }}>
+    <div className="zw-page">
       <h1 className="zw-title" style={{ paddingBottom: 'var(--s-3)' }}>Price alerts</h1>
 
       <form
         onSubmit={submit}
         style={{
           display: 'flex', gap: 'var(--s-2)', flexWrap: 'wrap', alignItems: 'flex-end',
-          borderBottom: '1px solid var(--border-1)', paddingBottom: 'var(--s-4)', marginBottom: 'var(--s-4)',
+          borderBottom: '1px solid var(--line)', paddingBottom: 'var(--s-4)', marginBottom: 'var(--s-4)',
         }}
       >
         <Field label="Stock">
@@ -155,7 +156,7 @@ export default function AlertsView() {
 
         {/* The trigger restated in words, so there is no doubt which
             direction was set before it is saved. */}
-        <p className="zw-sub" style={{ flexBasis: '100%', color: formError ? 'var(--negative)' : 'var(--text-3)', minHeight: 18 }} role={formError ? 'alert' : undefined}>
+        <p className="zw-sub" style={{ flexBasis: '100%', color: formError ? 'var(--down)' : 'var(--ink-3)', minHeight: 18 }} role={formError ? 'alert' : undefined}>
           {formError ??
             (symbol.trim() && Number.isFinite(target) && target > 0
               ? `Alert when ${symbol.trim().toUpperCase()} ${condition === 'above' ? 'goes above' : condition === 'below' ? 'falls below' : 'reaches'} ₹${num(target, 2)}.`
@@ -172,7 +173,7 @@ export default function AlertsView() {
         error={error?.message ?? null}
         onRetry={refetch}
         initialSort={{ key: 'state', dir: 'asc' }}
-        empty={<p className="zw-sub" style={{ color: 'var(--text-3)' }}>No alerts yet. Add one above.</p>}
+        empty={<p className="zw-sub" style={{ color: 'var(--ink-3)' }}>No alerts yet. Add one above.</p>}
       />
     </div>
   );
@@ -180,7 +181,7 @@ export default function AlertsView() {
 
 const inputStyle: React.CSSProperties = {
   height: 34, padding: '0 8px', background: 'transparent',
-  border: '1px solid var(--border-2)', borderRadius: 'var(--r-ctl)', fontSize: 13,
+  border: '1px solid var(--line-strong)', borderRadius: 'var(--r-ctl)', fontSize: 13,
 };
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
