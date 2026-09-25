@@ -7,9 +7,9 @@ import { getAllPosts } from "@/lib/blog";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Learn",
+  title: "Indian Stock Market Explained: Guides, Terms & Daily Updates",
   description:
-    "Indian stock market concepts, events, and terminology explained in plain English.",
+    "Plain-English guides to the Indian stock market: Nifty, Sensex, FII/DII, IPOs, gold, mutual funds and tax, plus daily market updates.",
   alternates: { canonical: "/blog" },
   keywords: [
     "stock market for beginners India", "Indian stock market news", "what is PE ratio", "FII vs DII",
@@ -17,10 +17,14 @@ export const metadata: Metadata = {
     "Nifty today", "gold rate today India", "market explainers", "Ziro Market blog",
   ],
   openGraph: {
-    title: "Learn | Ziro Market",
-    description: "Indian stock market explained in plain English.",
+    title: "Indian Stock Market Explained: Guides, Terms & Daily Updates | Ziro Market",
+    description: "Plain-English guides to the Indian stock market, from Nifty and FII/DII to IPOs, gold and tax.",
     url: `${SITE_URL}/blog`,
+    type: "website",
+    siteName: "Ziro Market",
+    locale: "en_IN",
   },
+  twitter: { card: "summary_large_image", creator: "@ziromarket" },
 };
 
 export default function BlogPage() {

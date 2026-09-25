@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy Policy for Ziro Market - Learn how we protect your data",
+  alternates: { canonical: '/privacy' },
 };
 
 export default function PrivacyPolicy() {

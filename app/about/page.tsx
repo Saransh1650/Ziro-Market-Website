@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import Nav from '@/components/layout/Nav';
 import Footer from '@/components/layout/Footer';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: "About Ziro Market's Editorial Standards",
   description: "Who writes Ziro Market's market coverage, how every number gets verified, and what the app behind it actually does.",
+  alternates: { canonical: '/about' },
+  openGraph: { title: "About Ziro Market's Editorial Standards", url: `${SITE_URL}/about`, type: 'website', siteName: 'Ziro Market', locale: 'en_IN' },
 };
 
 export default function About() {

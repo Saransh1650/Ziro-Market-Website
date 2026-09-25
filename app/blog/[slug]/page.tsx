@@ -13,6 +13,7 @@ import { mdxComponents } from '@/components/blog/MdxComponents'
 import { getPost, getPostSlugs, getAllPosts } from '@/lib/blog'
 import { getRegionalCounterparts, LANGUAGES } from '@/lib/regional'
 import { SITE_URL } from '@/lib/site'
+import { metaDescription } from '@/lib/seo'
 
 export async function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }))
@@ -45,14 +46,15 @@ export async function generateMetadata({
       : undefined
 
   const keywords = postKeywords(post)
+  const description = metaDescription(post.excerpt)
   return {
     title: seoTitle,
-    description: post.excerpt,
+    description,
     keywords,
     alternates: { canonical: `/blog/${slug}`, languages },
     openGraph: {
       title: post.seoTitle ?? post.title,
-      description: post.excerpt,
+      description,
       url: `${SITE_URL}/blog/${slug}`,
       type: 'article',
       publishedTime: post.datePublished ?? post.date,
@@ -60,11 +62,13 @@ export async function generateMetadata({
       section: post.category,
       tags: keywords,
       siteName: 'Ziro Market',
+      locale: 'en_IN',
     },
     twitter: {
       card: 'summary_large_image',
       title: post.seoTitle ?? post.title,
-      description: post.excerpt,
+      description,
+      creator: '@ziromarket',
     },
   }
 }

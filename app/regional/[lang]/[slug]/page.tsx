@@ -17,6 +17,7 @@ import {
   getRegionalPostsForLang,
 } from '@/lib/regional'
 import { SITE_URL as BASE } from '@/lib/site'
+import { metaDescription } from '@/lib/seo'
 
 export async function generateStaticParams() {
   return getAllRegionalParams()
@@ -38,12 +39,12 @@ export async function generateMetadata({
 
   return {
     title: post.seoTitle ?? post.title,
-    description: post.excerpt,
+    description: metaDescription(post.excerpt),
     keywords: [...post.tags, cfg.englishName, 'Ziro Market'],
     alternates: { canonical: url, languages },
     openGraph: {
       title: post.seoTitle ?? post.title,
-      description: post.excerpt,
+      description: metaDescription(post.excerpt),
       url,
       type: 'article',
       locale: cfg.locale.replace('-', '_'),
@@ -54,7 +55,8 @@ export async function generateMetadata({
     twitter: {
       card: 'summary_large_image',
       title: post.seoTitle ?? post.title,
-      description: post.excerpt,
+      description: metaDescription(post.excerpt),
+      creator: '@ziromarket',
     },
   }
 }

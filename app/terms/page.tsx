@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 export const metadata: Metadata = {
   title: "Terms of Use",
   description: "Terms of Use for Ziro Market - Our service agreement",
+  alternates: { canonical: '/terms' },
 };
 
 export default function TermsOfUse() {
